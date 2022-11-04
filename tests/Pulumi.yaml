@@ -65,6 +65,9 @@ variables:
   coalesce:
     fn::terraformfns:coalesce:
       input: ["hello", "world"]
+  coalescelist:
+    fn::terraformfns:coalescelist:
+      input: [[], [1]]
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -84,3 +87,4 @@ outputs:
   cidrnetmask: ${cidrnetmask.result}
   cidrsubnet: ${cidrsubnet.result}
   coalesce: ${coalesce.result}
+  coalescelist: ${coalescelist.result}

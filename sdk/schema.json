@@ -401,6 +401,68 @@
           "result"
         ]
       }
+    },
+    "terraformfns:index:coalesce": {
+      "description": "Returns the first non-empty value from the given arguments.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:coalescelist": {
+      "description": "Returns the first non-empty list from the given list of lists.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "pulumi.json#/Any"
+              }
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }
