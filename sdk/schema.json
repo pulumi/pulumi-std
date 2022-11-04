@@ -494,6 +494,40 @@
           "result"
         ]
       }
+    },
+    "terraformfns:index:concat": {
+      "description": "Returns the first non-empty list from the given list of lists.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "pulumi.json#/Any"
+              }
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }

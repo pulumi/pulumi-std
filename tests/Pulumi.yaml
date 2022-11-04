@@ -71,6 +71,9 @@ variables:
   compact:
     fn::terraformfns:compact:
       input: ["", "one", ""]
+  concat:
+    fn::terraformfns:concat:
+      input: [[1,2], [3,4], [5]]
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -92,3 +95,4 @@ outputs:
   coalesce: ${coalesce.result}
   coalescelist: ${coalescelist.result}
   compact: ${compact.result}
+  concat: ${concat.result}

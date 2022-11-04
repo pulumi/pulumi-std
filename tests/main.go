@@ -86,6 +86,7 @@ func expectedOutputs() map[string]interface{} {
 		"coalesce":       "hello",
 		"coalescelist":   []interface{}{1},
 		"compact":        []string{"one"},
+		"concat":         []int{1, 2, 3, 4, 5},
 	}
 }
 

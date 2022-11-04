@@ -61,6 +61,7 @@ func Provider() p.Provider {
 			infer.Function[*Coalesce, CoalesceArgs, CoalesceResult](),
 			infer.Function[*Coalescelist, CoalescelistArgs, CoalescelistResult](),
 			infer.Function[*Compact, CompactArgs, CompactResult](),
+			infer.Function[*Concat, ConcatArgs, ConcatResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"terraformfns": "index",
