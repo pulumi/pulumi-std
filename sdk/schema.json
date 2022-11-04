@@ -463,6 +463,37 @@
           "result"
         ]
       }
+    },
+    "terraformfns:index:compact": {
+      "description": "Removes empty string elements from a list.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }

@@ -60,6 +60,7 @@ func Provider() p.Provider {
 			infer.Function[*Cidrsubnet, CidrsubnetArgs, CidrsubnetResult](),
 			infer.Function[*Coalesce, CoalesceArgs, CoalesceResult](),
 			infer.Function[*Coalescelist, CoalescelistArgs, CoalescelistResult](),
+			infer.Function[*Compact, CompactArgs, CompactResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"terraformfns": "index",
