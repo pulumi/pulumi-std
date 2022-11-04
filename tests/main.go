@@ -83,6 +83,7 @@ func expectedOutputs() map[string]interface{} {
 		"cidrhostV2":     "10.255.255.254",
 		"cidrnetmask":    "255.0.0.0",
 		"cidrsubnet":     "10.2.0.0/16",
+		"coalesce":       "hello",
 	}
 }
 

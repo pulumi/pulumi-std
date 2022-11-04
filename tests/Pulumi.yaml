@@ -62,6 +62,9 @@ variables:
       input: "10.0.0.0/8"
       newbits: 8
       netnum: 2
+  coalesce:
+    fn::terraformfns:coalesce:
+      input: ["hello", "world"]
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -80,3 +83,4 @@ outputs:
   cidrhostV2: ${cidrhostV2.result}
   cidrnetmask: ${cidrnetmask.result}
   cidrsubnet: ${cidrsubnet.result}
+  coalesce: ${coalesce.result}
