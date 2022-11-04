@@ -1,0 +1,82 @@
+name: terraformfns-tests
+runtime: yaml
+
+plugins:
+  providers:
+    - name: terraformfns
+      path: ../bin
+
+variables:
+  abs-positive:
+    fn::terraformfns:abs:
+      input: 42.24
+  abs-negative:
+    fn::terraformfns:abs:
+      input: -42.24
+  base64encode:
+    fn::terraformfns:base64encode:
+      input: ABCDE
+  base64decode:
+    fn::terraformfns:base64decode:
+      input: QUJDREU=
+  basename: 
+    fn::terraformfns:basename:
+      input: path/to/pulumi
+  base64gzip:
+    fn::terraformfns:base64gzip:
+      input: abc
+  base64sha256:
+    fn::terraformfns:base64sha256:
+      input: abc
+  base64sha512:
+    fn::terraformfns:base64sha512:
+      input: abc
+  bcrypt:
+    fn::terraformfns:bcrypt:
+      input: abc
+  costlyBcrypt:
+    fn::terraformfns:bcrypt:
+      input: abc
+      cost: 15
+  chunklist:
+    fn::terraformfns:chunklist:
+      input: [1,2,3,4,5]
+      size: 2
+  chunklistByOne:
+    fn::terraformfns:chunklist:
+      input: [1,2,3,4,5]
+      size: 1
+  cidrhost:
+    fn::terraformfns:cidrhost:
+      input: "10.0.0.0/8"
+      host: 2
+  cidrhostV2:
+    fn::terraformfns:cidrhost:
+      input: "10.0.0.0/8"
+      host: -2
+  cidrnetmask:
+    fn::terraformfns:cidrnetmask:
+      input: "10.0.0.0/8"
+  cidrsubnet:
+    fn::terraformfns:cidrsubnet:
+      input: "10.0.0.0/8"
+      newbits: 8
+      netnum: 2
+
+outputs:
+  abs-positive: ${abs-positive.result}
+  abs-negative: ${abs-negative.result}
+  base64encode: ${base64encode.result}
+  base64decode: ${base64decode.result}
+  basename: ${basename.result}
+  base64gzip: ${base64gzip.result}
+  base64sha256: ${base64sha256.result}
+  base64sha512: ${base64sha512.result}
+  bcrypt: ${bcrypt.result}
+  costlyBcrypt: ${costlyBcrypt.result}
+  chunklist: ${chunklist.result}
+  chunklistByOne: ${chunklistByOne.result}
+  cidrhost: ${cidrhost.result}
+  cidrhostV2: ${cidrhostV2.result}
+  cidrnetmask: ${cidrnetmask.result}
+  cidrsubnet: ${cidrsubnet.result}

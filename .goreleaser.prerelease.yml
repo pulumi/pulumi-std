@@ -1,0 +1,29 @@
+dist: goreleaser
+project_name: pulumi-terraformfns
+changelog:
+  skip: true
+release:
+  disable: true
+snapshot:
+  name_template: "{{ .Tag }}-SNAPSHOT"
+checksum:
+  name_template: "{{ .ProjectName }}-{{ .Version }}-checksums.txt"
+archives:
+  - id: archive
+    name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
+builds:
+  - id: pulumi-resource-terraformfns
+    binary: pulumi-resource-terraformfns
+    goarch:
+      - amd64
+      - arm64
+    goos:
+      - darwin
+      - windows
+      - linux
+    ldflags:
+      - -s
+      - -w
+      - -X github.com/pulumi/pulumi-terraformfns/terraformfns/version.Version={{.Tag}}
+    main: ./cmd/pulumi-resource-terraformfns/
+    dir: terraformfns

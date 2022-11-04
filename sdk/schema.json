@@ -1,0 +1,406 @@
+{
+  "name": "terraformfns",
+  "displayName": "TerraformFns",
+  "version": "1.0.0",
+  "description": "Terraform built-in functions",
+  "homepage": "https://github.com/pulumi/pulumi-terraformfns",
+  "repository": "https://github.com/pulumi/pulumi-terraformfns",
+  "publisher": "Pulumi",
+  "meta": {
+    "moduleFormat": "(.*)"
+  },
+  "language": {
+    "csharp": {
+      "packageReferences": {
+        "Pulumi": "3.*"
+      }
+    },
+    "nodejs": {
+      "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+      },
+      "respectSchemaVersion": true
+    }
+  },
+  "config": {},
+  "provider": {
+    "type": "object"
+  },
+  "functions": {
+    "terraformfns:index:abs": {
+      "description": "Returns the absolute value of a given float. \nExample: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:base64decode": {
+      "description": "Given a base64-encoded string, decodes it and returns the original string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:base64encode": {
+      "description": "Returns a base64-encoded representation of the given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:base64gzip": {
+      "description": "Compresses the given string with gzip and then encodes the result to base64.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:base64sha256": {
+      "description": "Returns a base64-encoded representation of raw SHA-256 sum of the given string. \nThis is not equivalent of base64encode(sha256(string)) since sha256() returns hexadecimal representation.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:base64sha512": {
+      "description": "Returns a base64-encoded representation of raw SHA-512 sum of the given string. \nThis is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:basename": {
+      "description": "Returns the last element of the input path.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:bcrypt": {
+      "description": "Returns the Blowfish encrypted hash of the string at the given cost. \nA default cost of 10 will be used if not provided.",
+      "inputs": {
+        "properties": {
+          "cost": {
+            "type": "integer"
+          },
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:ceil": {
+      "description": "Returns the least integer value greater than or equal to the argument.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:chomp": {
+      "description": "Removes one or more newline characters from the end of the given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:chunklist": {
+      "description": "Splits a single list into multiple lists where each has at most the given number of elements.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          },
+          "size": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "size"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:cidrhost": {
+      "description": "Takes an IP address range in CIDR notation as input and creates an IP address with the given host number. \nIf given host number is negative, the count starts from the end of the range. \nFor example, cidrhost(\"10.0.0.0/8\", 2) returns 10.0.0.2 and cidrhost(\"10.0.0.0/8\", -2) returns 10.255.255.254.",
+      "inputs": {
+        "properties": {
+          "host": {
+            "type": "integer"
+          },
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "host",
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:cidrnetmask": {
+      "description": "Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format \nthat some systems expect for IPv4 interfaces. \nFor example, cidrnetmask(\"10.0.0.0/8\") returns 255.0.0.0. \nNot applicable to IPv6 networks since CIDR notation is the only valid notation for IPv6.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "terraformfns:index:cidrsubnet": {
+      "description": "Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix \nto include an additional subnet number. For example, cidrsubnet(\"10.0.0.0/8\", 8, 2) returns 10.2.0.0/16; \ncidrsubnet(\"2607:f298:6051:516c::/64\", 8, 2) returns 2607:f298:6051:516c:200::/72.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "netnum": {
+            "type": "integer"
+          },
+          "newbits": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "netnum",
+          "newbits"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    }
+  }
+}
