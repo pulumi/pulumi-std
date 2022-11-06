@@ -496,7 +496,7 @@
       }
     },
     "std:index:concat": {
-      "description": "Returns the first non-empty list from the given list of lists.",
+      "description": "Combines two or more lists into a single list.",
       "inputs": {
         "properties": {
           "input": {
@@ -521,6 +521,38 @@
             "items": {
               "$ref": "pulumi.json#/Any"
             }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:contains": {
+      "description": "Returns true if a list contains the given element and returns false otherwise.",
+      "inputs": {
+        "properties": {
+          "element": {
+            "$ref": "pulumi.json#/Any"
+          },
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "element",
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "boolean"
           }
         },
         "type": "object",

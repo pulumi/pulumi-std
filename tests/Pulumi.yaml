@@ -74,6 +74,22 @@ variables:
   concat:
     fn::std:concat:
       input: [[1,2], [3,4], [5]]
+  containsWithIntegers:
+    fn::std:contains:
+      input: [1,2,3,4,5]
+      element: 1
+  containsWithStrings:
+    fn::std:contains:
+      input: [one, two, three]
+      element: two
+  containsWithLists:
+    fn::std:contains:
+      input: [[1], [2], [3]]
+      element: [2]
+  shouldNotContain:
+    fn::std:contains:
+      input: [1,2,3]
+      element: 5
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -96,3 +112,7 @@ outputs:
   coalescelist: ${coalescelist.result}
   compact: ${compact.result}
   concat: ${concat.result}
+  containsWithIntegers: ${containsWithIntegers.result}
+  containsWithStrings: ${containsWithStrings.result}
+  containsWithLists: ${containsWithLists.result}
+  shouldNotContain: ${shouldNotContain.result}
