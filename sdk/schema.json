@@ -560,6 +560,31 @@
           "result"
         ]
       }
+    },
+    "std:index:dirname": {
+      "description": "Returns all but the last element of path, typically the path's directory.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }

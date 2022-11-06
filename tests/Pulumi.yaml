@@ -90,6 +90,9 @@ variables:
     fn::std:contains:
       input: [1,2,3]
       element: 5
+  dirname:
+    fn::std:dirname:
+      input: /path/to/directory/file.txt
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -116,3 +119,4 @@ outputs:
   containsWithStrings: ${containsWithStrings.result}
   containsWithLists: ${containsWithLists.result}
   shouldNotContain: ${shouldNotContain.result}
+  dirname: ${dirname.result}

@@ -15,8 +15,6 @@
 package std
 
 import (
-	"encoding/json"
-
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
@@ -33,18 +31,6 @@ type ContainsResult struct {
 
 func (r *Contains) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns true if a list contains the given element and returns false otherwise.")
-}
-
-func jsonDeepEquals(a, b interface{}) bool {
-	aBytes, err := json.Marshal(a)
-	if err != nil {
-		return false
-	}
-	bBytes, err := json.Marshal(b)
-	if err != nil {
-		return false
-	}
-	return string(aBytes) == string(bBytes)
 }
 
 func (*Contains) Call(ctx p.Context, args ContainsArgs) (ContainsResult, error) {

@@ -15,26 +15,25 @@
 package std
 
 import (
-	"encoding/json"
-	"hash"
+	"path/filepath"
+
+	p "github.com/pulumi/pulumi-go-provider"
+	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-func stringHashFunction(hashFn func() hash.Hash, encoder func([]byte) string) func(string) string {
-	return func(input string) string {
-		h := hashFn()
-		h.Write([]byte(input))
-		return encoder(h.Sum(nil))
-	}
+type Dirname struct{}
+type DirnameArgs struct {
+	Input string `pulumi:"input"`
 }
 
-func jsonDeepEquals(a, b interface{}) bool {
-	aBytes, err := json.Marshal(a)
-	if err != nil {
-		return false
-	}
-	bBytes, err := json.Marshal(b)
-	if err != nil {
-		return false
-	}
-	return string(aBytes) == string(bBytes)
+type DirnameResult struct {
+	Result string `pulumi:"result"`
+}
+
+func (r *Dirname) Annotate(a infer.Annotator) {
+	a.Describe(r, "Returns all but the last element of path, typically the path's directory.")
+}
+
+func (*Dirname) Call(ctx p.Context, args DirnameArgs) (DirnameResult, error) {
+	return DirnameResult{filepath.Dir(args.Input)}, nil
 }

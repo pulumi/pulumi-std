@@ -91,6 +91,7 @@ func expectedOutputs() map[string]interface{} {
 		"containsWithStrings":  true,
 		"containsWithLists":    true,
 		"shouldNotContain":     false,
+		"dirname":              "/path/to/directory",
 	}
 }
 
