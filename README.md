@@ -1,7 +1,6 @@
-# pulumi-terraformfns
+# pulumi-std
 
-Terraform built-in functions implemented as a native Pulumi provider. Mostly used as a compatibility layer when migrating terraform projects to Pulumi. 
-
+Standard library functions implemented as a native Pulumi provider.
 ### Build
 
 ```
@@ -24,8 +23,8 @@ make gen_schema
 
 The Pulumi String provider is available as a package in all Pulumi languages:
 
-- JavaScript/TypeScript: [`@pulumi/terraformfns`](https://www.npmjs.com/package/@pulumi/terraformfns)
-- Python: [`pulumi-terraformfns`](https://pypi.org/project/pulumi-terraformfns/)
-- Go: [`github.com/pulumi/pulumi-terraformfns/sdk/go`](https://pkg.go.dev/github.com/pulumi/pulumi-terraformfns/sdk/go)
-- .NET: [`Pulumi.Terraformfns`](https://www.nuget.org/packages/Pulumi.Terraformfns)
-- YAML: `pulumi plugin install resource terraformfns`
+- JavaScript/TypeScript: [`@pulumi/std`](https://www.npmjs.com/package/@pulumi/std)
+- Python: [`pulumi-std`](https://pypi.org/project/pulumi-std/)
+- Go: [`github.com/pulumi/pulumi-std/sdk/go`](https://pkg.go.dev/github.com/pulumi/pulumi-std/sdk/go)
+- .NET: [`Pulumi.Std`](https://www.nuget.org/packages/Pulumi.std)
+- YAML: `pulumi plugin install resource std`

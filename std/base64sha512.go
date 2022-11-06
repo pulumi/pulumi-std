@@ -12,32 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
+	"crypto/sha512"
 	"encoding/base64"
 
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type Base64encode struct{}
-type Base64EncodeArgs struct {
+type Base64sha512 struct{}
+type Base64Sha512Args struct {
 	Input string `pulumi:"input"`
 }
 
-type Base64EncodeResult struct {
+type Base64Sha512Result struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *Base64encode) Annotate(a infer.Annotator) {
-	a.Describe(r, "Returns a base64-encoded representation of the given string.")
+func (r *Base64sha512) Annotate(a infer.Annotator) {
+	a.Describe(r, `Returns a base64-encoded representation of raw SHA-512 sum of the given string. 
+This is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.`)
 }
 
-func base64Encode(input string) string {
-	return base64.StdEncoding.EncodeToString([]byte(input))
-}
+var base64Sha512 = stringHashFunction(sha512.New, base64.StdEncoding.EncodeToString)
 
-func (*Base64encode) Call(ctx p.Context, args Base64EncodeArgs) (Base64EncodeResult, error) {
-	return Base64EncodeResult{base64Encode(args.Input)}, nil
+func (*Base64sha512) Call(ctx p.Context, args Base64Sha512Args) (Base64Sha512Result, error) {
+	return Base64Sha512Result{base64Sha512(args.Input)}, nil
 }

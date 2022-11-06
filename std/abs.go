@@ -12,34 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
-	"errors"
+	"math"
 
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type Coalesce struct{}
-type CoalesceArgs struct {
-	Input []string `pulumi:"input"`
+type Abs struct{}
+type AbsArgs struct {
+	Input float64 `pulumi:"input"`
 }
 
-type CoalesceResult struct {
-	Result string `pulumi:"result"`
+type AbsResult struct {
+	Result float64 `pulumi:"result"`
 }
 
-func (r *Coalesce) Annotate(a infer.Annotator) {
-	a.Describe(r, "Returns the first non-empty value from the given arguments.")
+func (r *Abs) Annotate(a infer.Annotator) {
+	a.Describe(r, `Returns the absolute value of a given float. 
+Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.`)
 }
 
-func (*Coalesce) Call(ctx p.Context, args CoalesceArgs) (CoalesceResult, error) {
-	for _, value := range args.Input {
-		if value != "" {
-			return CoalesceResult{value}, nil
-		}
-	}
-
-	return CoalesceResult{}, errors.New("no non-empty values found")
+func (*Abs) Call(ctx p.Context, input AbsArgs) (AbsResult, error) {
+	return AbsResult{math.Abs(input.Input)}, nil
 }

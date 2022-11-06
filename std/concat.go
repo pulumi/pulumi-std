@@ -12,33 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type Compact struct{}
-type CompactArgs struct {
-	Input []string `pulumi:"input"`
+type Concat struct{}
+type ConcatArgs struct {
+	Input [][]interface{} `pulumi:"input"`
 }
 
-type CompactResult struct {
-	Result []string `pulumi:"result"`
+type ConcatResult struct {
+	Result []interface{} `pulumi:"result"`
 }
 
-func (r *Compact) Annotate(a infer.Annotator) {
-	a.Describe(r, "Removes empty string elements from a list.")
+func (r *Concat) Annotate(a infer.Annotator) {
+	a.Describe(r, "Combines two or more lists into a single list.")
 }
 
-func (*Compact) Call(ctx p.Context, args CompactArgs) (CompactResult, error) {
-	output := make([]string, 0)
-	for _, value := range args.Input {
-		if value != "" {
+func (*Concat) Call(ctx p.Context, args ConcatArgs) (ConcatResult, error) {
+	output := make([]interface{}, 0)
+	for _, list := range args.Input {
+		for _, value := range list {
 			output = append(output, value)
 		}
 	}
 
-	return CompactResult{output}, nil
+	return ConcatResult{output}, nil
 }

@@ -1,5 +1,5 @@
 dist: goreleaser
-project_name: pulumi-terraformfns
+project_name: pulumi-std
 snapshot:
   name_template: "{{ .Version }}-SNAPSHOT"
 checksum:
@@ -8,8 +8,8 @@ archives:
   - id: archive
     name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 builds:
-  - id: pulumi-resource-terraformfns
-    binary: pulumi-resource-terraformfns
+  - id: pulumi-resource-std
+    binary: pulumi-resource-std
     goarch:
       - amd64
       - arm64
@@ -20,6 +20,6 @@ builds:
     ldflags:
       - -s
       - -w
-      - -X github.com/pulumi/pulumi-terraformfns/terraformfns/version.Version={{.Tag}}
-    main: ./cmd/pulumi-resource-terraformfns/
-    dir: terraformfns
+      - -X github.com/pulumi/pulumi-std/std/version.Version={{.Tag}}
+    main: ./cmd/pulumi-resource-std/
+    dir: std

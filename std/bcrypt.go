@@ -12,32 +12,41 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
-	"crypto/sha512"
-	"encoding/base64"
+	"fmt"
 
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
+	"golang.org/x/crypto/bcrypt"
 )
 
-type Base64sha512 struct{}
-type Base64Sha512Args struct {
+type Bcrypt struct{}
+type BcryptArgs struct {
 	Input string `pulumi:"input"`
+	Cost  *int   `pulumi:"cost,optional"`
 }
 
-type Base64Sha512Result struct {
+type BcryptResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *Base64sha512) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns a base64-encoded representation of raw SHA-512 sum of the given string. 
-This is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.`)
+func (r *Bcrypt) Annotate(a infer.Annotator) {
+	a.Describe(r, `Returns the Blowfish encrypted hash of the string at the given cost. 
+A default cost of 10 will be used if not provided.`)
 }
 
-var base64Sha512 = stringHashFunction(sha512.New, base64.StdEncoding.EncodeToString)
+func (*Bcrypt) Call(ctx p.Context, args BcryptArgs) (BcryptResult, error) {
+	defaultCost := 10
+	if args.Cost != nil {
+		defaultCost = *args.Cost
+	}
 
-func (*Base64sha512) Call(ctx p.Context, args Base64Sha512Args) (Base64Sha512Result, error) {
-	return Base64Sha512Result{base64Sha512(args.Input)}, nil
+	fmt.Println("defaultCost", defaultCost)
+	hash, err := bcrypt.GenerateFromPassword([]byte(args.Input), defaultCost)
+	if err != nil {
+		return BcryptResult{}, fmt.Errorf("error occured generating password %s", err.Error())
+	}
+	return BcryptResult{string(hash)}, nil
 }

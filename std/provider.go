@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
 	p "github.com/pulumi/pulumi-go-provider"
@@ -24,11 +24,11 @@ import (
 func Provider() p.Provider {
 	return infer.Provider(infer.Options{
 		Metadata: schema.Metadata{
-			Description: "Terraform built-in functions",
-			DisplayName: "TerraformFns",
+			Description: "Standard library functions",
+			DisplayName: "StandardLibrary",
 			Publisher:   "Pulumi",
-			Homepage:    "https://github.com/pulumi/pulumi-terraformfns",
-			Repository:  "https://github.com/pulumi/pulumi-terraformfns",
+			Homepage:    "https://github.com/pulumi/pulumi-std",
+			Repository:  "https://github.com/pulumi/pulumi-std",
 			LanguageMap: map[string]any{
 				"nodejs": map[string]any{
 					"respectSchemaVersion": true,
@@ -64,7 +64,7 @@ func Provider() p.Provider {
 			infer.Function[*Concat, ConcatArgs, ConcatResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
-			"terraformfns": "index",
+			"std": "index",
 		},
 	})
 }

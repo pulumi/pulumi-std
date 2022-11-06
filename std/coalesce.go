@@ -12,30 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
-	"regexp"
+	"errors"
 
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type Chomp struct{}
-type ChompArgs struct {
-	Input string `pulumi:"input"`
+type Coalesce struct{}
+type CoalesceArgs struct {
+	Input []string `pulumi:"input"`
 }
 
-type ChompResult struct {
+type CoalesceResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *Chomp) Annotate(a infer.Annotator) {
-	a.Describe(r, "Removes one or more newline characters from the end of the given string.")
+func (r *Coalesce) Annotate(a infer.Annotator) {
+	a.Describe(r, "Returns the first non-empty value from the given arguments.")
 }
 
-func (*Chomp) Call(ctx p.Context, args ChompArgs) (ChompResult, error) {
-	newlines := regexp.MustCompile(`(?:\r\n?|\n)*\z`)
-	result := newlines.ReplaceAllString(args.Input, "")
-	return ChompResult{result}, nil
+func (*Coalesce) Call(ctx p.Context, args CoalesceArgs) (CoalesceResult, error) {
+	for _, value := range args.Input {
+		if value != "" {
+			return CoalesceResult{value}, nil
+		}
+	}
+
+	return CoalesceResult{}, errors.New("no non-empty values found")
 }

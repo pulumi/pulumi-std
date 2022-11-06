@@ -12,34 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
-	"errors"
-
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type Coalescelist struct{}
-type CoalescelistArgs struct {
-	Input [][]interface{} `pulumi:"input"`
+type Compact struct{}
+type CompactArgs struct {
+	Input []string `pulumi:"input"`
 }
 
-type CoalescelistResult struct {
-	Result []interface{} `pulumi:"result"`
+type CompactResult struct {
+	Result []string `pulumi:"result"`
 }
 
-func (r *Coalescelist) Annotate(a infer.Annotator) {
-	a.Describe(r, "Returns the first non-empty list from the given list of lists.")
+func (r *Compact) Annotate(a infer.Annotator) {
+	a.Describe(r, "Removes empty string elements from a list.")
 }
 
-func (*Coalescelist) Call(ctx p.Context, args CoalescelistArgs) (CoalescelistResult, error) {
-	for _, list := range args.Input {
-		if len(list) > 0 {
-			return CoalescelistResult{list}, nil
+func (*Compact) Call(ctx p.Context, args CompactArgs) (CompactResult, error) {
+	output := make([]string, 0)
+	for _, value := range args.Input {
+		if value != "" {
+			output = append(output, value)
 		}
 	}
 
-	return CoalescelistResult{}, errors.New("no non-empty list found")
+	return CompactResult{output}, nil
 }

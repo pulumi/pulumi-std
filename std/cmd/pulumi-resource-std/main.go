@@ -12,33 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package main
 
 import (
+	"fmt"
+	"os"
+
 	p "github.com/pulumi/pulumi-go-provider"
-	"github.com/pulumi/pulumi-go-provider/infer"
+
+	"github.com/pulumi/pulumi-std/std"
+	"github.com/pulumi/pulumi-std/std/version"
 )
 
-type Concat struct{}
-type ConcatArgs struct {
-	Input [][]interface{} `pulumi:"input"`
-}
-
-type ConcatResult struct {
-	Result []interface{} `pulumi:"result"`
-}
-
-func (r *Concat) Annotate(a infer.Annotator) {
-	a.Describe(r, "Returns the first non-empty list from the given list of lists.")
-}
-
-func (*Concat) Call(ctx p.Context, args ConcatArgs) (ConcatResult, error) {
-	output := make([]interface{}, 0)
-	for _, list := range args.Input {
-		for _, value := range list {
-			output = append(output, value)
-		}
+func main() {
+	err := p.RunProvider("std", version.Version, std.Provider())
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+		os.Exit(1)
 	}
-
-	return ConcatResult{output}, nil
 }

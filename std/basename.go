@@ -12,14 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
-import "hash"
+import (
+	"path/filepath"
 
-func stringHashFunction(hashFn func() hash.Hash, encoder func([]byte) string) func(string) string {
-	return func(input string) string {
-		h := hashFn()
-		h.Write([]byte(input))
-		return encoder(h.Sum(nil))
-	}
+	p "github.com/pulumi/pulumi-go-provider"
+	"github.com/pulumi/pulumi-go-provider/infer"
+)
+
+type Basename struct{}
+type BasenameArgs struct {
+	Input string `pulumi:"input"`
+}
+
+type BasenameResult struct {
+	Result string `pulumi:"result"`
+}
+
+func (r *Basename) Annotate(a infer.Annotator) {
+	a.Describe(r, "Returns the last element of the input path.")
+}
+
+func (*Basename) Call(ctx p.Context, args BasenameArgs) (BasenameResult, error) {
+	return BasenameResult{filepath.Base(args.Input)}, nil
 }

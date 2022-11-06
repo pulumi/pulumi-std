@@ -12,22 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main
+package std
 
 import (
-	"fmt"
-	"os"
+	"errors"
 
 	p "github.com/pulumi/pulumi-go-provider"
-
-	"github.com/pulumi/pulumi-terraformfns/terraformfns"
-	"github.com/pulumi/pulumi-terraformfns/terraformfns/version"
+	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-func main() {
-	err := p.RunProvider("terraformfns", version.Version, terraformfns.Provider())
-	if err != nil {
-		fmt.Printf("error: %v\n", err)
-		os.Exit(1)
+type Coalescelist struct{}
+type CoalescelistArgs struct {
+	Input [][]interface{} `pulumi:"input"`
+}
+
+type CoalescelistResult struct {
+	Result []interface{} `pulumi:"result"`
+}
+
+func (r *Coalescelist) Annotate(a infer.Annotator) {
+	a.Describe(r, "Returns the first non-empty list from the given list of lists.")
+}
+
+func (*Coalescelist) Call(ctx p.Context, args CoalescelistArgs) (CoalescelistResult, error) {
+	for _, list := range args.Input {
+		if len(list) > 0 {
+			return CoalescelistResult{list}, nil
+		}
 	}
+
+	return CoalescelistResult{}, errors.New("no non-empty list found")
 }

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-terraformfns/terraformfns
+module github.com/pulumi/pulumi-std/std
 
 go 1.19
 

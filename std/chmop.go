@@ -12,41 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package terraformfns
+package std
 
 import (
-	"fmt"
+	"regexp"
 
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
-	"golang.org/x/crypto/bcrypt"
 )
 
-type Bcrypt struct{}
-type BcryptArgs struct {
+type Chomp struct{}
+type ChompArgs struct {
 	Input string `pulumi:"input"`
-	Cost  *int   `pulumi:"cost,optional"`
 }
 
-type BcryptResult struct {
+type ChompResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *Bcrypt) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns the Blowfish encrypted hash of the string at the given cost. 
-A default cost of 10 will be used if not provided.`)
+func (r *Chomp) Annotate(a infer.Annotator) {
+	a.Describe(r, "Removes one or more newline characters from the end of the given string.")
 }
 
-func (*Bcrypt) Call(ctx p.Context, args BcryptArgs) (BcryptResult, error) {
-	defaultCost := 10
-	if args.Cost != nil {
-		defaultCost = *args.Cost
-	}
-
-	fmt.Println("defaultCost", defaultCost)
-	hash, err := bcrypt.GenerateFromPassword([]byte(args.Input), defaultCost)
-	if err != nil {
-		return BcryptResult{}, fmt.Errorf("error occured generating password %s", err.Error())
-	}
-	return BcryptResult{string(hash)}, nil
+func (*Chomp) Call(ctx p.Context, args ChompArgs) (ChompResult, error) {
+	newlines := regexp.MustCompile(`(?:\r\n?|\n)*\z`)
+	result := newlines.ReplaceAllString(args.Input, "")
+	return ChompResult{result}, nil
 }

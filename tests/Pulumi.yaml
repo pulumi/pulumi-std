@@ -1,78 +1,78 @@
-name: terraformfns-tests
+name: standard-library-tests
 runtime: yaml
 
 plugins:
   providers:
-    - name: terraformfns
+    - name: std
       path: ../bin
 
 variables:
   abs-positive:
-    fn::terraformfns:abs:
+    fn::std:abs:
       input: 42.24
   abs-negative:
-    fn::terraformfns:abs:
+    fn::std:abs:
       input: -42.24
   base64encode:
-    fn::terraformfns:base64encode:
+    fn::std:base64encode:
       input: ABCDE
   base64decode:
-    fn::terraformfns:base64decode:
+    fn::std:base64decode:
       input: QUJDREU=
   basename: 
-    fn::terraformfns:basename:
+    fn::std:basename:
       input: path/to/pulumi
   base64gzip:
-    fn::terraformfns:base64gzip:
+    fn::std:base64gzip:
       input: abc
   base64sha256:
-    fn::terraformfns:base64sha256:
+    fn::std:base64sha256:
       input: abc
   base64sha512:
-    fn::terraformfns:base64sha512:
+    fn::std:base64sha512:
       input: abc
   bcrypt:
-    fn::terraformfns:bcrypt:
+    fn::std:bcrypt:
       input: abc
   costlyBcrypt:
-    fn::terraformfns:bcrypt:
+    fn::std:bcrypt:
       input: abc
       cost: 15
   chunklist:
-    fn::terraformfns:chunklist:
+    fn::std:chunklist:
       input: [1,2,3,4,5]
       size: 2
   chunklistByOne:
-    fn::terraformfns:chunklist:
+    fn::std:chunklist:
       input: [1,2,3,4,5]
       size: 1
   cidrhost:
-    fn::terraformfns:cidrhost:
+    fn::std:cidrhost:
       input: "10.0.0.0/8"
       host: 2
   cidrhostV2:
-    fn::terraformfns:cidrhost:
+    fn::std:cidrhost:
       input: "10.0.0.0/8"
       host: -2
   cidrnetmask:
-    fn::terraformfns:cidrnetmask:
+    fn::std:cidrnetmask:
       input: "10.0.0.0/8"
   cidrsubnet:
-    fn::terraformfns:cidrsubnet:
+    fn::std:cidrsubnet:
       input: "10.0.0.0/8"
       newbits: 8
       netnum: 2
   coalesce:
-    fn::terraformfns:coalesce:
+    fn::std:coalesce:
       input: ["hello", "world"]
   coalescelist:
-    fn::terraformfns:coalescelist:
+    fn::std:coalescelist:
       input: [[], [1]]
   compact:
-    fn::terraformfns:compact:
+    fn::std:compact:
       input: ["", "one", ""]
   concat:
-    fn::terraformfns:concat:
+    fn::std:concat:
       input: [[1,2], [3,4], [5]]
 
 outputs:
