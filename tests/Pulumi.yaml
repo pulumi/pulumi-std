@@ -93,6 +93,12 @@ variables:
   dirname:
     fn::std:dirname:
       input: /path/to/directory/file.txt
+  distinctWithIntegers:
+    fn::std:distinct:
+      input: [1,2,2,3,3,4,5]
+  distinctWithStrings:
+    fn::std:distinct:
+      input: [one, two, two, two, three]
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -120,3 +126,4 @@ outputs:
   containsWithLists: ${containsWithLists.result}
   shouldNotContain: ${shouldNotContain.result}
   dirname: ${dirname.result}
+  distinctWithIntegers: ${distinctWithIntegers.result}

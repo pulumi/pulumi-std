@@ -92,6 +92,8 @@ func expectedOutputs() map[string]interface{} {
 		"containsWithLists":    true,
 		"shouldNotContain":     false,
 		"dirname":              "/path/to/directory",
+		"distinctWithIntegers": []int{1, 2, 3, 4, 5},
+		"distinctWithStrings":  []string{"one", "two", "three"},
 	}
 }
 

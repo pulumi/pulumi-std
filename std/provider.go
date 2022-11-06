@@ -64,6 +64,7 @@ func Provider() p.Provider {
 			infer.Function[*Concat, ConcatArgs, ConcatResult](),
 			infer.Function[*Contains, ContainsArgs, ContainsResult](),
 			infer.Function[*Dirname, DirnameArgs, DirnameResult](),
+			infer.Function[*Distinct, DistinctArgs, DistinctResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",
