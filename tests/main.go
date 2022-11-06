@@ -94,6 +94,9 @@ func expectedOutputs() map[string]interface{} {
 		"dirname":              "/path/to/directory",
 		"distinctWithIntegers": []int{1, 2, 3, 4, 5},
 		"distinctWithStrings":  []string{"one", "two", "three"},
+		"element":              20,
+		"elementOverflow":      10,
+		"elementNegativeIndex": 30,
 	}
 }
 

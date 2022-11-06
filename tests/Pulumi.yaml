@@ -99,6 +99,18 @@ variables:
   distinctWithStrings:
     fn::std:distinct:
       input: [one, two, two, two, three]
+  element:
+    fn::std:element:
+      input: [10, 20, 30]
+      index: 1
+  elementOverflow:
+    fn::std:element:
+      input: [10, 20, 30]
+      index: 3
+  elementNegativeIndex:
+    fn::std:element:
+      input: [10, 20, 30]
+      index: -1
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -127,3 +139,6 @@ outputs:
   shouldNotContain: ${shouldNotContain.result}
   dirname: ${dirname.result}
   distinctWithIntegers: ${distinctWithIntegers.result}
+  element: ${element.result}
+  elementOverflow: ${elementOverflow.result}
+  elementNegativeIndex: ${elementNegativeIndex.result}

@@ -616,6 +616,38 @@
           "result"
         ]
       }
+    },
+    "std:index:element": {
+      "description": "Returns the element at the specified index.",
+      "inputs": {
+        "properties": {
+          "index": {
+            "type": "integer"
+          },
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "index",
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }
