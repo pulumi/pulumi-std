@@ -673,6 +673,62 @@
           "result"
         ]
       }
+    },
+    "std:index:flatten": {
+      "description": "Flattens lists of lists down to a flat list of primitive values, \neliminating any nested lists recursively.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:floor": {
+      "description": "Returns the greatest integer value less than or equal to the argument.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }

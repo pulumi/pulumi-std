@@ -67,6 +67,8 @@ func Provider() p.Provider {
 			infer.Function[*Distinct, DistinctArgs, DistinctResult](),
 			infer.Function[*Element, ElementArgs, ElementResult](),
 			infer.Function[*File, FileArgs, FileResult](),
+			infer.Function[*Floor, FloorArgs, FloorResult](),
+			infer.Function[*Flatten, FlattenArgs, FlattenResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

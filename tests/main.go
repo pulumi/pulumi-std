@@ -98,6 +98,8 @@ func expectedOutputs() map[string]interface{} {
 		"elementOverflow":      10,
 		"elementNegativeIndex": 30,
 		"file":                 "hello world",
+		"flatten":              []int{1, 2, 3, 4, 5},
+		"flattenWithStrings":   []string{"one", "two", "three", "four", "five"},
 	}
 }
 

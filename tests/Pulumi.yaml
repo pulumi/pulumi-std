@@ -114,6 +114,12 @@ variables:
   file:
     fn::std:file:
       input: ./message.txt
+  flatten:
+    fn::std:flatten:
+      input: [[[1]], [[[2,3,4]]], [5]]
+  flattenWithStrings:
+    fn::std:flatten:
+      input: [[[one]], [[[two, three, four]]], [five]]    
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -146,3 +152,5 @@ outputs:
   elementOverflow: ${elementOverflow.result}
   elementNegativeIndex: ${elementNegativeIndex.result}
   file: ${file.result}
+  flatten: ${flatten.result}
+  flattenWithStrings: ${flattenWithStrings.result}
