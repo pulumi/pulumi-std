@@ -729,6 +729,70 @@
           "result"
         ]
       }
+    },
+    "std:index:format": {
+      "description": "Formats a string according to the given format. The syntax for the format is standard sprintf syntax.",
+      "inputs": {
+        "properties": {
+          "args": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          },
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "args",
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:index": {
+      "description": "Finds the index of a given element in a list.",
+      "inputs": {
+        "properties": {
+          "element": {
+            "$ref": "pulumi.json#/Any"
+          },
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "element",
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }

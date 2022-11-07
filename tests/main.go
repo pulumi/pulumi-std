@@ -98,18 +98,29 @@ func expectedOutputs() map[string]interface{} {
 		"elementOverflow":      10,
 		"elementNegativeIndex": 30,
 		"file":                 "hello world",
+		"floor":                1.0,
 		"flatten":              []int{1, 2, 3, 4, 5},
 		"flattenWithStrings":   []string{"one", "two", "three", "four", "five"},
+		"format":               "hello-world",
+		"index":                1,
 	}
 }
 
 func main() {
 	cleanup()
 	prepare()
-	defer cleanup()
+
+	exitCode := 0
+	exit := func() {
+		cleanup()
+		os.Exit(exitCode)
+	}
+
+	defer exit()
 
 	expected := expectedOutputs()
 	outputs := outputs()
+
 	for key, value := range outputs {
 		expectedValue, ok := expected[key]
 		if !ok {
@@ -121,7 +132,7 @@ func main() {
 			fmt.Printf("✅ Output '%s' has value '%v' as expected\n", key, value)
 		} else {
 			fmt.Printf("❌ Output '%s' was '%v' but should be '%v'\n", key, value, expectedValue)
-			return
+			exitCode++
 		}
 	}
 }

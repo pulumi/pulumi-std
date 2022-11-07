@@ -119,7 +119,18 @@ variables:
       input: [[[1]], [[[2,3,4]]], [5]]
   flattenWithStrings:
     fn::std:flatten:
-      input: [[[one]], [[[two, three, four]]], [five]]    
+      input: [[[one]], [[[two, three, four]]], [five]]
+  floor:
+    fn::std:floor:
+      input: 1.1
+  format:
+    fn::std:format:
+      input: "hello-%s"
+      args: [world]
+  index:
+    fn::std:index:
+      input: [one, two, three]
+      element: two
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -154,3 +165,5 @@ outputs:
   file: ${file.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
+  format: ${format.result}
+  index: ${index.result}
