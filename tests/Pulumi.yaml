@@ -131,6 +131,19 @@ variables:
     fn::std:index:
       input: [one, two, three]
       element: two
+  join:
+    fn::std:join:
+      input: [one, two, three]
+      separator: "-"
+  jsonencode:
+    fn::std:jsonencode:
+      input:
+        hello: world
+  keys: 
+    fn::std:keys:
+      input:
+        hello: world
+        one: two
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -167,3 +180,6 @@ outputs:
   flattenWithStrings: ${flattenWithStrings.result}
   format: ${format.result}
   index: ${index.result}
+  join: ${join.result}
+  jsonencode: ${jsonencode.result}
+  keys: ${keys.result}

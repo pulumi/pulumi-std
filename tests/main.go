@@ -103,6 +103,9 @@ func expectedOutputs() map[string]interface{} {
 		"flattenWithStrings":   []string{"one", "two", "three", "four", "five"},
 		"format":               "hello-world",
 		"index":                1,
+		"join":                 "one-two-three",
+		"jsonencode":           "{\"hello\":\"world\"}",
+		"keys":                 []string{"hello", "one"},
 	}
 }
 

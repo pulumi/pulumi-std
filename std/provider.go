@@ -71,6 +71,12 @@ func Provider() p.Provider {
 			infer.Function[*Flatten, FlattenArgs, FlattenResult](),
 			infer.Function[*Format, FormatArgs, FormatResult](),
 			infer.Function[*Index, IndexArgs, IndexResult](),
+			infer.Function[*Indent, IndentArgs, IndentResult](),
+			infer.Function[*Join, JoinArgs, JoinResult](),
+			infer.Function[*Jsonencode, JsonencodeArgs, JsonencodeResult](),
+			infer.Function[*Keys, KeysArgs, KeysResult](),
+			infer.Function[*Length, LengthArgs, LengthResult](),
+			infer.Function[*Log, LogArgs, LogResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

@@ -762,6 +762,35 @@
         ]
       }
     },
+    "std:index:indent": {
+      "description": "Adds a given number of spaces after each newline character in the given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "spaces": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "spaces"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:index": {
       "description": "Finds the index of a given element in a list.",
       "inputs": {
@@ -786,6 +815,148 @@
         "properties": {
           "result": {
             "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:join": {
+      "description": "Joins the list with the delimiter for a resultant string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "separator": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "separator"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:jsonencode": {
+      "description": "Returns a JSON-encoded representation of the given value, \nwhich can contain arbitrarily-nested lists and maps. \nNote that if the value is a string then its value will be placed in quotes.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:keys": {
+      "description": "Returns a lexically sorted list of the map keys.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:length": {
+      "description": "Returns a JSON-encoded representation of the given value, which can contain arbitrarily-nested lists and maps. Note that if the value is a string then its value will be placed in quotes.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:log": {
+      "description": "Returns the greatest integer value less than or equal to the argument.",
+      "inputs": {
+        "properties": {
+          "base": {
+            "type": "number"
+          },
+          "input": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "base",
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "number"
           }
         },
         "type": "object",
