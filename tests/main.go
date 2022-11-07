@@ -97,6 +97,7 @@ func expectedOutputs() map[string]interface{} {
 		"element":              20,
 		"elementOverflow":      10,
 		"elementNegativeIndex": 30,
+		"file":                 "hello world",
 	}
 }
 
@@ -108,16 +109,16 @@ func main() {
 	expected := expectedOutputs()
 	outputs := outputs()
 	for key, value := range outputs {
-		foundValue, ok := expected[key]
+		expectedValue, ok := expected[key]
 		if !ok {
 			fmt.Printf("💡 Unexpected output with key '%s'\n", key)
 			continue
 		}
 
-		if reflect.DeepEqual(foundValue, value) || jsonDeepEquals(foundValue, value) {
+		if reflect.DeepEqual(expectedValue, value) || jsonDeepEquals(expectedValue, value) {
 			fmt.Printf("✅ Output '%s' has value '%v' as expected\n", key, value)
 		} else {
-			fmt.Printf("❌ Output '%s' was '%v' but should be '%v'\n", key, value, foundValue)
+			fmt.Printf("❌ Output '%s' was '%v' but should be '%v'\n", key, value, expectedValue)
 			return
 		}
 	}

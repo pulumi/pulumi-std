@@ -111,6 +111,9 @@ variables:
     fn::std:element:
       input: [10, 20, 30]
       index: -1
+  file:
+    fn::std:file:
+      input: ./message.txt
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -142,3 +145,4 @@ outputs:
   element: ${element.result}
   elementOverflow: ${elementOverflow.result}
   elementNegativeIndex: ${elementNegativeIndex.result}
+  file: ${file.result}
