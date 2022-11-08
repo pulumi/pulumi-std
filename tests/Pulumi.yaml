@@ -144,7 +144,10 @@ variables:
       input:
         hello: world
         one: two
-
+  log:
+    fn::std:log:
+      input: 8
+      base: 2
 outputs:
   abs-positive: ${abs-positive.result}
   abs-negative: ${abs-negative.result}
@@ -183,3 +186,4 @@ outputs:
   join: ${join.result}
   jsonencode: ${jsonencode.result}
   keys: ${keys.result}
+  log: ${log.result}

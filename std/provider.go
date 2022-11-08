@@ -77,6 +77,13 @@ func Provider() p.Provider {
 			infer.Function[*Keys, KeysArgs, KeysResult](),
 			infer.Function[*Length, LengthArgs, LengthResult](),
 			infer.Function[*Log, LogArgs, LogResult](),
+			infer.Function[*Lookup, LookupArgs, LookupResult](),
+			infer.Function[*Lower, LowerArgs, LowerResult](),
+			infer.Function[*Map, MapArgs, MapResult](),
+			infer.Function[*Max, MaxArgs, MaxResult](),
+			infer.Function[*Matchkeys, MatchkeysArgs, MatchkeysResult](),
+			infer.Function[*Merge, MergeArgs, MergeResult](),
+			infer.Function[*Min, MinArgs, MinResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",
