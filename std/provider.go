@@ -94,6 +94,8 @@ func Provider() p.Provider {
 			infer.Function[*Signum, SignumArgs, SignumResult](),
 			infer.Function[*Slice, SliceArgs, SliceResult](),
 			infer.Function[*Parseint, ParseintArgs, ParseintResult](),
+			infer.Function[*Startswith, StartswithArgs, StartswithResult](),
+			infer.Function[*Endswith, EndswithArgs, EndswithResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

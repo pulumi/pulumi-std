@@ -166,6 +166,15 @@ variables:
     fn::std:parseint:
       input: "FF"
       base: 16
+  startswith:
+    fn::std:startswith:
+      input: hello
+      prefix: he
+  endswith:
+    fn::std:endswith:
+      input: hello
+      suffix: llo
+
 outputs:
   abs-positive: ${abs-positive.result}
   abs-negative: ${abs-negative.result}
@@ -210,3 +219,5 @@ outputs:
   slice: ${slice.result}
   parseint: ${parseint.result}
   parseintWithBase: ${parseintWithBase.result}
+  startswith: ${startswith.result}
+  endswith: ${endswith.result}

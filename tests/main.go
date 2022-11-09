@@ -119,6 +119,8 @@ func expectedOutputs() map[string]interface{} {
 		"slice":                []int{1, 2, 3},
 		"parseint":             100,
 		"parseintWithBase":     255,
+		"startswith":           true,
+		"endswith":             true,
 	}
 }
 

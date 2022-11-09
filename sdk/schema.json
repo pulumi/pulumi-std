@@ -649,6 +649,35 @@
         ]
       }
     },
+    "std:index:endswith": {
+      "description": "Determines if the input string ends with the suffix.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "suffix": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "suffix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "boolean"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:file": {
       "description": "Reads the contents of a file into the string.",
       "inputs": {
@@ -1449,6 +1478,35 @@
             "items": {
               "$ref": "pulumi.json#/Any"
             }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:startswith": {
+      "description": "Determines if the input string starts with the suffix.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "prefix": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "prefix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "boolean"
           }
         },
         "type": "object",
