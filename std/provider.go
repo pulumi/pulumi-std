@@ -45,6 +45,7 @@ func Provider() p.Provider {
 		},
 		Functions: []infer.InferredFunction{
 			infer.Function[*Abs, AbsArgs, AbsResult](),
+			infer.Function[*Abspath, AbspathArgs, AbspathResult](),
 			infer.Function[*Basename, BasenameArgs, BasenameResult](),
 			infer.Function[*Base64decode, Base64DecodeArgs, Base64DecodeResult](),
 			infer.Function[*Base64encode, Base64EncodeArgs, Base64EncodeResult](),
@@ -67,6 +68,7 @@ func Provider() p.Provider {
 			infer.Function[*Distinct, DistinctArgs, DistinctResult](),
 			infer.Function[*Element, ElementArgs, ElementResult](),
 			infer.Function[*File, FileArgs, FileResult](),
+			infer.Function[*Filebase64, Filebase64Args, Filebase64Result](),
 			infer.Function[*Floor, FloorArgs, FloorResult](),
 			infer.Function[*Flatten, FlattenArgs, FlattenResult](),
 			infer.Function[*Format, FormatArgs, FormatResult](),

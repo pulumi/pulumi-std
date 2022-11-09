@@ -13,6 +13,9 @@ variables:
   abs-negative:
     fn::std:abs:
       input: -42.24
+  abspath:
+    fn::std:abspath:
+      input: myfile.txt
   base64encode:
     fn::std:base64encode:
       input: ABCDE
@@ -113,6 +116,9 @@ variables:
       index: -1
   file:
     fn::std:file:
+      input: ./message.txt
+  filebase64:
+    fn::std:filebase64:
       input: ./message.txt
   flatten:
     fn::std:flatten:
@@ -234,6 +240,7 @@ variables:
 outputs:
   abs-positive: ${abs-positive.result}
   abs-negative: ${abs-negative.result}
+  abspath: ${abspath.result}
   base64encode: ${base64encode.result}
   base64decode: ${base64decode.result}
   basename: ${basename.result}
@@ -262,6 +269,7 @@ outputs:
   elementOverflow: ${elementOverflow.result}
   elementNegativeIndex: ${elementNegativeIndex.result}
   file: ${file.result}
+  filebase64: ${filebase64.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
   format: ${format.result}

@@ -76,9 +76,12 @@ func jsonDeepEquals(a, b interface{}) bool {
 }
 
 func expectedOutputs() map[string]interface{} {
+	cwd, _ := os.Getwd()
+
 	return map[string]interface{}{
 		"abs-positive":         42.24,
 		"abs-negative":         42.24,
+		"abspath":              fmt.Sprintf("%s/myfile.txt", cwd),
 		"base64encode":         "QUJDREU=",
 		"base64decode":         "ABCDE",
 		"basename":             "pulumi",
@@ -106,6 +109,7 @@ func expectedOutputs() map[string]interface{} {
 		"elementOverflow":      10,
 		"elementNegativeIndex": 30,
 		"file":                 "hello world",
+		"filebase64":           "aGVsbG8gd29ybGQ=",
 		"floor":                1.0,
 		"flatten":              []int{1, 2, 3, 4, 5},
 		"flattenWithStrings":   []string{"one", "two", "three", "four", "five"},

@@ -15,6 +15,7 @@
 package std
 
 import (
+	"encoding/base64"
 	"fmt"
 	"io"
 	"os"
@@ -24,20 +25,20 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type File struct{}
-type FileArgs struct {
+type Filebase64 struct{}
+type Filebase64Args struct {
 	Input string `pulumi:"input"`
 }
 
-type FileResult struct {
+type Filebase64Result struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *File) Annotate(a infer.Annotator) {
-	a.Describe(r, "Reads the contents of a file into the string.")
+func (r *Filebase64) Annotate(a infer.Annotator) {
+	a.Describe(r, "Reads the contents of a file and returns them as a base64-encoded string.")
 }
 
-func readFileContents(path string) (string, error) {
+func readFileContentsToBase64(path string) (string, error) {
 	path = filepath.Clean(path)
 	file, err := os.Open(path)
 	if err != nil {
@@ -55,13 +56,10 @@ func readFileContents(path string) (string, error) {
 		return "", fmt.Errorf("failed to read file: %w", err)
 	}
 
-	return string(fileBytes), nil
+	return base64.StdEncoding.EncodeToString(fileBytes), nil
 }
 
-func (*File) Call(ctx p.Context, args FileArgs) (FileResult, error) {
-	contents, err := readFileContents(args.Input)
-	if err != nil {
-		return FileResult{}, err
-	}
-	return FileResult{contents}, nil
+func (*Filebase64) Call(ctx p.Context, args Filebase64Args) (Filebase64Result, error) {
+	encoded, err := readFileContentsToBase64(args.Input)
+	return Filebase64Result{encoded}, err
 }
