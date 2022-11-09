@@ -166,6 +166,12 @@ variables:
     fn::std:parseint:
       input: "FF"
       base: 16
+  reverse:
+    fn::std:reverse:
+      input: [true, 1, "foo"]
+  sort:
+    fn::std:sort:
+      input: ["apple", "Avocado", "pear", "Orange", "banana", "orange", "watermelon"]
   startswith:
     fn::std:startswith:
       input: hello
@@ -194,6 +200,24 @@ variables:
   title:
     fn::std:title:
       input: hello world
+  trim:
+    fn::std:trim:
+      input: " Hello  World!$ "
+      cutset: "a$ "
+  trimprefix:
+    fn::std:trimprefix:
+      input: "foo bar"
+      prefix: "foo"
+  trimsuffix:
+    fn::std:trimsuffix:
+      input: "foo bar"
+      suffix: "bar"
+  trimspace:
+    fn::std:trimspace:
+      input: "  foobar\t\n "
+  urlencode:
+    fn::std:urlencode:
+      input: Hello World!
   upper:
     fn::std:upper:
       input: one
@@ -242,6 +266,8 @@ outputs:
   slice: ${slice.result}
   parseint: ${parseint.result}
   parseintWithBase: ${parseintWithBase.result}
+  reverse: ${reverse.result}
+  sort: ${sort.result}
   startswith: ${startswith.result}
   endswith: ${endswith.result}
   values: ${values.result}
@@ -249,4 +275,9 @@ outputs:
   strrev: ${strrev.result}
   substr: ${substr.result}
   title: ${title.result}
+  trim: ${trim.result}
+  trimprefix: ${trimprefix.result}
+  trimsuffix: ${trimsuffix.result}
+  trimspace: ${trimspace.result}
   upper: ${upper.result}
+  urlencode: ${urlencode.result}
