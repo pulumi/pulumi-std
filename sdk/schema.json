@@ -1630,6 +1630,31 @@
         ]
       }
     },
+    "std:index:upper": {
+      "description": "Converts all cased letters in the given string to uppercase.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:values": {
       "description": "Returns a list of the values of the map.",
       "inputs": {

@@ -194,6 +194,9 @@ variables:
   title:
     fn::std:title:
       input: hello world
+  upper:
+    fn::std:upper:
+      input: one
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -246,3 +249,4 @@ outputs:
   strrev: ${strrev.result}
   substr: ${substr.result}
   title: ${title.result}
+  upper: ${upper.result}

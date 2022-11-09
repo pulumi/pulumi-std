@@ -126,6 +126,7 @@ func expectedOutputs() map[string]interface{} {
 		"strrev":               "olleh",
 		"substr":               "hello",
 		"title":                "Hello World",
+		"upper":                "ONE",
 	}
 }
 
