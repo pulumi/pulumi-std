@@ -93,6 +93,7 @@ func Provider() p.Provider {
 			infer.Function[*Sha512, Sha512Args, Sha512Result](),
 			infer.Function[*Signum, SignumArgs, SignumResult](),
 			infer.Function[*Slice, SliceArgs, SliceResult](),
+			infer.Function[*Parseint, ParseintArgs, ParseintResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

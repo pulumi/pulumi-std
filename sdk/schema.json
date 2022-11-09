@@ -1209,6 +1209,34 @@
         ]
       }
     },
+    "std:index:parseint": {
+      "description": "Parses the given string as a representation of an integer in the specified base \nand returns the resulting number. The base must be between 2 and 62 inclusive.\n\t.",
+      "inputs": {
+        "properties": {
+          "base": {
+            "type": "integer"
+          },
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:pathexpand": {
       "description": "Returns a filepath string with ~ expanded to the home directory.",
       "inputs": {

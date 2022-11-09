@@ -159,6 +159,13 @@ variables:
       list: [1,2,3]
       from: 0
       to: 3
+  parseint:
+    fn::std:parseint:
+      input: "100"
+  parseintWithBase:
+    fn::std:parseint:
+      input: "FF"
+      base: 16
 outputs:
   abs-positive: ${abs-positive.result}
   abs-negative: ${abs-negative.result}
@@ -201,3 +208,5 @@ outputs:
   pathexpand: ${pathexpand.result}
   md5: ${md5.result}
   slice: ${slice.result}
+  parseint: ${parseint.result}
+  parseintWithBase: ${parseintWithBase.result}
