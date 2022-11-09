@@ -148,6 +148,12 @@ variables:
     fn::std:log:
       input: 8
       base: 2
+  pathexpand:
+    fn::std:pathexpand:
+      input: ~/test
+  md5:
+    fn::std:md5:
+      input: abc
 outputs:
   abs-positive: ${abs-positive.result}
   abs-negative: ${abs-negative.result}
@@ -187,3 +193,5 @@ outputs:
   jsonencode: ${jsonencode.result}
   keys: ${keys.result}
   log: ${log.result}
+  pathexpand: ${pathexpand.result}
+  md5: ${md5.result}

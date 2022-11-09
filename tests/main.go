@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"reflect"
+	"strings"
 )
 
 func exitOnError(msg string, err error) {
@@ -107,6 +108,7 @@ func expectedOutputs() map[string]interface{} {
 		"jsonencode":           "{\"hello\":\"world\"}",
 		"keys":                 []string{"hello", "one"},
 		"log":                  3.0,
+		"md5":                  "900150983cd24fb0d6963f7d28e17f72",
 	}
 }
 
@@ -126,9 +128,17 @@ func main() {
 	outputs := outputs()
 
 	for key, value := range outputs {
+
+		if key == "pathexpand" {
+			// pathexpand is a special case, because it returns a different value on each machine
+			if strings.Contains(value.(string), "~") {
+				fmt.Printf("❌ Output '%s' => '%s' did not expand the home directory", key, value)
+				exitCode++
+			}
+		}
+
 		expectedValue, ok := expected[key]
 		if !ok {
-			fmt.Printf("💡 Unexpected output with key '%s'\n", key)
 			continue
 		}
 
