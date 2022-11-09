@@ -21,7 +21,7 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type TrimSpace struct{}
+type Trimspace struct{}
 type TrimspaceArgs struct {
 	Input string `pulumi:"input"`
 }
@@ -30,11 +30,11 @@ type TrimspaceResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *TrimSpace) Annotate(a infer.Annotator) {
+func (r *Trimspace) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes any space characters from the start and end of the given string,
 	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).`)
 }
 
-func (*TrimSpace) Call(ctx p.Context, args TrimspaceArgs) (TrimspaceResult, error) {
+func (*Trimspace) Call(ctx p.Context, args TrimspaceArgs) (TrimspaceResult, error) {
 	return TrimspaceResult{strings.TrimSpace(args.Input)}, nil
 }

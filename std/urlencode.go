@@ -21,19 +21,19 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type URLEncode struct{}
-type URLencodeArgs struct {
+type Urlencode struct{}
+type UrlencodeArgs struct {
 	Input string `pulumi:"input"`
 }
 
-type URLencodeResult struct {
+type UrlencodeResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *URLEncode) Annotate(a infer.Annotator) {
+func (r *Urlencode) Annotate(a infer.Annotator) {
 	a.Describe(r, `Applies URL encoding to a given string.`)
 }
 
-func (*URLEncode) Call(ctx p.Context, args URLencodeArgs) (URLencodeResult, error) {
-	return URLencodeResult{url.QueryEscape(args.Input)}, nil
+func (*Urlencode) Call(ctx p.Context, args UrlencodeArgs) (UrlencodeResult, error) {
+	return UrlencodeResult{url.QueryEscape(args.Input)}, nil
 }

@@ -21,7 +21,7 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type TrimPrefix struct{}
+type Trimprefix struct{}
 type TrimprefixArgs struct {
 	Input  string `pulumi:"input"`
 	Prefix string `pulumi:"prefix"`
@@ -31,10 +31,10 @@ type TrimprefixResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *TrimPrefix) Annotate(a infer.Annotator) {
+func (r *Trimprefix) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified prefix from the start of the given string, if present.`)
 }
 
-func (*TrimPrefix) Call(ctx p.Context, args TrimprefixArgs) (TrimprefixResult, error) {
+func (*Trimprefix) Call(ctx p.Context, args TrimprefixArgs) (TrimprefixResult, error) {
 	return TrimprefixResult{strings.TrimPrefix(args.Input, args.Prefix)}, nil
 }

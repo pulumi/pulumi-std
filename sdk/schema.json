@@ -1721,7 +1721,7 @@
         ]
       }
     },
-    "std:index:trimPrefix": {
+    "std:index:trimprefix": {
       "description": "Removes the specified prefix from the start of the given string, if present.",
       "inputs": {
         "properties": {
@@ -1750,7 +1750,7 @@
         ]
       }
     },
-    "std:index:trimSpace": {
+    "std:index:trimspace": {
       "description": "Removes any space characters from the start and end of the given string,\n\tfollowing the Unicode definition of \\\"space\\\" (i.e. spaces, tabs, newline, etc.).",
       "inputs": {
         "properties": {
@@ -1775,7 +1775,7 @@
         ]
       }
     },
-    "std:index:trimSuffix": {
+    "std:index:trimsuffix": {
       "description": "Removes the specified suffix from the end of the given string, if present.",
       "inputs": {
         "properties": {
@@ -1829,7 +1829,7 @@
         ]
       }
     },
-    "std:index:urlEncode": {
+    "std:index:urlencode": {
       "description": "Applies URL encoding to a given string.",
       "inputs": {
         "properties": {
