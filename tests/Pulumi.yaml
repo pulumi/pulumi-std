@@ -166,6 +166,9 @@ variables:
     fn::std:parseint:
       input: "FF"
       base: 16
+  reverse:
+    fn::std:reverse:
+      input: [nil, true, 1, "foo"]
   sort:
     fn::std:sort:
       input: ["apple", "Avocado", "pear", "Orange", "banana", "orange", "watermelon"]
@@ -245,6 +248,7 @@ outputs:
   slice: ${slice.result}
   parseint: ${parseint.result}
   parseintWithBase: ${parseintWithBase.result}
+  reverse: ${reverse.result}
   sort: ${sort.result}
   startswith: ${startswith.result}
   endswith: ${endswith.result}

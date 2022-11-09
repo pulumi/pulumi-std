@@ -1320,6 +1320,35 @@
         ]
       }
     },
+    "std:index:reverse": {
+      "description": "Returns a sequence with the same elements but in reverse order.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:rsadecrypt": {
       "description": "Decrypts an RSA-encrypted ciphertext. \nThe cipher text must be base64-encoded and the key must be in PEM format.",
       "inputs": {
