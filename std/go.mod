@@ -8,7 +8,7 @@ require (
 	golang.org/x/crypto v0.1.0
 )
 
-require github.com/apparentlymart/go-textseg v1.0.0
+require github.com/apparentlymart/go-textseg v1.0.0 // indirect
 
 require (
 	github.com/Microsoft/go-winio v0.6.0 // indirect
@@ -42,7 +42,7 @@ require (
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect
-	github.com/mitchellh/go-homedir v1.1.0
+	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect
