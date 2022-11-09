@@ -1486,6 +1486,36 @@
         ]
       }
     },
+    "std:index:sorts": {
+      "description": "Returns a list of strings sorted lexicographically.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "string"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:startswith": {
       "description": "Determines if the input string starts with the suffix.",
       "inputs": {
