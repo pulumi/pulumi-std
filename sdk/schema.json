@@ -1486,6 +1486,38 @@
         ]
       }
     },
+    "std:index:split": {
+      "description": "Produces a list by dividing a given string at all occurrences of a given separator",
+      "inputs": {
+        "properties": {
+          "separator": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "separator",
+          "text"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:startswith": {
       "description": "Determines if the input string starts with the suffix.",
       "inputs": {

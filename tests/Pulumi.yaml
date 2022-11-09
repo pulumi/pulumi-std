@@ -179,6 +179,10 @@ variables:
       input:
         one: 1
         two: 2
+  split:
+    fn::std:split:
+      separator: ","
+      text: "one,two,three"
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -227,3 +231,4 @@ outputs:
   startswith: ${startswith.result}
   endswith: ${endswith.result}
   values: ${values.result}
+  split: ${split.result}

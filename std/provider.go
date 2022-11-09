@@ -97,6 +97,7 @@ func Provider() p.Provider {
 			infer.Function[*Startswith, StartswithArgs, StartswithResult](),
 			infer.Function[*Endswith, EndswithArgs, EndswithResult](),
 			infer.Function[*Values, ValuesArgs, ValuesResult](),
+			infer.Function[*Split, SplitArgs, SplitResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",
