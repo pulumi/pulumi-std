@@ -1331,6 +1331,7 @@
             }
           }
         },
+        "type": "object",
         "required": [
           "input"
         ]
@@ -1344,6 +1345,7 @@
             }
           }
         },
+        "type": "object",
         "required": [
           "result"
         ]
@@ -1515,7 +1517,7 @@
         ]
       }
     },
-    "std:index:sorts": {
+    "std:index:sort": {
       "description": "Returns a list of strings sorted lexicographically.",
       "inputs": {
         "properties": {
@@ -1536,10 +1538,11 @@
           "result": {
             "type": "array",
             "items": {
-              "$ref": "string"
+              "type": "string"
             }
           }
         },
+        "type": "object",
         "required": [
           "result"
         ]
@@ -1693,16 +1696,17 @@
       "description": "Removes the specified set of characters from the start and end of the given string.",
       "inputs": {
         "properties": {
-          "input": {
+          "cutset": {
             "type": "string"
           },
-          "cutset": {
+          "input": {
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
-          "input",
-          "cutset"
+          "cutset",
+          "input"
         ]
       },
       "outputs": {
@@ -1711,12 +1715,13 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
         ]
       }
     },
-    "std:index:trimprefix": {
+    "std:index:trimPrefix": {
       "description": "Removes the specified prefix from the start of the given string, if present.",
       "inputs": {
         "properties": {
@@ -1727,6 +1732,7 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "input",
           "prefix"
@@ -1738,12 +1744,38 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
         ]
       }
     },
-    "std:index:trimsuffix": {
+    "std:index:trimSpace": {
+      "description": "Removes any space characters from the start and end of the given string,\n\tfollowing the Unicode definition of \\\"space\\\" (i.e. spaces, tabs, newline, etc.).",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:trimSuffix": {
       "description": "Removes the specified suffix from the end of the given string, if present.",
       "inputs": {
         "properties": {
@@ -1754,6 +1786,7 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "input",
           "suffix"
@@ -1765,29 +1798,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "result"
-        ]
-      }
-    },
-    "std:index:trimspace": {
-      "description": "Removes any space characters from the start and end of the given string,\nfollowing the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).",
-      "inputs": {
-        "properties": {
-          "input": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "input"
-        ]
-      },
-      "outputs": {
-        "properties": {
-          "result": {
-            "type": "string"
-          }
-        },
+        "type": "object",
         "required": [
           "result"
         ]
@@ -1818,14 +1829,15 @@
         ]
       }
     },
-    "std:index:urlencode": {
-      "description": "Applies URL encode to a given string.",
+    "std:index:urlEncode": {
+      "description": "Applies URL encoding to a given string.",
       "inputs": {
         "properties": {
           "input": {
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "input"
         ]
@@ -1836,6 +1848,7 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
         ]
