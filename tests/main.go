@@ -122,6 +122,7 @@ func expectedOutputs() map[string]interface{} {
 		"startswith":           true,
 		"endswith":             true,
 		"trim":                 "Hello  World!",
+		"trimprefix":           " bar",
 		"urlencode":            "Hello+World%21",
 		"values":               []int{1, 2},
 	}

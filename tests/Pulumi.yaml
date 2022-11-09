@@ -181,6 +181,10 @@ variables:
     fn::std:trim:
       input: " Hello  World!$ "
       cutset: "a$ "
+  trimprefix:
+    fn::std:trimprefix:
+      input: "foo bar"
+      prefix: "foo"
   values:
     fn::std:values:
       input:
