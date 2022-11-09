@@ -191,6 +191,9 @@ variables:
       input: hello world
       offset: 0
       length: 5
+  title:
+    fn::std:title:
+      input: hello world
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -242,3 +245,4 @@ outputs:
   split: ${split.result}
   strrev: ${strrev.result}
   substr: ${substr.result}
+  title: ${title.result}

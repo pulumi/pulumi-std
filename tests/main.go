@@ -125,6 +125,7 @@ func expectedOutputs() map[string]interface{} {
 		"split":                []string{"one", "two", "three"},
 		"strrev":               "olleh",
 		"substr":               "hello",
+		"title":                "Hello World",
 	}
 }
 
