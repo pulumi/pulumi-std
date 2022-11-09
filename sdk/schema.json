@@ -52,6 +52,31 @@
         ]
       }
     },
+    "std:index:abspath": {
+      "description": "Returns an absolute representation of the specified path.\nIf the path is not absolute it will be joined with the current working directory to turn it into an absolute path.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:alltrue": {
       "description": "Returns true if all elements in a given collection are true or \\\"true\\\". \nIt also returns true if the collection is empty.",
       "inputs": {
@@ -736,6 +761,31 @@
     },
     "std:index:file": {
       "description": "Reads the contents of a file into the string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:filebase64": {
+      "description": "Reads the contents of a file and returns them as a base64-encoded string.",
       "inputs": {
         "properties": {
           "input": {
