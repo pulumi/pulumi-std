@@ -1515,6 +1515,33 @@
         ]
       }
     },
+    "std:index:trum": {
+      "description": "Removes the specified set of characters from the start and end of the given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "cutset": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input",
+          "cutset"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:urlencode": {
       "description": "Applies URL encode to a given string.",
       "inputs": {

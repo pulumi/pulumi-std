@@ -175,8 +175,12 @@ variables:
       input: hello
       suffix: llo
   urlencode:
-    fn::std::urlencode:
+    fn::std:urlencode:
       input: Hello World!
+  trim:
+    fn::std:trim:
+      input: " Hello  World!$ "
+      cutset: "a$ "
   values:
     fn::std:values:
       input:
@@ -229,4 +233,5 @@ outputs:
   parseintWithBase: ${parseintWithBase.result}
   startswith: ${startswith.result}
   endswith: ${endswith.result}
+  trim: ${trim.result}
   values: ${values.result}
