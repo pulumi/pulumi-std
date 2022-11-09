@@ -12,7 +12,7 @@ import (
 func exitOnError(msg string, err error) {
 	if err != nil {
 		fmt.Println(msg, "\n", err)
-		os.Exit(1)
+		panic(err)
 	}
 }
 
@@ -22,10 +22,17 @@ func stateDir() string {
 	return fmt.Sprintf("%s/state", workingDir)
 }
 
+func grpcJsonDebug() string {
+	workingDir, err := os.Getwd()
+	exitOnError("Could not get working directory", err)
+	return fmt.Sprintf("%s/grpc.json", workingDir)
+}
+
 func prepare() {
 	// local backend requires a passphrase
 	err := os.Setenv("PULUMI_CONFIG_PASSPHRASE", "test")
 	exitOnError("Could not set PULUMI_CONFIG_PASSPHRASE", err)
+	err = os.Setenv("PULUMI_DEBUG_GRPC", grpcJsonDebug())
 	stateDir := stateDir()
 	// make state dir
 	err = os.Mkdir(stateDir, 0755)
