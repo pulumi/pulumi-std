@@ -119,7 +119,7 @@ func expectedOutputs() map[string]interface{} {
 		"slice":                []int{1, 2, 3},
 		"parseint":             100,
 		"parseintWithBase":     255,
-		"reverse":              []interface{}{"foo", 1, true, nil},
+		"reverse":              []interface{}{"foo", 1, true},
 		"sort":                 []string{"Avocado", "Orange", "apple", "banana", "orange", "pear", "watermelon"},
 		"startswith":           true,
 		"endswith":             true,

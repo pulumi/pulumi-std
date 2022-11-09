@@ -168,7 +168,7 @@ variables:
       base: 16
   reverse:
     fn::std:reverse:
-      input: [nil, true, 1, "foo"]
+      input: [true, 1, "foo"]
   sort:
     fn::std:sort:
       input: ["apple", "Avocado", "pear", "Orange", "banana", "orange", "watermelon"]
@@ -211,7 +211,7 @@ variables:
   trimsuffix:
     fn::std:trimsuffix:
       input: "foo bar"
-      prefix: "foo "
+      suffix: "bar"
   trimspace:
     fn::std:trimspace:
       input: "  foobar\t\n "
