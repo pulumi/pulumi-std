@@ -1515,6 +1515,29 @@
         ]
       }
     },
+    "std:index:urlencode": {
+      "description": "Applies URL encode to a given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:values": {
       "description": "Returns a list of the values of the map.",
       "inputs": {
