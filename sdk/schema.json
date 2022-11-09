@@ -52,6 +52,62 @@
         ]
       }
     },
+    "std:index:alltrue": {
+      "description": "Returns true if all elements in a given collection are true or \\\"true\\\". \nIt also returns true if the collection is empty.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "boolean"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:anytrue": {
+      "description": "Returns true if any of the elements in a given collection are true or \\\"true\\\". \nIt also returns false if the collection is empty.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "boolean"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:base64decode": {
       "description": "Given a base64-encoded string, decodes it and returns the original string.",
       "inputs": {

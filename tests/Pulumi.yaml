@@ -221,6 +221,12 @@ variables:
   upper:
     fn::std:upper:
       input: one
+  alltrue:
+    fn::std:alltrue:
+      input: [true, "true", true]
+  anytrue:
+    fn::std:anytrue:
+      input: [false, "true", false]
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -281,3 +287,5 @@ outputs:
   trimspace: ${trimspace.result}
   upper: ${upper.result}
   urlencode: ${urlencode.result}
+  alltrue: ${alltrue.result}
+  anytrue: ${anytrue.result}

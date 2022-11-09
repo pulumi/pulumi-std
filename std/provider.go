@@ -109,6 +109,8 @@ func Provider() p.Provider {
 			infer.Function[*Trimspace, TrimspaceArgs, TrimspaceResult](),
 			infer.Function[*Upper, UpperArgs, UpperResult](),
 			infer.Function[*Urlencode, UrlencodeArgs, UrlencodeResult](),
+			infer.Function[*Alltrue, AlltrueArgs, AlltrueResult](),
+			infer.Function[*Anytrue, AnytrueArgs, AnytrueResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

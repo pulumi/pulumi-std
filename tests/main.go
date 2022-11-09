@@ -134,6 +134,8 @@ func expectedOutputs() map[string]interface{} {
 		"trimspace":            "foobar",
 		"upper":                "ONE",
 		"urlencode":            "Hello+World%21",
+		"alltrue":              true,
+		"anytrue":              true,
 	}
 }
 
