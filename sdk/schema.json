@@ -1572,6 +1572,39 @@
         ]
       }
     },
+    "std:index:substr": {
+      "description": "Extracts a substring from the given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "length": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "length",
+          "offset"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:values": {
       "description": "Returns a list of the values of the map.",
       "inputs": {

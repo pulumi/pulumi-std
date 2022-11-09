@@ -99,6 +99,7 @@ func Provider() p.Provider {
 			infer.Function[*Values, ValuesArgs, ValuesResult](),
 			infer.Function[*Split, SplitArgs, SplitResult](),
 			infer.Function[*Strrev, StrrevArgs, StrrevResult](),
+			infer.Function[*Substr, SubstrArgs, SubstrResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

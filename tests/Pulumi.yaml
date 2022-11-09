@@ -186,6 +186,11 @@ variables:
   strrev:
     fn::std:strrev:
       input: hello
+  substr:
+    fn::std:substr:
+      input: hello world
+      offset: 0
+      length: 5
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -236,3 +241,4 @@ outputs:
   values: ${values.result}
   split: ${split.result}
   strrev: ${strrev.result}
+  substr: ${substr.result}
