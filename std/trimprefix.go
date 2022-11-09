@@ -21,20 +21,20 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type Trim struct{}
-type TrimArgs struct {
+type TrimPrefix struct{}
+type TrimPrefixArgs struct {
 	Input  string `pulumi:"input"`
-	CutSet string `pulumi:"cutset"`
+	Prefix string `pulumi:"prefix"`
 }
 
-type TrimResult struct {
+type TrimPrefixResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *Trim) Annotate(a infer.Annotator) {
-	a.Describe(r, `Removes the specified set of characters from the start and end of the given string.`)
+func (r *TrimPrefix) Annotate(a infer.Annotator) {
+	a.Describe(r, `Removes the specified prefix from the start of the given string, if present.`)
 }
 
-func (*Trim) Call(ctx p.Context, args TrimArgs) (TrimResult, error) {
-	return TrimResult{strings.Trim(args.Input, args.CutSet)}, nil
+func (*TrimPrefix) Call(ctx p.Context, args TrimPrefixArgs) (TrimPrefixResult, error) {
+	return TrimPrefixResult{strings.TrimPrefix(args.Input, args.Prefix)}, nil
 }
