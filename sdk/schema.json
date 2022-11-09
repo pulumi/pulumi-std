@@ -1723,6 +1723,34 @@
         ]
       }
     },
+    "std:index:sum": {
+      "description": "Returns the total sum of the elements of the input list.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:title": {
       "description": "Converts the first letter of each word in the given string to uppercase.",
       "inputs": {

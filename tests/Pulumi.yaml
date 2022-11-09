@@ -227,6 +227,9 @@ variables:
   anytrue:
     fn::std:anytrue:
       input: [false, "true", false]
+  sum:
+    fn::std:sum:
+      input: [1,2,3,4,5]
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -289,3 +292,4 @@ outputs:
   urlencode: ${urlencode.result}
   alltrue: ${alltrue.result}
   anytrue: ${anytrue.result}
+  sum: ${sum.result}

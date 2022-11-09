@@ -136,6 +136,7 @@ func expectedOutputs() map[string]interface{} {
 		"urlencode":            "Hello+World%21",
 		"alltrue":              true,
 		"anytrue":              true,
+		"sum":                  15,
 	}
 }
 

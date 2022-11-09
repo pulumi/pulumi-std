@@ -111,6 +111,7 @@ func Provider() p.Provider {
 			infer.Function[*Urlencode, UrlencodeArgs, UrlencodeResult](),
 			infer.Function[*Alltrue, AlltrueArgs, AlltrueResult](),
 			infer.Function[*Anytrue, AnytrueArgs, AnytrueResult](),
+			infer.Function[*Sum, SumArgs, SumResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",
