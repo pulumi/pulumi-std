@@ -22,11 +22,11 @@ import (
 )
 
 type URLEncode struct{}
-type URLEncodeArgs struct {
+type URLencodeArgs struct {
 	Input string `pulumi:"input"`
 }
 
-type URLEncodeResult struct {
+type URLencodeResult struct {
 	Result string `pulumi:"result"`
 }
 
@@ -34,6 +34,6 @@ func (r *URLEncode) Annotate(a infer.Annotator) {
 	a.Describe(r, `Applies URL encoding to a given string.`)
 }
 
-func (*URLEncode) Call(ctx p.Context, args URLEncodeArgs) (URLEncodeResult, error) {
-	return URLEncodeResult{url.QueryEscape(args.Input)}, nil
+func (*URLEncode) Call(ctx p.Context, args URLencodeArgs) (URLencodeResult, error) {
+	return URLencodeResult{url.QueryEscape(args.Input)}, nil
 }

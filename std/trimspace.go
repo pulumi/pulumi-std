@@ -22,11 +22,11 @@ import (
 )
 
 type TrimSpace struct{}
-type TrimSpaceArgs struct {
+type TrimspaceArgs struct {
 	Input string `pulumi:"input"`
 }
 
-type TrimSpaceResult struct {
+type TrimspaceResult struct {
 	Result string `pulumi:"result"`
 }
 
@@ -35,6 +35,6 @@ func (r *TrimSpace) Annotate(a infer.Annotator) {
 	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).`)
 }
 
-func (*TrimSpace) Call(ctx p.Context, args TrimSpaceArgs) (TrimSpaceResult, error) {
-	return TrimSpaceResult{strings.TrimSpace(args.Input)}, nil
+func (*TrimSpace) Call(ctx p.Context, args TrimspaceArgs) (TrimspaceResult, error) {
+	return TrimspaceResult{strings.TrimSpace(args.Input)}, nil
 }

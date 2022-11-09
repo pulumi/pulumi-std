@@ -22,12 +22,12 @@ import (
 )
 
 type TrimPrefix struct{}
-type TrimPrefixArgs struct {
+type TrimprefixArgs struct {
 	Input  string `pulumi:"input"`
 	Prefix string `pulumi:"prefix"`
 }
 
-type TrimPrefixResult struct {
+type TrimprefixResult struct {
 	Result string `pulumi:"result"`
 }
 
@@ -35,6 +35,6 @@ func (r *TrimPrefix) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified prefix from the start of the given string, if present.`)
 }
 
-func (*TrimPrefix) Call(ctx p.Context, args TrimPrefixArgs) (TrimPrefixResult, error) {
-	return TrimPrefixResult{strings.TrimPrefix(args.Input, args.Prefix)}, nil
+func (*TrimPrefix) Call(ctx p.Context, args TrimprefixArgs) (TrimprefixResult, error) {
+	return TrimprefixResult{strings.TrimPrefix(args.Input, args.Prefix)}, nil
 }

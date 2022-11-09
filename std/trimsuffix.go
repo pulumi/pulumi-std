@@ -22,12 +22,12 @@ import (
 )
 
 type TrimSuffix struct{}
-type TrimSuffixArgs struct {
+type TrimsuffixArgs struct {
 	Input  string `pulumi:"input"`
 	Suffix string `pulumi:"suffix"`
 }
 
-type TrimSuffixResult struct {
+type TrimsuffixResult struct {
 	Result string `pulumi:"result"`
 }
 
@@ -35,6 +35,6 @@ func (r *TrimSuffix) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified suffix from the end of the given string, if present.`)
 }
 
-func (*TrimSuffix) Call(ctx p.Context, args TrimSuffixArgs) (TrimSuffixResult, error) {
-	return TrimSuffixResult{strings.TrimSuffix(args.Input, args.Suffix)}, nil
+func (*TrimSuffix) Call(ctx p.Context, args TrimsuffixArgs) (TrimsuffixResult, error) {
+	return TrimsuffixResult{strings.TrimSuffix(args.Input, args.Suffix)}, nil
 }
