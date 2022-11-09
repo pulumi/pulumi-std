@@ -183,6 +183,9 @@ variables:
     fn::std:split:
       separator: ","
       text: "one,two,three"
+  strrev:
+    fn::std:strrev:
+      input: hello
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -232,3 +235,4 @@ outputs:
   endswith: ${endswith.result}
   values: ${values.result}
   split: ${split.result}
+  strrev: ${strrev.result}

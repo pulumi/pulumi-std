@@ -1547,6 +1547,31 @@
         ]
       }
     },
+    "std:index:strrev": {
+      "description": "Returns the given string with all of its Unicode characters in reverse order.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:values": {
       "description": "Returns a list of the values of the map.",
       "inputs": {

@@ -123,6 +123,7 @@ func expectedOutputs() map[string]interface{} {
 		"endswith":             true,
 		"values":               []int{1, 2},
 		"split":                []string{"one", "two", "three"},
+		"strrev":               "olleh",
 	}
 }
 

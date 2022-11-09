@@ -8,6 +8,8 @@ require (
 	golang.org/x/crypto v0.1.0
 )
 
+require github.com/apparentlymart/go-textseg v1.0.0 // indirect
+
 require (
 	github.com/Microsoft/go-winio v0.6.0 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20220930113650-c6815a8c17ad // indirect
