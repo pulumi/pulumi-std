@@ -1320,6 +1320,35 @@
         ]
       }
     },
+    "std:index:reverse": {
+      "description": "Returns a sequence with the same elements but in reverse order.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:rsadecrypt": {
       "description": "Decrypts an RSA-encrypted ciphertext. \nThe cipher text must be base64-encoded and the key must be in PEM format.",
       "inputs": {
@@ -1486,6 +1515,36 @@
         ]
       }
     },
+    "std:index:sorts": {
+      "description": "Returns a list of strings sorted lexicographically.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "string"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:split": {
       "description": "Produces a list by dividing a given string at all occurrences of a given separator",
       "inputs": {
@@ -1630,6 +1689,110 @@
         ]
       }
     },
+    "std:index:trim": {
+      "description": "Removes the specified set of characters from the start and end of the given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "cutset": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input",
+          "cutset"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:trimprefix": {
+      "description": "Removes the specified prefix from the start of the given string, if present.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "prefix": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input",
+          "prefix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:trimsuffix": {
+      "description": "Removes the specified suffix from the end of the given string, if present.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "suffix": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input",
+          "suffix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:trimspace": {
+      "description": "Removes any space characters from the start and end of the given string,\nfollowing the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:upper": {
       "description": "Converts all cased letters in the given string to uppercase.",
       "inputs": {
@@ -1650,6 +1813,29 @@
           }
         },
         "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:urlencode": {
+      "description": "Applies URL encode to a given string.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
         "required": [
           "result"
         ]
