@@ -109,6 +109,7 @@ func expectedOutputs() map[string]interface{} {
 		"keys":                 []string{"hello", "one"},
 		"log":                  3.0,
 		"md5":                  "900150983cd24fb0d6963f7d28e17f72",
+		"slice":                []int{1, 2, 3},
 	}
 }
 

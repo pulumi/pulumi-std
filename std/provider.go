@@ -92,6 +92,7 @@ func Provider() p.Provider {
 			infer.Function[*Sha256, Sha256Args, Sha256Result](),
 			infer.Function[*Sha512, Sha512Args, Sha512Result](),
 			infer.Function[*Signum, SignumArgs, SignumResult](),
+			infer.Function[*Slice, SliceArgs, SliceResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

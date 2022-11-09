@@ -1391,6 +1391,43 @@
           "result"
         ]
       }
+    },
+    "std:index:slice": {
+      "description": "Returns the portion of list between from (inclusive) and to (exclusive).",
+      "inputs": {
+        "properties": {
+          "from": {
+            "type": "integer"
+          },
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          },
+          "to": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "list"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
     }
   }
 }

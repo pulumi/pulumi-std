@@ -154,6 +154,11 @@ variables:
   md5:
     fn::std:md5:
       input: abc
+  slice:
+    fn::std:slice:
+      list: [1,2,3]
+      from: 0
+      to: 3
 outputs:
   abs-positive: ${abs-positive.result}
   abs-negative: ${abs-negative.result}
@@ -195,3 +200,4 @@ outputs:
   log: ${log.result}
   pathexpand: ${pathexpand.result}
   md5: ${md5.result}
+  slice: ${slice.result}
