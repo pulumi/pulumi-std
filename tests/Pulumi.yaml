@@ -185,6 +185,10 @@ variables:
     fn::std:trimprefix:
       input: "foo bar"
       prefix: "foo"
+  trimsuffix:
+    fn::std:trimsuffix:
+      input: "foo bar"
+      prefix: "foo "
   values:
     fn::std:values:
       input:
@@ -238,4 +242,6 @@ outputs:
   startswith: ${startswith.result}
   endswith: ${endswith.result}
   trim: ${trim.result}
+  trimprefix: ${trimprefix.result}
+  trimsuffix: ${trimsuffix.result}
   values: ${values.result}

@@ -1569,6 +1569,33 @@
         ]
       }
     },
+    "std:index:trimsuffix": {
+      "description": "Removes the specified suffix from the end of the given string, if present",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "suffix": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input",
+          "suffix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:urlencode": {
       "description": "Applies URL encode to a given string.",
       "inputs": {
