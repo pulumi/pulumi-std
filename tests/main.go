@@ -121,6 +121,7 @@ func expectedOutputs() map[string]interface{} {
 		"parseintWithBase":     255,
 		"startswith":           true,
 		"endswith":             true,
+		"values":               []int{1, 2},
 	}
 }
 
