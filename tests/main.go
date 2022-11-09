@@ -124,6 +124,7 @@ func expectedOutputs() map[string]interface{} {
 		"trim":                 "Hello  World!",
 		"trimprefix":           " bar",
 		"trimsuffix":           "foo ",
+		"trimspace":            "foobar",
 		"urlencode":            "Hello+World%21",
 		"values":               []int{1, 2},
 	}

@@ -189,6 +189,9 @@ variables:
     fn::std:trimsuffix:
       input: "foo bar"
       prefix: "foo "
+  trimspace:
+    fn::std:trimspace:
+      input: "  foobar\t\n "
   values:
     fn::std:values:
       input:
@@ -244,4 +247,5 @@ outputs:
   trim: ${trim.result}
   trimprefix: ${trimprefix.result}
   trimsuffix: ${trimsuffix.result}
+  trimspace: ${trimspace.result}
   values: ${values.result}

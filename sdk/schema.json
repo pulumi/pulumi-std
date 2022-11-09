@@ -1543,7 +1543,7 @@
       }
     },
     "std:index:trimprefix": {
-      "description": "Removes the specified prefix from the start of the given string, if present",
+      "description": "Removes the specified prefix from the start of the given string, if present.",
       "inputs": {
         "properties": {
           "input": {
@@ -1570,7 +1570,7 @@
       }
     },
     "std:index:trimsuffix": {
-      "description": "Removes the specified suffix from the end of the given string, if present",
+      "description": "Removes the specified suffix from the end of the given string, if present.",
       "inputs": {
         "properties": {
           "input": {
@@ -1583,6 +1583,29 @@
         "required": [
           "input",
           "suffix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:trimspace": {
+      "description": "Removes any space characters from the start and end of the given string,\nfollowing the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input"
         ]
       },
       "outputs": {
