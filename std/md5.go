@@ -15,6 +15,7 @@
 package std
 
 import (
+	//nolint // we need md5 support for compatibility
 	"crypto/md5"
 	"encoding/hex"
 

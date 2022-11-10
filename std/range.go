@@ -33,7 +33,9 @@ type RangeResults struct {
 }
 
 func (r *Range) Annotate(a infer.Annotator) {
-	a.Describe(r, "Generates a list of numbers using a start value, a limit value, and a step value.\nStart and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one\ndepending on whether limit is greater than or less than start.")
+	a.Describe(r, `Generates a list of numbers using a start value, a limit value, and a step value. 
+Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one 
+depending on whether limit is greater than or less than start.`)
 }
 
 func genRange(start, limit, step float64) []float64 {

@@ -11,7 +11,6 @@ run:
 linters:
   enable-all: false
   enable:
-    - deadcode
     - errcheck
     - goconst
     - gofmt
@@ -22,9 +21,7 @@ linters:
     - lll
     - misspell
     - nakedret
-    - structcheck
     - unconvert
-    - varcheck
     - paralleltest
   disable:
     - staticcheck # Disabled due to OOM errors in golangci-lint@v1.18.0

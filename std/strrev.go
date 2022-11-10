@@ -38,9 +38,8 @@ func (*Strrev) Call(ctx p.Context, args StrrevArgs) (StrrevResult, error) {
 	out := make([]byte, len(in))
 	pos := len(out)
 
-	inB := []byte(in)
 	for i := 0; i < len(in); {
-		d, _, _ := textseg.ScanGraphemeClusters(inB[i:], true)
+		d, _, _ := textseg.ScanGraphemeClusters(in[i:], true)
 		cluster := in[i : i+d]
 		pos -= len(cluster)
 		copy(out[pos:], cluster)

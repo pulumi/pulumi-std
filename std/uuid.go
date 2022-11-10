@@ -20,9 +20,13 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
+// nolint
 type Uuid struct{}
+
+// nolint
 type UuidArgs struct{}
 
+// nolint
 type UuidResult struct {
 	Result string `pulumi:"result"`
 }

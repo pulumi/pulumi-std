@@ -31,7 +31,7 @@ type LengthResult struct {
 }
 
 func (r *Length) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns a JSON-encoded representation of the given value, which can contain arbitrarily-nested lists and maps. Note that if the value is a string then its value will be placed in quotes.`)
+	a.Describe(r, "Determines the length of a given list, map, or string.")
 }
 
 func (*Length) Call(ctx p.Context, args LengthArgs) (LengthResult, error) {

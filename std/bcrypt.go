@@ -45,7 +45,7 @@ func (*Bcrypt) Call(ctx p.Context, args BcryptArgs) (BcryptResult, error) {
 
 	hash, err := bcrypt.GenerateFromPassword([]byte(args.Input), defaultCost)
 	if err != nil {
-		return BcryptResult{}, fmt.Errorf("error occured generating password %s", err.Error())
+		return BcryptResult{}, fmt.Errorf("error occurred generating password %s", err.Error())
 	}
 	return BcryptResult{string(hash)}, nil
 }

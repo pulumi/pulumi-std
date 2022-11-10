@@ -15,6 +15,7 @@
 package std
 
 import (
+	//nolint // we need sha1 support for compatibility
 	"crypto/sha1"
 	"encoding/hex"
 
