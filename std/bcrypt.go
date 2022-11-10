@@ -43,7 +43,6 @@ func (*Bcrypt) Call(ctx p.Context, args BcryptArgs) (BcryptResult, error) {
 		defaultCost = *args.Cost
 	}
 
-	fmt.Println("defaultCost", defaultCost)
 	hash, err := bcrypt.GenerateFromPassword([]byte(args.Input), defaultCost)
 	if err != nil {
 		return BcryptResult{}, fmt.Errorf("error occured generating password %s", err.Error())
