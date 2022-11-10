@@ -262,6 +262,10 @@ variables:
   sum:
     fn::std:sum:
       input: [1,2,3,4,5]
+  zipmap:
+    fn::std:zipmap:
+      keys: [one,two,three]
+      values: [1,2,3]
 
 outputs:
   abs-positive: ${abs-positive.result}
@@ -333,3 +337,4 @@ outputs:
   alltrue: ${alltrue.result}
   anytrue: ${anytrue.result}
   sum: ${sum.result}
+  zipmap: ${zipmap.result}

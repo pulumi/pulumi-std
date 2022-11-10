@@ -397,7 +397,7 @@
       }
     },
     "std:index:cidrhost": {
-      "description": "Takes an IP address range in CIDR notation as input and creates an IP address with the given host number. \nIf given host number is negative, the count starts from the end of the range. \nFor example, cidrhost(\"10.0.0.0/8\", 2) returns 10.0.0.2 and cidrhost(\"10.0.0.0/8\", -2) returns 10.255.255.254.",
+      "description": "Takes an IP address range in CIDR notation as input \nand creates an IP address with the given host number. \nIf given host number is negative, the count starts from the end of the range. \nFor example, cidrhost(\"10.0.0.0/8\", 2) returns 10.0.0.2 and cidrhost(\"10.0.0.0/8\", -2) returns 10.255.255.254.",
       "inputs": {
         "properties": {
           "host": {
@@ -1047,7 +1047,7 @@
       }
     },
     "std:index:length": {
-      "description": "Returns a JSON-encoded representation of the given value, which can contain arbitrarily-nested lists and maps. Note that if the value is a string then its value will be placed in quotes.",
+      "description": "Determines the length of a given list, map, or string.",
       "inputs": {
         "properties": {
           "input": {
@@ -1427,7 +1427,7 @@
       }
     },
     "std:index:range": {
-      "description": "Generates a list of numbers using a start value, a limit value, and a step value.\nStart and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one\ndepending on whether limit is greater than or less than start.",
+      "description": "Generates a list of numbers using a start value, a limit value, and a step value. \nStart and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one \ndepending on whether limit is greater than or less than start.",
       "inputs": {
         "properties": {
           "limit": {
@@ -2060,6 +2060,44 @@
           "result": {
             "type": "array",
             "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:zipmap": {
+      "description": "Constructs a map from a list of keys and a corresponding list of values.",
+      "inputs": {
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "keys",
+          "values"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "object",
+            "additionalProperties": {
               "$ref": "pulumi.json#/Any"
             }
           }
