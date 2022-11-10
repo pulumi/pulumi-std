@@ -116,6 +116,7 @@ func Provider() p.Provider {
 			infer.Function[*Alltrue, AlltrueArgs, AlltrueResult](),
 			infer.Function[*Anytrue, AnytrueArgs, AnytrueResult](),
 			infer.Function[*Sum, SumArgs, SumResult](),
+			infer.Function[*Zipmap, ZipmapArgs, ZipmapResult](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"std": "index",

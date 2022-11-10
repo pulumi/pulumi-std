@@ -163,6 +163,7 @@ func expectedOutputs() map[string]interface{} {
 		"alltrue":                    true,
 		"anytrue":                    true,
 		"sum":                        15,
+		"zipmap":                     map[string]interface{}{"one": 1, "two": 2, "three": 3},
 	}
 }
 
