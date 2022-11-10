@@ -1426,6 +1426,42 @@
         ]
       }
     },
+    "std:index:range": {
+      "description": "Generates a list of numbers using a start value, a limit value, and a step value.\nStart and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one\ndepending on whether limit is greater than or less than start.",
+      "inputs": {
+        "properties": {
+          "limit": {
+            "type": "number"
+          },
+          "start": {
+            "type": "number"
+          },
+          "step": {
+            "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "limit",
+          "start",
+          "step"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:reverse": {
       "description": "Returns a sequence with the same elements but in reverse order.",
       "inputs": {
