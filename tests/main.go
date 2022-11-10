@@ -12,7 +12,8 @@ import (
 func exitOnError(msg string, err error) {
 	if err != nil {
 		fmt.Println(msg, "\n", err)
-		panic(err)
+		cleanup()
+		os.Exit(1)
 	}
 }
 
@@ -53,7 +54,8 @@ func cleanup() {
 }
 
 func outputs() map[string]interface{} {
-	_, err := exec.Command("pulumi", "up", "--stack", "dev", "--yes").Output()
+	up, err := exec.Command("pulumi", "up", "--stack", "dev", "--yes").Output()
+	fmt.Println(string(up))
 	exitOnError("Could not run pulumi up", err)
 	stdout, err := exec.Command("pulumi", "stack", "output", "--json").Output()
 	exitOnError("Could not get pulumi stack outputs", err)
@@ -125,11 +127,11 @@ func expectedOutputs() map[string]interface{} {
 		"parseintWithBase":           255,
 		"reverse":                    []interface{}{"foo", 1, true},
 		"range":                      []float64{0, 1, 2},
-		"rangeLimit":                 []float64{1, 2, 3},
-		"rangeStartLimit":            []float64{1, 3, 5, 7},
-		"rangeStartLimitStep":        []float64{1, 1.5, 2, 2.5, 3, 3.5},
-		"rangeStartLimitStepDecimal": []float64{4, 3, 2},
-		"rangeStartLimitDecline":     []float64{10, 8, 6},
+		"rangeStartLimit":            []float64{1, 2, 3},
+		"rangeStartLimitStep":        []float64{1, 3, 5, 7},
+		"rangeStartLimitStepDecimal": []float64{1, 1.5, 2, 2.5, 3, 3.5},
+		"rangeStartLimitDecline":     []float64{4, 3, 2},
+		"rangeStartLimitStepDecline": []float64{10, 8, 6},
 		"sort":                       []string{"Avocado", "Orange", "apple", "banana", "orange", "pear", "watermelon"},
 		"startswith":                 true,
 		"endswith":                   true,
@@ -159,6 +161,14 @@ func main() {
 		cleanup()
 		os.Exit(exitCode)
 	}
+
+	defer func() {
+		// If we panic, we want to make sure we clean up.
+		if r := recover(); r != nil {
+			exitCode = 1
+			exit()
+		}
+	}()
 
 	defer exit()
 

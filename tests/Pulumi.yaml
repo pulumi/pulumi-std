@@ -175,24 +175,32 @@ variables:
   reverse:
     fn::std:reverse:
       input: [true, 1, "foo"]
-  rangeLimit:
+  range:
     fn::std:range:
-      input: [3]
+      limit: 3
   rangeStartLimit:
     fn::std:range:
-      input: [1, 4]
+      start: 1
+      limit: 4
   rangeStartLimitStep:
     fn::std:range:
-      input: [1, 8, 2]
+      start: 1
+      limit: 8
+      step: 2
   rangeStartLimitStepDecimal:
     fn::std:range:
-      input: [1, 4, 0.5]
+      limit: 4
+      start: 1
+      step: 0.5
   rangeStartLimitDecline:
     fn::std:range:
-      input: [4, 1]
+      limit: 1
+      start: 4
   rangeStartLimitStepDecline:
     fn::std:range:
-      input: [10, 5, -2]
+      start: 10
+      limit: 5
+      step: -2
   sort:
     fn::std:sort:
       input: ["apple", "Avocado", "pear", "Orange", "banana", "orange", "watermelon"]
@@ -303,6 +311,11 @@ outputs:
   parseintWithBase: ${parseintWithBase.result}
   reverse: ${reverse.result}
   range: ${range.result}
+  rangeStartLimit: ${rangeStartLimit.result}
+  rangeStartLimitStep: ${rangeStartLimitStep.result}
+  rangeStartLimitStepDecimal: ${rangeStartLimitStepDecimal.result}
+  rangeStartLimitDecline: ${rangeStartLimitDecline.result}
+  rangeStartLimitStepDecline: ${rangeStartLimitStepDecline.result}
   sort: ${sort.result}
   startswith: ${startswith.result}
   endswith: ${endswith.result}

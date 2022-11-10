@@ -23,9 +23,9 @@ import (
 
 type Range struct{}
 type RangeArgs struct {
-	Limit float64 `pulumi:"limit"`
-	Start float64 `pulumi:"start,omitempty"`
-	Step  float64 `pulumi:"step,omitempty"`
+	Limit float64  `pulumi:"limit"`
+	Start *float64 `pulumi:"start,optional"`
+	Step  *float64 `pulumi:"step,optional"`
 }
 
 type RangeResults struct {
@@ -58,5 +58,19 @@ func genRange(start, limit, step float64) []float64 {
 }
 
 func (*Range) Call(ctx p.Context, args RangeArgs) (RangeResults, error) {
-	return RangeResults{genRange(args.Start, args.Limit, args.Step)}, nil
+	if args.Start == nil {
+		start := 0.0
+		args.Start = &start
+	}
+
+	if args.Step == nil {
+		step := 1.0
+		if *args.Start > args.Limit {
+			step = -1.0
+		}
+
+		args.Step = &step
+	}
+
+	return RangeResults{genRange(*args.Start, args.Limit, *args.Step)}, nil
 }
