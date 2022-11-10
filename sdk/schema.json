@@ -1988,6 +1988,23 @@
         ]
       }
     },
+    "std:index:uuid": {
+      "description": "Returns a unique identifier string, generated and formatted as required by RFC 4122.",
+      "inputs": {
+        "type": "object"
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:values": {
       "description": "Returns a list of the values of the map.",
       "inputs": {

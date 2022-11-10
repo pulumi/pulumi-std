@@ -8,7 +8,10 @@ require (
 	golang.org/x/crypto v0.1.0
 )
 
-require github.com/apparentlymart/go-textseg v1.0.0 // indirect
+require (
+	github.com/apparentlymart/go-textseg v1.0.0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
+)
 
 require (
 	github.com/Microsoft/go-winio v0.6.0 // indirect

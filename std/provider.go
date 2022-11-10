@@ -111,6 +111,7 @@ func Provider() p.Provider {
 			infer.Function[*Trimspace, TrimspaceArgs, TrimspaceResult](),
 			infer.Function[*Upper, UpperArgs, UpperResult](),
 			infer.Function[*Urlencode, UrlencodeArgs, UrlencodeResult](),
+			infer.Function[*Uuid, UuidArgs, UuidResult](),
 			infer.Function[*Alltrue, AlltrueArgs, AlltrueResult](),
 			infer.Function[*Anytrue, AnytrueArgs, AnytrueResult](),
 			infer.Function[*Sum, SumArgs, SumResult](),
