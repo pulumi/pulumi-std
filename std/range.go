@@ -23,8 +23,8 @@ import (
 
 type Range struct{}
 type RangeArgs struct {
-	Start float64 `pulumi:"start,omitempty"`
 	Limit float64 `pulumi:"limit"`
+	Start float64 `pulumi:"start,omitempty"`
 	Step  float64 `pulumi:"step,omitempty"`
 }
 
