@@ -1,0 +1,8 @@
+{
+    "functions": {
+        "std:index:abs": {
+            "reduceSingleOutputProperty": true,
+            "multiArgumentInputs": ["input"]
+        }
+    }
+}
