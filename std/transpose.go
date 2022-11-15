@@ -15,6 +15,8 @@
 package std
 
 import (
+	"sort"
+
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
@@ -42,6 +44,10 @@ func (*Transpose) Call(ctx p.Context, args TransposeArgs) (TransposeResult, erro
 				res[v] = []string{k}
 			}
 		}
+	}
+	// sort result to produce an expected ordering
+	for _, v := range res {
+		sort.Strings(v)
 	}
 	return TransposeResult{res}, nil
 }

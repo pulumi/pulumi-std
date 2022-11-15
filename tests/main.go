@@ -155,6 +155,8 @@ func expectedOutputs() map[string]interface{} {
 		"substr":                     "hello",
 		"transpose":                  map[string][]string{"1": {"a"}, "2": {"a", "b"}, "3": {"b"}},
 		"title":                      "Hello World",
+		"toboolBool":                 true,
+		"toboolStr":                  false,
 		"trim":                       "Hello  World!",
 		"trimprefix":                 " bar",
 		"trimsuffix":                 "foo ",

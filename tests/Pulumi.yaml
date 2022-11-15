@@ -237,6 +237,12 @@ variables:
   title:
     fn::std:title:
       input: hello world
+  toboolBool:
+    fn::std:tobool:
+      input: true
+  toboolStr:
+    fn::std:tobool:
+      input: "false"
   trim:
     fn::std:trim:
       input: " Hello  World!$ "
@@ -332,6 +338,8 @@ outputs:
   split: ${split.result}
   strrev: ${strrev.result}
   substr: ${substr.result}
+  toboolBool: ${toboolBool.result}
+  toboolStr: ${toboolStr.result}
   transpose: ${transpose.result}
   title: ${title.result}
   trim: ${trim.result}

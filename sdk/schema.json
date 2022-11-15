@@ -1864,6 +1864,31 @@
         ]
       }
     },
+    "std:index:tobool": {
+      "description": "Converts its argument to a boolean value. Only boolean values, null, and the exact strings\n\t\"true\" and \"false\" can be converted to boolean. All other values will result in an error",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:transpose": {
       "description": "Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.",
       "inputs": {
