@@ -229,6 +229,11 @@ variables:
       input: hello world
       offset: 0
       length: 5
+  transpose:
+    fn::std:transpose:
+      input: 
+        a: ["1", "2"]
+        b: ["2", "3"]
   title:
     fn::std:title:
       input: hello world
@@ -327,6 +332,7 @@ outputs:
   split: ${split.result}
   strrev: ${strrev.result}
   substr: ${substr.result}
+  transpose: ${transpose.result}
   title: ${title.result}
   trim: ${trim.result}
   trimprefix: ${trimprefix.result}

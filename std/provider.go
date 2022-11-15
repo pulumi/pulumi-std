@@ -105,6 +105,7 @@ func Provider() p.Provider {
 			infer.Function[*Split, SplitArgs, SplitResult](),
 			infer.Function[*Strrev, StrrevArgs, StrrevResult](),
 			infer.Function[*Substr, SubstrArgs, SubstrResult](),
+			infer.Function[*Transpose, TransposeArgs, TransposeResult](),
 			infer.Function[*Title, TitleArgs, TitleResult](),
 			infer.Function[*Trim, TrimArgs, TrimResult](),
 			infer.Function[*Trimprefix, TrimprefixArgs, TrimprefixResult](),

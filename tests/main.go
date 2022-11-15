@@ -153,6 +153,7 @@ func expectedOutputs() map[string]interface{} {
 		"split":                      []string{"one", "two", "three"},
 		"strrev":                     "olleh",
 		"substr":                     "hello",
+		"transpose":                  map[string][]string{"1": {"a"}, "2": {"a", "b"}, "3": {"b"}},
 		"title":                      "Hello World",
 		"trim":                       "Hello  World!",
 		"trimprefix":                 " bar",

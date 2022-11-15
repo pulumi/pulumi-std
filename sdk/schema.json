@@ -1864,6 +1864,43 @@
         ]
       }
     },
+    "std:index:transpose": {
+      "description": "Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:trim": {
       "description": "Removes the specified set of characters from the start and end of the given string.",
       "inputs": {
