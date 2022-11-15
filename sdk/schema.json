@@ -1914,6 +1914,31 @@
         ]
       }
     },
+    "std:index:tostring": {
+      "description": "Converts its argument to a string value. Only primitive types (string, number, bool)\n\tand null can be converted to string. All other values will result in an error.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:transpose": {
       "description": "Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.",
       "inputs": {

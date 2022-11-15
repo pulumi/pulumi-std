@@ -108,6 +108,7 @@ func Provider() p.Provider {
 			infer.Function[*Title, TitleArgs, TitleResult](),
 			infer.Function[*Tobool, ToboolArgs, ToboolResult](),
 			infer.Function[*Tonumber, TonumberArgs, TonumberResult](),
+			infer.Function[*Tostring, TostringArgs, TostringResult](),
 			infer.Function[*Transpose, TransposeArgs, TransposeResult](),
 			infer.Function[*Trim, TrimArgs, TrimResult](),
 			infer.Function[*Trimprefix, TrimprefixArgs, TrimprefixResult](),

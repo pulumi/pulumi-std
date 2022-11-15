@@ -252,6 +252,18 @@ variables:
   tonumberStr:
     fn::std:tonumber:
       input: "10"
+  tostringStr: 
+    fn::std:tostring:
+      input: "hello world"
+  tostringInt:
+    fn::std:tostring:
+      input: 8
+  tostringFloat:
+    fn::std:tostring:
+      input: 1.234
+  tostringBool:
+    fn::std:tostring:
+      input: true
   trim:
     fn::std:trim:
       input: " Hello  World!$ "
@@ -352,6 +364,10 @@ outputs:
   tonumberInt: ${tonumberInt.result}
   tonumberFloat: ${tonumberFloat.result}
   tonumberStr: ${tonumberStr.result}
+  tostringStr: ${tostringStr.result}
+  tostringInt: ${tostringInt.result}
+  tostringFloat: ${tostringFloat.result}
+  tostringBool: ${tostringBool.result}
   transpose: ${transpose.result}
   title: ${title.result}
   trim: ${trim.result}
