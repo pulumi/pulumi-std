@@ -45,7 +45,7 @@ func (*Tobool) Call(ctx p.Context, args ToboolArgs) (ToboolResult, error) {
 	} else if str, ok := args.Input.(string); ok {
 		v, err := strconv.ParseBool(str)
 		if err != nil {
-			return ToboolResult{nil}, err
+			return ToboolResult{nil}, fmt.Errorf("%v is not a boolean value", args.Input)
 		}
 		return ToboolResult{v}, nil
 	}

@@ -1889,6 +1889,31 @@
         ]
       }
     },
+    "std:index:tonumber": {
+      "description": "Converts its argument to a number value. Only number values, null, and strings\n\tcontaining decimal representations of numbers can be converted to number. All other values will result in an error",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:transpose": {
       "description": "Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.",
       "inputs": {

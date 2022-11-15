@@ -243,6 +243,15 @@ variables:
   toboolStr:
     fn::std:tobool:
       input: "false"
+  tonumberInt:
+    fn::std:tonumber:
+      input: 3
+  tonumberFloat:
+    fn::std:tonumber:
+      input: 3.14159
+  tonumberStr:
+    fn::std:tonumber:
+      input: "10"
   trim:
     fn::std:trim:
       input: " Hello  World!$ "
@@ -340,6 +349,9 @@ outputs:
   substr: ${substr.result}
   toboolBool: ${toboolBool.result}
   toboolStr: ${toboolStr.result}
+  tonumberInt: ${tonumberInt.result}
+  tonumberFloat: ${tonumberFloat.result}
+  tonumberStr: ${tonumberStr.result}
   transpose: ${transpose.result}
   title: ${title.result}
   trim: ${trim.result}
