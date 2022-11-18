@@ -33,7 +33,7 @@ type ToboolResult struct {
 
 func (r *Tobool) Annotate(a infer.Annotator) {
 	a.Describe(r, `Converts its argument to a boolean value. Only boolean values, null, and the exact strings
-	"true" and "false" can be converted to boolean. All other values will result in an error`)
+	"true" and "false" can be converted to boolean. All other values will result in an error.`)
 }
 
 func (*Tobool) Call(ctx p.Context, args ToboolArgs) (ToboolResult, error) {

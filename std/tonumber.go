@@ -28,7 +28,7 @@ type TonumberArgs struct {
 }
 
 type TonumberResult struct {
-	Result interface{} `pulumi:"result"`
+	Result *float64 `pulumi:"result,optional"`
 }
 
 func (r *Tonumber) Annotate(a infer.Annotator) {
@@ -41,9 +41,9 @@ func (*Tonumber) Call(ctx p.Context, args TonumberArgs) (TonumberResult, error) 
 		return TonumberResult{nil}, nil
 	}
 	if v, ok := args.Input.(int); ok {
-		return TonumberResult{v}, nil
+		return TonumberResult{toFloat64Ptr(float64(v))}, nil
 	} else if v, ok := args.Input.(float64); ok {
-		return TonumberResult{v}, nil
+		return TonumberResult{toFloat64Ptr(v)}, nil
 	} else if str, ok := args.Input.(string); ok {
 		vInt, err := strconv.ParseInt(str, 10, 64)
 		if err != nil {
@@ -51,9 +51,13 @@ func (*Tonumber) Call(ctx p.Context, args TonumberArgs) (TonumberResult, error) 
 			if err != nil {
 				return TonumberResult{nil}, fmt.Errorf("%v is not a number value", args.Input)
 			}
-			return TonumberResult{vFloat}, nil
+			return TonumberResult{toFloat64Ptr(vFloat)}, nil
 		}
-		return TonumberResult{vInt}, nil
+		return TonumberResult{toFloat64Ptr(float64(vInt))}, nil
 	}
 	return TonumberResult{nil}, fmt.Errorf("%v is not a number value", args.Input)
+}
+
+func toFloat64Ptr(f float64) *float64 {
+	return &f
 }

@@ -27,7 +27,7 @@ type TostringArgs struct {
 }
 
 type TostringResult struct {
-	Result interface{} `pulumi:"result"`
+	Result *string `pulumi:"result,optional"`
 }
 
 func (r *Tostring) Annotate(a infer.Annotator) {
@@ -40,17 +40,21 @@ func (*Tostring) Call(ctx p.Context, args TostringArgs) (TostringResult, error) 
 		return TostringResult{nil}, nil
 	}
 	if v, ok := args.Input.(string); ok {
-		return TostringResult{v}, nil
+		return TostringResult{toStrPtr(v)}, nil
 	} else if b, ok := args.Input.(bool); ok {
 		if b {
-			return TostringResult{"true"}, nil
+			return TostringResult{toStrPtr("true")}, nil
 		}
-		return TostringResult{"false"}, nil
+		return TostringResult{toStrPtr("false")}, nil
 	} else if i, ok := args.Input.(int); ok {
-		return TostringResult{fmt.Sprintf("%v", i)}, nil
+		return TostringResult{toStrPtr(fmt.Sprintf("%v", i))}, nil
 	} else if f, ok := args.Input.(float64); ok {
-		return TostringResult{fmt.Sprintf("%v", f)}, nil
+		return TostringResult{toStrPtr(fmt.Sprintf("%v", f))}, nil
 	}
 
 	return TostringResult{nil}, fmt.Errorf("%v is not a string value", args.Input)
+}
+
+func toStrPtr(s string) *string {
+	return &s
 }
