@@ -1864,6 +1864,109 @@
         ]
       }
     },
+    "std:index:tobool": {
+      "description": "Converts its argument to a boolean value. Only boolean values, null, and the exact strings\n\t\"true\" and \"false\" can be converted to boolean. All other values will result in an error.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "std:index:tonumber": {
+      "description": "Converts its argument to a number value. Only number values, null, and strings\n\tcontaining decimal representations of numbers can be converted to number. All other values will result in an error",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "number"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "std:index:tostring": {
+      "description": "Converts its argument to a string value. Only primitive types (string, number, bool)\n\tand null can be converted to string. All other values will result in an error.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "std:index:transpose": {
+      "description": "Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:trim": {
       "description": "Removes the specified set of characters from the start and end of the given string.",
       "inputs": {

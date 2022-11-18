@@ -229,9 +229,41 @@ variables:
       input: hello world
       offset: 0
       length: 5
+  transpose:
+    fn::std:transpose:
+      input: 
+        a: ["1", "2"]
+        b: ["2", "3"]
   title:
     fn::std:title:
       input: hello world
+  toboolBool:
+    fn::std:tobool:
+      input: true
+  toboolStr:
+    fn::std:tobool:
+      input: "false"
+  tonumberInt:
+    fn::std:tonumber:
+      input: 3
+  tonumberFloat:
+    fn::std:tonumber:
+      input: 3.14159
+  tonumberStr:
+    fn::std:tonumber:
+      input: "10"
+  tostringStr: 
+    fn::std:tostring:
+      input: "hello world"
+  tostringInt:
+    fn::std:tostring:
+      input: 8
+  tostringFloat:
+    fn::std:tostring:
+      input: 1.234
+  tostringBool:
+    fn::std:tostring:
+      input: true
   trim:
     fn::std:trim:
       input: " Hello  World!$ "
@@ -327,6 +359,16 @@ outputs:
   split: ${split.result}
   strrev: ${strrev.result}
   substr: ${substr.result}
+  toboolBool: ${toboolBool.result}
+  toboolStr: ${toboolStr.result}
+  tonumberInt: ${tonumberInt.result}
+  tonumberFloat: ${tonumberFloat.result}
+  tonumberStr: ${tonumberStr.result}
+  tostringStr: ${tostringStr.result}
+  tostringInt: ${tostringInt.result}
+  tostringFloat: ${tostringFloat.result}
+  tostringBool: ${tostringBool.result}
+  transpose: ${transpose.result}
   title: ${title.result}
   trim: ${trim.result}
   trimprefix: ${trimprefix.result}
