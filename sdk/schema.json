@@ -1880,13 +1880,10 @@
       "outputs": {
         "properties": {
           "result": {
-            "$ref": "pulumi.json#/Any"
+            "type": "boolean"
           }
         },
-        "type": "object",
-        "required": [
-          "result"
-        ]
+        "type": "object"
       }
     },
     "std:index:tonumber": {

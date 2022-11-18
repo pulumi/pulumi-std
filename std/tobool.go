@@ -28,7 +28,7 @@ type ToboolArgs struct {
 }
 
 type ToboolResult struct {
-	Result interface{} `pulumi:"result"`
+	Result *bool `pulumi:"result,optional"`
 }
 
 func (r *Tobool) Annotate(a infer.Annotator) {
@@ -41,14 +41,18 @@ func (*Tobool) Call(ctx p.Context, args ToboolArgs) (ToboolResult, error) {
 		return ToboolResult{nil}, nil
 	}
 	if v, ok := args.Input.(bool); ok {
-		return ToboolResult{v}, nil
+		return ToboolResult{toBoolPtr(v)}, nil
 	} else if str, ok := args.Input.(string); ok {
 		v, err := strconv.ParseBool(str)
 		if err != nil {
 			return ToboolResult{nil}, fmt.Errorf("%v is not a boolean value", args.Input)
 		}
-		return ToboolResult{v}, nil
+		return ToboolResult{toBoolPtr(v)}, nil
 	}
 
 	return ToboolResult{nil}, fmt.Errorf("%v is not a boolean value", args.Input)
+}
+
+func toBoolPtr(b bool) *bool {
+	return &b
 }
