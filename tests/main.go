@@ -125,6 +125,7 @@ func expectedOutputs() map[string]interface{} {
 		"elementOverflow":            10,
 		"elementNegativeIndex":       30,
 		"file":                       "hello world",
+		"filemd5":                    "5eb63bbbe01eeed093cb22bb8f5acdc3",
 		"filebase64":                 "aGVsbG8gd29ybGQ=",
 		"floor":                      1.0,
 		"flatten":                    []int{1, 2, 3, 4, 5},

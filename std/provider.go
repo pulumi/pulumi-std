@@ -68,6 +68,7 @@ func Provider() p.Provider {
 			infer.Function[*Distinct, DistinctArgs, DistinctResult](),
 			infer.Function[*Element, ElementArgs, ElementResult](),
 			infer.Function[*File, FileArgs, FileResult](),
+			infer.Function[*Filemd5, Filemd5Args, Filemd5Result](),
 			infer.Function[*Filebase64, Filebase64Args, Filebase64Result](),
 			infer.Function[*Floor, FloorArgs, FloorResult](),
 			infer.Function[*Flatten, FlattenArgs, FlattenResult](),

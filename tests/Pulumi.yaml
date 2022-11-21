@@ -117,6 +117,9 @@ variables:
   file:
     fn::std:file:
       input: ./message.txt
+  filemd5:
+    fn::std:filemd5:
+      input: ./message.txt
   filebase64:
     fn::std:filebase64:
       input: ./message.txt
@@ -334,6 +337,7 @@ outputs:
   elementOverflow: ${elementOverflow.result}
   elementNegativeIndex: ${elementNegativeIndex.result}
   file: ${file.result}
+  filemd5: ${filemd5.result}
   filebase64: ${filebase64.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
