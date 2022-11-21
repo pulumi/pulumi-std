@@ -2014,6 +2014,37 @@
         "type": "object"
       }
     },
+    "std:index:toset": {
+      "description": "Converts its argument to a set value.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:tostring": {
       "description": "Converts its argument to a string value. Only primitive types (string, number, bool)\n\tand null can be converted to string. All other values will result in an error.",
       "inputs": {

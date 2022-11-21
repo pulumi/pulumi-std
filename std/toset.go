@@ -15,54 +15,41 @@
 package std
 
 import (
-	"fmt"
-
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type Tolist struct{}
-type TolistArgs struct {
+type Toset struct{}
+type TosetArgs struct {
 	Input []interface{} `pulumi:"input"`
 }
 
-type TolistResult struct {
+type TosetResult struct {
 	Result []interface{} `pulumi:"result"`
 }
 
-func (r *Tolist) Annotate(a infer.Annotator) {
-	a.Describe(r, "Converts its argument to a list value.")
+func (r *Toset) Annotate(a infer.Annotator) {
+	a.Describe(r, "Converts its argument to a set value.")
 }
 
-func (*Tolist) Call(ctx p.Context, args TolistArgs) (TolistResult, error) {
+func (*Toset) Call(ctx p.Context, args TosetArgs) (TosetResult, error) {
 	if len(args.Input) == 0 {
-		return TolistResult{make([]interface{}, 0)}, nil
+		return TosetResult{make([]interface{}, 0)}, nil
 	}
-	return TolistResult{convertListSameType(args.Input)}, nil
+
+	return TosetResult{convertListSameType(removeDuplicateElements(args.Input))}, nil
+
 }
 
-func isSameType(a, b interface{}) bool {
-	return fmt.Sprintf("%T", a) == fmt.Sprintf("%T", b)
-}
+func removeDuplicateElements(input []interface{}) []interface{} {
+	keys := make(map[interface{}]bool)
+	res := make([]interface{}, 0)
 
-func toStr(v interface{}) string {
-	return fmt.Sprintf("%v", v)
-}
-
-func convertListSameType(input []interface{}) []interface{} {
-	res := make([]interface{}, len(input))
-	sameType := true
-	for i := 1; i < len(input); i++ {
-		if !isSameType(input, input[i-1]) {
-			sameType = false
-			break
+	for _, e := range input {
+		if _, value := keys[e]; !value {
+			keys[e] = true
+			res = append(res, e)
 		}
-	}
-	if sameType {
-		return input
-	}
-	for i, e := range input {
-		res[i] = toStr(e)
 	}
 	return res
 }

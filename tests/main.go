@@ -161,6 +161,7 @@ func expectedOutputs() map[string]interface{} {
 		"toboolBool":                 true,
 		"toboolStr":                  false,
 		"tolist":                     []string{"a", "true", "3.14"},
+		"toset":                      []string{"a", "true", "3.14"},
 		"tonumberInt":                3,
 		"tonumberFloat":              3.14159,
 		"tonumberStr":                10,

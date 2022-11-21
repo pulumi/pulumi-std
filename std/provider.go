@@ -111,6 +111,7 @@ func Provider() p.Provider {
 			infer.Function[*Title, TitleArgs, TitleResult](),
 			infer.Function[*Tobool, ToboolArgs, ToboolResult](),
 			infer.Function[*Tolist, TolistArgs, TolistResult](),
+			infer.Function[*Toset, TosetArgs, TosetResult](),
 			infer.Function[*Tonumber, TonumberArgs, TonumberResult](),
 			infer.Function[*Tostring, TostringArgs, TostringResult](),
 			infer.Function[*Transpose, TransposeArgs, TransposeResult](),
