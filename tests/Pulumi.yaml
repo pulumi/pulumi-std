@@ -252,6 +252,9 @@ variables:
   toboolStr:
     fn::std:tobool:
       input: "false"
+  tolist:
+    fn::std:tolist:
+      input: ["a", true, 3.14]
   tonumberInt:
     fn::std:tonumber:
       input: 3
@@ -373,6 +376,7 @@ outputs:
   substr: ${substr.result}
   toboolBool: ${toboolBool.result}
   toboolStr: ${toboolStr.result}
+  tolist: ${tolist.result}
   tonumberInt: ${tonumberInt.result}
   tonumberFloat: ${tonumberFloat.result}
   tonumberStr: ${tonumberStr.result}

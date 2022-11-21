@@ -160,6 +160,7 @@ func expectedOutputs() map[string]interface{} {
 		"title":                      "Hello World",
 		"toboolBool":                 true,
 		"toboolStr":                  false,
+		"tolist":                     []string{"a", "true", "3.14"},
 		"tonumberInt":                3,
 		"tonumberFloat":              3.14159,
 		"tonumberStr":                10,
