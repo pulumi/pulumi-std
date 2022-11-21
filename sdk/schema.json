@@ -813,6 +813,31 @@
         ]
       }
     },
+    "std:index:fileexists": {
+      "description": "Determines whether a file exists at a given path.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "boolean"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:filemd5": {
       "description": "Reads the contents of a file into a string and returns the MD5 hash of it.",
       "inputs": {

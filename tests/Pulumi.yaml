@@ -117,6 +117,9 @@ variables:
   file:
     fn::std:file:
       input: ./message.txt
+  fileExistsTrue:
+    fn::std:fileexists:
+      input: ./message.txt
   filemd5:
     fn::std:filemd5:
       input: ./message.txt
@@ -337,6 +340,7 @@ outputs:
   elementOverflow: ${elementOverflow.result}
   elementNegativeIndex: ${elementNegativeIndex.result}
   file: ${file.result}
+  fileExistsTrue: ${fileExistsTrue.result}
   filemd5: ${filemd5.result}
   filebase64: ${filebase64.result}
   flatten: ${flatten.result}

@@ -40,6 +40,7 @@ func (r *File) Annotate(a infer.Annotator) {
 func readFileContents(path string) (string, error) {
 	path = filepath.Clean(path)
 	file, err := os.Open(path)
+	defer file.Close()
 	if err != nil {
 		if os.IsNotExist(err) {
 			return "", fmt.Errorf("file(%s) failed to read the contents because the file does not exist", path)
@@ -47,8 +48,6 @@ func readFileContents(path string) (string, error) {
 
 		return "", err
 	}
-
-	defer file.Close()
 
 	fileBytes, err := io.ReadAll(file)
 	if err != nil {
