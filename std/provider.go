@@ -76,6 +76,7 @@ func Provider() p.Provider {
 			infer.Function[*Indent, IndentArgs, IndentResult](),
 			infer.Function[*Join, JoinArgs, JoinResult](),
 			infer.Function[*Jsonencode, JsonencodeArgs, JsonencodeResult](),
+			infer.Function[*Jsondecode, JsondecodeArgs, JsondecodeResult](),
 			infer.Function[*Keys, KeysArgs, KeysResult](),
 			infer.Function[*Length, LengthArgs, LengthResult](),
 			infer.Function[*Log, LogArgs, LogResult](),

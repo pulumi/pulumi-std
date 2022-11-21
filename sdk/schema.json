@@ -994,6 +994,31 @@
         ]
       }
     },
+    "std:index:jsondecode": {
+      "description": "Interprets a given string as JSON and returns a represetation\n\tof the result of decoding that string.\n\tIf input is not valid JSON, the result will be the input unchanged.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:jsonencode": {
       "description": "Returns a JSON-encoded representation of the given value, \nwhich can contain arbitrarily-nested lists and maps. \nNote that if the value is a string then its value will be placed in quotes.",
       "inputs": {

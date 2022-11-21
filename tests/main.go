@@ -133,6 +133,7 @@ func expectedOutputs() map[string]interface{} {
 		"index":                      1,
 		"join":                       "one-two-three",
 		"jsonencode":                 "{\"hello\":\"world\"}",
+		"jsondecode":                 map[string]interface{}{"str": "hello", "num": 6.13, "strs": []string{"a", "b"}, "bool": true},
 		"keys":                       []string{"hello", "one"},
 		"log":                        3.0,
 		"md5":                        "900150983cd24fb0d6963f7d28e17f72",
