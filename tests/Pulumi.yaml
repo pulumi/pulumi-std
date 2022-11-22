@@ -135,6 +135,12 @@ variables:
   filebase64:
     fn::std:filebase64:
       input: ./message.txt
+  filebase64sha256:
+    fn::std:filebase64sha256:
+      input: ./message.txt
+  filebase64sha512:
+    fn::std:filebase64sha512:
+      input: ./message.txt
   flatten:
     fn::std:flatten:
       input: [[[1]], [[[2,3,4]]], [5]]
@@ -361,6 +367,8 @@ outputs:
   filesha256: ${filesha256.result}
   filesha512: ${filesha512.result}
   filebase64: ${filebase64.result}
+  filebase64sha256: ${filebase64sha256.result}
+  filebase64sha512: ${filebase64sha512.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
   format: ${format.result}

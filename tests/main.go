@@ -131,6 +131,8 @@ func expectedOutputs() map[string]interface{} {
 		"filesha256":                 "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9",
 		"filesha512":                 "309ecc489c12d6eb4cc40f50c902f2b4d0ed77ee511a7c7a9bcd3ca86d4cd86f989dd35bc5ff499670da34255b45b0cfd830e81f605dcf7dc5542e93ae9cd76f",
 		"filebase64":                 "aGVsbG8gd29ybGQ=",
+		"filebase64sha256":           "Yjk0ZDI3Yjk5MzRkM2UwOGE1MmU1MmQ3ZGE3ZGFiZmFjNDg0ZWZlMzdhNTM4MGVlOTA4OGY3YWNlMmVmY2RlOQ==",
+		"filebase64sha512":           "MzA5ZWNjNDg5YzEyZDZlYjRjYzQwZjUwYzkwMmYyYjRkMGVkNzdlZTUxMWE3YzdhOWJjZDNjYTg2ZDRjZDg2Zjk4OWRkMzViYzVmZjQ5OTY3MGRhMzQyNTViNDViMGNmZDgzMGU4MWY2MDVkY2Y3ZGM1NTQyZTkzYWU5Y2Q3NmY=",
 		"floor":                      1.0,
 		"flatten":                    []int{1, 2, 3, 4, 5},
 		"flattenWithStrings":         []string{"one", "two", "three", "four", "five"},

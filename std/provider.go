@@ -74,6 +74,8 @@ func Provider() p.Provider {
 			infer.Function[*Filesha256, Filesha256Args, Filesha256Result](),
 			infer.Function[*Filesha512, Filesha512Args, Filesha512Result](),
 			infer.Function[*Filebase64, Filebase64Args, Filebase64Result](),
+			infer.Function[*Filebase64sha256, Filebase64sha256Args, Filebase64sha256Result](),
+			infer.Function[*Filebase64sha512, Filebase64sha512Args, Filebase64sha512Result](),
 			infer.Function[*Floor, FloorArgs, FloorResult](),
 			infer.Function[*Flatten, FlattenArgs, FlattenResult](),
 			infer.Function[*Format, FormatArgs, FormatResult](),

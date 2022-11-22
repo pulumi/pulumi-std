@@ -813,6 +813,56 @@
         ]
       }
     },
+    "std:index:filebase64sha256": {
+      "description": "Reads the contents of a file into a string and returns the base64-encoded SHA256 hash of it.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:filebase64sha512": {
+      "description": "Reads the contents of a file into a string and returns the base64-encoded SHA512 hash of it.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:fileexists": {
       "description": "Determines whether a file exists at a given path.",
       "inputs": {
