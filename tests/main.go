@@ -127,6 +127,7 @@ func expectedOutputs() map[string]interface{} {
 		"file":                       "hello world",
 		"fileExistsTrue":             true,
 		"filemd5":                    "5eb63bbbe01eeed093cb22bb8f5acdc3",
+		"filesha1":                   "2aae6c35c94fcfb415dbe95f408b9ce91ee846ed",
 		"filebase64":                 "aGVsbG8gd29ybGQ=",
 		"floor":                      1.0,
 		"flatten":                    []int{1, 2, 3, 4, 5},

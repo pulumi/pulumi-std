@@ -123,6 +123,9 @@ variables:
   filemd5:
     fn::std:filemd5:
       input: ./message.txt
+  filesha1:
+    fn::std:filesha1:
+      input: ./message.txt
   filebase64:
     fn::std:filebase64:
       input: ./message.txt
@@ -348,6 +351,7 @@ outputs:
   file: ${file.result}
   fileExistsTrue: ${fileExistsTrue.result}
   filemd5: ${filemd5.result}
+  filesha1: ${filesha1.result}
   filebase64: ${filebase64.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}

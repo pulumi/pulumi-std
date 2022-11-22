@@ -70,6 +70,7 @@ func Provider() p.Provider {
 			infer.Function[*File, FileArgs, FileResult](),
 			infer.Function[*Fileexists, FileexistsArgs, FileexistsResult](),
 			infer.Function[*Filemd5, Filemd5Args, Filemd5Result](),
+			infer.Function[*Filesha1, Filesha1Args, Filesha1Result](),
 			infer.Function[*Filebase64, Filebase64Args, Filebase64Result](),
 			infer.Function[*Floor, FloorArgs, FloorResult](),
 			infer.Function[*Flatten, FlattenArgs, FlattenResult](),
