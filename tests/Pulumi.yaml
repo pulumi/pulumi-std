@@ -126,6 +126,12 @@ variables:
   filesha1:
     fn::std:filesha1:
       input: ./message.txt
+  filesha256:
+    fn::std:filesha256:
+      input: ./message.txt
+  filesha512:
+    fn::std:filesha512:
+      input: ./message.txt
   filebase64:
     fn::std:filebase64:
       input: ./message.txt
@@ -352,6 +358,8 @@ outputs:
   fileExistsTrue: ${fileExistsTrue.result}
   filemd5: ${filemd5.result}
   filesha1: ${filesha1.result}
+  filesha256: ${filesha256.result}
+  filesha512: ${filesha512.result}
   filebase64: ${filebase64.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
