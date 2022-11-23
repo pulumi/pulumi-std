@@ -117,8 +117,29 @@ variables:
   file:
     fn::std:file:
       input: ./message.txt
+  fileExistsTrue:
+    fn::std:fileexists:
+      input: ./message.txt
+  filemd5:
+    fn::std:filemd5:
+      input: ./message.txt
+  filesha1:
+    fn::std:filesha1:
+      input: ./message.txt
+  filesha256:
+    fn::std:filesha256:
+      input: ./message.txt
+  filesha512:
+    fn::std:filesha512:
+      input: ./message.txt
   filebase64:
     fn::std:filebase64:
+      input: ./message.txt
+  filebase64sha256:
+    fn::std:filebase64sha256:
+      input: ./message.txt
+  filebase64sha512:
+    fn::std:filebase64sha512:
       input: ./message.txt
   flatten:
     fn::std:flatten:
@@ -145,6 +166,9 @@ variables:
     fn::std:jsonencode:
       input:
         hello: world
+  jsondecode:
+    fn::std:jsondecode:
+      input: '{"str": "hello", "num":6.13,"strs":["a","b"], "bool": true}'
   keys: 
     fn::std:keys:
       input:
@@ -243,6 +267,12 @@ variables:
   toboolStr:
     fn::std:tobool:
       input: "false"
+  tolist:
+    fn::std:tolist:
+      input: ["a", true, 3.14]
+  toset:
+    fn::std:toset:
+      input: ["a", true, 3.14, "a", 3.14]
   tonumberInt:
     fn::std:tonumber:
       input: 3
@@ -331,13 +361,21 @@ outputs:
   elementOverflow: ${elementOverflow.result}
   elementNegativeIndex: ${elementNegativeIndex.result}
   file: ${file.result}
+  fileExistsTrue: ${fileExistsTrue.result}
+  filemd5: ${filemd5.result}
+  filesha1: ${filesha1.result}
+  filesha256: ${filesha256.result}
+  filesha512: ${filesha512.result}
   filebase64: ${filebase64.result}
+  filebase64sha256: ${filebase64sha256.result}
+  filebase64sha512: ${filebase64sha512.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
   format: ${format.result}
   index: ${index.result}
   join: ${join.result}
   jsonencode: ${jsonencode.result}
+  jsondecode: ${jsondecode.result}
   keys: ${keys.result}
   log: ${log.result}
   pathexpand: ${pathexpand.result}
@@ -361,6 +399,8 @@ outputs:
   substr: ${substr.result}
   toboolBool: ${toboolBool.result}
   toboolStr: ${toboolStr.result}
+  tolist: ${tolist.result}
+  toset: ${toset.result}
   tonumberInt: ${tonumberInt.result}
   tonumberFloat: ${tonumberFloat.result}
   tonumberStr: ${tonumberStr.result}

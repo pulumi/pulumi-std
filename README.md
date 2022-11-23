@@ -1,6 +1,10 @@
 # pulumi-std
 
 Standard library functions implemented as a native Pulumi provider.
+
+### [Function List](FUNCTION_LIST.md)
+
+
 ### Build
 
 ```

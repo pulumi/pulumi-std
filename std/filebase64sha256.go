@@ -15,52 +15,27 @@
 package std
 
 import (
-	"fmt"
-	"io"
-	"os"
-	"path/filepath"
-
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type File struct{}
-type FileArgs struct {
+type Filebase64sha256 struct{}
+type Filebase64sha256Args struct {
 	Input string `pulumi:"input"`
 }
 
-type FileResult struct {
+type Filebase64sha256Result struct {
 	Result string `pulumi:"result"`
 }
 
-func (r *File) Annotate(a infer.Annotator) {
-	a.Describe(r, "Reads the contents of a file into the string.")
+func (r *Filebase64sha256) Annotate(a infer.Annotator) {
+	a.Describe(r, "Reads the contents of a file into a string and returns the base64-encoded SHA256 hash of it.")
 }
 
-func readFileContents(path string) (string, error) {
-	path = filepath.Clean(path)
-	file, err := os.Open(path)
-	defer file.Close()
-	if err != nil {
-		if os.IsNotExist(err) {
-			return "", fmt.Errorf("file(%s) failed to read the contents because the file does not exist", path)
-		}
-
-		return "", err
-	}
-
-	fileBytes, err := io.ReadAll(file)
-	if err != nil {
-		return "", fmt.Errorf("failed to read file: %w", err)
-	}
-
-	return string(fileBytes), nil
-}
-
-func (*File) Call(ctx p.Context, args FileArgs) (FileResult, error) {
+func (*Filebase64sha256) Call(ctx p.Context, args Filebase64sha256Args) (Filebase64sha256Result, error) {
 	contents, err := readFileContents(args.Input)
 	if err != nil {
-		return FileResult{}, err
+		return Filebase64sha256Result{}, err
 	}
-	return FileResult{contents}, nil
+	return Filebase64sha256Result{base64Encode(sha256AsHex(contents))}, nil
 }
