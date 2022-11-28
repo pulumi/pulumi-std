@@ -117,6 +117,7 @@ func expectedOutputs() map[string]interface{} {
 		"containsWithIntegers":       true,
 		"containsWithStrings":        true,
 		"containsWithLists":          true,
+		"csvdecode":                  []map[string]string{{"a": "1", "b": "2", "c": "3"}, {"a": "4", "b": "5", "c": "6"}},
 		"shouldNotContain":           false,
 		"dirname":                    "/path/to/directory",
 		"distinctWithIntegers":       []int{1, 2, 3, 4, 5},

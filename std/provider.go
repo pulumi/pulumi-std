@@ -64,6 +64,7 @@ func Provider() p.Provider {
 			infer.Function[*Compact, CompactArgs, CompactResult](),
 			infer.Function[*Concat, ConcatArgs, ConcatResult](),
 			infer.Function[*Contains, ContainsArgs, ContainsResult](),
+			infer.Function[*Csvdecode, CsvdecodeArgs, CsvdecodeResult](),
 			infer.Function[*Dirname, DirnameArgs, DirnameResult](),
 			infer.Function[*Distinct, DistinctArgs, DistinctResult](),
 			infer.Function[*Element, ElementArgs, ElementResult](),

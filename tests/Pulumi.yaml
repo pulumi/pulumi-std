@@ -89,6 +89,9 @@ variables:
     fn::std:contains:
       input: [[1], [2], [3]]
       element: [2]
+  csvdecode:
+    fn::std:csvdecode:
+      input: "a,b,c\n 1,2, 3\n 4, 5,6"
   shouldNotContain:
     fn::std:contains:
       input: [1,2,3]
@@ -354,6 +357,7 @@ outputs:
   containsWithIntegers: ${containsWithIntegers.result}
   containsWithStrings: ${containsWithStrings.result}
   containsWithLists: ${containsWithLists.result}
+  csvdecode: ${csvdecode.result}
   shouldNotContain: ${shouldNotContain.result}
   dirname: ${dirname.result}
   distinctWithIntegers: ${distinctWithIntegers.result}
