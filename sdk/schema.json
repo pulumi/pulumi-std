@@ -647,7 +647,7 @@
       }
     },
     "std:index:csvdecode": {
-      "description": "Decodes a string containing CSV-formatted data and produces a list of maps representing that data.\n\tThe first line of the CSV data is interpreted as a \"header\" row: the values given are used as the keys in the resulting maps. \n\tEach subsequent line becomes a single map in the resulting list, matching the keys from the header row with the given values by index. \n\tAll lines in the file must contain the same number of fields, or this function will produce an error.\n\tFollows the format defined in RFC 4180.",
+      "description": "Decodes a string containing CSV-formatted data and produces a list of maps representing that data.\n\tThe first line of the CSV data is interpreted as a \"header\" row: the values given \n\tare used as the keys in the resulting maps. \n\tEach subsequent line becomes a single map in the resulting list, \n\tmatching the keys from the header row with the given values by index. \n\tAll lines in the file must contain the same number of fields, \n\tor this function will produce an error.\n\tFollows the format defined in RFC 4180.",
       "inputs": {
         "properties": {
           "input": {
@@ -2062,6 +2062,35 @@
         "properties": {
           "result": {
             "type": "number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:timeadd": {
+      "description": "Adds a duration to a timestamp, returning a new timestamp.\n\tTimestamps are represented as strings using RFC 3339 \"Date and time format\" syntax.\n\t'timestamp' must be a string adhering this syntax, i.e. \"2017-11-22T00:00:00Z\".\n\t'duration' is a string representation of a time difference, comprised of sequences of\n\tnumbers and unit pairs, i.e. \"3.5h\" or \"2h15m\".\n\tAccepted units are \"ns\", \"us\" or \"µs\", \"ms\", \"s\", \"m\", and \"h\". The first number may be negative\n\tto provide a negative duration, i.e. \"-2h15m\".",
+      "inputs": {
+        "properties": {
+          "duration": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "duration",
+          "timestamp"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
           }
         },
         "type": "object",

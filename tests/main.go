@@ -164,6 +164,7 @@ func expectedOutputs() map[string]interface{} {
 		"substr":                     "hello",
 		"transpose":                  map[string][]string{"1": {"a"}, "2": {"a", "b"}, "3": {"b"}},
 		"title":                      "Hello World",
+		"timeadd":                    "2017-11-22T00:20:00Z",
 		"toboolBool":                 true,
 		"toboolStr":                  false,
 		"tolist":                     []string{"a", "true", "3.14"},
