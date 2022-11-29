@@ -2128,6 +2128,23 @@
         ]
       }
     },
+    "std:index:timestamp": {
+      "description": "Returns a UTC timestamp string of the current time in RFC 3339 format",
+      "inputs": {
+        "type": "object"
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:title": {
       "description": "Converts the first letter of each word in the given string to uppercase.",
       "inputs": {
