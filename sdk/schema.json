@@ -646,6 +646,37 @@
         ]
       }
     },
+    "std:index:csvdecode": {
+      "description": "Decodes a string containing CSV-formatted data and produces a list of maps representing that data.\n\tThe first line of the CSV data is interpreted as a \"header\" row: the values given are used as the keys in the resulting maps. \n\tEach subsequent line becomes a single map in the resulting list, matching the keys from the header row with the given values by index. \n\tAll lines in the file must contain the same number of fields, or this function will produce an error.\n\tFollows the format defined in RFC 4180.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:dirname": {
       "description": "Returns all but the last element of path, typically the path's directory.",
       "inputs": {
