@@ -116,6 +116,7 @@ func Provider() p.Provider {
 			infer.Function[*Substr, SubstrArgs, SubstrResult](),
 			infer.Function[*Title, TitleArgs, TitleResult](),
 			infer.Function[*Timeadd, TimeaddArgs, TimeaddResult](),
+			infer.Function[*Timecmp, TimecmpArgs, TimecmpResult](),
 			infer.Function[*Tobool, ToboolArgs, ToboolResult](),
 			infer.Function[*Tolist, TolistArgs, TolistResult](),
 			infer.Function[*Toset, TosetArgs, TosetResult](),

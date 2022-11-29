@@ -2099,6 +2099,35 @@
         ]
       }
     },
+    "std:index:timecmp": {
+      "description": "Compares two timestamps and returns a number that represents the ordering\n\tof the instants those timestamps represent.\n\tTimestamps are represented as strings using RFC 3339 \"Date and time format\" syntax.\n\tBoth timestamps must be strings adhering this syntax, i.e. \"2017-11-22T00:00:00Z\".\n\tIf 'timestamp_a' is before 'timestamp_b', -1 is returned.\n\tIf 'timestamp_a' is equal to 'timestamp_b', 0 is returned.\n\tIf 'timestamp_a' is after 'timestamp_b', 1 is returned.",
+      "inputs": {
+        "properties": {
+          "timestampa": {
+            "type": "string"
+          },
+          "timestampb": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestampa",
+          "timestampb"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
     "std:index:title": {
       "description": "Converts the first letter of each word in the given string to uppercase.",
       "inputs": {
