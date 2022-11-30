@@ -264,6 +264,14 @@ variables:
   title:
     fn::std:title:
       input: hello world
+  timeadd:
+    fn::std:timeadd:
+      timestamp: "2017-11-22T00:00:00Z"
+      duration: "20m"
+  timecmp:
+    fn::std:timecmp:
+      timestampa: "2017-11-22T01:00:00Z"
+      timestampb: "2017-11-22T00:00:00-01:00"
   toboolBool:
     fn::std:tobool:
       input: true
@@ -414,6 +422,8 @@ outputs:
   tostringBool: ${tostringBool.result}
   transpose: ${transpose.result}
   title: ${title.result}
+  timeadd: ${timeadd.result}
+  timecmp: ${timecmp.result}
   trim: ${trim.result}
   trimprefix: ${trimprefix.result}
   trimsuffix: ${trimsuffix.result}
