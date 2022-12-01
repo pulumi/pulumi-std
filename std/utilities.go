@@ -16,7 +16,11 @@ package std
 
 import (
 	"encoding/json"
+	"fmt"
 	"hash"
+	"io"
+	"os"
+	"path/filepath"
 )
 
 func stringHashFunction(hashFn func() hash.Hash, encoder func([]byte) string) func(string) string {
@@ -37,4 +41,24 @@ func jsonDeepEquals(a, b interface{}) bool {
 		return false
 	}
 	return string(aBytes) == string(bBytes)
+}
+
+func readFileContents(path string) (string, error) {
+	path = filepath.Clean(path)
+	file, err := os.Open(path)
+	defer file.Close()
+	if err != nil {
+		if os.IsNotExist(err) {
+			return "", fmt.Errorf("file(%s) failed to read the contents because the file does not exist", path)
+		}
+
+		return "", err
+	}
+
+	fileBytes, err := io.ReadAll(file)
+	if err != nil {
+		return "", fmt.Errorf("failed to read file: %w", err)
+	}
+
+	return string(fileBytes), nil
 }

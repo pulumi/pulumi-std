@@ -15,11 +15,6 @@
 package std
 
 import (
-	"fmt"
-	"io"
-	"os"
-	"path/filepath"
-
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
@@ -35,26 +30,6 @@ type FileResult struct {
 
 func (r *File) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into the string.")
-}
-
-func readFileContents(path string) (string, error) {
-	path = filepath.Clean(path)
-	file, err := os.Open(path)
-	defer file.Close()
-	if err != nil {
-		if os.IsNotExist(err) {
-			return "", fmt.Errorf("file(%s) failed to read the contents because the file does not exist", path)
-		}
-
-		return "", err
-	}
-
-	fileBytes, err := io.ReadAll(file)
-	if err != nil {
-		return "", fmt.Errorf("failed to read file: %w", err)
-	}
-
-	return string(fileBytes), nil
 }
 
 func (*File) Call(ctx p.Context, args FileArgs) (FileResult, error) {
