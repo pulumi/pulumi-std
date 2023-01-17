@@ -1,6 +1,6 @@
 VERSION := $(shell pulumictl get version)
 JAVA_GEN := pulumi-java-gen
-JAVA_GEN_VERSION := v0.5.4
+JAVA_GEN_VERSION := v0.7.1
 
 build:
 	mkdir -p bin
