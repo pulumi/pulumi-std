@@ -18,13 +18,10 @@ gen_sdks: gen_dotnet_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk gen_schema
 
 gen_schema: sdk_prep
 	pulumi package get-schema bin/pulumi-resource-std > sdk/schema.json
-	jq -s '.[0] * .[1]' sdk/schema.json sdk/metadata.json > sdk/output.json
-	cat sdk/output.json > sdk/schema.json
-	rm sdk/output.json
 
 gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
-	~/.pulumi-dev/bin/pulumi package gen-sdk sdk/schema.json --language "$*" --out sdk
+	pulumi package gen-sdk sdk/schema.json --language "$*" --out sdk
 
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 	if ! [ -f sdk/go.mod ]; then \
