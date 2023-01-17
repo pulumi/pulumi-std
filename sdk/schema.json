@@ -50,11 +50,7 @@
         "required": [
           "result"
         ]
-      },
-      "reduceSingleOutputProperty": true,
-      "multiArgumentInputs": [
-        "input"
-      ]
+      }
     },
     "std:index:abspath": {
       "description": "Returns an absolute representation of the specified path.\nIf the path is not absolute it will be joined with the current working directory to turn it into an absolute path.",
@@ -1687,6 +1683,39 @@
             "items": {
               "type": "number"
             }
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "std:index:replace": {
+      "description": "Does a search and replace on the given string. \nAll instances of search are replaced with the value of replace. \nIf search is wrapped in forward slashes, it is treated as a regular expression. \nIf using a regular expression, replace can reference subcaptures in the regular expression by \nusing $n where n is the index or name of the subcapture. If using a regular expression, \nthe syntax conforms to the re2 regular expression syntax.",
+      "inputs": {
+        "properties": {
+          "replace": {
+            "type": "string"
+          },
+          "search": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "replace",
+          "search",
+          "text"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
           }
         },
         "type": "object",
