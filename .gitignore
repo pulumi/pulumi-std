@@ -30,3 +30,5 @@ terraform.tfstate
 .terraform.tfstate.lock.info
 .idea
 grpc.json
+sdk/java/build
+sdk/java/.gradle
