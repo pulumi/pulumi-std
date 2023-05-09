@@ -32,7 +32,7 @@ func (r *Distinct) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes duplicate items from a list.")
 }
 
-func (*Distinct) Call(ctx p.Context, args DistinctArgs) (DistinctResult, error) {
+func (*Distinct) Call(_ p.Context, args DistinctArgs) (DistinctResult, error) {
 	seen := make(map[interface{}]bool)
 	output := make([]interface{}, 0)
 	for _, value := range args.Input {

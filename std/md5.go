@@ -38,6 +38,6 @@ func (r *Md5) Annotate(a infer.Annotator) {
 
 var md5AsHex = stringHashFunction(md5.New, hex.EncodeToString)
 
-func (*Md5) Call(ctx p.Context, args Md5Args) (Md5Result, error) {
+func (*Md5) Call(_ p.Context, args Md5Args) (Md5Result, error) {
 	return Md5Result{md5AsHex(args.Input)}, nil
 }

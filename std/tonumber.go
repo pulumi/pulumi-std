@@ -36,7 +36,7 @@ func (r *Tonumber) Annotate(a infer.Annotator) {
 	containing decimal representations of numbers can be converted to number. All other values will result in an error`)
 }
 
-func (*Tonumber) Call(ctx p.Context, args TonumberArgs) (TonumberResult, error) {
+func (*Tonumber) Call(_ p.Context, args TonumberArgs) (TonumberResult, error) {
 	if args.Input == nil {
 		return TonumberResult{nil}, nil
 	}

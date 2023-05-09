@@ -32,7 +32,7 @@ func (r *Filebase64sha256) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into a string and returns the base64-encoded SHA256 hash of it.")
 }
 
-func (*Filebase64sha256) Call(ctx p.Context, args Filebase64sha256Args) (Filebase64sha256Result, error) {
+func (*Filebase64sha256) Call(_ p.Context, args Filebase64sha256Args) (Filebase64sha256Result, error) {
 	contents, err := readFileContents(args.Input)
 	if err != nil {
 		return Filebase64sha256Result{}, err

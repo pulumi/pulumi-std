@@ -34,7 +34,7 @@ func (r *Coalescelist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the first non-empty list from the given list of lists.")
 }
 
-func (*Coalescelist) Call(ctx p.Context, args CoalescelistArgs) (CoalescelistResult, error) {
+func (*Coalescelist) Call(_ p.Context, args CoalescelistArgs) (CoalescelistResult, error) {
 	for _, list := range args.Input {
 		if len(list) > 0 {
 			return CoalescelistResult{list}, nil

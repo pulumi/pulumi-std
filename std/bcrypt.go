@@ -33,11 +33,11 @@ type BcryptResult struct {
 }
 
 func (r *Bcrypt) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns the Blowfish encrypted hash of the string at the given cost. 
+	a.Describe(r, `Returns the Blowfish encrypted hash of the string at the given cost.
 A default cost of 10 will be used if not provided.`)
 }
 
-func (*Bcrypt) Call(ctx p.Context, args BcryptArgs) (BcryptResult, error) {
+func (*Bcrypt) Call(_ p.Context, args BcryptArgs) (BcryptResult, error) {
 	defaultCost := 10
 	if args.Cost != nil {
 		defaultCost = *args.Cost

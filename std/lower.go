@@ -34,6 +34,6 @@ func (r *Lower) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a copy of the string with all Unicode letters mapped to their lower case.")
 }
 
-func (*Lower) Call(ctx p.Context, args LowerArgs) (LowerResult, error) {
+func (*Lower) Call(_ p.Context, args LowerArgs) (LowerResult, error) {
 	return LowerResult{strings.ToLower(args.Input)}, nil
 }

@@ -37,6 +37,6 @@ func (r *Sha256) Annotate(a infer.Annotator) {
 
 var sha256AsHex = stringHashFunction(sha256.New, hex.EncodeToString)
 
-func (*Sha256) Call(ctx p.Context, args Sha256Args) (Sha256Result, error) {
+func (*Sha256) Call(_ p.Context, args Sha256Args) (Sha256Result, error) {
 	return Sha256Result{sha256AsHex(args.Input)}, nil
 }

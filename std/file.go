@@ -32,7 +32,7 @@ func (r *File) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into the string.")
 }
 
-func (*File) Call(ctx p.Context, args FileArgs) (FileResult, error) {
+func (*File) Call(_ p.Context, args FileArgs) (FileResult, error) {
 	contents, err := readFileContents(args.Input)
 	if err != nil {
 		return FileResult{}, err

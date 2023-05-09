@@ -35,7 +35,7 @@ func (r *Index) Annotate(a infer.Annotator) {
 	a.Describe(r, "Finds the index of a given element in a list.")
 }
 
-func (*Index) Call(ctx p.Context, args IndexArgs) (IndexResult, error) {
+func (*Index) Call(_ p.Context, args IndexArgs) (IndexResult, error) {
 	if len(args.Input) == 0 {
 		return IndexResult{}, errors.New("input list must not be empty when using the index function")
 	}

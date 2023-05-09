@@ -31,12 +31,12 @@ type JsonencodeResult struct {
 }
 
 func (r *Jsonencode) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns a JSON-encoded representation of the given value, 
-which can contain arbitrarily-nested lists and maps. 
+	a.Describe(r, `Returns a JSON-encoded representation of the given value,
+which can contain arbitrarily-nested lists and maps.
 Note that if the value is a string then its value will be placed in quotes.`)
 }
 
-func (*Jsonencode) Call(ctx p.Context, args JsonencodeArgs) (JsonencodeResult, error) {
+func (*Jsonencode) Call(_ p.Context, args JsonencodeArgs) (JsonencodeResult, error) {
 	inputBytes, err := json.Marshal(args.Input)
 	if err != nil {
 		return JsonencodeResult{}, err

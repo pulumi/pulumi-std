@@ -34,7 +34,7 @@ func (r *Tolist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts its argument to a list value.")
 }
 
-func (*Tolist) Call(ctx p.Context, args TolistArgs) (TolistResult, error) {
+func (*Tolist) Call(_ p.Context, args TolistArgs) (TolistResult, error) {
 	if len(args.Input) == 0 {
 		return TolistResult{make([]interface{}, 0)}, nil
 	}

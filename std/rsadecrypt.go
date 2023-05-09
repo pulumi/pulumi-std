@@ -38,7 +38,7 @@ type RsadecryptResult struct {
 }
 
 func (r *Rsadecrypt) Annotate(a infer.Annotator) {
-	a.Describe(r, `Decrypts an RSA-encrypted ciphertext. 
+	a.Describe(r, `Decrypts an RSA-encrypted ciphertext.
 The cipher text must be base64-encoded and the key must be in PEM format.`)
 }
 
@@ -53,7 +53,7 @@ func formatError(err error) string {
 	}
 }
 
-func (*Rsadecrypt) Call(ctx p.Context, args RsadecryptArgs) (RsadecryptResult, error) {
+func (*Rsadecrypt) Call(_ p.Context, args RsadecryptArgs) (RsadecryptResult, error) {
 
 	cipherTextBytes, err := base64.StdEncoding.DecodeString(args.CipherText)
 	if err != nil {

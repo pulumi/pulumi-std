@@ -32,7 +32,7 @@ func (r *Sum) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the total sum of the elements of the input list.")
 }
 
-func (*Sum) Call(ctx p.Context, args SumArgs) (SumResult, error) {
+func (*Sum) Call(_ p.Context, args SumArgs) (SumResult, error) {
 	sum := 0.0
 	for _, current := range args.Input {
 		sum += current

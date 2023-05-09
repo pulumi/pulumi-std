@@ -32,7 +32,7 @@ func (r *Filesha512) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into a string and returns the SHA512 hash of it.")
 }
 
-func (*Filesha512) Call(ctx p.Context, args Filesha512Args) (Filesha512Result, error) {
+func (*Filesha512) Call(_ p.Context, args Filesha512Args) (Filesha512Result, error) {
 	contents, err := readFileContents(args.Input)
 	if err != nil {
 		return Filesha512Result{}, err

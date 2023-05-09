@@ -59,7 +59,7 @@ func readFileContentsToBase64(path string) (string, error) {
 	return base64.StdEncoding.EncodeToString(fileBytes), nil
 }
 
-func (*Filebase64) Call(ctx p.Context, args Filebase64Args) (Filebase64Result, error) {
+func (*Filebase64) Call(_ p.Context, args Filebase64Args) (Filebase64Result, error) {
 	encoded, err := readFileContentsToBase64(args.Input)
 	return Filebase64Result{encoded}, err
 }

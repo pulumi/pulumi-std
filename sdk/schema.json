@@ -1,7 +1,7 @@
 {
   "name": "std",
   "displayName": "StandardLibrary",
-  "version": "1.0.0",
+  "version": "0.1.1-alpha.1683893791+7b7a4780.dirty",
   "description": "Standard library functions",
   "homepage": "https://github.com/pulumi/pulumi-std",
   "repository": "https://github.com/pulumi/pulumi-std",
@@ -18,8 +18,7 @@
     "nodejs": {
       "dependencies": {
         "@pulumi/pulumi": "^3.0.0"
-      },
-      "respectSchemaVersion": true
+      }
     }
   },
   "config": {},

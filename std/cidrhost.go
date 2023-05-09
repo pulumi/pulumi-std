@@ -35,9 +35,9 @@ type CidrhostResult struct {
 }
 
 func (r *Cidrhost) Annotate(a infer.Annotator) {
-	a.Describe(r, `Takes an IP address range in CIDR notation as input 
-and creates an IP address with the given host number. 
-If given host number is negative, the count starts from the end of the range. 
+	a.Describe(r, `Takes an IP address range in CIDR notation as input
+and creates an IP address with the given host number.
+If given host number is negative, the count starts from the end of the range.
 For example, cidrhost("10.0.0.0/8", 2) returns 10.0.0.2 and cidrhost("10.0.0.0/8", -2) returns 10.255.255.254.`)
 }
 
@@ -55,7 +55,7 @@ func cidrhost(ipaddress string, hostnum int) (string, error) {
 	return ip.String(), nil
 }
 
-func (*Cidrhost) Call(ctx p.Context, args CidrhostArgs) (CidrhostResult, error) {
+func (*Cidrhost) Call(_ p.Context, args CidrhostArgs) (CidrhostResult, error) {
 	result, err := cidrhost(args.Input, args.Host)
 	if err != nil {
 		return CidrhostResult{}, err

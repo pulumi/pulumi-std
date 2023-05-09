@@ -38,6 +38,6 @@ func base64Encode(input string) string {
 	return base64.StdEncoding.EncodeToString([]byte(input))
 }
 
-func (*Base64encode) Call(ctx p.Context, args Base64EncodeArgs) (Base64EncodeResult, error) {
+func (*Base64encode) Call(_ p.Context, args Base64EncodeArgs) (Base64EncodeResult, error) {
 	return Base64EncodeResult{base64Encode(args.Input)}, nil
 }

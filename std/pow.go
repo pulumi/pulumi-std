@@ -35,6 +35,6 @@ func (r *Pow) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the base input raised to the power of the exponent.")
 }
 
-func (*Pow) Call(ctx p.Context, args PowArgs) (PowResult, error) {
+func (*Pow) Call(_ p.Context, args PowArgs) (PowResult, error) {
 	return PowResult{math.Pow(args.Base, args.Exponent)}, nil
 }

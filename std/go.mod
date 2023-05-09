@@ -3,14 +3,11 @@ module github.com/pulumi/pulumi-std/std
 go 1.19
 
 require (
+	github.com/apparentlymart/go-textseg v1.0.0
+	github.com/google/uuid v1.3.0
 	github.com/pulumi/pulumi-go-provider v0.8.0
 	github.com/pulumi/pulumi/sdk/v3 v3.44.0
 	golang.org/x/crypto v0.1.0
-)
-
-require (
-	github.com/apparentlymart/go-textseg v1.0.0 // indirect
-	github.com/google/uuid v1.3.0 // indirect
 )
 
 require (
@@ -45,7 +42,7 @@ require (
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect
-	github.com/mitchellh/go-homedir v1.1.0 // indirect
+	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect

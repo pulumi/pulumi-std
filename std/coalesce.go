@@ -34,7 +34,7 @@ func (r *Coalesce) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the first non-empty value from the given arguments.")
 }
 
-func (*Coalesce) Call(ctx p.Context, args CoalesceArgs) (CoalesceResult, error) {
+func (*Coalesce) Call(_ p.Context, args CoalesceArgs) (CoalesceResult, error) {
 	for _, value := range args.Input {
 		if value != "" {
 			return CoalesceResult{value}, nil

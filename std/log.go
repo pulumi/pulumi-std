@@ -35,6 +35,6 @@ func (r *Log) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the greatest integer value less than or equal to the argument.")
 }
 
-func (*Log) Call(ctx p.Context, args LogArgs) (LogResult, error) {
+func (*Log) Call(_ p.Context, args LogArgs) (LogResult, error) {
 	return LogResult{math.Log(args.Input) / math.Log(args.Base)}, nil
 }

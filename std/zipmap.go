@@ -35,7 +35,7 @@ func (r *Zipmap) Annotate(a infer.Annotator) {
 	a.Describe(r, `Constructs a map from a list of keys and a corresponding list of values.`)
 }
 
-func (*Zipmap) Call(ctx p.Context, args ZipmapArgs) (ZipmapResult, error) {
+func (*Zipmap) Call(_ p.Context, args ZipmapArgs) (ZipmapResult, error) {
 	if len(args.Keys) != len(args.Values) {
 		return ZipmapResult{}, errors.New("keys and values must be the same length")
 	}

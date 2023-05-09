@@ -32,7 +32,7 @@ func (r *Concat) Annotate(a infer.Annotator) {
 	a.Describe(r, "Combines two or more lists into a single list.")
 }
 
-func (*Concat) Call(ctx p.Context, args ConcatArgs) (ConcatResult, error) {
+func (*Concat) Call(_ p.Context, args ConcatArgs) (ConcatResult, error) {
 	output := make([]interface{}, 0)
 	for _, list := range args.Input {
 		for _, value := range list {

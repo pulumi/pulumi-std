@@ -34,7 +34,7 @@ func (r *Keys) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a lexically sorted list of the map keys.")
 }
 
-func (*Keys) Call(ctx p.Context, args KeysArgs) (KeysResult, error) {
+func (*Keys) Call(_ p.Context, args KeysArgs) (KeysResult, error) {
 	keys := make([]string, 0, len(args.Input))
 	for key := range args.Input {
 		keys = append(keys, key)

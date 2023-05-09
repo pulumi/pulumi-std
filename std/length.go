@@ -34,7 +34,7 @@ func (r *Length) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines the length of a given list, map, or string.")
 }
 
-func (*Length) Call(ctx p.Context, args LengthArgs) (LengthResult, error) {
+func (*Length) Call(_ p.Context, args LengthArgs) (LengthResult, error) {
 	switch v := args.Input.(type) {
 	case string:
 		return LengthResult{len(v)}, nil

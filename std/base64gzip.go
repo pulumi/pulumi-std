@@ -52,7 +52,7 @@ func base64gzip(input string) (string, error) {
 	return base64.StdEncoding.EncodeToString(buffer.Bytes()), nil
 }
 
-func (*Base64gzip) Call(ctx p.Context, args Base64GzipArgs) (Base64GzipResult, error) {
+func (*Base64gzip) Call(_ p.Context, args Base64GzipArgs) (Base64GzipResult, error) {
 	result, err := base64gzip(args.Input)
 	if err != nil {
 		return Base64GzipResult{}, err

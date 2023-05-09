@@ -32,7 +32,7 @@ func (r *Fileexists) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines whether a file exists at a given path.")
 }
 
-func (*Fileexists) Call(ctx p.Context, args FileexistsArgs) (FileexistsResult, error) {
+func (*Fileexists) Call(_ p.Context, args FileexistsArgs) (FileexistsResult, error) {
 	_, err := readFileContents(args.Input)
 	if err != nil {
 		return FileexistsResult{false}, err

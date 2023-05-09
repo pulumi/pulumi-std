@@ -34,6 +34,6 @@ func (r *Urlencode) Annotate(a infer.Annotator) {
 	a.Describe(r, `Applies URL encoding to a given string.`)
 }
 
-func (*Urlencode) Call(ctx p.Context, args UrlencodeArgs) (UrlencodeResult, error) {
+func (*Urlencode) Call(_ p.Context, args UrlencodeArgs) (UrlencodeResult, error) {
 	return UrlencodeResult{url.QueryEscape(args.Input)}, nil
 }

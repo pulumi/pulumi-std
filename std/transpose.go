@@ -34,7 +34,7 @@ func (r *Transpose) Annotate(a infer.Annotator) {
 	a.Describe(r, `Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.`)
 }
 
-func (*Transpose) Call(ctx p.Context, args TransposeArgs) (TransposeResult, error) {
+func (*Transpose) Call(_ p.Context, args TransposeArgs) (TransposeResult, error) {
 	res := make(map[string][]string)
 	for k, l := range args.Input {
 		for _, v := range l {

@@ -32,12 +32,12 @@ type Base64Sha512Result struct {
 }
 
 func (r *Base64sha512) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns a base64-encoded representation of raw SHA-512 sum of the given string. 
+	a.Describe(r, `Returns a base64-encoded representation of raw SHA-512 sum of the given string.
 This is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.`)
 }
 
 var base64Sha512 = stringHashFunction(sha512.New, base64.StdEncoding.EncodeToString)
 
-func (*Base64sha512) Call(ctx p.Context, args Base64Sha512Args) (Base64Sha512Result, error) {
+func (*Base64sha512) Call(_ p.Context, args Base64Sha512Args) (Base64Sha512Result, error) {
 	return Base64Sha512Result{base64Sha512(args.Input)}, nil
 }

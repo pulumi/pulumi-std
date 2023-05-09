@@ -33,11 +33,11 @@ type MatchkeysResult struct {
 }
 
 func (r *Matchkeys) Annotate(a infer.Annotator) {
-	a.Describe(r, `For two lists values and keys of equal length, 
+	a.Describe(r, `For two lists values and keys of equal length,
 returns all elements from values where the corresponding element from keys exists in the searchset list.`)
 }
 
-func (*Matchkeys) Call(ctx p.Context, args MatchkeysArgs) (MatchkeysResult, error) {
+func (*Matchkeys) Call(_ p.Context, args MatchkeysArgs) (MatchkeysResult, error) {
 	if len(args.Values) != len(args.keys) {
 		return MatchkeysResult{}, errors.New("values and keys must be of equal length")
 	}

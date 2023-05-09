@@ -10,6 +10,7 @@ build:
 
 tidy:
 	cd std && go mod tidy
+	cd sdk && go mod tidy
 
 sdk_prep: build
 	mkdir -p sdk
@@ -29,6 +30,7 @@ build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 	if ! [ -f sdk/go.mod ]; then \
 		cd sdk && go mod init github.com/pulumi/pulumi-std/sdk; \
 	fi
+
 build_dotnet_sdk: gen_dotnet_sdk
 	cd sdk/dotnet/ && \
 		echo "${VERSION}" >version.txt && \
@@ -38,11 +40,9 @@ build_nodejs_sdk: gen_nodejs_sdk
 	cd sdk/nodejs/ && \
 		yarn install && \
 		yarn run tsc --version && \
-		yarn run tsc && \
-		cp -R scripts/ bin && \
-		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json && \
-		rm ./bin/package.json.bak
+		yarn run tsc
+	cp README.md LICENSE sdk/nodejs/package.json sdk/nodejs/yarn.lock sdk/nodejs/bin/
+	sed -i.bak 's/$${VERSION}/$(VERSION)/g' sdk/nodejs/bin/package.json
 
 build_python_sdk: gen_python_sdk
 	cd sdk/python/ && \
@@ -71,5 +71,5 @@ lint-golang:
 lint-copyright:
 	pulumictl copyright -x 'examples/**' -x 'sdk/**'
 
-bin/pulumi-java-gen: 
+bin/pulumi-java-gen:
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
