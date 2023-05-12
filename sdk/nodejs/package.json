@@ -1,11 +1,11 @@
 {
     "name": "@pulumi/std",
-    "version": "1.0.0",
+    "version": "${VERSION}",
     "homepage": "https://github.com/pulumi/pulumi-std",
     "repository": "https://github.com/pulumi/pulumi-std",
     "scripts": {
         "build": "tsc",
-        "install": "node scripts/install-pulumi-plugin.js resource std 1.0.0"
+        "install": "node scripts/install-pulumi-plugin.js resource std ${VERSION}"
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0"
@@ -16,7 +16,6 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "std",
-        "version": "1.0.0"
+        "name": "std"
     }
 }

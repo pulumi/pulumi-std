@@ -29,11 +29,11 @@ type AlltrueResult struct {
 }
 
 func (r *Alltrue) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns true if all elements in a given collection are true or \"true\". 
+	a.Describe(r, `Returns true if all elements in a given collection are true or \"true\".
 It also returns true if the collection is empty.`)
 }
 
-func (*Alltrue) Call(ctx p.Context, args AlltrueArgs) (AlltrueResult, error) {
+func (*Alltrue) Call(_ p.Context, args AlltrueArgs) (AlltrueResult, error) {
 	for _, v := range args.Input {
 		value, isBool := v.(bool)
 		if isBool && !value {

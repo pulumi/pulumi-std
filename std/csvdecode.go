@@ -33,16 +33,16 @@ type CsvdecodeResult struct {
 
 func (r *Csvdecode) Annotate(a infer.Annotator) {
 	a.Describe(r, `Decodes a string containing CSV-formatted data and produces a list of maps representing that data.
-	The first line of the CSV data is interpreted as a "header" row: the values given 
-	are used as the keys in the resulting maps. 
-	Each subsequent line becomes a single map in the resulting list, 
-	matching the keys from the header row with the given values by index. 
-	All lines in the file must contain the same number of fields, 
+	The first line of the CSV data is interpreted as a "header" row: the values given
+	are used as the keys in the resulting maps.
+	Each subsequent line becomes a single map in the resulting list,
+	matching the keys from the header row with the given values by index.
+	All lines in the file must contain the same number of fields,
 	or this function will produce an error.
 	Follows the format defined in RFC 4180.`)
 }
 
-func (*Csvdecode) Call(ctx p.Context, args CsvdecodeArgs) (CsvdecodeResult, error) {
+func (*Csvdecode) Call(_ p.Context, args CsvdecodeArgs) (CsvdecodeResult, error) {
 	res := make([]map[string]string, 0)
 	if args.Input == "" {
 		return CsvdecodeResult{res}, nil

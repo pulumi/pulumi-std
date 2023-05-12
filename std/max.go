@@ -35,7 +35,7 @@ func (r *Max) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the largest of the floats.")
 }
 
-func (*Max) Call(ctx p.Context, args MaxArgs) (MaxResult, error) {
+func (*Max) Call(_ p.Context, args MaxArgs) (MaxResult, error) {
 	if len(args.Input) == 0 {
 		return MaxResult{}, fmt.Errorf("input list must not be empty")
 	}

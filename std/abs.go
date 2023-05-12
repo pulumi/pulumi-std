@@ -31,10 +31,10 @@ type AbsResult struct {
 }
 
 func (r *Abs) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns the absolute value of a given float. 
+	a.Describe(r, `Returns the absolute value of a given float.
 Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.`)
 }
 
-func (*Abs) Call(ctx p.Context, input AbsArgs) (AbsResult, error) {
+func (*Abs) Call(_ p.Context, input AbsArgs) (AbsResult, error) {
 	return AbsResult{math.Abs(input.Input)}, nil
 }

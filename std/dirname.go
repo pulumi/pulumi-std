@@ -34,6 +34,6 @@ func (r *Dirname) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns all but the last element of path, typically the path's directory.")
 }
 
-func (*Dirname) Call(ctx p.Context, args DirnameArgs) (DirnameResult, error) {
+func (*Dirname) Call(_ p.Context, args DirnameArgs) (DirnameResult, error) {
 	return DirnameResult{filepath.Dir(args.Input)}, nil
 }

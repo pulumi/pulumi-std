@@ -29,11 +29,11 @@ type MergeResult struct {
 }
 
 func (r *Merge) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns the union of 2 or more maps. The maps are consumed in the order provided, 
+	a.Describe(r, `Returns the union of 2 or more maps. The maps are consumed in the order provided,
 and duplicate keys overwrite previous entries.`)
 }
 
-func (*Merge) Call(ctx p.Context, args MergeArgs) (MergeResult, error) {
+func (*Merge) Call(_ p.Context, args MergeArgs) (MergeResult, error) {
 	result := make(map[string]interface{})
 	for _, m := range args.Input {
 		for k, v := range m {

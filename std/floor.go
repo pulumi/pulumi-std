@@ -34,6 +34,6 @@ func (r *Floor) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the greatest integer value less than or equal to the argument.")
 }
 
-func (*Floor) Call(ctx p.Context, input FloorArgs) (FloorResult, error) {
+func (*Floor) Call(_ p.Context, input FloorArgs) (FloorResult, error) {
 	return FloorResult{math.Floor(input.Input)}, nil
 }

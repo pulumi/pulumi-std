@@ -35,6 +35,6 @@ func (r *Format) Annotate(a infer.Annotator) {
 	a.Describe(r, "Formats a string according to the given format. The syntax for the format is standard sprintf syntax.")
 }
 
-func (*Format) Call(ctx p.Context, args FormatArgs) (FormatResult, error) {
+func (*Format) Call(_ p.Context, args FormatArgs) (FormatResult, error) {
 	return FormatResult{fmt.Sprintf(args.Input, args.Args...)}, nil
 }

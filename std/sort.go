@@ -34,7 +34,7 @@ func (r *Sort) Annotate(a infer.Annotator) {
 	a.Describe(r, `Returns a list of strings sorted lexicographically.`)
 }
 
-func (*Sort) Call(ctx p.Context, args SortArgs) (SortResult, error) {
+func (*Sort) Call(_ p.Context, args SortArgs) (SortResult, error) {
 	sort.Strings(args.Input)
 	return SortResult{args.Input}, nil
 }

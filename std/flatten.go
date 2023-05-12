@@ -29,7 +29,7 @@ type FlattenResult struct {
 }
 
 func (r *Flatten) Annotate(a infer.Annotator) {
-	a.Describe(r, `Flattens lists of lists down to a flat list of primitive values, 
+	a.Describe(r, `Flattens lists of lists down to a flat list of primitive values,
 eliminating any nested lists recursively.`)
 }
 
@@ -53,6 +53,6 @@ func flatten(input []interface{}) []interface{} {
 	return output
 }
 
-func (*Flatten) Call(ctx p.Context, args FlattenArgs) (FlattenResult, error) {
+func (*Flatten) Call(_ p.Context, args FlattenArgs) (FlattenResult, error) {
 	return FlattenResult{flatten(args.Input)}, nil
 }

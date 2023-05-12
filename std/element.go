@@ -35,7 +35,7 @@ func (r *Element) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the element at the specified index.")
 }
 
-func (*Element) Call(ctx p.Context, args ElementArgs) (ElementResult, error) {
+func (*Element) Call(_ p.Context, args ElementArgs) (ElementResult, error) {
 	if len(args.Input) == 0 {
 		return ElementResult{}, errors.New("input list must not be empty when using the element function")
 	}

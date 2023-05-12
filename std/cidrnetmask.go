@@ -31,9 +31,9 @@ type CidrnetmaskResult struct {
 }
 
 func (r *Cidrnetmask) Annotate(a infer.Annotator) {
-	a.Describe(r, `Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format 
-that some systems expect for IPv4 interfaces. 
-For example, cidrnetmask("10.0.0.0/8") returns 255.0.0.0. 
+	a.Describe(r, `Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format
+that some systems expect for IPv4 interfaces.
+For example, cidrnetmask("10.0.0.0/8") returns 255.0.0.0.
 Not applicable to IPv6 networks since CIDR notation is the only valid notation for IPv6.`)
 }
 
@@ -50,7 +50,7 @@ func cidrnetmask(ipaddress string) (string, error) {
 	return net.IP(network.Mask).String(), nil
 }
 
-func (*Cidrnetmask) Call(ctx p.Context, args CidrnetmaskArgs) (CidrnetmaskResult, error) {
+func (*Cidrnetmask) Call(_ p.Context, args CidrnetmaskArgs) (CidrnetmaskResult, error) {
 	result, err := cidrnetmask(args.Input)
 	if err != nil {
 		return CidrnetmaskResult{}, err

@@ -48,7 +48,7 @@ func base64Decode(input string) (string, error) {
 	return string(decoded), nil
 }
 
-func (*Base64decode) Call(ctx p.Context, args Base64DecodeArgs) (Base64DecodeResult, error) {
+func (*Base64decode) Call(_ p.Context, args Base64DecodeArgs) (Base64DecodeResult, error) {
 	decoded, err := base64Decode(args.Input)
 	if err != nil {
 		return Base64DecodeResult{}, err

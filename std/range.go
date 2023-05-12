@@ -33,8 +33,8 @@ type RangeResults struct {
 }
 
 func (r *Range) Annotate(a infer.Annotator) {
-	a.Describe(r, `Generates a list of numbers using a start value, a limit value, and a step value. 
-Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one 
+	a.Describe(r, `Generates a list of numbers using a start value, a limit value, and a step value.
+Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one
 depending on whether limit is greater than or less than start.`)
 }
 
@@ -51,15 +51,15 @@ func genRange(start, limit, step float64) []float64 {
 	} else if (start < limit && step < 0) || (start > limit && step > 0) {
 		return []float64{}
 	}
-	len := int(math.Ceil((limit - start) / step))
-	res := make([]float64, len)
-	for i := 0; i < len; i++ {
+	length := int(math.Ceil((limit - start) / step))
+	res := make([]float64, length)
+	for i := 0; i < length; i++ {
 		res[i] = start + (float64(i) * step)
 	}
 	return res
 }
 
-func (*Range) Call(ctx p.Context, args RangeArgs) (RangeResults, error) {
+func (*Range) Call(_ p.Context, args RangeArgs) (RangeResults, error) {
 	if args.Start == nil {
 		start := 0.0
 		args.Start = &start

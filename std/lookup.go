@@ -36,7 +36,7 @@ func (r *Lookup) Annotate(a infer.Annotator) {
 	a.Describe(r, "Performs a dynamic lookup into a map variable.")
 }
 
-func (*Lookup) Call(ctx p.Context, args LookupArgs) (LookupResult, error) {
+func (*Lookup) Call(_ p.Context, args LookupArgs) (LookupResult, error) {
 	for key, value := range args.Map {
 		if key == args.Key {
 			return LookupResult{value}, nil

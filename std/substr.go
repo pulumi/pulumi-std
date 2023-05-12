@@ -35,7 +35,7 @@ func (r *Substr) Annotate(a infer.Annotator) {
 	a.Describe(r, "Extracts a substring from the given string.")
 }
 
-func (*Substr) Call(ctx p.Context, args SubstrArgs) (SubstrResult, error) {
+func (*Substr) Call(_ p.Context, args SubstrArgs) (SubstrResult, error) {
 	in := []byte(args.Input)
 	if args.Length == 0 {
 		return SubstrResult{""}, nil

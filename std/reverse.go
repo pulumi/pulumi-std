@@ -41,7 +41,7 @@ func reverse(input []interface{}) {
 	}
 }
 
-func (*Reverse) Call(ctx p.Context, args ReverseArgs) (ReverseResult, error) {
+func (*Reverse) Call(_ p.Context, args ReverseArgs) (ReverseResult, error) {
 	reverse(args.Input)
 	return ReverseResult{args.Input}, nil
 }

@@ -29,11 +29,11 @@ type AnytrueResult struct {
 }
 
 func (r *Anytrue) Annotate(a infer.Annotator) {
-	a.Describe(r, `Returns true if any of the elements in a given collection are true or \"true\". 
+	a.Describe(r, `Returns true if any of the elements in a given collection are true or \"true\".
 It also returns false if the collection is empty.`)
 }
 
-func (*Anytrue) Call(ctx p.Context, args AnytrueArgs) (AnytrueResult, error) {
+func (*Anytrue) Call(_ p.Context, args AnytrueArgs) (AnytrueResult, error) {
 	for _, v := range args.Input {
 		value, isBool := v.(bool)
 		if isBool && value {

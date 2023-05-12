@@ -35,6 +35,6 @@ func (r *Trim) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified set of characters from the start and end of the given string.`)
 }
 
-func (*Trim) Call(ctx p.Context, args TrimArgs) (TrimResult, error) {
+func (*Trim) Call(_ p.Context, args TrimArgs) (TrimResult, error) {
 	return TrimResult{strings.Trim(args.Input, args.CutSet)}, nil
 }

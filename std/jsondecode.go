@@ -36,7 +36,7 @@ func (r *Jsondecode) Annotate(a infer.Annotator) {
 	If input is not valid JSON, the result will be the input unchanged.`)
 }
 
-func (*Jsondecode) Call(ctx p.Context, args JsondecodeArgs) (JsondecodeResult, error) {
+func (*Jsondecode) Call(_ p.Context, args JsondecodeArgs) (JsondecodeResult, error) {
 	var res map[string]interface{}
 	if err := json.Unmarshal([]byte(args.Input), &res); err != nil {
 		return JsondecodeResult{args.Input}, nil

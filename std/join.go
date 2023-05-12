@@ -35,6 +35,6 @@ func (r *Join) Annotate(a infer.Annotator) {
 	a.Describe(r, "Joins the list with the delimiter for a resultant string.")
 }
 
-func (*Join) Call(ctx p.Context, args JoinArgs) (JoinResult, error) {
+func (*Join) Call(_ p.Context, args JoinArgs) (JoinResult, error) {
 	return JoinResult{strings.Join(args.Input, args.Separator)}, nil
 }

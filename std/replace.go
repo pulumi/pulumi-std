@@ -34,15 +34,15 @@ type ReplaceResult struct {
 }
 
 func (r *Replace) Annotate(a infer.Annotator) {
-	a.Describe(r, `Does a search and replace on the given string. 
-All instances of search are replaced with the value of replace. 
-If search is wrapped in forward slashes, it is treated as a regular expression. 
-If using a regular expression, replace can reference subcaptures in the regular expression by 
-using $n where n is the index or name of the subcapture. If using a regular expression, 
+	a.Describe(r, `Does a search and replace on the given string.
+All instances of search are replaced with the value of replace.
+If search is wrapped in forward slashes, it is treated as a regular expression.
+If using a regular expression, replace can reference subcaptures in the regular expression by
+using $n where n is the index or name of the subcapture. If using a regular expression,
 the syntax conforms to the re2 regular expression syntax.`)
 }
 
-func (*Replace) Call(ctx p.Context, args ReplaceArgs) (ReplaceResult, error) {
+func (*Replace) Call(_ p.Context, args ReplaceArgs) (ReplaceResult, error) {
 	if len(args.Search) > 1 && args.Search[0] == '/' && args.Search[len(args.Search)-1] == '/' {
 		re, err := regexp.Compile(args.Search[1 : len(args.Search)-1])
 		if err != nil {

@@ -34,6 +34,6 @@ func (r *Ceil) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the least integer value greater than or equal to the argument.")
 }
 
-func (*Ceil) Call(ctx p.Context, input CeilArgs) (CeilResult, error) {
+func (*Ceil) Call(_ p.Context, input CeilArgs) (CeilResult, error) {
 	return CeilResult{math.Ceil(input.Input)}, nil
 }

@@ -32,7 +32,7 @@ func (r *Compact) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes empty string elements from a list.")
 }
 
-func (*Compact) Call(ctx p.Context, args CompactArgs) (CompactResult, error) {
+func (*Compact) Call(_ p.Context, args CompactArgs) (CompactResult, error) {
 	output := make([]string, 0)
 	for _, value := range args.Input {
 		if value != "" {

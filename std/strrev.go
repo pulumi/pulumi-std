@@ -33,7 +33,7 @@ func (r *Strrev) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the given string with all of its Unicode characters in reverse order.")
 }
 
-func (*Strrev) Call(ctx p.Context, args StrrevArgs) (StrrevResult, error) {
+func (*Strrev) Call(_ p.Context, args StrrevArgs) (StrrevResult, error) {
 	in := []byte(args.Input)
 	out := make([]byte, len(in))
 	pos := len(out)

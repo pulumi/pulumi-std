@@ -35,6 +35,6 @@ func (r *Uuid) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a unique identifier string, generated and formatted as required by RFC 4122.")
 }
 
-func (*Uuid) Call(ctx p.Context, args UuidArgs) (UuidResult, error) {
+func (*Uuid) Call(_ p.Context, _ UuidArgs) (UuidResult, error) {
 	return UuidResult{uuid.New().String()}, nil
 }

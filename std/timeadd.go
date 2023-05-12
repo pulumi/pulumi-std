@@ -41,7 +41,7 @@ func (r *Timeadd) Annotate(a infer.Annotator) {
 	to provide a negative duration, i.e. "-2h15m".`)
 }
 
-func (*Timeadd) Call(ctx p.Context, args TimeaddArgs) (TimeaddResult, error) {
+func (*Timeadd) Call(_ p.Context, args TimeaddArgs) (TimeaddResult, error) {
 	duration, err := time.ParseDuration(args.Duration)
 	if err != nil {
 		return TimeaddResult{}, err

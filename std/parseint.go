@@ -33,12 +33,12 @@ type ParseintResult struct {
 }
 
 func (r *Parseint) Annotate(a infer.Annotator) {
-	a.Describe(r, `Parses the given string as a representation of an integer in the specified base 
+	a.Describe(r, `Parses the given string as a representation of an integer in the specified base
 and returns the resulting number. The base must be between 2 and 62 inclusive.
 	.`)
 }
 
-func (*Parseint) Call(ctx p.Context, args ParseintArgs) (ParseintResult, error) {
+func (*Parseint) Call(_ p.Context, args ParseintArgs) (ParseintResult, error) {
 	base := 10
 	if args.Base != nil {
 		base = *args.Base

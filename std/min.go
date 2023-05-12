@@ -35,7 +35,7 @@ func (r *Min) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the smallest of the floats.")
 }
 
-func (*Min) Call(ctx p.Context, args MinArgs) (MinResult, error) {
+func (*Min) Call(_ p.Context, args MinArgs) (MinResult, error) {
 	if len(args.Input) == 0 {
 		return MinResult{}, fmt.Errorf("input list must not be empty")
 	}
