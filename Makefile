@@ -42,7 +42,10 @@ build_nodejs_sdk: gen_nodejs_sdk
 		yarn run tsc --version && \
 		yarn run tsc
 	cp README.md LICENSE sdk/nodejs/package.json sdk/nodejs/yarn.lock sdk/nodejs/bin/
+	mkdir -p sdk/nodejs/bin/scripts/
+	cp sdk/nodejs/scripts/install-pulumi-plugin.js sdk/nodejs/bin/scripts/
 	sed -i.bak 's/$${VERSION}/$(VERSION)/g' sdk/nodejs/bin/package.json
+	rm sdk/nodejs/bin/package.json.bak
 
 build_python_sdk: gen_python_sdk
 	cd sdk/python/ && \
