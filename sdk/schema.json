@@ -1,7 +1,7 @@
 {
   "name": "std",
   "displayName": "StandardLibrary",
-  "version": "0.1.1-alpha.1683893791+7b7a4780.dirty",
+  "version": "1.2.0",
   "description": "Standard library functions",
   "homepage": "https://github.com/pulumi/pulumi-std",
   "repository": "https://github.com/pulumi/pulumi-std",
@@ -27,7 +27,7 @@
   },
   "functions": {
     "std:index:abs": {
-      "description": "Returns the absolute value of a given float. \nExample: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.",
+      "description": "Returns the absolute value of a given float.\nExample: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.",
       "inputs": {
         "properties": {
           "input": {
@@ -77,7 +77,7 @@
       }
     },
     "std:index:alltrue": {
-      "description": "Returns true if all elements in a given collection are true or \\\"true\\\". \nIt also returns true if the collection is empty.",
+      "description": "Returns true if all elements in a given collection are true or \\\"true\\\".\nIt also returns true if the collection is empty.",
       "inputs": {
         "properties": {
           "input": {
@@ -105,7 +105,7 @@
       }
     },
     "std:index:anytrue": {
-      "description": "Returns true if any of the elements in a given collection are true or \\\"true\\\". \nIt also returns false if the collection is empty.",
+      "description": "Returns true if any of the elements in a given collection are true or \\\"true\\\".\nIt also returns false if the collection is empty.",
       "inputs": {
         "properties": {
           "input": {
@@ -208,7 +208,7 @@
       }
     },
     "std:index:base64sha256": {
-      "description": "Returns a base64-encoded representation of raw SHA-256 sum of the given string. \nThis is not equivalent of base64encode(sha256(string)) since sha256() returns hexadecimal representation.",
+      "description": "Returns a base64-encoded representation of raw SHA-256 sum of the given string.\nThis is not equivalent of base64encode(sha256(string)) since sha256() returns hexadecimal representation.",
       "inputs": {
         "properties": {
           "input": {
@@ -233,7 +233,7 @@
       }
     },
     "std:index:base64sha512": {
-      "description": "Returns a base64-encoded representation of raw SHA-512 sum of the given string. \nThis is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.",
+      "description": "Returns a base64-encoded representation of raw SHA-512 sum of the given string.\nThis is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.",
       "inputs": {
         "properties": {
           "input": {
@@ -283,7 +283,7 @@
       }
     },
     "std:index:bcrypt": {
-      "description": "Returns the Blowfish encrypted hash of the string at the given cost. \nA default cost of 10 will be used if not provided.",
+      "description": "Returns the Blowfish encrypted hash of the string at the given cost.\nA default cost of 10 will be used if not provided.",
       "inputs": {
         "properties": {
           "cost": {
@@ -396,7 +396,7 @@
       }
     },
     "std:index:cidrhost": {
-      "description": "Takes an IP address range in CIDR notation as input \nand creates an IP address with the given host number. \nIf given host number is negative, the count starts from the end of the range. \nFor example, cidrhost(\"10.0.0.0/8\", 2) returns 10.0.0.2 and cidrhost(\"10.0.0.0/8\", -2) returns 10.255.255.254.",
+      "description": "Takes an IP address range in CIDR notation as input\nand creates an IP address with the given host number.\nIf given host number is negative, the count starts from the end of the range.\nFor example, cidrhost(\"10.0.0.0/8\", 2) returns 10.0.0.2 and cidrhost(\"10.0.0.0/8\", -2) returns 10.255.255.254.",
       "inputs": {
         "properties": {
           "host": {
@@ -425,7 +425,7 @@
       }
     },
     "std:index:cidrnetmask": {
-      "description": "Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format \nthat some systems expect for IPv4 interfaces. \nFor example, cidrnetmask(\"10.0.0.0/8\") returns 255.0.0.0. \nNot applicable to IPv6 networks since CIDR notation is the only valid notation for IPv6.",
+      "description": "Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format\nthat some systems expect for IPv4 interfaces.\nFor example, cidrnetmask(\"10.0.0.0/8\") returns 255.0.0.0.\nNot applicable to IPv6 networks since CIDR notation is the only valid notation for IPv6.",
       "inputs": {
         "properties": {
           "input": {
@@ -450,7 +450,7 @@
       }
     },
     "std:index:cidrsubnet": {
-      "description": "Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix \nto include an additional subnet number. For example, cidrsubnet(\"10.0.0.0/8\", 8, 2) returns 10.2.0.0/16; \ncidrsubnet(\"2607:f298:6051:516c::/64\", 8, 2) returns 2607:f298:6051:516c:200::/72.",
+      "description": "Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix\nto include an additional subnet number. For example, cidrsubnet(\"10.0.0.0/8\", 8, 2) returns 10.2.0.0/16;\ncidrsubnet(\"2607:f298:6051:516c::/64\", 8, 2) returns 2607:f298:6051:516c:200::/72.",
       "inputs": {
         "properties": {
           "input": {
@@ -642,7 +642,7 @@
       }
     },
     "std:index:csvdecode": {
-      "description": "Decodes a string containing CSV-formatted data and produces a list of maps representing that data.\n\tThe first line of the CSV data is interpreted as a \"header\" row: the values given \n\tare used as the keys in the resulting maps. \n\tEach subsequent line becomes a single map in the resulting list, \n\tmatching the keys from the header row with the given values by index. \n\tAll lines in the file must contain the same number of fields, \n\tor this function will produce an error.\n\tFollows the format defined in RFC 4180.",
+      "description": "Decodes a string containing CSV-formatted data and produces a list of maps representing that data.\n\tThe first line of the CSV data is interpreted as a \"header\" row: the values given\n\tare used as the keys in the resulting maps.\n\tEach subsequent line becomes a single map in the resulting list,\n\tmatching the keys from the header row with the given values by index.\n\tAll lines in the file must contain the same number of fields,\n\tor this function will produce an error.\n\tFollows the format defined in RFC 4180.",
       "inputs": {
         "properties": {
           "input": {
@@ -1015,7 +1015,7 @@
       }
     },
     "std:index:flatten": {
-      "description": "Flattens lists of lists down to a flat list of primitive values, \neliminating any nested lists recursively.",
+      "description": "Flattens lists of lists down to a flat list of primitive values,\neliminating any nested lists recursively.",
       "inputs": {
         "properties": {
           "input": {
@@ -1221,7 +1221,7 @@
       }
     },
     "std:index:jsonencode": {
-      "description": "Returns a JSON-encoded representation of the given value, \nwhich can contain arbitrarily-nested lists and maps. \nNote that if the value is a string then its value will be placed in quotes.",
+      "description": "Returns a JSON-encoded representation of the given value,\nwhich can contain arbitrarily-nested lists and maps.\nNote that if the value is a string then its value will be placed in quotes.",
       "inputs": {
         "properties": {
           "input": {
@@ -1422,7 +1422,7 @@
       }
     },
     "std:index:matchkeys": {
-      "description": "For two lists values and keys of equal length, \nreturns all elements from values where the corresponding element from keys exists in the searchset list.",
+      "description": "For two lists values and keys of equal length,\nreturns all elements from values where the corresponding element from keys exists in the searchset list.",
       "inputs": {
         "properties": {
           "searchList": {
@@ -1513,7 +1513,7 @@
       }
     },
     "std:index:merge": {
-      "description": "Returns the union of 2 or more maps. The maps are consumed in the order provided, \nand duplicate keys overwrite previous entries.",
+      "description": "Returns the union of 2 or more maps. The maps are consumed in the order provided,\nand duplicate keys overwrite previous entries.",
       "inputs": {
         "properties": {
           "input": {
@@ -1575,7 +1575,7 @@
       }
     },
     "std:index:parseint": {
-      "description": "Parses the given string as a representation of an integer in the specified base \nand returns the resulting number. The base must be between 2 and 62 inclusive.\n\t.",
+      "description": "Parses the given string as a representation of an integer in the specified base\nand returns the resulting number. The base must be between 2 and 62 inclusive.\n\t.",
       "inputs": {
         "properties": {
           "base": {
@@ -1657,7 +1657,7 @@
       }
     },
     "std:index:range": {
-      "description": "Generates a list of numbers using a start value, a limit value, and a step value. \nStart and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one \ndepending on whether limit is greater than or less than start.",
+      "description": "Generates a list of numbers using a start value, a limit value, and a step value.\nStart and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one\ndepending on whether limit is greater than or less than start.",
       "inputs": {
         "properties": {
           "limit": {
@@ -1691,7 +1691,7 @@
       }
     },
     "std:index:replace": {
-      "description": "Does a search and replace on the given string. \nAll instances of search are replaced with the value of replace. \nIf search is wrapped in forward slashes, it is treated as a regular expression. \nIf using a regular expression, replace can reference subcaptures in the regular expression by \nusing $n where n is the index or name of the subcapture. If using a regular expression, \nthe syntax conforms to the re2 regular expression syntax.",
+      "description": "Does a search and replace on the given string.\nAll instances of search are replaced with the value of replace.\nIf search is wrapped in forward slashes, it is treated as a regular expression.\nIf using a regular expression, replace can reference subcaptures in the regular expression by\nusing $n where n is the index or name of the subcapture. If using a regular expression,\nthe syntax conforms to the re2 regular expression syntax.",
       "inputs": {
         "properties": {
           "replace": {
@@ -1755,7 +1755,7 @@
       }
     },
     "std:index:rsadecrypt": {
-      "description": "Decrypts an RSA-encrypted ciphertext. \nThe cipher text must be base64-encoded and the key must be in PEM format.",
+      "description": "Decrypts an RSA-encrypted ciphertext.\nThe cipher text must be base64-encoded and the key must be in PEM format.",
       "inputs": {
         "properties": {
           "cipherText": {
