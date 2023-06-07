@@ -12,16 +12,16 @@ namespace Pulumi.Std
     public static class Jsonencode
     {
         /// <summary>
-        /// Returns a JSON-encoded representation of the given value, 
-        /// which can contain arbitrarily-nested lists and maps. 
+        /// Returns a JSON-encoded representation of the given value,
+        /// which can contain arbitrarily-nested lists and maps.
         /// Note that if the value is a string then its value will be placed in quotes.
         /// </summary>
         public static Task<JsonencodeResult> InvokeAsync(JsonencodeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<JsonencodeResult>("std:index:jsonencode", args ?? new JsonencodeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns a JSON-encoded representation of the given value, 
-        /// which can contain arbitrarily-nested lists and maps. 
+        /// Returns a JSON-encoded representation of the given value,
+        /// which can contain arbitrarily-nested lists and maps.
         /// Note that if the value is a string then its value will be placed in quotes.
         /// </summary>
         public static Output<JsonencodeResult> Invoke(JsonencodeInvokeArgs args, InvokeOptions? options = null)

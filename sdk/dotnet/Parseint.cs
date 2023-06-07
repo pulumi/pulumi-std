@@ -12,7 +12,7 @@ namespace Pulumi.Std
     public static class Parseint
     {
         /// <summary>
-        /// Parses the given string as a representation of an integer in the specified base 
+        /// Parses the given string as a representation of an integer in the specified base
         /// and returns the resulting number. The base must be between 2 and 62 inclusive.
         /// 	.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.Std
             => global::Pulumi.Deployment.Instance.InvokeAsync<ParseintResult>("std:index:parseint", args ?? new ParseintArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Parses the given string as a representation of an integer in the specified base 
+        /// Parses the given string as a representation of an integer in the specified base
         /// and returns the resulting number. The base must be between 2 and 62 inclusive.
         /// 	.
         /// </summary>

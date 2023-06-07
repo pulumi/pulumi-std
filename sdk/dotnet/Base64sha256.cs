@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Base64sha256
     {
         /// <summary>
-        /// Returns a base64-encoded representation of raw SHA-256 sum of the given string. 
+        /// Returns a base64-encoded representation of raw SHA-256 sum of the given string.
         /// This is not equivalent of base64encode(sha256(string)) since sha256() returns hexadecimal representation.
         /// </summary>
         public static Task<Base64sha256Result> InvokeAsync(Base64sha256Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<Base64sha256Result>("std:index:base64sha256", args ?? new Base64sha256Args(), options.WithDefaults());
 
         /// <summary>
-        /// Returns a base64-encoded representation of raw SHA-256 sum of the given string. 
+        /// Returns a base64-encoded representation of raw SHA-256 sum of the given string.
         /// This is not equivalent of base64encode(sha256(string)) since sha256() returns hexadecimal representation.
         /// </summary>
         public static Output<Base64sha256Result> Invoke(Base64sha256InvokeArgs args, InvokeOptions? options = null)

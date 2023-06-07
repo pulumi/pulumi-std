@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Merge
     {
         /// <summary>
-        /// Returns the union of 2 or more maps. The maps are consumed in the order provided, 
+        /// Returns the union of 2 or more maps. The maps are consumed in the order provided,
         /// and duplicate keys overwrite previous entries.
         /// </summary>
         public static Task<MergeResult> InvokeAsync(MergeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<MergeResult>("std:index:merge", args ?? new MergeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the union of 2 or more maps. The maps are consumed in the order provided, 
+        /// Returns the union of 2 or more maps. The maps are consumed in the order provided,
         /// and duplicate keys overwrite previous entries.
         /// </summary>
         public static Output<MergeResult> Invoke(MergeInvokeArgs args, InvokeOptions? options = null)

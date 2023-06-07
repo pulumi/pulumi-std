@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Matchkeys
     {
         /// <summary>
-        /// For two lists values and keys of equal length, 
+        /// For two lists values and keys of equal length,
         /// returns all elements from values where the corresponding element from keys exists in the searchset list.
         /// </summary>
         public static Task<MatchkeysResult> InvokeAsync(MatchkeysArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<MatchkeysResult>("std:index:matchkeys", args ?? new MatchkeysArgs(), options.WithDefaults());
 
         /// <summary>
-        /// For two lists values and keys of equal length, 
+        /// For two lists values and keys of equal length,
         /// returns all elements from values where the corresponding element from keys exists in the searchset list.
         /// </summary>
         public static Output<MatchkeysResult> Invoke(MatchkeysInvokeArgs args, InvokeOptions? options = null)

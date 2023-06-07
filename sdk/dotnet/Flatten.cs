@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Flatten
     {
         /// <summary>
-        /// Flattens lists of lists down to a flat list of primitive values, 
+        /// Flattens lists of lists down to a flat list of primitive values,
         /// eliminating any nested lists recursively.
         /// </summary>
         public static Task<FlattenResult> InvokeAsync(FlattenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<FlattenResult>("std:index:flatten", args ?? new FlattenArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Flattens lists of lists down to a flat list of primitive values, 
+        /// Flattens lists of lists down to a flat list of primitive values,
         /// eliminating any nested lists recursively.
         /// </summary>
         public static Output<FlattenResult> Invoke(FlattenInvokeArgs args, InvokeOptions? options = null)

@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Bcrypt
     {
         /// <summary>
-        /// Returns the Blowfish encrypted hash of the string at the given cost. 
+        /// Returns the Blowfish encrypted hash of the string at the given cost.
         /// A default cost of 10 will be used if not provided.
         /// </summary>
         public static Task<BcryptResult> InvokeAsync(BcryptArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<BcryptResult>("std:index:bcrypt", args ?? new BcryptArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the Blowfish encrypted hash of the string at the given cost. 
+        /// Returns the Blowfish encrypted hash of the string at the given cost.
         /// A default cost of 10 will be used if not provided.
         /// </summary>
         public static Output<BcryptResult> Invoke(BcryptInvokeArgs args, InvokeOptions? options = null)
