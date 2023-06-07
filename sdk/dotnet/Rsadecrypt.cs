@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Rsadecrypt
     {
         /// <summary>
-        /// Decrypts an RSA-encrypted ciphertext. 
+        /// Decrypts an RSA-encrypted ciphertext.
         /// The cipher text must be base64-encoded and the key must be in PEM format.
         /// </summary>
         public static Task<RsadecryptResult> InvokeAsync(RsadecryptArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<RsadecryptResult>("std:index:rsadecrypt", args ?? new RsadecryptArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Decrypts an RSA-encrypted ciphertext. 
+        /// Decrypts an RSA-encrypted ciphertext.
         /// The cipher text must be base64-encoded and the key must be in PEM format.
         /// </summary>
         public static Output<RsadecryptResult> Invoke(RsadecryptInvokeArgs args, InvokeOptions? options = null)

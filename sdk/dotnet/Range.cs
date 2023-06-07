@@ -12,16 +12,16 @@ namespace Pulumi.Std
     public static class Range
     {
         /// <summary>
-        /// Generates a list of numbers using a start value, a limit value, and a step value. 
-        /// Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one 
+        /// Generates a list of numbers using a start value, a limit value, and a step value.
+        /// Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one
         /// depending on whether limit is greater than or less than start.
         /// </summary>
         public static Task<RangeResult> InvokeAsync(RangeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<RangeResult>("std:index:range", args ?? new RangeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Generates a list of numbers using a start value, a limit value, and a step value. 
-        /// Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one 
+        /// Generates a list of numbers using a start value, a limit value, and a step value.
+        /// Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one
         /// depending on whether limit is greater than or less than start.
         /// </summary>
         public static Output<RangeResult> Invoke(RangeInvokeArgs args, InvokeOptions? options = null)

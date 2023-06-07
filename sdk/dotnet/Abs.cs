@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Abs
     {
         /// <summary>
-        /// Returns the absolute value of a given float. 
+        /// Returns the absolute value of a given float.
         /// Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.
         /// </summary>
         public static Task<AbsResult> InvokeAsync(AbsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<AbsResult>("std:index:abs", args ?? new AbsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the absolute value of a given float. 
+        /// Returns the absolute value of a given float.
         /// Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.
         /// </summary>
         public static Output<AbsResult> Invoke(AbsInvokeArgs args, InvokeOptions? options = null)

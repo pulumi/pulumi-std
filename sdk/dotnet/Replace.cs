@@ -12,22 +12,22 @@ namespace Pulumi.Std
     public static class Replace
     {
         /// <summary>
-        /// Does a search and replace on the given string. 
-        /// All instances of search are replaced with the value of replace. 
-        /// If search is wrapped in forward slashes, it is treated as a regular expression. 
-        /// If using a regular expression, replace can reference subcaptures in the regular expression by 
-        /// using $n where n is the index or name of the subcapture. If using a regular expression, 
+        /// Does a search and replace on the given string.
+        /// All instances of search are replaced with the value of replace.
+        /// If search is wrapped in forward slashes, it is treated as a regular expression.
+        /// If using a regular expression, replace can reference subcaptures in the regular expression by
+        /// using $n where n is the index or name of the subcapture. If using a regular expression,
         /// the syntax conforms to the re2 regular expression syntax.
         /// </summary>
         public static Task<ReplaceResult> InvokeAsync(ReplaceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<ReplaceResult>("std:index:replace", args ?? new ReplaceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Does a search and replace on the given string. 
-        /// All instances of search are replaced with the value of replace. 
-        /// If search is wrapped in forward slashes, it is treated as a regular expression. 
-        /// If using a regular expression, replace can reference subcaptures in the regular expression by 
-        /// using $n where n is the index or name of the subcapture. If using a regular expression, 
+        /// Does a search and replace on the given string.
+        /// All instances of search are replaced with the value of replace.
+        /// If search is wrapped in forward slashes, it is treated as a regular expression.
+        /// If using a regular expression, replace can reference subcaptures in the regular expression by
+        /// using $n where n is the index or name of the subcapture. If using a regular expression,
         /// the syntax conforms to the re2 regular expression syntax.
         /// </summary>
         public static Output<ReplaceResult> Invoke(ReplaceInvokeArgs args, InvokeOptions? options = null)

@@ -12,14 +12,14 @@ namespace Pulumi.Std
     public static class Anytrue
     {
         /// <summary>
-        /// Returns true if any of the elements in a given collection are true or \"true\". 
+        /// Returns true if any of the elements in a given collection are true or \"true\".
         /// It also returns false if the collection is empty.
         /// </summary>
         public static Task<AnytrueResult> InvokeAsync(AnytrueArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<AnytrueResult>("std:index:anytrue", args ?? new AnytrueArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns true if any of the elements in a given collection are true or \"true\". 
+        /// Returns true if any of the elements in a given collection are true or \"true\".
         /// It also returns false if the collection is empty.
         /// </summary>
         public static Output<AnytrueResult> Invoke(AnytrueInvokeArgs args, InvokeOptions? options = null)
