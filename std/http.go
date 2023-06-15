@@ -107,10 +107,14 @@ func (*Http) Call(ctx p.Context, args HttpArgs) (HttpResult, error) {
 		retryClient.RetryWaitMax = time.Duration(maxDelayMs) * time.Millisecond
 	}
 
+	requestBody := ""
+	if args.RequestBody != nil {
+		requestBody = *args.RequestBody
+	}
 	request, err := retryablehttp.NewRequestWithContext(ctx,
 		args.Method,
 		args.Url,
-		args.RequestBody)
+		strings.NewReader(requestBody))
 
 	if err != nil {
 		return HttpResult{}, fmt.Errorf("Can't create http request: %w", err)
