@@ -200,6 +200,11 @@ export const format: typeof import("./format").format = null as any;
 export const formatOutput: typeof import("./format").formatOutput = null as any;
 utilities.lazyLoad(exports, ["format","formatOutput"], () => require("./format"));
 
+export { HttpArgs, HttpResult, HttpOutputArgs } from "./http";
+export const http: typeof import("./http").http = null as any;
+export const httpOutput: typeof import("./http").httpOutput = null as any;
+utilities.lazyLoad(exports, ["http","httpOutput"], () => require("./http"));
+
 export { IndentArgs, IndentResult, IndentOutputArgs } from "./indent";
 export const indent: typeof import("./indent").indent = null as any;
 export const indentOutput: typeof import("./indent").indentOutput = null as any;

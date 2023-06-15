@@ -1102,6 +1102,80 @@
         ]
       }
     },
+    "std:index:http": {
+      "description": "Performs an HTTP request and returns the response.",
+      "inputs": {
+        "properties": {
+          "attempts": {
+            "type": "integer"
+          },
+          "caCertPem": {
+            "type": "string"
+          },
+          "insecure": {
+            "type": "boolean"
+          },
+          "maxDelayMs": {
+            "type": "integer"
+          },
+          "method": {
+            "type": "string"
+          },
+          "minDelayMs": {
+            "type": "integer"
+          },
+          "requestBody": {
+            "type": "string"
+          },
+          "requestHeaders": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "requestTimeoutMs": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "url"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "responseBody": {
+            "type": "string"
+          },
+          "responseBodyBase64": {
+            "type": "string"
+          },
+          "responseHeaders": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "statusCode": {
+            "type": "integer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "responseBody",
+          "responseBodyBase64",
+          "responseHeaders",
+          "statusCode"
+        ]
+      }
+    },
     "std:index:indent": {
       "description": "Adds a given number of spaces after each newline character in the given string.",
       "inputs": {

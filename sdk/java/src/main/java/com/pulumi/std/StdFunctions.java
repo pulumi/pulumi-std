@@ -86,6 +86,8 @@ import com.pulumi.std.inputs.FloorArgs;
 import com.pulumi.std.inputs.FloorPlainArgs;
 import com.pulumi.std.inputs.FormatArgs;
 import com.pulumi.std.inputs.FormatPlainArgs;
+import com.pulumi.std.inputs.HttpArgs;
+import com.pulumi.std.inputs.HttpPlainArgs;
 import com.pulumi.std.inputs.IndentArgs;
 import com.pulumi.std.inputs.IndentPlainArgs;
 import com.pulumi.std.inputs.IndexArgs;
@@ -231,6 +233,7 @@ import com.pulumi.std.outputs.Filesha512Result;
 import com.pulumi.std.outputs.FlattenResult;
 import com.pulumi.std.outputs.FloorResult;
 import com.pulumi.std.outputs.FormatResult;
+import com.pulumi.std.outputs.HttpResult;
 import com.pulumi.std.outputs.IndentResult;
 import com.pulumi.std.outputs.IndexResult;
 import com.pulumi.std.outputs.JoinResult;
@@ -1470,6 +1473,34 @@ public final class StdFunctions {
      */
     public static CompletableFuture<FormatResult> formatPlain(FormatPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("std:index:format", TypeShape.of(FormatResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Performs an HTTP request and returns the response.
+     * 
+     */
+    public static Output<HttpResult> http(HttpArgs args) {
+        return http(args, InvokeOptions.Empty);
+    }
+    /**
+     * Performs an HTTP request and returns the response.
+     * 
+     */
+    public static CompletableFuture<HttpResult> httpPlain(HttpPlainArgs args) {
+        return httpPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Performs an HTTP request and returns the response.
+     * 
+     */
+    public static Output<HttpResult> http(HttpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("std:index:http", TypeShape.of(HttpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Performs an HTTP request and returns the response.
+     * 
+     */
+    public static CompletableFuture<HttpResult> httpPlain(HttpPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("std:index:http", TypeShape.of(HttpResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Adds a given number of spaces after each newline character in the given string.

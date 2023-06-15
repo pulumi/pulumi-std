@@ -44,6 +44,7 @@ from .filesha512 import *
 from .flatten import *
 from .floor import *
 from .format import *
+from .http import *
 from .indent import *
 from .index import *
 from .join import *

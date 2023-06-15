@@ -109,3 +109,6 @@
 - [tonumber](std/tonumber.go)
 - [toset](std/toset.go)
 - [tostring](std/tostring.go)
+
+## Miscellaneous functions:
+- [http](std/http.go)

@@ -52,6 +52,7 @@
         "flatten.ts",
         "floor.ts",
         "format.ts",
+        "http.ts",
         "indent.ts",
         "index.ts",
         "index_.ts",
