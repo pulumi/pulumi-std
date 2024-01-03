@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      # Fixes `error obtaining VCS status: exit status 128`
+      # https://github.com/golangci/golangci-lint/issues/4033
+      - run: git config --global --add safe.directory $GITHUB_WORKSPACE
       - name: Lint
         # TODO: Enable linting after a cleanup commit.
         # Avoiding in this commit so as to not mix code changes w/ CI changes.
