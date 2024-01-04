@@ -35,6 +35,9 @@ func Provider() p.Provider {
 						"@pulumi/pulumi": "^3.0.0",
 					},
 				},
+				"go": map[string]any{
+					"importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std",
+				},
 				"csharp": map[string]any{
 					"packageReferences": map[string]string{
 						"Pulumi": "3.*",

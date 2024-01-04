@@ -15,6 +15,9 @@
         "Pulumi": "3.*"
       }
     },
+    "go": {
+      "importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std"
+    },
     "nodejs": {
       "dependencies": {
         "@pulumi/pulumi": "^3.0.0"
