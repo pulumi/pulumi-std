@@ -15,8 +15,8 @@ env:
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
   PUBLISH_NUGET: true
-  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-  PYPI_USERNAME: "pulumi"
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  PYPI_USERNAME: __token__
   PUBLISH_PYPI: true
   JAVAVERSION: "11"
   PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
