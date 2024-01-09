@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 1.6.0 (2024-01-08)
+
+### Improvements 
+
+- Upgrade Go dependencies (go-git, grpc, x/crypto, x/net, cloudflare/circl).
+
 ## 1.5.0 (2024-01-04)
 
 ### Improvements 
