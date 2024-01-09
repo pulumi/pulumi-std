@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes the specified set of characters from the start and end of the given string.
 func Trim(ctx *pulumi.Context, args *TrimArgs, opts ...pulumi.InvokeOption) (*TrimResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TrimResult
 	err := ctx.Invoke("std:index:trim", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o TrimResultOutput) ToTrimResultOutput() TrimResultOutput {
 
 func (o TrimResultOutput) ToTrimResultOutputWithContext(ctx context.Context) TrimResultOutput {
 	return o
+}
+
+func (o TrimResultOutput) ToOutput(ctx context.Context) pulumix.Output[TrimResult] {
+	return pulumix.Output[TrimResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrimResultOutput) Result() pulumi.StringOutput {

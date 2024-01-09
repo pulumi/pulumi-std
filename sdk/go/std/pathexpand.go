@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a filepath string with ~ expanded to the home directory.
 func Pathexpand(ctx *pulumi.Context, args *PathexpandArgs, opts ...pulumi.InvokeOption) (*PathexpandResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv PathexpandResult
 	err := ctx.Invoke("std:index:pathexpand", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o PathexpandResultOutput) ToPathexpandResultOutput() PathexpandResultOutpu
 
 func (o PathexpandResultOutput) ToPathexpandResultOutputWithContext(ctx context.Context) PathexpandResultOutput {
 	return o
+}
+
+func (o PathexpandResultOutput) ToOutput(ctx context.Context) pulumix.Output[PathexpandResult] {
+	return pulumix.Output[PathexpandResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PathexpandResultOutput) Result() pulumi.StringOutput {

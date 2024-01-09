@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of the values of the map.
 func Values(ctx *pulumi.Context, args *ValuesArgs, opts ...pulumi.InvokeOption) (*ValuesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv ValuesResult
 	err := ctx.Invoke("std:index:values", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o ValuesResultOutput) ToValuesResultOutput() ValuesResultOutput {
 
 func (o ValuesResultOutput) ToValuesResultOutputWithContext(ctx context.Context) ValuesResultOutput {
 	return o
+}
+
+func (o ValuesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ValuesResult] {
+	return pulumix.Output[ValuesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ValuesResultOutput) Result() pulumi.ArrayOutput {

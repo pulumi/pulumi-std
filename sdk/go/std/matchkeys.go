@@ -7,12 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // For two lists values and keys of equal length,
 // returns all elements from values where the corresponding element from keys exists in the searchset list.
 func Matchkeys(ctx *pulumi.Context, args *MatchkeysArgs, opts ...pulumi.InvokeOption) (*MatchkeysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv MatchkeysResult
 	err := ctx.Invoke("std:index:matchkeys", args, &rv, opts...)
 	if err != nil {
@@ -64,6 +67,12 @@ func (o MatchkeysResultOutput) ToMatchkeysResultOutput() MatchkeysResultOutput {
 
 func (o MatchkeysResultOutput) ToMatchkeysResultOutputWithContext(ctx context.Context) MatchkeysResultOutput {
 	return o
+}
+
+func (o MatchkeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[MatchkeysResult] {
+	return pulumix.Output[MatchkeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MatchkeysResultOutput) Result() pulumi.StringArrayOutput {

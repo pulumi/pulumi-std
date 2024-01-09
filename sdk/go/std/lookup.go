@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Performs a dynamic lookup into a map variable.
 func Lookup(ctx *pulumi.Context, args *LookupArgs, opts ...pulumi.InvokeOption) (*LookupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResult
 	err := ctx.Invoke("std:index:lookup", args, &rv, opts...)
 	if err != nil {
@@ -65,6 +68,12 @@ func (o LookupResultOutput) ToLookupResultOutput() LookupResultOutput {
 
 func (o LookupResultOutput) ToLookupResultOutputWithContext(ctx context.Context) LookupResultOutput {
 	return o
+}
+
+func (o LookupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResult] {
+	return pulumix.Output[LookupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupResultOutput) Result() pulumi.AnyOutput {

@@ -7,12 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a base64-encoded representation of raw SHA-512 sum of the given string.
 // This is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.
 func Base64sha512(ctx *pulumi.Context, args *Base64sha512Args, opts ...pulumi.InvokeOption) (*Base64sha512Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv Base64sha512Result
 	err := ctx.Invoke("std:index:base64sha512", args, &rv, opts...)
 	if err != nil {
@@ -62,6 +65,12 @@ func (o Base64sha512ResultOutput) ToBase64sha512ResultOutput() Base64sha512Resul
 
 func (o Base64sha512ResultOutput) ToBase64sha512ResultOutputWithContext(ctx context.Context) Base64sha512ResultOutput {
 	return o
+}
+
+func (o Base64sha512ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Base64sha512Result] {
+	return pulumix.Output[Base64sha512Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Base64sha512ResultOutput) Result() pulumi.StringOutput {

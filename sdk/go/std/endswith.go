@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Determines if the input string ends with the suffix.
 func Endswith(ctx *pulumi.Context, args *EndswithArgs, opts ...pulumi.InvokeOption) (*EndswithResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv EndswithResult
 	err := ctx.Invoke("std:index:endswith", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o EndswithResultOutput) ToEndswithResultOutput() EndswithResultOutput {
 
 func (o EndswithResultOutput) ToEndswithResultOutputWithContext(ctx context.Context) EndswithResultOutput {
 	return o
+}
+
+func (o EndswithResultOutput) ToOutput(ctx context.Context) pulumix.Output[EndswithResult] {
+	return pulumix.Output[EndswithResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndswithResultOutput) Result() pulumi.BoolOutput {

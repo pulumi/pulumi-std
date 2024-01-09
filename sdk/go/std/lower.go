@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a copy of the string with all Unicode letters mapped to their lower case.
 func Lower(ctx *pulumi.Context, args *LowerArgs, opts ...pulumi.InvokeOption) (*LowerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LowerResult
 	err := ctx.Invoke("std:index:lower", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o LowerResultOutput) ToLowerResultOutput() LowerResultOutput {
 
 func (o LowerResultOutput) ToLowerResultOutputWithContext(ctx context.Context) LowerResultOutput {
 	return o
+}
+
+func (o LowerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LowerResult] {
+	return pulumix.Output[LowerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LowerResultOutput) Result() pulumi.StringOutput {

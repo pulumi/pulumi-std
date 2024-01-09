@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the element at the specified index.
 func Element(ctx *pulumi.Context, args *ElementArgs, opts ...pulumi.InvokeOption) (*ElementResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv ElementResult
 	err := ctx.Invoke("std:index:element", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o ElementResultOutput) ToElementResultOutput() ElementResultOutput {
 
 func (o ElementResultOutput) ToElementResultOutputWithContext(ctx context.Context) ElementResultOutput {
 	return o
+}
+
+func (o ElementResultOutput) ToOutput(ctx context.Context) pulumix.Output[ElementResult] {
+	return pulumix.Output[ElementResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElementResultOutput) Result() pulumi.AnyOutput {

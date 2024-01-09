@@ -7,12 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Decrypts an RSA-encrypted ciphertext.
 // The cipher text must be base64-encoded and the key must be in PEM format.
 func Rsadecrypt(ctx *pulumi.Context, args *RsadecryptArgs, opts ...pulumi.InvokeOption) (*RsadecryptResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv RsadecryptResult
 	err := ctx.Invoke("std:index:rsadecrypt", args, &rv, opts...)
 	if err != nil {
@@ -64,6 +67,12 @@ func (o RsadecryptResultOutput) ToRsadecryptResultOutput() RsadecryptResultOutpu
 
 func (o RsadecryptResultOutput) ToRsadecryptResultOutputWithContext(ctx context.Context) RsadecryptResultOutput {
 	return o
+}
+
+func (o RsadecryptResultOutput) ToOutput(ctx context.Context) pulumix.Output[RsadecryptResult] {
+	return pulumix.Output[RsadecryptResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RsadecryptResultOutput) Result() pulumi.StringOutput {

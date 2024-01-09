@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Formats a string according to the given format. The syntax for the format is standard sprintf syntax.
 func Format(ctx *pulumi.Context, args *FormatArgs, opts ...pulumi.InvokeOption) (*FormatResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv FormatResult
 	err := ctx.Invoke("std:index:format", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o FormatResultOutput) ToFormatResultOutput() FormatResultOutput {
 
 func (o FormatResultOutput) ToFormatResultOutputWithContext(ctx context.Context) FormatResultOutput {
 	return o
+}
+
+func (o FormatResultOutput) ToOutput(ctx context.Context) pulumix.Output[FormatResult] {
+	return pulumix.Output[FormatResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FormatResultOutput) Result() pulumi.StringOutput {

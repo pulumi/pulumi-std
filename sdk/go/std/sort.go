@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of strings sorted lexicographically.
 func Sort(ctx *pulumi.Context, args *SortArgs, opts ...pulumi.InvokeOption) (*SortResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv SortResult
 	err := ctx.Invoke("std:index:sort", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o SortResultOutput) ToSortResultOutput() SortResultOutput {
 
 func (o SortResultOutput) ToSortResultOutputWithContext(ctx context.Context) SortResultOutput {
 	return o
+}
+
+func (o SortResultOutput) ToOutput(ctx context.Context) pulumix.Output[SortResult] {
+	return pulumix.Output[SortResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SortResultOutput) Result() pulumi.StringArrayOutput {

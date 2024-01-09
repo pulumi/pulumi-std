@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Reads the contents of a file into the string.
 func File(ctx *pulumi.Context, args *FileArgs, opts ...pulumi.InvokeOption) (*FileResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv FileResult
 	err := ctx.Invoke("std:index:file", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o FileResultOutput) ToFileResultOutput() FileResultOutput {
 
 func (o FileResultOutput) ToFileResultOutputWithContext(ctx context.Context) FileResultOutput {
 	return o
+}
+
+func (o FileResultOutput) ToOutput(ctx context.Context) pulumix.Output[FileResult] {
+	return pulumix.Output[FileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FileResultOutput) Result() pulumi.StringOutput {

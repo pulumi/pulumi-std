@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes empty string elements from a list.
 func Compact(ctx *pulumi.Context, args *CompactArgs, opts ...pulumi.InvokeOption) (*CompactResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CompactResult
 	err := ctx.Invoke("std:index:compact", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o CompactResultOutput) ToCompactResultOutput() CompactResultOutput {
 
 func (o CompactResultOutput) ToCompactResultOutputWithContext(ctx context.Context) CompactResultOutput {
 	return o
+}
+
+func (o CompactResultOutput) ToOutput(ctx context.Context) pulumix.Output[CompactResult] {
+	return pulumix.Output[CompactResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CompactResultOutput) Result() pulumi.StringArrayOutput {

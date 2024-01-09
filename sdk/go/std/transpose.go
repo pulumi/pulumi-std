@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.
 func Transpose(ctx *pulumi.Context, args *TransposeArgs, opts ...pulumi.InvokeOption) (*TransposeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TransposeResult
 	err := ctx.Invoke("std:index:transpose", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o TransposeResultOutput) ToTransposeResultOutput() TransposeResultOutput {
 
 func (o TransposeResultOutput) ToTransposeResultOutputWithContext(ctx context.Context) TransposeResultOutput {
 	return o
+}
+
+func (o TransposeResultOutput) ToOutput(ctx context.Context) pulumix.Output[TransposeResult] {
+	return pulumix.Output[TransposeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransposeResultOutput) Result() pulumi.StringArrayMapOutput {

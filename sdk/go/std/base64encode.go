@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a base64-encoded representation of the given string.
 func Base64encode(ctx *pulumi.Context, args *Base64encodeArgs, opts ...pulumi.InvokeOption) (*Base64encodeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv Base64encodeResult
 	err := ctx.Invoke("std:index:base64encode", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o Base64encodeResultOutput) ToBase64encodeResultOutput() Base64encodeResul
 
 func (o Base64encodeResultOutput) ToBase64encodeResultOutputWithContext(ctx context.Context) Base64encodeResultOutput {
 	return o
+}
+
+func (o Base64encodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[Base64encodeResult] {
+	return pulumix.Output[Base64encodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Base64encodeResultOutput) Result() pulumi.StringOutput {

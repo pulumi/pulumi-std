@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Compares two timestamps and returns a number that represents the ordering
@@ -19,6 +21,7 @@ import (
 //	If 'timestamp_a' is equal to 'timestamp_b', 0 is returned.
 //	If 'timestamp_a' is after 'timestamp_b', 1 is returned.
 func Timecmp(ctx *pulumi.Context, args *TimecmpArgs, opts ...pulumi.InvokeOption) (*TimecmpResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TimecmpResult
 	err := ctx.Invoke("std:index:timecmp", args, &rv, opts...)
 	if err != nil {
@@ -70,6 +73,12 @@ func (o TimecmpResultOutput) ToTimecmpResultOutput() TimecmpResultOutput {
 
 func (o TimecmpResultOutput) ToTimecmpResultOutputWithContext(ctx context.Context) TimecmpResultOutput {
 	return o
+}
+
+func (o TimecmpResultOutput) ToOutput(ctx context.Context) pulumix.Output[TimecmpResult] {
+	return pulumix.Output[TimecmpResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimecmpResultOutput) Result() pulumi.IntOutput {

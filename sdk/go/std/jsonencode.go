@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a JSON-encoded representation of the given value,
 // which can contain arbitrarily-nested lists and maps.
 // Note that if the value is a string then its value will be placed in quotes.
 func Jsonencode(ctx *pulumi.Context, args *JsonencodeArgs, opts ...pulumi.InvokeOption) (*JsonencodeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv JsonencodeResult
 	err := ctx.Invoke("std:index:jsonencode", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o JsonencodeResultOutput) ToJsonencodeResultOutput() JsonencodeResultOutpu
 
 func (o JsonencodeResultOutput) ToJsonencodeResultOutputWithContext(ctx context.Context) JsonencodeResultOutput {
 	return o
+}
+
+func (o JsonencodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[JsonencodeResult] {
+	return pulumix.Output[JsonencodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JsonencodeResultOutput) Result() pulumi.StringOutput {

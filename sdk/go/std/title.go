@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts the first letter of each word in the given string to uppercase.
 func Title(ctx *pulumi.Context, args *TitleArgs, opts ...pulumi.InvokeOption) (*TitleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TitleResult
 	err := ctx.Invoke("std:index:title", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o TitleResultOutput) ToTitleResultOutput() TitleResultOutput {
 
 func (o TitleResultOutput) ToTitleResultOutputWithContext(ctx context.Context) TitleResultOutput {
 	return o
+}
+
+func (o TitleResultOutput) ToOutput(ctx context.Context) pulumix.Output[TitleResult] {
+	return pulumix.Output[TitleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TitleResultOutput) Result() pulumi.StringOutput {

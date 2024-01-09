@@ -21,3 +21,9 @@ export interface UuidArgs {
 export interface UuidResult {
     readonly result: string;
 }
+/**
+ * Returns a unique identifier string, generated and formatted as required by RFC 4122.
+ */
+export function uuidOutput(opts?: pulumi.InvokeOptions): pulumi.Output<UuidResult> {
+    return pulumi.output(uuid(opts))
+}

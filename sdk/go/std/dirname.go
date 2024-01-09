@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns all but the last element of path, typically the path's directory.
 func Dirname(ctx *pulumi.Context, args *DirnameArgs, opts ...pulumi.InvokeOption) (*DirnameResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv DirnameResult
 	err := ctx.Invoke("std:index:dirname", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o DirnameResultOutput) ToDirnameResultOutput() DirnameResultOutput {
 
 func (o DirnameResultOutput) ToDirnameResultOutputWithContext(ctx context.Context) DirnameResultOutput {
 	return o
+}
+
+func (o DirnameResultOutput) ToOutput(ctx context.Context) pulumix.Output[DirnameResult] {
+	return pulumix.Output[DirnameResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DirnameResultOutput) Result() pulumi.StringOutput {

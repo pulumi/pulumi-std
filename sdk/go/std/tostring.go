@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts its argument to a string value. Only primitive types (string, number, bool)
 //
 //	and null can be converted to string. All other values will result in an error.
 func Tostring(ctx *pulumi.Context, args *TostringArgs, opts ...pulumi.InvokeOption) (*TostringResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TostringResult
 	err := ctx.Invoke("std:index:tostring", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o TostringResultOutput) ToTostringResultOutput() TostringResultOutput {
 
 func (o TostringResultOutput) ToTostringResultOutputWithContext(ctx context.Context) TostringResultOutput {
 	return o
+}
+
+func (o TostringResultOutput) ToOutput(ctx context.Context) pulumix.Output[TostringResult] {
+	return pulumix.Output[TostringResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TostringResultOutput) Result() pulumi.StringPtrOutput {

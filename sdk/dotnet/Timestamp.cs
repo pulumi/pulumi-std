@@ -16,6 +16,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Task<TimestampResult> InvokeAsync(TimestampArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<TimestampResult>("std:index:timestamp", args ?? new TimestampArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a UTC timestamp string of the current time in RFC 3339 format
+        /// </summary>
+        public static Output<TimestampResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<TimestampResult>("std:index:timestamp", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Produces a list by dividing a given string at all occurrences of a given separator
 func Split(ctx *pulumi.Context, args *SplitArgs, opts ...pulumi.InvokeOption) (*SplitResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv SplitResult
 	err := ctx.Invoke("std:index:split", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o SplitResultOutput) ToSplitResultOutput() SplitResultOutput {
 
 func (o SplitResultOutput) ToSplitResultOutputWithContext(ctx context.Context) SplitResultOutput {
 	return o
+}
+
+func (o SplitResultOutput) ToOutput(ctx context.Context) pulumix.Output[SplitResult] {
+	return pulumix.Output[SplitResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SplitResultOutput) Result() pulumi.StringArrayOutput {

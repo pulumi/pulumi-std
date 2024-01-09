@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Compresses the given string with gzip and then encodes the result to base64.
 func Base64gzip(ctx *pulumi.Context, args *Base64gzipArgs, opts ...pulumi.InvokeOption) (*Base64gzipResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv Base64gzipResult
 	err := ctx.Invoke("std:index:base64gzip", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o Base64gzipResultOutput) ToBase64gzipResultOutput() Base64gzipResultOutpu
 
 func (o Base64gzipResultOutput) ToBase64gzipResultOutputWithContext(ctx context.Context) Base64gzipResultOutput {
 	return o
+}
+
+func (o Base64gzipResultOutput) ToOutput(ctx context.Context) pulumix.Output[Base64gzipResult] {
+	return pulumix.Output[Base64gzipResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Base64gzipResultOutput) Result() pulumi.StringOutput {

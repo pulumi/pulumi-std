@@ -21,3 +21,9 @@ export interface TimestampArgs {
 export interface TimestampResult {
     readonly result: string;
 }
+/**
+ * Returns a UTC timestamp string of the current time in RFC 3339 format
+ */
+export function timestampOutput(opts?: pulumi.InvokeOptions): pulumi.Output<TimestampResult> {
+    return pulumi.output(timestamp(opts))
+}
