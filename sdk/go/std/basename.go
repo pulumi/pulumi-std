@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the last element of the input path.
 func Basename(ctx *pulumi.Context, args *BasenameArgs, opts ...pulumi.InvokeOption) (*BasenameResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv BasenameResult
 	err := ctx.Invoke("std:index:basename", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o BasenameResultOutput) ToBasenameResultOutput() BasenameResultOutput {
 
 func (o BasenameResultOutput) ToBasenameResultOutputWithContext(ctx context.Context) BasenameResultOutput {
 	return o
+}
+
+func (o BasenameResultOutput) ToOutput(ctx context.Context) pulumix.Output[BasenameResult] {
+	return pulumix.Output[BasenameResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasenameResultOutput) Result() pulumi.StringOutput {

@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a duration to a timestamp, returning a new timestamp.
@@ -19,6 +21,7 @@ import (
 //	Accepted units are "ns", "us" or "µs", "ms", "s", "m", and "h". The first number may be negative
 //	to provide a negative duration, i.e. "-2h15m".
 func Timeadd(ctx *pulumi.Context, args *TimeaddArgs, opts ...pulumi.InvokeOption) (*TimeaddResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TimeaddResult
 	err := ctx.Invoke("std:index:timeadd", args, &rv, opts...)
 	if err != nil {
@@ -70,6 +73,12 @@ func (o TimeaddResultOutput) ToTimeaddResultOutput() TimeaddResultOutput {
 
 func (o TimeaddResultOutput) ToTimeaddResultOutputWithContext(ctx context.Context) TimeaddResultOutput {
 	return o
+}
+
+func (o TimeaddResultOutput) ToOutput(ctx context.Context) pulumix.Output[TimeaddResult] {
+	return pulumix.Output[TimeaddResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimeaddResultOutput) Result() pulumi.StringOutput {

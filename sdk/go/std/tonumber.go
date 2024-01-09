@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts its argument to a number value. Only number values, null, and strings
 //
 //	containing decimal representations of numbers can be converted to number. All other values will result in an error
 func Tonumber(ctx *pulumi.Context, args *TonumberArgs, opts ...pulumi.InvokeOption) (*TonumberResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TonumberResult
 	err := ctx.Invoke("std:index:tonumber", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o TonumberResultOutput) ToTonumberResultOutput() TonumberResultOutput {
 
 func (o TonumberResultOutput) ToTonumberResultOutputWithContext(ctx context.Context) TonumberResultOutput {
 	return o
+}
+
+func (o TonumberResultOutput) ToOutput(ctx context.Context) pulumix.Output[TonumberResult] {
+	return pulumix.Output[TonumberResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TonumberResultOutput) Result() pulumi.Float64PtrOutput {

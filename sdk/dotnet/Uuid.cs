@@ -16,6 +16,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Task<UuidResult> InvokeAsync(UuidArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<UuidResult>("std:index:uuid", args ?? new UuidArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a unique identifier string, generated and formatted as required by RFC 4122.
+        /// </summary>
+        public static Output<UuidResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<UuidResult>("std:index:uuid", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

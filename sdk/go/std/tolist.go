@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts its argument to a list value.
 func Tolist(ctx *pulumi.Context, args *TolistArgs, opts ...pulumi.InvokeOption) (*TolistResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TolistResult
 	err := ctx.Invoke("std:index:tolist", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o TolistResultOutput) ToTolistResultOutput() TolistResultOutput {
 
 func (o TolistResultOutput) ToTolistResultOutputWithContext(ctx context.Context) TolistResultOutput {
 	return o
+}
+
+func (o TolistResultOutput) ToOutput(ctx context.Context) pulumix.Output[TolistResult] {
+	return pulumix.Output[TolistResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TolistResultOutput) Result() pulumi.ArrayOutput {

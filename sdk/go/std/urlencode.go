@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Applies URL encoding to a given string.
 func Urlencode(ctx *pulumi.Context, args *UrlencodeArgs, opts ...pulumi.InvokeOption) (*UrlencodeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv UrlencodeResult
 	err := ctx.Invoke("std:index:urlencode", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o UrlencodeResultOutput) ToUrlencodeResultOutput() UrlencodeResultOutput {
 
 func (o UrlencodeResultOutput) ToUrlencodeResultOutputWithContext(ctx context.Context) UrlencodeResultOutput {
 	return o
+}
+
+func (o UrlencodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[UrlencodeResult] {
+	return pulumix.Output[UrlencodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UrlencodeResultOutput) Result() pulumi.StringOutput {

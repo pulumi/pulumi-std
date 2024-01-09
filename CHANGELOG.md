@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 1.6.1 (2024-01-08)
+
+### Bug Fixes
+
+- Regenerate SDKs.
+
 ## 1.6.0 (2024-01-08)
 
 ### Improvements 

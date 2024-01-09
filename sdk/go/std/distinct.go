@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes duplicate items from a list.
 func Distinct(ctx *pulumi.Context, args *DistinctArgs, opts ...pulumi.InvokeOption) (*DistinctResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv DistinctResult
 	err := ctx.Invoke("std:index:distinct", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o DistinctResultOutput) ToDistinctResultOutput() DistinctResultOutput {
 
 func (o DistinctResultOutput) ToDistinctResultOutputWithContext(ctx context.Context) DistinctResultOutput {
 	return o
+}
+
+func (o DistinctResultOutput) ToOutput(ctx context.Context) pulumix.Output[DistinctResult] {
+	return pulumix.Output[DistinctResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DistinctResultOutput) Result() pulumi.ArrayOutput {

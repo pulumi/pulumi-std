@@ -7,12 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Flattens lists of lists down to a flat list of primitive values,
 // eliminating any nested lists recursively.
 func Flatten(ctx *pulumi.Context, args *FlattenArgs, opts ...pulumi.InvokeOption) (*FlattenResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv FlattenResult
 	err := ctx.Invoke("std:index:flatten", args, &rv, opts...)
 	if err != nil {
@@ -62,6 +65,12 @@ func (o FlattenResultOutput) ToFlattenResultOutput() FlattenResultOutput {
 
 func (o FlattenResultOutput) ToFlattenResultOutputWithContext(ctx context.Context) FlattenResultOutput {
 	return o
+}
+
+func (o FlattenResultOutput) ToOutput(ctx context.Context) pulumix.Output[FlattenResult] {
+	return pulumix.Output[FlattenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlattenResultOutput) Result() pulumi.ArrayOutput {

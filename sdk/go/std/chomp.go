@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes one or more newline characters from the end of the given string.
 func Chomp(ctx *pulumi.Context, args *ChompArgs, opts ...pulumi.InvokeOption) (*ChompResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv ChompResult
 	err := ctx.Invoke("std:index:chomp", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o ChompResultOutput) ToChompResultOutput() ChompResultOutput {
 
 func (o ChompResultOutput) ToChompResultOutputWithContext(ctx context.Context) ChompResultOutput {
 	return o
+}
+
+func (o ChompResultOutput) ToOutput(ctx context.Context) pulumix.Output[ChompResult] {
+	return pulumix.Output[ChompResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChompResultOutput) Result() pulumi.StringOutput {

@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Finds the index of a given element in a list.
 func Index(ctx *pulumi.Context, args *IndexArgs, opts ...pulumi.InvokeOption) (*IndexResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv IndexResult
 	err := ctx.Invoke("std:index:index", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o IndexResultOutput) ToIndexResultOutput() IndexResultOutput {
 
 func (o IndexResultOutput) ToIndexResultOutputWithContext(ctx context.Context) IndexResultOutput {
 	return o
+}
+
+func (o IndexResultOutput) ToOutput(ctx context.Context) pulumix.Output[IndexResult] {
+	return pulumix.Output[IndexResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IndexResultOutput) Result() pulumi.IntOutput {

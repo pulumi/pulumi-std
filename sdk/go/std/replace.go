@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Does a search and replace on the given string.
@@ -17,6 +19,7 @@ import (
 // using $n where n is the index or name of the subcapture. If using a regular expression,
 // the syntax conforms to the re2 regular expression syntax.
 func Replace(ctx *pulumi.Context, args *ReplaceArgs, opts ...pulumi.InvokeOption) (*ReplaceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv ReplaceResult
 	err := ctx.Invoke("std:index:replace", args, &rv, opts...)
 	if err != nil {
@@ -70,6 +73,12 @@ func (o ReplaceResultOutput) ToReplaceResultOutput() ReplaceResultOutput {
 
 func (o ReplaceResultOutput) ToReplaceResultOutputWithContext(ctx context.Context) ReplaceResultOutput {
 	return o
+}
+
+func (o ReplaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[ReplaceResult] {
+	return pulumix.Output[ReplaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplaceResultOutput) Result() pulumi.StringOutput {

@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the greatest integer value less than or equal to the argument.
 func Log(ctx *pulumi.Context, args *LogArgs, opts ...pulumi.InvokeOption) (*LogResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LogResult
 	err := ctx.Invoke("std:index:log", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o LogResultOutput) ToLogResultOutput() LogResultOutput {
 
 func (o LogResultOutput) ToLogResultOutputWithContext(ctx context.Context) LogResultOutput {
 	return o
+}
+
+func (o LogResultOutput) ToOutput(ctx context.Context) pulumix.Output[LogResult] {
+	return pulumix.Output[LogResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogResultOutput) Result() pulumi.Float64Output {

@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the first non-empty list from the given list of lists.
 func Coalescelist(ctx *pulumi.Context, args *CoalescelistArgs, opts ...pulumi.InvokeOption) (*CoalescelistResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CoalescelistResult
 	err := ctx.Invoke("std:index:coalescelist", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o CoalescelistResultOutput) ToCoalescelistResultOutput() CoalescelistResul
 
 func (o CoalescelistResultOutput) ToCoalescelistResultOutputWithContext(ctx context.Context) CoalescelistResultOutput {
 	return o
+}
+
+func (o CoalescelistResultOutput) ToOutput(ctx context.Context) pulumix.Output[CoalescelistResult] {
+	return pulumix.Output[CoalescelistResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CoalescelistResultOutput) Result() pulumi.ArrayOutput {

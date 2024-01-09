@@ -7,12 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the union of 2 or more maps. The maps are consumed in the order provided,
 // and duplicate keys overwrite previous entries.
 func Merge(ctx *pulumi.Context, args *MergeArgs, opts ...pulumi.InvokeOption) (*MergeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv MergeResult
 	err := ctx.Invoke("std:index:merge", args, &rv, opts...)
 	if err != nil {
@@ -62,6 +65,12 @@ func (o MergeResultOutput) ToMergeResultOutput() MergeResultOutput {
 
 func (o MergeResultOutput) ToMergeResultOutputWithContext(ctx context.Context) MergeResultOutput {
 	return o
+}
+
+func (o MergeResultOutput) ToOutput(ctx context.Context) pulumix.Output[MergeResult] {
+	return pulumix.Output[MergeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MergeResultOutput) Result() pulumi.MapOutput {

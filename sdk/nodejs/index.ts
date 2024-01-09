@@ -387,7 +387,8 @@ utilities.lazyLoad(exports, ["timecmp","timecmpOutput"], () => require("./timecm
 
 export { TimestampArgs, TimestampResult } from "./timestamp";
 export const timestamp: typeof import("./timestamp").timestamp = null as any;
-utilities.lazyLoad(exports, ["timestamp"], () => require("./timestamp"));
+export const timestampOutput: typeof import("./timestamp").timestampOutput = null as any;
+utilities.lazyLoad(exports, ["timestamp","timestampOutput"], () => require("./timestamp"));
 
 export { TitleArgs, TitleResult, TitleOutputArgs } from "./title";
 export const title: typeof import("./title").title = null as any;
@@ -456,7 +457,8 @@ utilities.lazyLoad(exports, ["urlencode","urlencodeOutput"], () => require("./ur
 
 export { UuidArgs, UuidResult } from "./uuid";
 export const uuid: typeof import("./uuid").uuid = null as any;
-utilities.lazyLoad(exports, ["uuid"], () => require("./uuid"));
+export const uuidOutput: typeof import("./uuid").uuidOutput = null as any;
+utilities.lazyLoad(exports, ["uuid","uuidOutput"], () => require("./uuid"));
 
 export { ValuesArgs, ValuesResult, ValuesOutputArgs } from "./values";
 export const values: typeof import("./values").values = null as any;

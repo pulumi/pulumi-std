@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Takes an IP address range in CIDR notation as input
@@ -15,6 +17,7 @@ import (
 // If given host number is negative, the count starts from the end of the range.
 // For example, cidrhost("10.0.0.0/8", 2) returns 10.0.0.2 and cidrhost("10.0.0.0/8", -2) returns 10.255.255.254.
 func Cidrhost(ctx *pulumi.Context, args *CidrhostArgs, opts ...pulumi.InvokeOption) (*CidrhostResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CidrhostResult
 	err := ctx.Invoke("std:index:cidrhost", args, &rv, opts...)
 	if err != nil {
@@ -66,6 +69,12 @@ func (o CidrhostResultOutput) ToCidrhostResultOutput() CidrhostResultOutput {
 
 func (o CidrhostResultOutput) ToCidrhostResultOutputWithContext(ctx context.Context) CidrhostResultOutput {
 	return o
+}
+
+func (o CidrhostResultOutput) ToOutput(ctx context.Context) pulumix.Output[CidrhostResult] {
+	return pulumix.Output[CidrhostResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CidrhostResultOutput) Result() pulumi.StringOutput {

@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Generates a list of numbers using a start value, a limit value, and a step value.
 // Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one
 // depending on whether limit is greater than or less than start.
 func Range(ctx *pulumi.Context, args *RangeArgs, opts ...pulumi.InvokeOption) (*RangeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv RangeResult
 	err := ctx.Invoke("std:index:range", args, &rv, opts...)
 	if err != nil {
@@ -67,6 +70,12 @@ func (o RangeResultOutput) ToRangeResultOutput() RangeResultOutput {
 
 func (o RangeResultOutput) ToRangeResultOutputWithContext(ctx context.Context) RangeResultOutput {
 	return o
+}
+
+func (o RangeResultOutput) ToOutput(ctx context.Context) pulumix.Output[RangeResult] {
+	return pulumix.Output[RangeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RangeResultOutput) Result() pulumi.Float64ArrayOutput {

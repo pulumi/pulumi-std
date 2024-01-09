@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Reads the contents of a file and returns them as a base64-encoded string.
 func Filebase64(ctx *pulumi.Context, args *Filebase64Args, opts ...pulumi.InvokeOption) (*Filebase64Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv Filebase64Result
 	err := ctx.Invoke("std:index:filebase64", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o Filebase64ResultOutput) ToFilebase64ResultOutput() Filebase64ResultOutpu
 
 func (o Filebase64ResultOutput) ToFilebase64ResultOutputWithContext(ctx context.Context) Filebase64ResultOutput {
 	return o
+}
+
+func (o Filebase64ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Filebase64Result] {
+	return pulumix.Output[Filebase64Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Filebase64ResultOutput) Result() pulumi.StringOutput {

@@ -7,12 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns true if any of the elements in a given collection are true or \"true\".
 // It also returns false if the collection is empty.
 func Anytrue(ctx *pulumi.Context, args *AnytrueArgs, opts ...pulumi.InvokeOption) (*AnytrueResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv AnytrueResult
 	err := ctx.Invoke("std:index:anytrue", args, &rv, opts...)
 	if err != nil {
@@ -62,6 +65,12 @@ func (o AnytrueResultOutput) ToAnytrueResultOutput() AnytrueResultOutput {
 
 func (o AnytrueResultOutput) ToAnytrueResultOutputWithContext(ctx context.Context) AnytrueResultOutput {
 	return o
+}
+
+func (o AnytrueResultOutput) ToOutput(ctx context.Context) pulumix.Output[AnytrueResult] {
+	return pulumix.Output[AnytrueResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AnytrueResultOutput) Result() pulumi.BoolOutput {

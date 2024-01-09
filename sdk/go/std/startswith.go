@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Determines if the input string starts with the suffix.
 func Startswith(ctx *pulumi.Context, args *StartswithArgs, opts ...pulumi.InvokeOption) (*StartswithResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv StartswithResult
 	err := ctx.Invoke("std:index:startswith", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o StartswithResultOutput) ToStartswithResultOutput() StartswithResultOutpu
 
 func (o StartswithResultOutput) ToStartswithResultOutputWithContext(ctx context.Context) StartswithResultOutput {
 	return o
+}
+
+func (o StartswithResultOutput) ToOutput(ctx context.Context) pulumix.Output[StartswithResult] {
+	return pulumix.Output[StartswithResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StartswithResultOutput) Result() pulumi.BoolOutput {

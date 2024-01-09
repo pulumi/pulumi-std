@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the least integer value greater than or equal to the argument.
 func Ceil(ctx *pulumi.Context, args *CeilArgs, opts ...pulumi.InvokeOption) (*CeilResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CeilResult
 	err := ctx.Invoke("std:index:ceil", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o CeilResultOutput) ToCeilResultOutput() CeilResultOutput {
 
 func (o CeilResultOutput) ToCeilResultOutputWithContext(ctx context.Context) CeilResultOutput {
 	return o
+}
+
+func (o CeilResultOutput) ToOutput(ctx context.Context) pulumix.Output[CeilResult] {
+	return pulumix.Output[CeilResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CeilResultOutput) Result() pulumi.Float64Output {

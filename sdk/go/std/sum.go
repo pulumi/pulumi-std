@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the total sum of the elements of the input list.
 func Sum(ctx *pulumi.Context, args *SumArgs, opts ...pulumi.InvokeOption) (*SumResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv SumResult
 	err := ctx.Invoke("std:index:sum", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o SumResultOutput) ToSumResultOutput() SumResultOutput {
 
 func (o SumResultOutput) ToSumResultOutputWithContext(ctx context.Context) SumResultOutput {
 	return o
+}
+
+func (o SumResultOutput) ToOutput(ctx context.Context) pulumix.Output[SumResult] {
+	return pulumix.Output[SumResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SumResultOutput) Result() pulumi.Float64Output {

@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Extracts a substring from the given string.
 func Substr(ctx *pulumi.Context, args *SubstrArgs, opts ...pulumi.InvokeOption) (*SubstrResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv SubstrResult
 	err := ctx.Invoke("std:index:substr", args, &rv, opts...)
 	if err != nil {
@@ -65,6 +68,12 @@ func (o SubstrResultOutput) ToSubstrResultOutput() SubstrResultOutput {
 
 func (o SubstrResultOutput) ToSubstrResultOutputWithContext(ctx context.Context) SubstrResultOutput {
 	return o
+}
+
+func (o SubstrResultOutput) ToOutput(ctx context.Context) pulumix.Output[SubstrResult] {
+	return pulumix.Output[SubstrResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubstrResultOutput) Result() pulumi.StringOutput {

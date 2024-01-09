@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Parses the given string as a representation of an integer in the specified base
@@ -15,6 +17,7 @@ import (
 //
 //	.
 func Parseint(ctx *pulumi.Context, args *ParseintArgs, opts ...pulumi.InvokeOption) (*ParseintResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv ParseintResult
 	err := ctx.Invoke("std:index:parseint", args, &rv, opts...)
 	if err != nil {
@@ -66,6 +69,12 @@ func (o ParseintResultOutput) ToParseintResultOutput() ParseintResultOutput {
 
 func (o ParseintResultOutput) ToParseintResultOutputWithContext(ctx context.Context) ParseintResultOutput {
 	return o
+}
+
+func (o ParseintResultOutput) ToOutput(ctx context.Context) pulumix.Output[ParseintResult] {
+	return pulumix.Output[ParseintResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParseintResultOutput) Result() pulumi.IntOutput {

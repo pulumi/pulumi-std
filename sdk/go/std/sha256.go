@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a hexadecimal representation of the SHA-256 hash of the given string.
 func Sha256(ctx *pulumi.Context, args *Sha256Args, opts ...pulumi.InvokeOption) (*Sha256Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv Sha256Result
 	err := ctx.Invoke("std:index:sha256", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o Sha256ResultOutput) ToSha256ResultOutput() Sha256ResultOutput {
 
 func (o Sha256ResultOutput) ToSha256ResultOutputWithContext(ctx context.Context) Sha256ResultOutput {
 	return o
+}
+
+func (o Sha256ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Sha256Result] {
+	return pulumix.Output[Sha256Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Sha256ResultOutput) Result() pulumi.StringOutput {

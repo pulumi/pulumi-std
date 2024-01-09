@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Decodes a string containing CSV-formatted data and produces a list of maps representing that data.
@@ -20,6 +22,7 @@ import (
 //	or this function will produce an error.
 //	Follows the format defined in RFC 4180.
 func Csvdecode(ctx *pulumi.Context, args *CsvdecodeArgs, opts ...pulumi.InvokeOption) (*CsvdecodeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CsvdecodeResult
 	err := ctx.Invoke("std:index:csvdecode", args, &rv, opts...)
 	if err != nil {
@@ -69,6 +72,12 @@ func (o CsvdecodeResultOutput) ToCsvdecodeResultOutput() CsvdecodeResultOutput {
 
 func (o CsvdecodeResultOutput) ToCsvdecodeResultOutputWithContext(ctx context.Context) CsvdecodeResultOutput {
 	return o
+}
+
+func (o CsvdecodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[CsvdecodeResult] {
+	return pulumix.Output[CsvdecodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CsvdecodeResultOutput) Result() pulumi.StringMapArrayOutput {

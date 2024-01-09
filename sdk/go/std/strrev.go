@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the given string with all of its Unicode characters in reverse order.
 func Strrev(ctx *pulumi.Context, args *StrrevArgs, opts ...pulumi.InvokeOption) (*StrrevResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv StrrevResult
 	err := ctx.Invoke("std:index:strrev", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o StrrevResultOutput) ToStrrevResultOutput() StrrevResultOutput {
 
 func (o StrrevResultOutput) ToStrrevResultOutputWithContext(ctx context.Context) StrrevResultOutput {
 	return o
+}
+
+func (o StrrevResultOutput) ToOutput(ctx context.Context) pulumix.Output[StrrevResult] {
+	return pulumix.Output[StrrevResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StrrevResultOutput) Result() pulumi.StringOutput {

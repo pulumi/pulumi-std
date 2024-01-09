@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Interprets a given string as JSON and returns a represetation
@@ -15,6 +17,7 @@ import (
 //	of the result of decoding that string.
 //	If input is not valid JSON, the result will be the input unchanged.
 func Jsondecode(ctx *pulumi.Context, args *JsondecodeArgs, opts ...pulumi.InvokeOption) (*JsondecodeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv JsondecodeResult
 	err := ctx.Invoke("std:index:jsondecode", args, &rv, opts...)
 	if err != nil {
@@ -64,6 +67,12 @@ func (o JsondecodeResultOutput) ToJsondecodeResultOutput() JsondecodeResultOutpu
 
 func (o JsondecodeResultOutput) ToJsondecodeResultOutputWithContext(ctx context.Context) JsondecodeResultOutput {
 	return o
+}
+
+func (o JsondecodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[JsondecodeResult] {
+	return pulumix.Output[JsondecodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JsondecodeResultOutput) Result() pulumi.AnyOutput {

@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes any space characters from the start and end of the given string,
 //
 //	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).
 func Trimspace(ctx *pulumi.Context, args *TrimspaceArgs, opts ...pulumi.InvokeOption) (*TrimspaceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv TrimspaceResult
 	err := ctx.Invoke("std:index:trimspace", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +66,12 @@ func (o TrimspaceResultOutput) ToTrimspaceResultOutput() TrimspaceResultOutput {
 
 func (o TrimspaceResultOutput) ToTrimspaceResultOutputWithContext(ctx context.Context) TrimspaceResultOutput {
 	return o
+}
+
+func (o TrimspaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[TrimspaceResult] {
+	return pulumix.Output[TrimspaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrimspaceResultOutput) Result() pulumi.StringOutput {

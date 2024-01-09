@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts all cased letters in the given string to uppercase.
 func Upper(ctx *pulumi.Context, args *UpperArgs, opts ...pulumi.InvokeOption) (*UpperResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv UpperResult
 	err := ctx.Invoke("std:index:upper", args, &rv, opts...)
 	if err != nil {
@@ -61,6 +64,12 @@ func (o UpperResultOutput) ToUpperResultOutput() UpperResultOutput {
 
 func (o UpperResultOutput) ToUpperResultOutputWithContext(ctx context.Context) UpperResultOutput {
 	return o
+}
+
+func (o UpperResultOutput) ToOutput(ctx context.Context) pulumix.Output[UpperResult] {
+	return pulumix.Output[UpperResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpperResultOutput) Result() pulumi.StringOutput {
