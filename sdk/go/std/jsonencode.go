@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a JSON-encoded representation of the given value,
@@ -66,12 +65,6 @@ func (o JsonencodeResultOutput) ToJsonencodeResultOutput() JsonencodeResultOutpu
 
 func (o JsonencodeResultOutput) ToJsonencodeResultOutputWithContext(ctx context.Context) JsonencodeResultOutput {
 	return o
-}
-
-func (o JsonencodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[JsonencodeResult] {
-	return pulumix.Output[JsonencodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JsonencodeResultOutput) Result() pulumi.StringOutput {

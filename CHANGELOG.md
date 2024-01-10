@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 1.6.2 (2024-01-09)
+
+### Bug Fixes
+
+- Regenerate SDKs with the latest SDKgen.
+
 ## 1.6.1 (2024-01-08)
 
 ### Bug Fixes

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Takes an IP address range in CIDR notation as input
@@ -69,12 +68,6 @@ func (o CidrhostResultOutput) ToCidrhostResultOutput() CidrhostResultOutput {
 
 func (o CidrhostResultOutput) ToCidrhostResultOutputWithContext(ctx context.Context) CidrhostResultOutput {
 	return o
-}
-
-func (o CidrhostResultOutput) ToOutput(ctx context.Context) pulumix.Output[CidrhostResult] {
-	return pulumix.Output[CidrhostResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CidrhostResultOutput) Result() pulumi.StringOutput {

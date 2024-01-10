@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Does a search and replace on the given string.
@@ -73,12 +72,6 @@ func (o ReplaceResultOutput) ToReplaceResultOutput() ReplaceResultOutput {
 
 func (o ReplaceResultOutput) ToReplaceResultOutputWithContext(ctx context.Context) ReplaceResultOutput {
 	return o
-}
-
-func (o ReplaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[ReplaceResult] {
-	return pulumix.Output[ReplaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReplaceResultOutput) Result() pulumi.StringOutput {

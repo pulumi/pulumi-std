@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a base64-encoded representation of raw SHA-256 sum of the given string.
@@ -65,12 +64,6 @@ func (o Base64sha256ResultOutput) ToBase64sha256ResultOutput() Base64sha256Resul
 
 func (o Base64sha256ResultOutput) ToBase64sha256ResultOutputWithContext(ctx context.Context) Base64sha256ResultOutput {
 	return o
-}
-
-func (o Base64sha256ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Base64sha256Result] {
-	return pulumix.Output[Base64sha256Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Base64sha256ResultOutput) Result() pulumi.StringOutput {

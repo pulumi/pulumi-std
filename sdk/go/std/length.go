@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Determines the length of a given list, map, or string.
@@ -64,12 +63,6 @@ func (o LengthResultOutput) ToLengthResultOutput() LengthResultOutput {
 
 func (o LengthResultOutput) ToLengthResultOutputWithContext(ctx context.Context) LengthResultOutput {
 	return o
-}
-
-func (o LengthResultOutput) ToOutput(ctx context.Context) pulumix.Output[LengthResult] {
-	return pulumix.Output[LengthResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LengthResultOutput) Result() pulumi.IntOutput {

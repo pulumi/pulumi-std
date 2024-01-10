@@ -4,6 +4,9 @@
 package std
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,4 +27,46 @@ type TimestampArgs struct {
 
 type TimestampResult struct {
 	Result string `pulumi:"result"`
+}
+
+func TimestampOutput(ctx *pulumi.Context, args TimestampOutputArgs, opts ...pulumi.InvokeOption) TimestampResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (TimestampResult, error) {
+			args := v.(TimestampArgs)
+			r, err := Timestamp(ctx, &args, opts...)
+			var s TimestampResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(TimestampResultOutput)
+}
+
+type TimestampOutputArgs struct {
+}
+
+func (TimestampOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimestampArgs)(nil)).Elem()
+}
+
+type TimestampResultOutput struct{ *pulumi.OutputState }
+
+func (TimestampResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimestampResult)(nil)).Elem()
+}
+
+func (o TimestampResultOutput) ToTimestampResultOutput() TimestampResultOutput {
+	return o
+}
+
+func (o TimestampResultOutput) ToTimestampResultOutputWithContext(ctx context.Context) TimestampResultOutput {
+	return o
+}
+
+func (o TimestampResultOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v TimestampResult) string { return v.Result }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(TimestampResultOutput{})
 }

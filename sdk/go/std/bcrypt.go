@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the Blowfish encrypted hash of the string at the given cost.
@@ -67,12 +66,6 @@ func (o BcryptResultOutput) ToBcryptResultOutput() BcryptResultOutput {
 
 func (o BcryptResultOutput) ToBcryptResultOutputWithContext(ctx context.Context) BcryptResultOutput {
 	return o
-}
-
-func (o BcryptResultOutput) ToOutput(ctx context.Context) pulumix.Output[BcryptResult] {
-	return pulumix.Output[BcryptResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BcryptResultOutput) Result() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a copy of the string with all Unicode letters mapped to their lower case.
@@ -64,12 +63,6 @@ func (o LowerResultOutput) ToLowerResultOutput() LowerResultOutput {
 
 func (o LowerResultOutput) ToLowerResultOutputWithContext(ctx context.Context) LowerResultOutput {
 	return o
-}
-
-func (o LowerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LowerResult] {
-	return pulumix.Output[LowerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LowerResultOutput) Result() pulumi.StringOutput {

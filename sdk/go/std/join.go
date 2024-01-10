@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Joins the list with the delimiter for a resultant string.
@@ -66,12 +65,6 @@ func (o JoinResultOutput) ToJoinResultOutput() JoinResultOutput {
 
 func (o JoinResultOutput) ToJoinResultOutputWithContext(ctx context.Context) JoinResultOutput {
 	return o
-}
-
-func (o JoinResultOutput) ToOutput(ctx context.Context) pulumix.Output[JoinResult] {
-	return pulumix.Output[JoinResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JoinResultOutput) Result() pulumi.StringOutput {

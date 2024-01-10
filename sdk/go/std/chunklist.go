@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Splits a single list into multiple lists where each has at most the given number of elements.
@@ -66,12 +65,6 @@ func (o ChunklistResultOutput) ToChunklistResultOutput() ChunklistResultOutput {
 
 func (o ChunklistResultOutput) ToChunklistResultOutputWithContext(ctx context.Context) ChunklistResultOutput {
 	return o
-}
-
-func (o ChunklistResultOutput) ToOutput(ctx context.Context) pulumix.Output[ChunklistResult] {
-	return pulumix.Output[ChunklistResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChunklistResultOutput) Result() pulumi.ArrayOutput {

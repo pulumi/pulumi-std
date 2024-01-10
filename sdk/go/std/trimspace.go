@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes any space characters from the start and end of the given string,
@@ -66,12 +65,6 @@ func (o TrimspaceResultOutput) ToTrimspaceResultOutput() TrimspaceResultOutput {
 
 func (o TrimspaceResultOutput) ToTrimspaceResultOutputWithContext(ctx context.Context) TrimspaceResultOutput {
 	return o
-}
-
-func (o TrimspaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[TrimspaceResult] {
-	return pulumix.Output[TrimspaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrimspaceResultOutput) Result() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a duration to a timestamp, returning a new timestamp.
@@ -73,12 +72,6 @@ func (o TimeaddResultOutput) ToTimeaddResultOutput() TimeaddResultOutput {
 
 func (o TimeaddResultOutput) ToTimeaddResultOutputWithContext(ctx context.Context) TimeaddResultOutput {
 	return o
-}
-
-func (o TimeaddResultOutput) ToOutput(ctx context.Context) pulumix.Output[TimeaddResult] {
-	return pulumix.Output[TimeaddResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeaddResultOutput) Result() pulumi.StringOutput {

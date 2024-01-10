@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the greatest integer value less than or equal to the argument.
@@ -66,12 +65,6 @@ func (o LogResultOutput) ToLogResultOutput() LogResultOutput {
 
 func (o LogResultOutput) ToLogResultOutputWithContext(ctx context.Context) LogResultOutput {
 	return o
-}
-
-func (o LogResultOutput) ToOutput(ctx context.Context) pulumix.Output[LogResult] {
-	return pulumix.Output[LogResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogResultOutput) Result() pulumi.Float64Output {

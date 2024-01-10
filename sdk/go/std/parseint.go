@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Parses the given string as a representation of an integer in the specified base
@@ -69,12 +68,6 @@ func (o ParseintResultOutput) ToParseintResultOutput() ParseintResultOutput {
 
 func (o ParseintResultOutput) ToParseintResultOutputWithContext(ctx context.Context) ParseintResultOutput {
 	return o
-}
-
-func (o ParseintResultOutput) ToOutput(ctx context.Context) pulumix.Output[ParseintResult] {
-	return pulumix.Output[ParseintResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParseintResultOutput) Result() pulumi.IntOutput {

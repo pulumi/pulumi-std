@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the largest of the floats.
@@ -64,12 +63,6 @@ func (o MaxResultOutput) ToMaxResultOutput() MaxResultOutput {
 
 func (o MaxResultOutput) ToMaxResultOutputWithContext(ctx context.Context) MaxResultOutput {
 	return o
-}
-
-func (o MaxResultOutput) ToOutput(ctx context.Context) pulumix.Output[MaxResult] {
-	return pulumix.Output[MaxResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaxResultOutput) Result() pulumi.Float64Output {

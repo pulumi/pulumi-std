@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an absolute representation of the specified path.
@@ -65,12 +64,6 @@ func (o AbspathResultOutput) ToAbspathResultOutput() AbspathResultOutput {
 
 func (o AbspathResultOutput) ToAbspathResultOutputWithContext(ctx context.Context) AbspathResultOutput {
 	return o
-}
-
-func (o AbspathResultOutput) ToOutput(ctx context.Context) pulumix.Output[AbspathResult] {
-	return pulumix.Output[AbspathResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AbspathResultOutput) Result() pulumi.StringOutput {

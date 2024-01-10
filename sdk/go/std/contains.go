@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns true if a list contains the given element and returns false otherwise.
@@ -66,12 +65,6 @@ func (o ContainsResultOutput) ToContainsResultOutput() ContainsResultOutput {
 
 func (o ContainsResultOutput) ToContainsResultOutputWithContext(ctx context.Context) ContainsResultOutput {
 	return o
-}
-
-func (o ContainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ContainsResult] {
-	return pulumix.Output[ContainsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainsResultOutput) Result() pulumi.BoolOutput {

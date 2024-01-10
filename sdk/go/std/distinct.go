@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes duplicate items from a list.
@@ -64,12 +63,6 @@ func (o DistinctResultOutput) ToDistinctResultOutput() DistinctResultOutput {
 
 func (o DistinctResultOutput) ToDistinctResultOutputWithContext(ctx context.Context) DistinctResultOutput {
 	return o
-}
-
-func (o DistinctResultOutput) ToOutput(ctx context.Context) pulumix.Output[DistinctResult] {
-	return pulumix.Output[DistinctResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DistinctResultOutput) Result() pulumi.ArrayOutput {

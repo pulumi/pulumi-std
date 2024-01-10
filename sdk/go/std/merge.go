@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the union of 2 or more maps. The maps are consumed in the order provided,
@@ -65,12 +64,6 @@ func (o MergeResultOutput) ToMergeResultOutput() MergeResultOutput {
 
 func (o MergeResultOutput) ToMergeResultOutputWithContext(ctx context.Context) MergeResultOutput {
 	return o
-}
-
-func (o MergeResultOutput) ToOutput(ctx context.Context) pulumix.Output[MergeResult] {
-	return pulumix.Output[MergeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MergeResultOutput) Result() pulumi.MapOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts its argument to a string value. Only primitive types (string, number, bool)
@@ -66,12 +65,6 @@ func (o TostringResultOutput) ToTostringResultOutput() TostringResultOutput {
 
 func (o TostringResultOutput) ToTostringResultOutputWithContext(ctx context.Context) TostringResultOutput {
 	return o
-}
-
-func (o TostringResultOutput) ToOutput(ctx context.Context) pulumix.Output[TostringResult] {
-	return pulumix.Output[TostringResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TostringResultOutput) Result() pulumi.StringPtrOutput {

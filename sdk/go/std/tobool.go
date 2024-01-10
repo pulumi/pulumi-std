@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts its argument to a boolean value. Only boolean values, null, and the exact strings
@@ -66,12 +65,6 @@ func (o ToboolResultOutput) ToToboolResultOutput() ToboolResultOutput {
 
 func (o ToboolResultOutput) ToToboolResultOutputWithContext(ctx context.Context) ToboolResultOutput {
 	return o
-}
-
-func (o ToboolResultOutput) ToOutput(ctx context.Context) pulumix.Output[ToboolResult] {
-	return pulumix.Output[ToboolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ToboolResultOutput) Result() pulumi.BoolPtrOutput {

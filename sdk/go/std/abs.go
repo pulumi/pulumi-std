@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the absolute value of a given float.
@@ -65,12 +64,6 @@ func (o AbsResultOutput) ToAbsResultOutput() AbsResultOutput {
 
 func (o AbsResultOutput) ToAbsResultOutputWithContext(ctx context.Context) AbsResultOutput {
 	return o
-}
-
-func (o AbsResultOutput) ToOutput(ctx context.Context) pulumix.Output[AbsResult] {
-	return pulumix.Output[AbsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AbsResultOutput) Result() pulumi.Float64Output {

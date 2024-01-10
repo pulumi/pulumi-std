@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns all but the last element of path, typically the path's directory.
@@ -64,12 +63,6 @@ func (o DirnameResultOutput) ToDirnameResultOutput() DirnameResultOutput {
 
 func (o DirnameResultOutput) ToDirnameResultOutputWithContext(ctx context.Context) DirnameResultOutput {
 	return o
-}
-
-func (o DirnameResultOutput) ToOutput(ctx context.Context) pulumix.Output[DirnameResult] {
-	return pulumix.Output[DirnameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DirnameResultOutput) Result() pulumi.StringOutput {

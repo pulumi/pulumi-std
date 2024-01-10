@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a (conventional) hexadecimal representation of the MD5 hash of the given string.
@@ -64,12 +63,6 @@ func (o Md5ResultOutput) ToMd5ResultOutput() Md5ResultOutput {
 
 func (o Md5ResultOutput) ToMd5ResultOutputWithContext(ctx context.Context) Md5ResultOutput {
 	return o
-}
-
-func (o Md5ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Md5Result] {
-	return pulumix.Output[Md5Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Md5ResultOutput) Result() pulumi.StringOutput {

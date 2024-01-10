@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts its argument to a list value.
@@ -64,12 +63,6 @@ func (o TolistResultOutput) ToTolistResultOutput() TolistResultOutput {
 
 func (o TolistResultOutput) ToTolistResultOutputWithContext(ctx context.Context) TolistResultOutput {
 	return o
-}
-
-func (o TolistResultOutput) ToOutput(ctx context.Context) pulumix.Output[TolistResult] {
-	return pulumix.Output[TolistResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TolistResultOutput) Result() pulumi.ArrayOutput {

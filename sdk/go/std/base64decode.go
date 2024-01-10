@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Given a base64-encoded string, decodes it and returns the original string.
@@ -64,12 +63,6 @@ func (o Base64decodeResultOutput) ToBase64decodeResultOutput() Base64decodeResul
 
 func (o Base64decodeResultOutput) ToBase64decodeResultOutputWithContext(ctx context.Context) Base64decodeResultOutput {
 	return o
-}
-
-func (o Base64decodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[Base64decodeResult] {
-	return pulumix.Output[Base64decodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Base64decodeResultOutput) Result() pulumi.StringOutput {

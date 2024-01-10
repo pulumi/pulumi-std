@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of strings sorted lexicographically.
@@ -64,12 +63,6 @@ func (o SortResultOutput) ToSortResultOutput() SortResultOutput {
 
 func (o SortResultOutput) ToSortResultOutputWithContext(ctx context.Context) SortResultOutput {
 	return o
-}
-
-func (o SortResultOutput) ToOutput(ctx context.Context) pulumix.Output[SortResult] {
-	return pulumix.Output[SortResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SortResultOutput) Result() pulumi.StringArrayOutput {

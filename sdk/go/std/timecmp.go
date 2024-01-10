@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Compares two timestamps and returns a number that represents the ordering
@@ -73,12 +72,6 @@ func (o TimecmpResultOutput) ToTimecmpResultOutput() TimecmpResultOutput {
 
 func (o TimecmpResultOutput) ToTimecmpResultOutputWithContext(ctx context.Context) TimecmpResultOutput {
 	return o
-}
-
-func (o TimecmpResultOutput) ToOutput(ctx context.Context) pulumix.Output[TimecmpResult] {
-	return pulumix.Output[TimecmpResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimecmpResultOutput) Result() pulumi.IntOutput {

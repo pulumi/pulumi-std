@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Reads the contents of a file into a string and returns the MD5 hash of it.
@@ -64,12 +63,6 @@ func (o Filemd5ResultOutput) ToFilemd5ResultOutput() Filemd5ResultOutput {
 
 func (o Filemd5ResultOutput) ToFilemd5ResultOutputWithContext(ctx context.Context) Filemd5ResultOutput {
 	return o
-}
-
-func (o Filemd5ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Filemd5Result] {
-	return pulumix.Output[Filemd5Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Filemd5ResultOutput) Result() pulumi.StringOutput {
