@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes the specified suffix from the end of the given string, if present.
@@ -66,12 +65,6 @@ func (o TrimsuffixResultOutput) ToTrimsuffixResultOutput() TrimsuffixResultOutpu
 
 func (o TrimsuffixResultOutput) ToTrimsuffixResultOutputWithContext(ctx context.Context) TrimsuffixResultOutput {
 	return o
-}
-
-func (o TrimsuffixResultOutput) ToOutput(ctx context.Context) pulumix.Output[TrimsuffixResult] {
-	return pulumix.Output[TrimsuffixResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrimsuffixResultOutput) Result() pulumi.StringOutput {

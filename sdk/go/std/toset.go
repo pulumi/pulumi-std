@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Converts its argument to a set value.
@@ -64,12 +63,6 @@ func (o TosetResultOutput) ToTosetResultOutput() TosetResultOutput {
 
 func (o TosetResultOutput) ToTosetResultOutputWithContext(ctx context.Context) TosetResultOutput {
 	return o
-}
-
-func (o TosetResultOutput) ToOutput(ctx context.Context) pulumix.Output[TosetResult] {
-	return pulumix.Output[TosetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TosetResultOutput) Result() pulumi.ArrayOutput {

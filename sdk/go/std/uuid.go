@@ -4,6 +4,9 @@
 package std
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,4 +27,46 @@ type UuidArgs struct {
 
 type UuidResult struct {
 	Result string `pulumi:"result"`
+}
+
+func UuidOutput(ctx *pulumi.Context, args UuidOutputArgs, opts ...pulumi.InvokeOption) UuidResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (UuidResult, error) {
+			args := v.(UuidArgs)
+			r, err := Uuid(ctx, &args, opts...)
+			var s UuidResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(UuidResultOutput)
+}
+
+type UuidOutputArgs struct {
+}
+
+func (UuidOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UuidArgs)(nil)).Elem()
+}
+
+type UuidResultOutput struct{ *pulumi.OutputState }
+
+func (UuidResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UuidResult)(nil)).Elem()
+}
+
+func (o UuidResultOutput) ToUuidResultOutput() UuidResultOutput {
+	return o
+}
+
+func (o UuidResultOutput) ToUuidResultOutputWithContext(ctx context.Context) UuidResultOutput {
+	return o
+}
+
+func (o UuidResultOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v UuidResult) string { return v.Result }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(UuidResultOutput{})
 }

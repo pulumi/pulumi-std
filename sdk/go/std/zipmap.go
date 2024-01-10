@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Constructs a map from a list of keys and a corresponding list of values.
@@ -66,12 +65,6 @@ func (o ZipmapResultOutput) ToZipmapResultOutput() ZipmapResultOutput {
 
 func (o ZipmapResultOutput) ToZipmapResultOutputWithContext(ctx context.Context) ZipmapResultOutput {
 	return o
-}
-
-func (o ZipmapResultOutput) ToOutput(ctx context.Context) pulumix.Output[ZipmapResult] {
-	return pulumix.Output[ZipmapResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZipmapResultOutput) Result() pulumi.MapOutput {

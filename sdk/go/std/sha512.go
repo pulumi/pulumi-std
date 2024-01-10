@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a hexadecimal representation of the SHA-512 hash of the given string.
@@ -64,12 +63,6 @@ func (o Sha512ResultOutput) ToSha512ResultOutput() Sha512ResultOutput {
 
 func (o Sha512ResultOutput) ToSha512ResultOutputWithContext(ctx context.Context) Sha512ResultOutput {
 	return o
-}
-
-func (o Sha512ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Sha512Result] {
-	return pulumix.Output[Sha512Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Sha512ResultOutput) Result() pulumi.StringOutput {

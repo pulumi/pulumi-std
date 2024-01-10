@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Determines whether a file exists at a given path.
@@ -64,12 +63,6 @@ func (o FileexistsResultOutput) ToFileexistsResultOutput() FileexistsResultOutpu
 
 func (o FileexistsResultOutput) ToFileexistsResultOutputWithContext(ctx context.Context) FileexistsResultOutput {
 	return o
-}
-
-func (o FileexistsResultOutput) ToOutput(ctx context.Context) pulumix.Output[FileexistsResult] {
-	return pulumix.Output[FileexistsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileexistsResultOutput) Result() pulumi.BoolOutput {

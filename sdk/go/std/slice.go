@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the portion of list between from (inclusive) and to (exclusive).
@@ -68,12 +67,6 @@ func (o SliceResultOutput) ToSliceResultOutput() SliceResultOutput {
 
 func (o SliceResultOutput) ToSliceResultOutputWithContext(ctx context.Context) SliceResultOutput {
 	return o
-}
-
-func (o SliceResultOutput) ToOutput(ctx context.Context) pulumix.Output[SliceResult] {
-	return pulumix.Output[SliceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SliceResultOutput) Result() pulumi.ArrayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Reads the contents of a file into a string and returns the SHA512 hash of it.
@@ -64,12 +63,6 @@ func (o Filesha512ResultOutput) ToFilesha512ResultOutput() Filesha512ResultOutpu
 
 func (o Filesha512ResultOutput) ToFilesha512ResultOutputWithContext(ctx context.Context) Filesha512ResultOutput {
 	return o
-}
-
-func (o Filesha512ResultOutput) ToOutput(ctx context.Context) pulumix.Output[Filesha512Result] {
-	return pulumix.Output[Filesha512Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Filesha512ResultOutput) Result() pulumi.StringOutput {

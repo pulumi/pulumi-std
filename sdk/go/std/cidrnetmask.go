@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format
@@ -67,12 +66,6 @@ func (o CidrnetmaskResultOutput) ToCidrnetmaskResultOutput() CidrnetmaskResultOu
 
 func (o CidrnetmaskResultOutput) ToCidrnetmaskResultOutputWithContext(ctx context.Context) CidrnetmaskResultOutput {
 	return o
-}
-
-func (o CidrnetmaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[CidrnetmaskResult] {
-	return pulumix.Output[CidrnetmaskResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CidrnetmaskResultOutput) Result() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the smallest of the floats.
@@ -64,12 +63,6 @@ func (o MinResultOutput) ToMinResultOutput() MinResultOutput {
 
 func (o MinResultOutput) ToMinResultOutputWithContext(ctx context.Context) MinResultOutput {
 	return o
-}
-
-func (o MinResultOutput) ToOutput(ctx context.Context) pulumix.Output[MinResult] {
-	return pulumix.Output[MinResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MinResultOutput) Result() pulumi.Float64Output {

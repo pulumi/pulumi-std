@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a given number of spaces after each newline character in the given string.
@@ -66,12 +65,6 @@ func (o IndentResultOutput) ToIndentResultOutput() IndentResultOutput {
 
 func (o IndentResultOutput) ToIndentResultOutputWithContext(ctx context.Context) IndentResultOutput {
 	return o
-}
-
-func (o IndentResultOutput) ToOutput(ctx context.Context) pulumix.Output[IndentResult] {
-	return pulumix.Output[IndentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndentResultOutput) Result() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Reads the contents of a file into the string.
@@ -64,12 +63,6 @@ func (o FileResultOutput) ToFileResultOutput() FileResultOutput {
 
 func (o FileResultOutput) ToFileResultOutputWithContext(ctx context.Context) FileResultOutput {
 	return o
-}
-
-func (o FileResultOutput) ToOutput(ctx context.Context) pulumix.Output[FileResult] {
-	return pulumix.Output[FileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileResultOutput) Result() pulumi.StringOutput {

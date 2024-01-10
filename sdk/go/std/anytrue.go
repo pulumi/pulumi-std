@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns true if any of the elements in a given collection are true or \"true\".
@@ -65,12 +64,6 @@ func (o AnytrueResultOutput) ToAnytrueResultOutput() AnytrueResultOutput {
 
 func (o AnytrueResultOutput) ToAnytrueResultOutputWithContext(ctx context.Context) AnytrueResultOutput {
 	return o
-}
-
-func (o AnytrueResultOutput) ToOutput(ctx context.Context) pulumix.Output[AnytrueResult] {
-	return pulumix.Output[AnytrueResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnytrueResultOutput) Result() pulumi.BoolOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Combines two or more lists into a single list.
@@ -64,12 +63,6 @@ func (o ConcatResultOutput) ToConcatResultOutput() ConcatResultOutput {
 
 func (o ConcatResultOutput) ToConcatResultOutputWithContext(ctx context.Context) ConcatResultOutput {
 	return o
-}
-
-func (o ConcatResultOutput) ToOutput(ctx context.Context) pulumix.Output[ConcatResult] {
-	return pulumix.Output[ConcatResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConcatResultOutput) Result() pulumi.ArrayOutput {

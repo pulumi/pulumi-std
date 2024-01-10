@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the given string with all of its Unicode characters in reverse order.
@@ -64,12 +63,6 @@ func (o StrrevResultOutput) ToStrrevResultOutput() StrrevResultOutput {
 
 func (o StrrevResultOutput) ToStrrevResultOutputWithContext(ctx context.Context) StrrevResultOutput {
 	return o
-}
-
-func (o StrrevResultOutput) ToOutput(ctx context.Context) pulumix.Output[StrrevResult] {
-	return pulumix.Output[StrrevResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StrrevResultOutput) Result() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes the specified set of characters from the start and end of the given string.
@@ -66,12 +65,6 @@ func (o TrimResultOutput) ToTrimResultOutput() TrimResultOutput {
 
 func (o TrimResultOutput) ToTrimResultOutputWithContext(ctx context.Context) TrimResultOutput {
 	return o
-}
-
-func (o TrimResultOutput) ToOutput(ctx context.Context) pulumix.Output[TrimResult] {
-	return pulumix.Output[TrimResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrimResultOutput) Result() pulumi.StringOutput {

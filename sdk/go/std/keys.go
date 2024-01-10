@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a lexically sorted list of the map keys.
@@ -64,12 +63,6 @@ func (o KeysResultOutput) ToKeysResultOutput() KeysResultOutput {
 
 func (o KeysResultOutput) ToKeysResultOutputWithContext(ctx context.Context) KeysResultOutput {
 	return o
-}
-
-func (o KeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[KeysResult] {
-	return pulumix.Output[KeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeysResultOutput) Result() pulumi.StringArrayOutput {

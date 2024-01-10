@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Applies URL encoding to a given string.
@@ -64,12 +63,6 @@ func (o UrlencodeResultOutput) ToUrlencodeResultOutput() UrlencodeResultOutput {
 
 func (o UrlencodeResultOutput) ToUrlencodeResultOutputWithContext(ctx context.Context) UrlencodeResultOutput {
 	return o
-}
-
-func (o UrlencodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[UrlencodeResult] {
-	return pulumix.Output[UrlencodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UrlencodeResultOutput) Result() pulumi.StringOutput {

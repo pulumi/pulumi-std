@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Compresses the given string with gzip and then encodes the result to base64.
@@ -64,12 +63,6 @@ func (o Base64gzipResultOutput) ToBase64gzipResultOutput() Base64gzipResultOutpu
 
 func (o Base64gzipResultOutput) ToBase64gzipResultOutputWithContext(ctx context.Context) Base64gzipResultOutput {
 	return o
-}
-
-func (o Base64gzipResultOutput) ToOutput(ctx context.Context) pulumix.Output[Base64gzipResult] {
-	return pulumix.Output[Base64gzipResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Base64gzipResultOutput) Result() pulumi.StringOutput {

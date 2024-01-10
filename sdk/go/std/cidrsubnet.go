@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix
@@ -70,12 +69,6 @@ func (o CidrsubnetResultOutput) ToCidrsubnetResultOutput() CidrsubnetResultOutpu
 
 func (o CidrsubnetResultOutput) ToCidrsubnetResultOutputWithContext(ctx context.Context) CidrsubnetResultOutput {
 	return o
-}
-
-func (o CidrsubnetResultOutput) ToOutput(ctx context.Context) pulumix.Output[CidrsubnetResult] {
-	return pulumix.Output[CidrsubnetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CidrsubnetResultOutput) Result() pulumi.StringOutput {

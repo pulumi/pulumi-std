@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Performs a dynamic lookup into a map variable.
@@ -68,12 +67,6 @@ func (o LookupResultOutput) ToLookupResultOutput() LookupResultOutput {
 
 func (o LookupResultOutput) ToLookupResultOutputWithContext(ctx context.Context) LookupResultOutput {
 	return o
-}
-
-func (o LookupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResult] {
-	return pulumix.Output[LookupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupResultOutput) Result() pulumi.AnyOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the first non-empty value from the given arguments.
@@ -64,12 +63,6 @@ func (o CoalesceResultOutput) ToCoalesceResultOutput() CoalesceResultOutput {
 
 func (o CoalesceResultOutput) ToCoalesceResultOutputWithContext(ctx context.Context) CoalesceResultOutput {
 	return o
-}
-
-func (o CoalesceResultOutput) ToOutput(ctx context.Context) pulumix.Output[CoalesceResult] {
-	return pulumix.Output[CoalesceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CoalesceResultOutput) Result() pulumi.StringOutput {

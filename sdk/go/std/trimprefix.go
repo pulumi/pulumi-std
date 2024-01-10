@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Removes the specified prefix from the start of the given string, if present.
@@ -66,12 +65,6 @@ func (o TrimprefixResultOutput) ToTrimprefixResultOutput() TrimprefixResultOutpu
 
 func (o TrimprefixResultOutput) ToTrimprefixResultOutputWithContext(ctx context.Context) TrimprefixResultOutput {
 	return o
-}
-
-func (o TrimprefixResultOutput) ToOutput(ctx context.Context) pulumix.Output[TrimprefixResult] {
-	return pulumix.Output[TrimprefixResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrimprefixResultOutput) Result() pulumi.StringOutput {

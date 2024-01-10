@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a sequence with the same elements but in reverse order.
@@ -64,12 +63,6 @@ func (o ReverseResultOutput) ToReverseResultOutput() ReverseResultOutput {
 
 func (o ReverseResultOutput) ToReverseResultOutputWithContext(ctx context.Context) ReverseResultOutput {
 	return o
-}
-
-func (o ReverseResultOutput) ToOutput(ctx context.Context) pulumix.Output[ReverseResult] {
-	return pulumix.Output[ReverseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReverseResultOutput) Result() pulumi.ArrayOutput {

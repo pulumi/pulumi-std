@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the base input raised to the power of the exponent.
@@ -66,12 +65,6 @@ func (o PowResultOutput) ToPowResultOutput() PowResultOutput {
 
 func (o PowResultOutput) ToPowResultOutputWithContext(ctx context.Context) PowResultOutput {
 	return o
-}
-
-func (o PowResultOutput) ToOutput(ctx context.Context) pulumix.Output[PowResult] {
-	return pulumix.Output[PowResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PowResultOutput) Result() pulumi.Float64Output {

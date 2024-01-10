@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Generates a list of numbers using a start value, a limit value, and a step value.
@@ -70,12 +69,6 @@ func (o RangeResultOutput) ToRangeResultOutput() RangeResultOutput {
 
 func (o RangeResultOutput) ToRangeResultOutputWithContext(ctx context.Context) RangeResultOutput {
 	return o
-}
-
-func (o RangeResultOutput) ToOutput(ctx context.Context) pulumix.Output[RangeResult] {
-	return pulumix.Output[RangeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RangeResultOutput) Result() pulumi.Float64ArrayOutput {

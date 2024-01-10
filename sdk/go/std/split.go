@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Produces a list by dividing a given string at all occurrences of a given separator
@@ -66,12 +65,6 @@ func (o SplitResultOutput) ToSplitResultOutput() SplitResultOutput {
 
 func (o SplitResultOutput) ToSplitResultOutputWithContext(ctx context.Context) SplitResultOutput {
 	return o
-}
-
-func (o SplitResultOutput) ToOutput(ctx context.Context) pulumix.Output[SplitResult] {
-	return pulumix.Output[SplitResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SplitResultOutput) Result() pulumi.StringArrayOutput {
