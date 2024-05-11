@@ -1757,6 +1757,31 @@
         "type": "object"
       }
     },
+    "std:index:rfc3339tounix": {
+      "description": "Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object"
+      }
+    },
     "std:index:rsadecrypt": {
       "description": "Decrypts an RSA-encrypted ciphertext.\nThe cipher text must be base64-encoded and the key must be in PEM format.",
       "inputs": {
