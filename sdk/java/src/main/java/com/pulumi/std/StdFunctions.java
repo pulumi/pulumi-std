@@ -184,6 +184,8 @@ import com.pulumi.std.inputs.TrimspaceArgs;
 import com.pulumi.std.inputs.TrimspacePlainArgs;
 import com.pulumi.std.inputs.TrimsuffixArgs;
 import com.pulumi.std.inputs.TrimsuffixPlainArgs;
+import com.pulumi.std.inputs.Unixtorfc3999Args;
+import com.pulumi.std.inputs.Unixtorfc3999PlainArgs;
 import com.pulumi.std.inputs.UpperArgs;
 import com.pulumi.std.inputs.UpperPlainArgs;
 import com.pulumi.std.inputs.UrlencodeArgs;
@@ -282,6 +284,7 @@ import com.pulumi.std.outputs.TrimResult;
 import com.pulumi.std.outputs.TrimprefixResult;
 import com.pulumi.std.outputs.TrimspaceResult;
 import com.pulumi.std.outputs.TrimsuffixResult;
+import com.pulumi.std.outputs.Unixtorfc3999Result;
 import com.pulumi.std.outputs.UpperResult;
 import com.pulumi.std.outputs.UrlencodeResult;
 import com.pulumi.std.outputs.UuidResult;
@@ -2987,6 +2990,34 @@ public final class StdFunctions {
      */
     public static CompletableFuture<TrimsuffixResult> trimsuffixPlain(TrimsuffixPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("std:index:trimsuffix", TypeShape.of(TrimsuffixResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static Output<Unixtorfc3999Result> unixtorfc3999(Unixtorfc3999Args args) {
+        return unixtorfc3999(args, InvokeOptions.Empty);
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static CompletableFuture<Unixtorfc3999Result> unixtorfc3999Plain(Unixtorfc3999PlainArgs args) {
+        return unixtorfc3999Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static Output<Unixtorfc3999Result> unixtorfc3999(Unixtorfc3999Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("std:index:unixtorfc3999", TypeShape.of(Unixtorfc3999Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static CompletableFuture<Unixtorfc3999Result> unixtorfc3999Plain(Unixtorfc3999PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("std:index:unixtorfc3999", TypeShape.of(Unixtorfc3999Result.class), args, Utilities.withVersion(options));
     }
     /**
      * Converts all cased letters in the given string to uppercase.

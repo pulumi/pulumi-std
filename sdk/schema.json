@@ -2503,6 +2503,31 @@
         "type": "object"
       }
     },
+    "std:index:unixtorfc3999": {
+      "description": "Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object"
+      }
+    },
     "std:index:upper": {
       "description": "Converts all cased letters in the given string to uppercase.",
       "inputs": {

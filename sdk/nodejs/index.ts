@@ -450,6 +450,11 @@ export const trimsuffix: typeof import("./trimsuffix").trimsuffix = null as any;
 export const trimsuffixOutput: typeof import("./trimsuffix").trimsuffixOutput = null as any;
 utilities.lazyLoad(exports, ["trimsuffix","trimsuffixOutput"], () => require("./trimsuffix"));
 
+export { Unixtorfc3999Args, Unixtorfc3999Result, Unixtorfc3999OutputArgs } from "./unixtorfc3999";
+export const unixtorfc3999: typeof import("./unixtorfc3999").unixtorfc3999 = null as any;
+export const unixtorfc3999Output: typeof import("./unixtorfc3999").unixtorfc3999Output = null as any;
+utilities.lazyLoad(exports, ["unixtorfc3999","unixtorfc3999Output"], () => require("./unixtorfc3999"));
+
 export { UpperArgs, UpperResult, UpperOutputArgs } from "./upper";
 export const upper: typeof import("./upper").upper = null as any;
 export const upperOutput: typeof import("./upper").upperOutput = null as any;
