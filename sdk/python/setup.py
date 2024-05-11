@@ -18,7 +18,7 @@ def readme():
 
 
 setup(name='pulumi_std',
-      python_requires='>=3.7',
+      python_requires='>=3.8',
       version=VERSION,
       description="Standard library functions",
       long_description=readme(),

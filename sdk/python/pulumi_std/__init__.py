@@ -67,6 +67,7 @@ from .provider import *
 from .range import *
 from .replace import *
 from .reverse import *
+from .rfc3339tounix import *
 from .rsadecrypt import *
 from .sha1 import *
 from .sha256 import *

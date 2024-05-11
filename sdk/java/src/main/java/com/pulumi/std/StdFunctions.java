@@ -130,6 +130,8 @@ import com.pulumi.std.inputs.ReplaceArgs;
 import com.pulumi.std.inputs.ReplacePlainArgs;
 import com.pulumi.std.inputs.ReverseArgs;
 import com.pulumi.std.inputs.ReversePlainArgs;
+import com.pulumi.std.inputs.Rfc3339tounixArgs;
+import com.pulumi.std.inputs.Rfc3339tounixPlainArgs;
 import com.pulumi.std.inputs.RsadecryptArgs;
 import com.pulumi.std.inputs.RsadecryptPlainArgs;
 import com.pulumi.std.inputs.Sha1Args;
@@ -253,6 +255,7 @@ import com.pulumi.std.outputs.PowResult;
 import com.pulumi.std.outputs.RangeResult;
 import com.pulumi.std.outputs.ReplaceResult;
 import com.pulumi.std.outputs.ReverseResult;
+import com.pulumi.std.outputs.Rfc3339tounixResult;
 import com.pulumi.std.outputs.RsadecryptResult;
 import com.pulumi.std.outputs.Sha1Result;
 import com.pulumi.std.outputs.Sha256Result;
@@ -2146,6 +2149,34 @@ public final class StdFunctions {
      */
     public static CompletableFuture<ReverseResult> reversePlain(ReversePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("std:index:reverse", TypeShape.of(ReverseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static Output<Rfc3339tounixResult> rfc3339tounix(Rfc3339tounixArgs args) {
+        return rfc3339tounix(args, InvokeOptions.Empty);
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static CompletableFuture<Rfc3339tounixResult> rfc3339tounixPlain(Rfc3339tounixPlainArgs args) {
+        return rfc3339tounixPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static Output<Rfc3339tounixResult> rfc3339tounix(Rfc3339tounixArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("std:index:rfc3339tounix", TypeShape.of(Rfc3339tounixResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.
+     * 
+     */
+    public static CompletableFuture<Rfc3339tounixResult> rfc3339tounixPlain(Rfc3339tounixPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("std:index:rfc3339tounix", TypeShape.of(Rfc3339tounixResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Decrypts an RSA-encrypted ciphertext.

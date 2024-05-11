@@ -76,6 +76,7 @@
         "range.ts",
         "replace.ts",
         "reverse.ts",
+        "rfc3339tounix.ts",
         "rsadecrypt.ts",
         "sha1.ts",
         "sha256.ts",
