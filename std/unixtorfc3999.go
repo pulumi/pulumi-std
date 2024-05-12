@@ -23,22 +23,19 @@ import (
 
 type Unixtorfc3999 struct{}
 type Unixtorfc3999args struct {
-	Input string `pulumi:"input"`
+	Input int64 `pulumi:"input"`
 }
 
 type Unixtorfc3999result struct {
-	Result int64 `pulumi:"result"`
+	Result string `pulumi:"result"`
 }
 
 func (r *Unixtorfc3999) Annotate(a infer.Annotator) {
-	a.Describe(r, `Converts a RFC3999 formatted timestamp into a Unix timestamp with milliseconds.`)
+	a.Describe(r, `Converts a Unix timestamp in seconds into a RFC3999 timestamp.`)
 }
 
 func (*Unixtorfc3999) Call(_ p.Context, args Unixtorfc3999args) (Unixtorfc3999result, error) {
+	t := time.Unix(args.Input, 0)
 
-	t, err := time.Parse(time.RFC3339, args.Input)
-	if err != nil {
-		return Unixtorfc3999result{}, err
-	}
-	return Unixtorfc3999result{t.UnixMilli()}, nil
+	return Unixtorfc3999result{t.Format(time.RFC3339)}, nil
 }

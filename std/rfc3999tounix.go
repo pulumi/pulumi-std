@@ -35,7 +35,6 @@ func (r *Rfc3339tounix) Annotate(a infer.Annotator) {
 }
 
 func (*Rfc3339tounix) Call(_ p.Context, args Rfc3339tounixargs) (Rfc3339tounixresult, error) {
-
 	t, err := time.Parse(time.RFC3339, args.Input)
 	if err != nil {
 		return Rfc3339tounixresult{}, err
