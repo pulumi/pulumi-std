@@ -38,8 +38,9 @@ type CidrsubnetResult struct {
 
 func (r *Cidrsubnet) Annotate(a infer.Annotator) {
 	a.Describe(r, `Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix
-to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", netnum: 2, newbits: 8) returns 10.2.0.0/16;
-cidrsubnet("2607:f298:6051:516c::/64", netnum: 2, newbits: 8) returns 2607:f298:6051:516c:200::/72.`)
+to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", netnum: 2, newbits: 8)
+returns 10.2.0.0/16; cidrsubnet("2607:f298:6051:516c::/64", netnum: 2, newbits: 8) returns
+2607:f298:6051:516c:200::/72.`)
 }
 
 func cidrsubnet(ipaddress string, newbits int, netnum int) (string, error) {

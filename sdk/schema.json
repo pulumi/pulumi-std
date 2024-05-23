@@ -453,7 +453,7 @@
       }
     },
     "std:index:cidrsubnet": {
-      "description": "Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix\nto include an additional subnet number. For example, cidrsubnet(\"10.0.0.0/8\", netnum: 2, newbits: 8) returns 10.2.0.0/16;\ncidrsubnet(\"2607:f298:6051:516c::/64\", netnum: 2, newbits: 8) returns 2607:f298:6051:516c:200::/72.",
+      "description": "Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix\nto include an additional subnet number. For example, cidrsubnet(\"10.0.0.0/8\", netnum: 2, newbits: 8)\nreturns 10.2.0.0/16; cidrsubnet(\"2607:f298:6051:516c::/64\", netnum: 2, newbits: 8) returns\n2607:f298:6051:516c:200::/72.",
       "inputs": {
         "properties": {
           "input": {
