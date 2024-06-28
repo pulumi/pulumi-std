@@ -6,8 +6,9 @@ import * as utilities from "./utilities";
 
 /**
  * Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix
- * to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", 8, 2) returns 10.2.0.0/16;
- * cidrsubnet("2607:f298:6051:516c::/64", 8, 2) returns 2607:f298:6051:516c:200::/72.
+ * to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", netnum: 2, newbits: 8)
+ * returns 10.2.0.0/16; cidrsubnet("2607:f298:6051:516c::/64", netnum: 2, newbits: 8) returns
+ * 2607:f298:6051:516c:200::/72.
  */
 export function cidrsubnet(args: CidrsubnetArgs, opts?: pulumi.InvokeOptions): Promise<CidrsubnetResult> {
 
@@ -30,8 +31,9 @@ export interface CidrsubnetResult {
 }
 /**
  * Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix
- * to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", 8, 2) returns 10.2.0.0/16;
- * cidrsubnet("2607:f298:6051:516c::/64", 8, 2) returns 2607:f298:6051:516c:200::/72.
+ * to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", netnum: 2, newbits: 8)
+ * returns 10.2.0.0/16; cidrsubnet("2607:f298:6051:516c::/64", netnum: 2, newbits: 8) returns
+ * 2607:f298:6051:516c:200::/72.
  */
 export function cidrsubnetOutput(args: CidrsubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CidrsubnetResult> {
     return pulumi.output(args).apply((a: any) => cidrsubnet(a, opts))
