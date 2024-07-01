@@ -100,6 +100,10 @@ def _get_semver_version():
 _version = _get_semver_version()
 _version_str = str(_version)
 
+
+def get_version():
+    return _version_str
+
 def get_resource_opts_defaults() -> pulumi.ResourceOptions:
     return pulumi.ResourceOptions(
         version=get_version(),
@@ -320,6 +324,3 @@ def deprecated(message: str) -> typing.Callable[[C], C]:
 
 def get_plugin_download_url():
 	return None
-
-def get_version():
-     return _version_str
