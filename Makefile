@@ -16,8 +16,6 @@ sdk_prep: build
 	mkdir -p sdk
 
 gen_sdks: gen_dotnet_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk gen_schema
-	if [ -f sdk/go.mod ]; then rm sdk/go.mod; fi
-	cd sdk && go mod init github.com/pulumi/pulumi-std/sdk
 
 gen_schema: sdk_prep
 	pulumi package get-schema bin/pulumi-resource-std > sdk/schema.json
@@ -27,9 +25,6 @@ gen_%_sdk: sdk_prep
 	pulumi package gen-sdk sdk/schema.json --language "$*" --out sdk
 
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
-	if ! [ -f sdk/go.mod ]; then \
-		cd sdk && go mod init github.com/pulumi/pulumi-std/sdk; \
-	fi
 
 build_dotnet_sdk: gen_dotnet_sdk
 	cd sdk/dotnet/ && \
