@@ -1,5 +1,5 @@
 ### Improvements
 
-- Upgrade Go dependencies.
+- Regenerate SDKs with the latest SDKgen.
 
 ### Bug Fixes

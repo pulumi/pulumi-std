@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 1.7.1 (2024-07-01)
+
+### Improvements
+
+- Regenerate SDKs with the latest SDKgen.
+
 ## 1.7.0 (2024-07-01)
 
 ### Improvements

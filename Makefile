@@ -1,4 +1,4 @@
-VERSION := 1.6.2
+VERSION := 1.7.1
 JAVA_GEN := pulumi-java-gen
 JAVA_GEN_VERSION := v0.7.1
 
