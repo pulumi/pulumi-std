@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 1.7.0 (2024-07-01)
+
+### Improvements
+
+- Upgrade Go dependencies.
+
 ## 1.6.2 (2024-01-10)
 
 ### Bug Fixes
@@ -15,13 +21,13 @@ CHANGELOG
 
 ## 1.6.0 (2024-01-08)
 
-### Improvements 
+### Improvements
 
 - Upgrade Go dependencies (go-git, grpc, x/crypto, x/net, cloudflare/circl).
 
 ## 1.5.0 (2024-01-04)
 
-### Improvements 
+### Improvements
 
 - Generated SDKs for dotnet, python, node and python.
 
@@ -31,25 +37,25 @@ CHANGELOG
 
 ## 1.4.0 (2023-06-06)
 
-### Improvements 
+### Improvements
 
 - Generated SDKs for dotnet, python, node and python.
 
 ## 1.3.0 (2023-06-05)
 
-### Improvements 
+### Improvements
 
 - Generated SDKs for dotnet, python, node and python.
 
 ## 1.2.0 (2023-06-05)
 
-### Improvements 
+### Improvements
 
 - Generated SDKs for dotnet, python, node and python.
 
 ## 1.1.0 (2023-05-12)
 
-### Improvements 
+### Improvements
 
 - Generated SDKs for dotnet, python, node and python.
 
