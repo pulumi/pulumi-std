@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+## 1.7.2 (2024-07-02)
+
+### Improvements
+
+- Regenerate SDKs with the latest SDKgen.
+
+### Bug Fixes
+
+- Build statically linked release binaries with CGO disabled.
+
 ## 1.7.1 (2024-07-01)
 
 ### Improvements
