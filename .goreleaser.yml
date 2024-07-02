@@ -11,6 +11,8 @@ archives:
 builds:
   - id: pulumi-resource-std
     binary: pulumi-resource-std
+    env:
+      - CGO_ENABLED=0
     goarch:
       - amd64
       - arm64
