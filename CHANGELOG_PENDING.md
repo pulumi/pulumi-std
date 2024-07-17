@@ -1,7 +1,6 @@
 ### Improvements
 
-- Regenerate SDKs with the latest SDKgen.
+- Use latest patch version of go in CI.
 
 ### Bug Fixes
 
-- Build statically linked release binaries with CGO disabled.
