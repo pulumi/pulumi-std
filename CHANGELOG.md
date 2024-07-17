@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 1.7.3 (2024-07-17)
+
+### Improvements
+
+- Use latest patch version of go in CI.
+
 ## 1.7.2 (2024-07-02)
 
 ### Improvements
