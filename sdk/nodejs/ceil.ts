@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the least integer value greater than or equal to the argument.
  */
 export function ceil(args: CeilArgs, opts?: pulumi.InvokeOptions): Promise<CeilResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:ceil", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface CeilResult {
 /**
  * Returns the least integer value greater than or equal to the argument.
  */
-export function ceilOutput(args: CeilOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CeilResult> {
-    return pulumi.output(args).apply((a: any) => ceil(a, opts))
+export function ceilOutput(args: CeilOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CeilResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:ceil", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface CeilOutputArgs {

@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<FormatResult> Invoke(FormatInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<FormatResult>("std:index:format", args ?? new FormatInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Formats a string according to the given format. The syntax for the format is standard sprintf syntax.
+        /// </summary>
+        public static Output<FormatResult> Invoke(FormatInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<FormatResult>("std:index:format", args ?? new FormatInvokeArgs(), options.WithDefaults());
     }
 
 

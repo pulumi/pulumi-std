@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ToboolResult> Invoke(ToboolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ToboolResult>("std:index:tobool", args ?? new ToboolInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Converts its argument to a boolean value. Only boolean values, null, and the exact strings
+        /// 	"true" and "false" can be converted to boolean. All other values will result in an error.
+        /// </summary>
+        public static Output<ToboolResult> Invoke(ToboolInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ToboolResult>("std:index:tobool", args ?? new ToboolInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<MinResult> Invoke(MinInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<MinResult>("std:index:min", args ?? new MinInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the smallest of the floats.
+        /// </summary>
+        public static Output<MinResult> Invoke(MinInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<MinResult>("std:index:min", args ?? new MinInvokeArgs(), options.WithDefaults());
     }
 
 

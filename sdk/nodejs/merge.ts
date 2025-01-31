@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * and duplicate keys overwrite previous entries.
  */
 export function merge(args: MergeArgs, opts?: pulumi.InvokeOptions): Promise<MergeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:merge", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface MergeResult {
  * Returns the union of 2 or more maps. The maps are consumed in the order provided,
  * and duplicate keys overwrite previous entries.
  */
-export function mergeOutput(args: MergeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<MergeResult> {
-    return pulumi.output(args).apply((a: any) => merge(a, opts))
+export function mergeOutput(args: MergeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<MergeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:merge", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface MergeOutputArgs {

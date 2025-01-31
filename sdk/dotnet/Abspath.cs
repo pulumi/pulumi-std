@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<AbspathResult> Invoke(AbspathInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<AbspathResult>("std:index:abspath", args ?? new AbspathInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns an absolute representation of the specified path.
+        /// If the path is not absolute it will be joined with the current working directory to turn it into an absolute path.
+        /// </summary>
+        public static Output<AbspathResult> Invoke(AbspathInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<AbspathResult>("std:index:abspath", args ?? new AbspathInvokeArgs(), options.WithDefaults());
     }
 
 

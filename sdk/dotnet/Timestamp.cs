@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TimestampResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TimestampResult>("std:index:timestamp", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Returns a UTC timestamp string of the current time in RFC 3339 format
+        /// </summary>
+        public static Output<TimestampResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TimestampResult>("std:index:timestamp", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

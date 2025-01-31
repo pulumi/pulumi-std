@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -52,13 +57,16 @@ def zipmap(keys: Optional[Sequence[str]] = None,
 
     return AwaitableZipmapResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(zipmap)
 def zipmap_output(keys: Optional[pulumi.Input[Sequence[str]]] = None,
                   values: Optional[pulumi.Input[Sequence[Any]]] = None,
-                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[ZipmapResult]:
+                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ZipmapResult]:
     """
     Constructs a map from a list of keys and a corresponding list of values.
     """
-    ...
+    __args__ = dict()
+    __args__['keys'] = keys
+    __args__['values'] = values
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:zipmap', __args__, opts=opts, typ=ZipmapResult)
+    return __ret__.apply(lambda __response__: ZipmapResult(
+        result=pulumi.get(__response__, 'result')))

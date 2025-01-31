@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TrimprefixResult> Invoke(TrimprefixInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TrimprefixResult>("std:index:trimprefix", args ?? new TrimprefixInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Removes the specified prefix from the start of the given string, if present.
+        /// </summary>
+        public static Output<TrimprefixResult> Invoke(TrimprefixInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TrimprefixResult>("std:index:trimprefix", args ?? new TrimprefixInvokeArgs(), options.WithDefaults());
     }
 
 

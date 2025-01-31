@@ -5,10 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Removes empty string elements from a list.
+ * Removes empty and nil string elements from a list.
  */
 export function compact(args: CompactArgs, opts?: pulumi.InvokeOptions): Promise<CompactResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:compact", {
         "input": args.input,
@@ -16,19 +15,22 @@ export function compact(args: CompactArgs, opts?: pulumi.InvokeOptions): Promise
 }
 
 export interface CompactArgs {
-    input: string[];
+    input: any[];
 }
 
 export interface CompactResult {
     readonly result: string[];
 }
 /**
- * Removes empty string elements from a list.
+ * Removes empty and nil string elements from a list.
  */
-export function compactOutput(args: CompactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CompactResult> {
-    return pulumi.output(args).apply((a: any) => compact(a, opts))
+export function compactOutput(args: CompactOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CompactResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:compact", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface CompactOutputArgs {
-    input: pulumi.Input<pulumi.Input<string>[]>;
+    input: pulumi.Input<any[]>;
 }

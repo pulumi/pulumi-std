@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the first non-empty value from the given arguments.
+// Returns the first non-nil value or non empty string from the given arguments as a the most generic type.
 func Coalesce(ctx *pulumi.Context, args *CoalesceArgs, opts ...pulumi.InvokeOption) (*CoalesceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CoalesceResult
@@ -23,28 +23,24 @@ func Coalesce(ctx *pulumi.Context, args *CoalesceArgs, opts ...pulumi.InvokeOpti
 }
 
 type CoalesceArgs struct {
-	Input []string `pulumi:"input"`
+	Input []interface{} `pulumi:"input"`
 }
 
 type CoalesceResult struct {
-	Result string `pulumi:"result"`
+	Result interface{} `pulumi:"result"`
 }
 
 func CoalesceOutput(ctx *pulumi.Context, args CoalesceOutputArgs, opts ...pulumi.InvokeOption) CoalesceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (CoalesceResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (CoalesceResultOutput, error) {
 			args := v.(CoalesceArgs)
-			r, err := Coalesce(ctx, &args, opts...)
-			var s CoalesceResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:coalesce", args, CoalesceResultOutput{}, options).(CoalesceResultOutput), nil
 		}).(CoalesceResultOutput)
 }
 
 type CoalesceOutputArgs struct {
-	Input pulumi.StringArrayInput `pulumi:"input"`
+	Input pulumi.ArrayInput `pulumi:"input"`
 }
 
 func (CoalesceOutputArgs) ElementType() reflect.Type {
@@ -65,8 +61,8 @@ func (o CoalesceResultOutput) ToCoalesceResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CoalesceResultOutput) Result() pulumi.StringOutput {
-	return o.ApplyT(func(v CoalesceResult) string { return v.Result }).(pulumi.StringOutput)
+func (o CoalesceResultOutput) Result() pulumi.AnyOutput {
+	return o.ApplyT(func(v CoalesceResult) interface{} { return v.Result }).(pulumi.AnyOutput)
 }
 
 func init() {

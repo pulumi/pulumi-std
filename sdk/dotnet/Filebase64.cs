@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Filebase64Result> Invoke(Filebase64InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Filebase64Result>("std:index:filebase64", args ?? new Filebase64InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Reads the contents of a file and returns them as a base64-encoded string.
+        /// </summary>
+        public static Output<Filebase64Result> Invoke(Filebase64InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Filebase64Result>("std:index:filebase64", args ?? new Filebase64InvokeArgs(), options.WithDefaults());
     }
 
 

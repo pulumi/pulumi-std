@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Performs a dynamic lookup into a map variable.
  */
 export function lookup(args: LookupArgs, opts?: pulumi.InvokeOptions): Promise<LookupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:lookup", {
         "default": args.default,
@@ -29,8 +28,13 @@ export interface LookupResult {
 /**
  * Performs a dynamic lookup into a map variable.
  */
-export function lookupOutput(args: LookupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LookupResult> {
-    return pulumi.output(args).apply((a: any) => lookup(a, opts))
+export function lookupOutput(args: LookupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<LookupResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:lookup", {
+        "default": args.default,
+        "key": args.key,
+        "map": args.map,
+    }, opts);
 }
 
 export interface LookupOutputArgs {

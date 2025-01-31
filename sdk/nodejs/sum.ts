@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the total sum of the elements of the input list.
  */
 export function sum(args: SumArgs, opts?: pulumi.InvokeOptions): Promise<SumResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:sum", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface SumResult {
 /**
  * Returns the total sum of the elements of the input list.
  */
-export function sumOutput(args: SumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<SumResult> {
-    return pulumi.output(args).apply((a: any) => sum(a, opts))
+export function sumOutput(args: SumOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<SumResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:sum", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface SumOutputArgs {

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -50,12 +55,14 @@ def base64decode(input: Optional[str] = None,
 
     return AwaitableBase64decodeResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(base64decode)
 def base64decode_output(input: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[Base64decodeResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Base64decodeResult]:
     """
     Given a base64-encoded string, decodes it and returns the original string.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:base64decode', __args__, opts=opts, typ=Base64decodeResult)
+    return __ret__.apply(lambda __response__: Base64decodeResult(
+        result=pulumi.get(__response__, 'result')))

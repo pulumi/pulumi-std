@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Filebase64sha512Result> Invoke(Filebase64sha512InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Filebase64sha512Result>("std:index:filebase64sha512", args ?? new Filebase64sha512InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Reads the contents of a file into a string and returns the base64-encoded SHA512 hash of it.
+        /// </summary>
+        public static Output<Filebase64sha512Result> Invoke(Filebase64sha512InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Filebase64sha512Result>("std:index:filebase64sha512", args ?? new Filebase64sha512InvokeArgs(), options.WithDefaults());
     }
 
 

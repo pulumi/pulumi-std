@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<SortResult> Invoke(SortInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<SortResult>("std:index:sort", args ?? new SortInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a list of strings sorted lexicographically.
+        /// </summary>
+        public static Output<SortResult> Invoke(SortInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<SortResult>("std:index:sort", args ?? new SortInvokeArgs(), options.WithDefaults());
     }
 
 

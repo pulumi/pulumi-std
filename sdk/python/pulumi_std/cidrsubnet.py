@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -57,17 +62,21 @@ def cidrsubnet(input: Optional[str] = None,
 
     return AwaitableCidrsubnetResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(cidrsubnet)
 def cidrsubnet_output(input: Optional[pulumi.Input[str]] = None,
                       netnum: Optional[pulumi.Input[int]] = None,
                       newbits: Optional[pulumi.Input[int]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[CidrsubnetResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CidrsubnetResult]:
     """
     Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix
     to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", netnum: 2, newbits: 8)
     returns 10.2.0.0/16; cidrsubnet("2607:f298:6051:516c::/64", netnum: 2, newbits: 8) returns
     2607:f298:6051:516c:200::/72.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    __args__['netnum'] = netnum
+    __args__['newbits'] = newbits
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:cidrsubnet', __args__, opts=opts, typ=CidrsubnetResult)
+    return __ret__.apply(lambda __response__: CidrsubnetResult(
+        result=pulumi.get(__response__, 'result')))

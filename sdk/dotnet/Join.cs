@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<JoinResult> Invoke(JoinInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<JoinResult>("std:index:join", args ?? new JoinInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Joins the list with the delimiter for a resultant string.
+        /// </summary>
+        public static Output<JoinResult> Invoke(JoinInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<JoinResult>("std:index:join", args ?? new JoinInvokeArgs(), options.WithDefaults());
     }
 
 

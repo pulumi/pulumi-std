@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Md5Result> Invoke(Md5InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Md5Result>("std:index:md5", args ?? new Md5InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a (conventional) hexadecimal representation of the MD5 hash of the given string.
+        /// </summary>
+        public static Output<Md5Result> Invoke(Md5InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Md5Result>("std:index:md5", args ?? new Md5InvokeArgs(), options.WithDefaults());
     }
 
 

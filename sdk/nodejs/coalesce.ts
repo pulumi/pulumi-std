@@ -5,10 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Returns the first non-empty value from the given arguments.
+ * Returns the first non-nil value or non empty string from the given arguments as a the most generic type.
  */
 export function coalesce(args: CoalesceArgs, opts?: pulumi.InvokeOptions): Promise<CoalesceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:coalesce", {
         "input": args.input,
@@ -16,19 +15,22 @@ export function coalesce(args: CoalesceArgs, opts?: pulumi.InvokeOptions): Promi
 }
 
 export interface CoalesceArgs {
-    input: string[];
+    input: any[];
 }
 
 export interface CoalesceResult {
-    readonly result: string;
+    readonly result: any;
 }
 /**
- * Returns the first non-empty value from the given arguments.
+ * Returns the first non-nil value or non empty string from the given arguments as a the most generic type.
  */
-export function coalesceOutput(args: CoalesceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CoalesceResult> {
-    return pulumi.output(args).apply((a: any) => coalesce(a, opts))
+export function coalesceOutput(args: CoalesceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CoalesceResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:coalesce", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface CoalesceOutputArgs {
-    input: pulumi.Input<pulumi.Input<string>[]>;
+    input: pulumi.Input<any[]>;
 }

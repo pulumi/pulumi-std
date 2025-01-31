@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * The cipher text must be base64-encoded and the key must be in PEM format.
  */
 export function rsadecrypt(args: RsadecryptArgs, opts?: pulumi.InvokeOptions): Promise<RsadecryptResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:rsadecrypt", {
         "cipherText": args.cipherText,
@@ -29,8 +28,12 @@ export interface RsadecryptResult {
  * Decrypts an RSA-encrypted ciphertext.
  * The cipher text must be base64-encoded and the key must be in PEM format.
  */
-export function rsadecryptOutput(args: RsadecryptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<RsadecryptResult> {
-    return pulumi.output(args).apply((a: any) => rsadecrypt(a, opts))
+export function rsadecryptOutput(args: RsadecryptOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<RsadecryptResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:rsadecrypt", {
+        "cipherText": args.cipherText,
+        "key": args.key,
+    }, opts);
 }
 
 export interface RsadecryptOutputArgs {

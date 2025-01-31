@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -58,12 +63,9 @@ def timecmp(timestampa: Optional[str] = None,
 
     return AwaitableTimecmpResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(timecmp)
 def timecmp_output(timestampa: Optional[pulumi.Input[str]] = None,
                    timestampb: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[TimecmpResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TimecmpResult]:
     """
     Compares two timestamps and returns a number that represents the ordering
     	of the instants those timestamps represent.
@@ -73,4 +75,10 @@ def timecmp_output(timestampa: Optional[pulumi.Input[str]] = None,
     	If 'timestamp_a' is equal to 'timestamp_b', 0 is returned.
     	If 'timestamp_a' is after 'timestamp_b', 1 is returned.
     """
-    ...
+    __args__ = dict()
+    __args__['timestampa'] = timestampa
+    __args__['timestampb'] = timestampb
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:timecmp', __args__, opts=opts, typ=TimecmpResult)
+    return __ret__.apply(lambda __response__: TimecmpResult(
+        result=pulumi.get(__response__, 'result')))

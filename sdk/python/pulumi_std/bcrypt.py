@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -53,14 +58,17 @@ def bcrypt(cost: Optional[int] = None,
 
     return AwaitableBcryptResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(bcrypt)
 def bcrypt_output(cost: Optional[pulumi.Input[Optional[int]]] = None,
                   input: Optional[pulumi.Input[str]] = None,
-                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[BcryptResult]:
+                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[BcryptResult]:
     """
     Returns the Blowfish encrypted hash of the string at the given cost.
     A default cost of 10 will be used if not provided.
     """
-    ...
+    __args__ = dict()
+    __args__['cost'] = cost
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:bcrypt', __args__, opts=opts, typ=BcryptResult)
+    return __ret__.apply(lambda __response__: BcryptResult(
+        result=pulumi.get(__response__, 'result')))

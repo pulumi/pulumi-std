@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Reads the contents of a file into the string.
  */
 export function file(args: FileArgs, opts?: pulumi.InvokeOptions): Promise<FileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:file", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface FileResult {
 /**
  * Reads the contents of a file into the string.
  */
-export function fileOutput(args: FileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<FileResult> {
-    return pulumi.output(args).apply((a: any) => file(a, opts))
+export function fileOutput(args: FileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<FileResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:file", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface FileOutputArgs {

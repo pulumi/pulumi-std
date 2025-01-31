@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -59,13 +64,10 @@ def replace(replace: Optional[str] = None,
 
     return AwaitableReplaceResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(replace)
 def replace_output(replace: Optional[pulumi.Input[str]] = None,
                    search: Optional[pulumi.Input[str]] = None,
                    text: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[ReplaceResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ReplaceResult]:
     """
     Does a search and replace on the given string.
     All instances of search are replaced with the value of replace.
@@ -74,4 +76,11 @@ def replace_output(replace: Optional[pulumi.Input[str]] = None,
     using $n where n is the index or name of the subcapture. If using a regular expression,
     the syntax conforms to the re2 regular expression syntax.
     """
-    ...
+    __args__ = dict()
+    __args__['replace'] = replace
+    __args__['search'] = search
+    __args__['text'] = text
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:replace', __args__, opts=opts, typ=ReplaceResult)
+    return __ret__.apply(lambda __response__: ReplaceResult(
+        result=pulumi.get(__response__, 'result')))

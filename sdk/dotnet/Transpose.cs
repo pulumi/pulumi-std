@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TransposeResult> Invoke(TransposeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TransposeResult>("std:index:transpose", args ?? new TransposeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.
+        /// </summary>
+        public static Output<TransposeResult> Invoke(TransposeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TransposeResult>("std:index:transpose", args ?? new TransposeInvokeArgs(), options.WithDefaults());
     }
 
 

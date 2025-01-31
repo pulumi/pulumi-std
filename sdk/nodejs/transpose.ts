@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.
  */
 export function transpose(args: TransposeArgs, opts?: pulumi.InvokeOptions): Promise<TransposeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:transpose", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface TransposeResult {
 /**
  * Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.
  */
-export function transposeOutput(args: TransposeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TransposeResult> {
-    return pulumi.output(args).apply((a: any) => transpose(a, opts))
+export function transposeOutput(args: TransposeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TransposeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:transpose", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface TransposeOutputArgs {

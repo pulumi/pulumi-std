@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Compresses the given string with gzip and then encodes the result to base64.
  */
 export function base64gzip(args: Base64gzipArgs, opts?: pulumi.InvokeOptions): Promise<Base64gzipResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:base64gzip", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Base64gzipResult {
 /**
  * Compresses the given string with gzip and then encodes the result to base64.
  */
-export function base64gzipOutput(args: Base64gzipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Base64gzipResult> {
-    return pulumi.output(args).apply((a: any) => base64gzip(a, opts))
+export function base64gzipOutput(args: Base64gzipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Base64gzipResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:base64gzip", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Base64gzipOutputArgs {

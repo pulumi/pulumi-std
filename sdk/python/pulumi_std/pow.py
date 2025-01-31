@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -52,13 +57,16 @@ def pow(base: Optional[float] = None,
 
     return AwaitablePowResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(pow)
 def pow_output(base: Optional[pulumi.Input[float]] = None,
                exponent: Optional[pulumi.Input[float]] = None,
-               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[PowResult]:
+               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[PowResult]:
     """
     Returns the base input raised to the power of the exponent.
     """
-    ...
+    __args__ = dict()
+    __args__['base'] = base
+    __args__['exponent'] = exponent
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:pow', __args__, opts=opts, typ=PowResult)
+    return __ret__.apply(lambda __response__: PowResult(
+        result=pulumi.get(__response__, 'result')))

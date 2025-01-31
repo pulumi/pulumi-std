@@ -31,15 +31,11 @@ type TosetResult struct {
 }
 
 func TosetOutput(ctx *pulumi.Context, args TosetOutputArgs, opts ...pulumi.InvokeOption) TosetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TosetResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TosetResultOutput, error) {
 			args := v.(TosetArgs)
-			r, err := Toset(ctx, &args, opts...)
-			var s TosetResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:toset", args, TosetResultOutput{}, options).(TosetResultOutput), nil
 		}).(TosetResultOutput)
 }
 

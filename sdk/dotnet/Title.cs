@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TitleResult> Invoke(TitleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TitleResult>("std:index:title", args ?? new TitleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Converts the first letter of each word in the given string to uppercase.
+        /// </summary>
+        public static Output<TitleResult> Invoke(TitleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TitleResult>("std:index:title", args ?? new TitleInvokeArgs(), options.WithDefaults());
     }
 
 

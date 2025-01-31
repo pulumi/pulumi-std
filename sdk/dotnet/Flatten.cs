@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<FlattenResult> Invoke(FlattenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<FlattenResult>("std:index:flatten", args ?? new FlattenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Flattens lists of lists down to a flat list of primitive values,
+        /// eliminating any nested lists recursively.
+        /// </summary>
+        public static Output<FlattenResult> Invoke(FlattenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<FlattenResult>("std:index:flatten", args ?? new FlattenInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ReverseResult> Invoke(ReverseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ReverseResult>("std:index:reverse", args ?? new ReverseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a sequence with the same elements but in reverse order.
+        /// </summary>
+        public static Output<ReverseResult> Invoke(ReverseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ReverseResult>("std:index:reverse", args ?? new ReverseInvokeArgs(), options.WithDefaults());
     }
 
 

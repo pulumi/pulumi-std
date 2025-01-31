@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  * 	Follows the format defined in RFC 4180.
  */
 export function csvdecode(args: CsvdecodeArgs, opts?: pulumi.InvokeOptions): Promise<CsvdecodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:csvdecode", {
         "input": args.input,
@@ -39,8 +38,11 @@ export interface CsvdecodeResult {
  * 	or this function will produce an error.
  * 	Follows the format defined in RFC 4180.
  */
-export function csvdecodeOutput(args: CsvdecodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CsvdecodeResult> {
-    return pulumi.output(args).apply((a: any) => csvdecode(a, opts))
+export function csvdecodeOutput(args: CsvdecodeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CsvdecodeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:csvdecode", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface CsvdecodeOutputArgs {

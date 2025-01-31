@@ -31,15 +31,11 @@ type StrrevResult struct {
 }
 
 func StrrevOutput(ctx *pulumi.Context, args StrrevOutputArgs, opts ...pulumi.InvokeOption) StrrevResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (StrrevResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (StrrevResultOutput, error) {
 			args := v.(StrrevArgs)
-			r, err := Strrev(ctx, &args, opts...)
-			var s StrrevResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:strrev", args, StrrevResultOutput{}, options).(StrrevResultOutput), nil
 		}).(StrrevResultOutput)
 }
 

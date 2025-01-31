@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Reads the contents of a file into a string and returns the MD5 hash of it.
  */
 export function filemd5(args: Filemd5Args, opts?: pulumi.InvokeOptions): Promise<Filemd5Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:filemd5", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Filemd5Result {
 /**
  * Reads the contents of a file into a string and returns the MD5 hash of it.
  */
-export function filemd5Output(args: Filemd5OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Filemd5Result> {
-    return pulumi.output(args).apply((a: any) => filemd5(a, opts))
+export function filemd5Output(args: Filemd5OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Filemd5Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:filemd5", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Filemd5OutputArgs {

@@ -39,15 +39,11 @@ type TimecmpResult struct {
 }
 
 func TimecmpOutput(ctx *pulumi.Context, args TimecmpOutputArgs, opts ...pulumi.InvokeOption) TimecmpResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TimecmpResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TimecmpResultOutput, error) {
 			args := v.(TimecmpArgs)
-			r, err := Timecmp(ctx, &args, opts...)
-			var s TimecmpResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:timecmp", args, TimecmpResultOutput{}, options).(TimecmpResultOutput), nil
 		}).(TimecmpResultOutput)
 }
 

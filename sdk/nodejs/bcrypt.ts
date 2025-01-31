@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * A default cost of 10 will be used if not provided.
  */
 export function bcrypt(args: BcryptArgs, opts?: pulumi.InvokeOptions): Promise<BcryptResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:bcrypt", {
         "cost": args.cost,
@@ -29,8 +28,12 @@ export interface BcryptResult {
  * Returns the Blowfish encrypted hash of the string at the given cost.
  * A default cost of 10 will be used if not provided.
  */
-export function bcryptOutput(args: BcryptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<BcryptResult> {
-    return pulumi.output(args).apply((a: any) => bcrypt(a, opts))
+export function bcryptOutput(args: BcryptOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<BcryptResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:bcrypt", {
+        "cost": args.cost,
+        "input": args.input,
+    }, opts);
 }
 
 export interface BcryptOutputArgs {

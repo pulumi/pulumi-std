@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns all but the last element of path, typically the path's directory.
  */
 export function dirname(args: DirnameArgs, opts?: pulumi.InvokeOptions): Promise<DirnameResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:dirname", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface DirnameResult {
 /**
  * Returns all but the last element of path, typically the path's directory.
  */
-export function dirnameOutput(args: DirnameOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<DirnameResult> {
-    return pulumi.output(args).apply((a: any) => dirname(a, opts))
+export function dirnameOutput(args: DirnameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<DirnameResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:dirname", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface DirnameOutputArgs {

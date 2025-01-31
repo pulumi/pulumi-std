@@ -28,6 +28,15 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<CidrsubnetResult> Invoke(CidrsubnetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CidrsubnetResult>("std:index:cidrsubnet", args ?? new CidrsubnetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix
+        /// to include an additional subnet number. For example, cidrsubnet("10.0.0.0/8", netnum: 2, newbits: 8)
+        /// returns 10.2.0.0/16; cidrsubnet("2607:f298:6051:516c::/64", netnum: 2, newbits: 8) returns
+        /// 2607:f298:6051:516c:200::/72.
+        /// </summary>
+        public static Output<CidrsubnetResult> Invoke(CidrsubnetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<CidrsubnetResult>("std:index:cidrsubnet", args ?? new CidrsubnetInvokeArgs(), options.WithDefaults());
     }
 
 

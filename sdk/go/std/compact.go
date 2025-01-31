@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Removes empty string elements from a list.
+// Removes empty and nil string elements from a list.
 func Compact(ctx *pulumi.Context, args *CompactArgs, opts ...pulumi.InvokeOption) (*CompactResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CompactResult
@@ -23,7 +23,7 @@ func Compact(ctx *pulumi.Context, args *CompactArgs, opts ...pulumi.InvokeOption
 }
 
 type CompactArgs struct {
-	Input []string `pulumi:"input"`
+	Input []interface{} `pulumi:"input"`
 }
 
 type CompactResult struct {
@@ -31,20 +31,16 @@ type CompactResult struct {
 }
 
 func CompactOutput(ctx *pulumi.Context, args CompactOutputArgs, opts ...pulumi.InvokeOption) CompactResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (CompactResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (CompactResultOutput, error) {
 			args := v.(CompactArgs)
-			r, err := Compact(ctx, &args, opts...)
-			var s CompactResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:compact", args, CompactResultOutput{}, options).(CompactResultOutput), nil
 		}).(CompactResultOutput)
 }
 
 type CompactOutputArgs struct {
-	Input pulumi.StringArrayInput `pulumi:"input"`
+	Input pulumi.ArrayInput `pulumi:"input"`
 }
 
 func (CompactOutputArgs) ElementType() reflect.Type {

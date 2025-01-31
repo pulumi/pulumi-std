@@ -32,15 +32,11 @@ type PowResult struct {
 }
 
 func PowOutput(ctx *pulumi.Context, args PowOutputArgs, opts ...pulumi.InvokeOption) PowResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (PowResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (PowResultOutput, error) {
 			args := v.(PowArgs)
-			r, err := Pow(ctx, &args, opts...)
-			var s PowResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:pow", args, PowResultOutput{}, options).(PowResultOutput), nil
 		}).(PowResultOutput)
 }
 

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Determines whether a file exists at a given path.
  */
 export function fileexists(args: FileexistsArgs, opts?: pulumi.InvokeOptions): Promise<FileexistsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:fileexists", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface FileexistsResult {
 /**
  * Determines whether a file exists at a given path.
  */
-export function fileexistsOutput(args: FileexistsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<FileexistsResult> {
-    return pulumi.output(args).apply((a: any) => fileexists(a, opts))
+export function fileexistsOutput(args: FileexistsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<FileexistsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:fileexists", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface FileexistsOutputArgs {

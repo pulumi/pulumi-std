@@ -33,15 +33,11 @@ type LookupResult struct {
 }
 
 func LookupOutput(ctx *pulumi.Context, args LookupOutputArgs, opts ...pulumi.InvokeOption) LookupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupResultOutput, error) {
 			args := v.(LookupArgs)
-			r, err := Lookup(ctx, &args, opts...)
-			var s LookupResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:lookup", args, LookupResultOutput{}, options).(LookupResultOutput), nil
 		}).(LookupResultOutput)
 }
 

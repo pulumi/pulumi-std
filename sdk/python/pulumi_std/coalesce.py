@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -19,13 +24,13 @@ __all__ = [
 @pulumi.output_type
 class CoalesceResult:
     def __init__(__self__, result=None):
-        if result and not isinstance(result, str):
-            raise TypeError("Expected argument 'result' to be a str")
+        if result and not isinstance(result, dict):
+            raise TypeError("Expected argument 'result' to be a dict")
         pulumi.set(__self__, "result", result)
 
     @property
     @pulumi.getter
-    def result(self) -> str:
+    def result(self) -> Any:
         return pulumi.get(self, "result")
 
 
@@ -38,10 +43,10 @@ class AwaitableCoalesceResult(CoalesceResult):
             result=self.result)
 
 
-def coalesce(input: Optional[Sequence[str]] = None,
+def coalesce(input: Optional[Sequence[Any]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableCoalesceResult:
     """
-    Returns the first non-empty value from the given arguments.
+    Returns the first non-nil value or non empty string from the given arguments as a the most generic type.
     """
     __args__ = dict()
     __args__['input'] = input
@@ -50,12 +55,14 @@ def coalesce(input: Optional[Sequence[str]] = None,
 
     return AwaitableCoalesceResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(coalesce)
-def coalesce_output(input: Optional[pulumi.Input[Sequence[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[CoalesceResult]:
+def coalesce_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CoalesceResult]:
     """
-    Returns the first non-empty value from the given arguments.
+    Returns the first non-nil value or non empty string from the given arguments as a the most generic type.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:coalesce', __args__, opts=opts, typ=CoalesceResult)
+    return __ret__.apply(lambda __response__: CoalesceResult(
+        result=pulumi.get(__response__, 'result')))

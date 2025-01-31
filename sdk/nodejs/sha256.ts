@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a hexadecimal representation of the SHA-256 hash of the given string.
  */
 export function sha256(args: Sha256Args, opts?: pulumi.InvokeOptions): Promise<Sha256Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:sha256", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Sha256Result {
 /**
  * Returns a hexadecimal representation of the SHA-256 hash of the given string.
  */
-export function sha256Output(args: Sha256OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Sha256Result> {
-    return pulumi.output(args).apply((a: any) => sha256(a, opts))
+export function sha256Output(args: Sha256OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Sha256Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:sha256", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Sha256OutputArgs {

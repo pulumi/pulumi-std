@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<EndswithResult> Invoke(EndswithInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<EndswithResult>("std:index:endswith", args ?? new EndswithInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Determines if the input string ends with the suffix.
+        /// </summary>
+        public static Output<EndswithResult> Invoke(EndswithInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<EndswithResult>("std:index:endswith", args ?? new EndswithInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TostringResult> Invoke(TostringInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TostringResult>("std:index:tostring", args ?? new TostringInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Converts its argument to a string value. Only primitive types (string, number, bool)
+        /// 	and null can be converted to string. All other values will result in an error.
+        /// </summary>
+        public static Output<TostringResult> Invoke(TostringInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TostringResult>("std:index:tostring", args ?? new TostringInvokeArgs(), options.WithDefaults());
     }
 
 

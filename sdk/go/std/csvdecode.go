@@ -39,15 +39,11 @@ type CsvdecodeResult struct {
 }
 
 func CsvdecodeOutput(ctx *pulumi.Context, args CsvdecodeOutputArgs, opts ...pulumi.InvokeOption) CsvdecodeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (CsvdecodeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (CsvdecodeResultOutput, error) {
 			args := v.(CsvdecodeArgs)
-			r, err := Csvdecode(ctx, &args, opts...)
-			var s CsvdecodeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:csvdecode", args, CsvdecodeResultOutput{}, options).(CsvdecodeResultOutput), nil
 		}).(CsvdecodeResultOutput)
 }
 

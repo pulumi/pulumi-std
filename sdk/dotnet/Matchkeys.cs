@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<MatchkeysResult> Invoke(MatchkeysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<MatchkeysResult>("std:index:matchkeys", args ?? new MatchkeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// For two lists values and keys of equal length,
+        /// returns all elements from values where the corresponding element from keys exists in the searchset list.
+        /// </summary>
+        public static Output<MatchkeysResult> Invoke(MatchkeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<MatchkeysResult>("std:index:matchkeys", args ?? new MatchkeysInvokeArgs(), options.WithDefaults());
     }
 
 

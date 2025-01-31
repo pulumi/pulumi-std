@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a base64-encoded representation of the given string.
  */
 export function base64encode(args: Base64encodeArgs, opts?: pulumi.InvokeOptions): Promise<Base64encodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:base64encode", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Base64encodeResult {
 /**
  * Returns a base64-encoded representation of the given string.
  */
-export function base64encodeOutput(args: Base64encodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Base64encodeResult> {
-    return pulumi.output(args).apply((a: any) => base64encode(a, opts))
+export function base64encodeOutput(args: Base64encodeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Base64encodeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:base64encode", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Base64encodeOutputArgs {

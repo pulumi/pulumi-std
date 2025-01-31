@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -50,12 +55,14 @@ def ceil(input: Optional[float] = None,
 
     return AwaitableCeilResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(ceil)
 def ceil_output(input: Optional[pulumi.Input[float]] = None,
-                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[CeilResult]:
+                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CeilResult]:
     """
     Returns the least integer value greater than or equal to the argument.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:ceil', __args__, opts=opts, typ=CeilResult)
+    return __ret__.apply(lambda __response__: CeilResult(
+        result=pulumi.get(__response__, 'result')))

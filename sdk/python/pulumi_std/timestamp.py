@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -48,11 +53,12 @@ def timestamp(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableTimestamp
 
     return AwaitableTimestampResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(timestamp)
-def timestamp_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[TimestampResult]:
+def timestamp_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TimestampResult]:
     """
     Returns a UTC timestamp string of the current time in RFC 3339 format
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:timestamp', __args__, opts=opts, typ=TimestampResult)
+    return __ret__.apply(lambda __response__: TimestampResult(
+        result=pulumi.get(__response__, 'result')))

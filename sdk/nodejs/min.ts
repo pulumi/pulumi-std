@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the smallest of the floats.
  */
 export function min(args: MinArgs, opts?: pulumi.InvokeOptions): Promise<MinResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:min", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface MinResult {
 /**
  * Returns the smallest of the floats.
  */
-export function minOutput(args: MinOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<MinResult> {
-    return pulumi.output(args).apply((a: any) => min(a, opts))
+export function minOutput(args: MinOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<MinResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:min", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface MinOutputArgs {

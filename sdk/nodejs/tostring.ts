@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * 	and null can be converted to string. All other values will result in an error.
  */
 export function tostring(args: TostringArgs, opts?: pulumi.InvokeOptions): Promise<TostringResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:tostring", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface TostringResult {
  * Converts its argument to a string value. Only primitive types (string, number, bool)
  * 	and null can be converted to string. All other values will result in an error.
  */
-export function tostringOutput(args: TostringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TostringResult> {
-    return pulumi.output(args).apply((a: any) => tostring(a, opts))
+export function tostringOutput(args: TostringOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TostringResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:tostring", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface TostringOutputArgs {

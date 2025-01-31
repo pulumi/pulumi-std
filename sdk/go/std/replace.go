@@ -38,15 +38,11 @@ type ReplaceResult struct {
 }
 
 func ReplaceOutput(ctx *pulumi.Context, args ReplaceOutputArgs, opts ...pulumi.InvokeOption) ReplaceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ReplaceResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (ReplaceResultOutput, error) {
 			args := v.(ReplaceArgs)
-			r, err := Replace(ctx, &args, opts...)
-			var s ReplaceResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:replace", args, ReplaceResultOutput{}, options).(ReplaceResultOutput), nil
 		}).(ReplaceResultOutput)
 }
 

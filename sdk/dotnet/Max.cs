@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<MaxResult> Invoke(MaxInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<MaxResult>("std:index:max", args ?? new MaxInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the largest of the floats.
+        /// </summary>
+        public static Output<MaxResult> Invoke(MaxInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<MaxResult>("std:index:max", args ?? new MaxInvokeArgs(), options.WithDefaults());
     }
 
 

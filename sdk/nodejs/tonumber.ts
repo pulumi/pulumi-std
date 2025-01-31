@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * 	containing decimal representations of numbers can be converted to number. All other values will result in an error
  */
 export function tonumber(args: TonumberArgs, opts?: pulumi.InvokeOptions): Promise<TonumberResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:tonumber", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface TonumberResult {
  * Converts its argument to a number value. Only number values, null, and strings
  * 	containing decimal representations of numbers can be converted to number. All other values will result in an error
  */
-export function tonumberOutput(args: TonumberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TonumberResult> {
-    return pulumi.output(args).apply((a: any) => tonumber(a, opts))
+export function tonumberOutput(args: TonumberOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TonumberResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:tonumber", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface TonumberOutputArgs {
