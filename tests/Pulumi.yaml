@@ -73,7 +73,7 @@ variables:
       input: [[], [1]]
   compact:
     fn::std:compact:
-      input: ["", "one", ""]
+      input: ["", "one", "", null]
   concat:
     fn::std:concat:
       input: [[1,2], [3,4], [5]]
