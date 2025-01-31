@@ -43,10 +43,10 @@ class AwaitableCompactResult(CompactResult):
             result=self.result)
 
 
-def compact(input: Optional[Sequence[str]] = None,
+def compact(input: Optional[Sequence[Any]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableCompactResult:
     """
-    Removes empty string elements from a list.
+    Removes empty and nil string elements from a list.
     """
     __args__ = dict()
     __args__['input'] = input
@@ -55,10 +55,10 @@ def compact(input: Optional[Sequence[str]] = None,
 
     return AwaitableCompactResult(
         result=pulumi.get(__ret__, 'result'))
-def compact_output(input: Optional[pulumi.Input[Sequence[str]]] = None,
+def compact_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CompactResult]:
     """
-    Removes empty string elements from a list.
+    Removes empty and nil string elements from a list.
     """
     __args__ = dict()
     __args__['input'] = input

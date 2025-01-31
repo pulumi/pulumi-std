@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Removes empty string elements from a list.
+// Removes empty and nil string elements from a list.
 func Compact(ctx *pulumi.Context, args *CompactArgs, opts ...pulumi.InvokeOption) (*CompactResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CompactResult
@@ -23,7 +23,7 @@ func Compact(ctx *pulumi.Context, args *CompactArgs, opts ...pulumi.InvokeOption
 }
 
 type CompactArgs struct {
-	Input []string `pulumi:"input"`
+	Input []interface{} `pulumi:"input"`
 }
 
 type CompactResult struct {
@@ -40,7 +40,7 @@ func CompactOutput(ctx *pulumi.Context, args CompactOutputArgs, opts ...pulumi.I
 }
 
 type CompactOutputArgs struct {
-	Input pulumi.StringArrayInput `pulumi:"input"`
+	Input pulumi.ArrayInput `pulumi:"input"`
 }
 
 func (CompactOutputArgs) ElementType() reflect.Type {

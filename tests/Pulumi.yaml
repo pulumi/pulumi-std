@@ -22,7 +22,7 @@ variables:
   base64decode:
     fn::std:base64decode:
       input: QUJDREU=
-  basename: 
+  basename:
     fn::std:basename:
       input: path/to/pulumi
   base64gzip:
@@ -73,7 +73,16 @@ variables:
       input: [[], [1]]
   compact:
     fn::std:compact:
-      input: ["", "one", ""]
+      input: ["", "one", "", null]
+  compactMixed:
+    fn::std:compact:
+      input: ["", "one", "", null, "two"]
+  compactMixedEmpty:
+    fn::std:compact:
+      input: ["", "", null]
+  compactNullsEmpty:
+    fn::std:compact:
+      input: [null, null]
   concat:
     fn::std:concat:
       input: [[1,2], [3,4], [5]]
@@ -172,7 +181,7 @@ variables:
   jsondecode:
     fn::std:jsondecode:
       input: '{"str": "hello", "num":6.13,"strs":["a","b"], "bool": true}'
-  keys: 
+  keys:
     fn::std:keys:
       input:
         hello: world
@@ -258,7 +267,7 @@ variables:
       length: 5
   transpose:
     fn::std:transpose:
-      input: 
+      input:
         a: ["1", "2"]
         b: ["2", "3"]
   title:
@@ -293,7 +302,7 @@ variables:
   tonumberStr:
     fn::std:tonumber:
       input: "10"
-  tostringStr: 
+  tostringStr:
     fn::std:tostring:
       input: "hello world"
   tostringInt:
@@ -361,6 +370,9 @@ outputs:
   coalesce: ${coalesce.result}
   coalescelist: ${coalescelist.result}
   compact: ${compact.result}
+  compactMixed: ${compactMixed.result}
+  compactMixedEmpty: ${compactMixedEmpty.result}
+  compactNullsEmpty: ${compactNullsEmpty.result}
   concat: ${concat.result}
   containsWithIntegers: ${containsWithIntegers.result}
   containsWithStrings: ${containsWithStrings.result}
