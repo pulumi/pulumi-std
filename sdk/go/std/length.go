@@ -31,15 +31,11 @@ type LengthResult struct {
 }
 
 func LengthOutput(ctx *pulumi.Context, args LengthOutputArgs, opts ...pulumi.InvokeOption) LengthResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LengthResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LengthResultOutput, error) {
 			args := v.(LengthArgs)
-			r, err := Length(ctx, &args, opts...)
-			var s LengthResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:length", args, LengthResultOutput{}, options).(LengthResultOutput), nil
 		}).(LengthResultOutput)
 }
 

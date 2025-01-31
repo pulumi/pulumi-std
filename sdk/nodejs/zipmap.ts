@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Constructs a map from a list of keys and a corresponding list of values.
  */
 export function zipmap(args: ZipmapArgs, opts?: pulumi.InvokeOptions): Promise<ZipmapResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:zipmap", {
         "keys": args.keys,
@@ -27,8 +26,12 @@ export interface ZipmapResult {
 /**
  * Constructs a map from a list of keys and a corresponding list of values.
  */
-export function zipmapOutput(args: ZipmapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ZipmapResult> {
-    return pulumi.output(args).apply((a: any) => zipmap(a, opts))
+export function zipmapOutput(args: ZipmapOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ZipmapResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:zipmap", {
+        "keys": args.keys,
+        "values": args.values,
+    }, opts);
 }
 
 export interface ZipmapOutputArgs {

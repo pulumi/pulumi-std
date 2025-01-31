@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -50,12 +55,14 @@ def transpose(input: Optional[Mapping[str, Sequence[str]]] = None,
 
     return AwaitableTransposeResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(transpose)
 def transpose_output(input: Optional[pulumi.Input[Mapping[str, Sequence[str]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[TransposeResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TransposeResult]:
     """
     Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:transpose', __args__, opts=opts, typ=TransposeResult)
+    return __ret__.apply(lambda __response__: TransposeResult(
+        result=pulumi.get(__response__, 'result')))

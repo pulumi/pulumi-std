@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Base64encodeResult> Invoke(Base64encodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Base64encodeResult>("std:index:base64encode", args ?? new Base64encodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a base64-encoded representation of the given string.
+        /// </summary>
+        public static Output<Base64encodeResult> Invoke(Base64encodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Base64encodeResult>("std:index:base64encode", args ?? new Base64encodeInvokeArgs(), options.WithDefaults());
     }
 
 

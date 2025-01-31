@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the greatest integer value less than or equal to the argument.
  */
 export function signum(args: SignumArgs, opts?: pulumi.InvokeOptions): Promise<SignumResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:signum", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface SignumResult {
 /**
  * Returns the greatest integer value less than or equal to the argument.
  */
-export function signumOutput(args: SignumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<SignumResult> {
-    return pulumi.output(args).apply((a: any) => signum(a, opts))
+export function signumOutput(args: SignumOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<SignumResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:signum", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface SignumOutputArgs {

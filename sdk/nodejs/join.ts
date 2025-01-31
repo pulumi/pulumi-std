@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Joins the list with the delimiter for a resultant string.
  */
 export function join(args: JoinArgs, opts?: pulumi.InvokeOptions): Promise<JoinResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:join", {
         "input": args.input,
@@ -27,8 +26,12 @@ export interface JoinResult {
 /**
  * Joins the list with the delimiter for a resultant string.
  */
-export function joinOutput(args: JoinOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<JoinResult> {
-    return pulumi.output(args).apply((a: any) => join(a, opts))
+export function joinOutput(args: JoinOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<JoinResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:join", {
+        "input": args.input,
+        "separator": args.separator,
+    }, opts);
 }
 
 export interface JoinOutputArgs {

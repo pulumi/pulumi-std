@@ -31,15 +31,11 @@ type Filemd5Result struct {
 }
 
 func Filemd5Output(ctx *pulumi.Context, args Filemd5OutputArgs, opts ...pulumi.InvokeOption) Filemd5ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (Filemd5Result, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (Filemd5ResultOutput, error) {
 			args := v.(Filemd5Args)
-			r, err := Filemd5(ctx, &args, opts...)
-			var s Filemd5Result
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:filemd5", args, Filemd5ResultOutput{}, options).(Filemd5ResultOutput), nil
 		}).(Filemd5ResultOutput)
 }
 

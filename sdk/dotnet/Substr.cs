@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<SubstrResult> Invoke(SubstrInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<SubstrResult>("std:index:substr", args ?? new SubstrInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Extracts a substring from the given string.
+        /// </summary>
+        public static Output<SubstrResult> Invoke(SubstrInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<SubstrResult>("std:index:substr", args ?? new SubstrInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Produces a list by dividing a given string at all occurrences of a given separator
  */
 export function split(args: SplitArgs, opts?: pulumi.InvokeOptions): Promise<SplitResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:split", {
         "separator": args.separator,
@@ -27,8 +26,12 @@ export interface SplitResult {
 /**
  * Produces a list by dividing a given string at all occurrences of a given separator
  */
-export function splitOutput(args: SplitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<SplitResult> {
-    return pulumi.output(args).apply((a: any) => split(a, opts))
+export function splitOutput(args: SplitOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<SplitResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:split", {
+        "separator": args.separator,
+        "text": args.text,
+    }, opts);
 }
 
 export interface SplitOutputArgs {

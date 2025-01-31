@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * depending on whether limit is greater than or less than start.
  */
 export function range(args: RangeArgs, opts?: pulumi.InvokeOptions): Promise<RangeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:range", {
         "limit": args.limit,
@@ -33,8 +32,13 @@ export interface RangeResult {
  * Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one
  * depending on whether limit is greater than or less than start.
  */
-export function rangeOutput(args: RangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<RangeResult> {
-    return pulumi.output(args).apply((a: any) => range(a, opts))
+export function rangeOutput(args: RangeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<RangeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:range", {
+        "limit": args.limit,
+        "start": args.start,
+        "step": args.step,
+    }, opts);
 }
 
 export interface RangeOutputArgs {

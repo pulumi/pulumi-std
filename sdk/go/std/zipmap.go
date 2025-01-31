@@ -32,15 +32,11 @@ type ZipmapResult struct {
 }
 
 func ZipmapOutput(ctx *pulumi.Context, args ZipmapOutputArgs, opts ...pulumi.InvokeOption) ZipmapResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ZipmapResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (ZipmapResultOutput, error) {
 			args := v.(ZipmapArgs)
-			r, err := Zipmap(ctx, &args, opts...)
-			var s ZipmapResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:zipmap", args, ZipmapResultOutput{}, options).(ZipmapResultOutput), nil
 		}).(ZipmapResultOutput)
 }
 

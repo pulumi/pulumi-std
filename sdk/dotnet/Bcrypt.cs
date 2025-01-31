@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<BcryptResult> Invoke(BcryptInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<BcryptResult>("std:index:bcrypt", args ?? new BcryptInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the Blowfish encrypted hash of the string at the given cost.
+        /// A default cost of 10 will be used if not provided.
+        /// </summary>
+        public static Output<BcryptResult> Invoke(BcryptInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<BcryptResult>("std:index:bcrypt", args ?? new BcryptInvokeArgs(), options.WithDefaults());
     }
 
 

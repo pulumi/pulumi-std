@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -51,13 +56,15 @@ def tobool(input: Optional[Any] = None,
 
     return AwaitableToboolResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(tobool)
 def tobool_output(input: Optional[Any] = None,
-                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[ToboolResult]:
+                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ToboolResult]:
     """
     Converts its argument to a boolean value. Only boolean values, null, and the exact strings
     	"true" and "false" can be converted to boolean. All other values will result in an error.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:tobool', __args__, opts=opts, typ=ToboolResult)
+    return __ret__.apply(lambda __response__: ToboolResult(
+        result=pulumi.get(__response__, 'result')))

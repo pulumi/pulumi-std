@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -51,13 +56,15 @@ def merge(input: Optional[Sequence[Mapping[str, Any]]] = None,
 
     return AwaitableMergeResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(merge)
 def merge_output(input: Optional[pulumi.Input[Sequence[Mapping[str, Any]]]] = None,
-                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[MergeResult]:
+                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[MergeResult]:
     """
     Returns the union of 2 or more maps. The maps are consumed in the order provided,
     and duplicate keys overwrite previous entries.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:merge', __args__, opts=opts, typ=MergeResult)
+    return __ret__.apply(lambda __response__: MergeResult(
+        result=pulumi.get(__response__, 'result')))

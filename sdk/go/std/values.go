@@ -31,15 +31,11 @@ type ValuesResult struct {
 }
 
 func ValuesOutput(ctx *pulumi.Context, args ValuesOutputArgs, opts ...pulumi.InvokeOption) ValuesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ValuesResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (ValuesResultOutput, error) {
 			args := v.(ValuesArgs)
-			r, err := Values(ctx, &args, opts...)
-			var s ValuesResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:values", args, ValuesResultOutput{}, options).(ValuesResultOutput), nil
 		}).(ValuesResultOutput)
 }
 

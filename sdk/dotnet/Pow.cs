@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<PowResult> Invoke(PowInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<PowResult>("std:index:pow", args ?? new PowInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the base input raised to the power of the exponent.
+        /// </summary>
+        public static Output<PowResult> Invoke(PowInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<PowResult>("std:index:pow", args ?? new PowInvokeArgs(), options.WithDefaults());
     }
 
 

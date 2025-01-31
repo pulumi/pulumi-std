@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ContainsResult> Invoke(ContainsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ContainsResult>("std:index:contains", args ?? new ContainsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns true if a list contains the given element and returns false otherwise.
+        /// </summary>
+        public static Output<ContainsResult> Invoke(ContainsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ContainsResult>("std:index:contains", args ?? new ContainsInvokeArgs(), options.WithDefaults());
     }
 
 

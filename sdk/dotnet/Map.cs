@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<MapResult> Invoke(MapInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<MapResult>("std:index:map", args ?? new MapInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a map consisting of the key/value pairs specified as arguments.
+        /// </summary>
+        public static Output<MapResult> Invoke(MapInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<MapResult>("std:index:map", args ?? new MapInvokeArgs(), options.WithDefaults());
     }
 
 

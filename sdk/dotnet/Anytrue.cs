@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<AnytrueResult> Invoke(AnytrueInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<AnytrueResult>("std:index:anytrue", args ?? new AnytrueInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns true if any of the elements in a given collection are true or \"true\".
+        /// It also returns false if the collection is empty.
+        /// </summary>
+        public static Output<AnytrueResult> Invoke(AnytrueInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<AnytrueResult>("std:index:anytrue", args ?? new AnytrueInvokeArgs(), options.WithDefaults());
     }
 
 

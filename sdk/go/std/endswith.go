@@ -32,15 +32,11 @@ type EndswithResult struct {
 }
 
 func EndswithOutput(ctx *pulumi.Context, args EndswithOutputArgs, opts ...pulumi.InvokeOption) EndswithResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (EndswithResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (EndswithResultOutput, error) {
 			args := v.(EndswithArgs)
-			r, err := Endswith(ctx, &args, opts...)
-			var s EndswithResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:endswith", args, EndswithResultOutput{}, options).(EndswithResultOutput), nil
 		}).(EndswithResultOutput)
 }
 

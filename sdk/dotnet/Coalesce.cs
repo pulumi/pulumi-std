@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<CoalesceResult> Invoke(CoalesceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CoalesceResult>("std:index:coalesce", args ?? new CoalesceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the first non-empty value from the given arguments.
+        /// </summary>
+        public static Output<CoalesceResult> Invoke(CoalesceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<CoalesceResult>("std:index:coalesce", args ?? new CoalesceInvokeArgs(), options.WithDefaults());
     }
 
 

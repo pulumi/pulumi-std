@@ -31,15 +31,11 @@ type TitleResult struct {
 }
 
 func TitleOutput(ctx *pulumi.Context, args TitleOutputArgs, opts ...pulumi.InvokeOption) TitleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TitleResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TitleResultOutput, error) {
 			args := v.(TitleArgs)
-			r, err := Title(ctx, &args, opts...)
-			var s TitleResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:title", args, TitleResultOutput{}, options).(TitleResultOutput), nil
 		}).(TitleResultOutput)
 }
 

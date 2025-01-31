@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Sha1Result> Invoke(Sha1InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Sha1Result>("std:index:sha1", args ?? new Sha1InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a hexadecimal representation of the SHA-1 hash of the given string.
+        /// </summary>
+        public static Output<Sha1Result> Invoke(Sha1InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Sha1Result>("std:index:sha1", args ?? new Sha1InvokeArgs(), options.WithDefaults());
     }
 
 

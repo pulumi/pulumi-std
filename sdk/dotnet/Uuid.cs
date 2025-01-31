@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<UuidResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<UuidResult>("std:index:uuid", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Returns a unique identifier string, generated and formatted as required by RFC 4122.
+        /// </summary>
+        public static Output<UuidResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<UuidResult>("std:index:uuid", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

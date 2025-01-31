@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * This is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.
  */
 export function base64sha512(args: Base64sha512Args, opts?: pulumi.InvokeOptions): Promise<Base64sha512Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:base64sha512", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface Base64sha512Result {
  * Returns a base64-encoded representation of raw SHA-512 sum of the given string.
  * This is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.
  */
-export function base64sha512Output(args: Base64sha512OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Base64sha512Result> {
-    return pulumi.output(args).apply((a: any) => base64sha512(a, opts))
+export function base64sha512Output(args: Base64sha512OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Base64sha512Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:base64sha512", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Base64sha512OutputArgs {

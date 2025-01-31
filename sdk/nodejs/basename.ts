@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the last element of the input path.
  */
 export function basename(args: BasenameArgs, opts?: pulumi.InvokeOptions): Promise<BasenameResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:basename", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface BasenameResult {
 /**
  * Returns the last element of the input path.
  */
-export function basenameOutput(args: BasenameOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<BasenameResult> {
-    return pulumi.output(args).apply((a: any) => basename(a, opts))
+export function basenameOutput(args: BasenameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<BasenameResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:basename", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface BasenameOutputArgs {

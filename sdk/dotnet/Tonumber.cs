@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TonumberResult> Invoke(TonumberInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TonumberResult>("std:index:tonumber", args ?? new TonumberInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Converts its argument to a number value. Only number values, null, and strings
+        /// 	containing decimal representations of numbers can be converted to number. All other values will result in an error
+        /// </summary>
+        public static Output<TonumberResult> Invoke(TonumberInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TonumberResult>("std:index:tonumber", args ?? new TonumberInvokeArgs(), options.WithDefaults());
     }
 
 

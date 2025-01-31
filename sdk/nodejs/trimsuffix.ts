@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Removes the specified suffix from the end of the given string, if present.
  */
 export function trimsuffix(args: TrimsuffixArgs, opts?: pulumi.InvokeOptions): Promise<TrimsuffixResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:trimsuffix", {
         "input": args.input,
@@ -27,8 +26,12 @@ export interface TrimsuffixResult {
 /**
  * Removes the specified suffix from the end of the given string, if present.
  */
-export function trimsuffixOutput(args: TrimsuffixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TrimsuffixResult> {
-    return pulumi.output(args).apply((a: any) => trimsuffix(a, opts))
+export function trimsuffixOutput(args: TrimsuffixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TrimsuffixResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:trimsuffix", {
+        "input": args.input,
+        "suffix": args.suffix,
+    }, opts);
 }
 
 export interface TrimsuffixOutputArgs {

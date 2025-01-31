@@ -31,15 +31,11 @@ type Filebase64Result struct {
 }
 
 func Filebase64Output(ctx *pulumi.Context, args Filebase64OutputArgs, opts ...pulumi.InvokeOption) Filebase64ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (Filebase64Result, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (Filebase64ResultOutput, error) {
 			args := v.(Filebase64Args)
-			r, err := Filebase64(ctx, &args, opts...)
-			var s Filebase64Result
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:filebase64", args, Filebase64ResultOutput{}, options).(Filebase64ResultOutput), nil
 		}).(Filebase64ResultOutput)
 }
 

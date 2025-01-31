@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Extracts a substring from the given string.
  */
 export function substr(args: SubstrArgs, opts?: pulumi.InvokeOptions): Promise<SubstrResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:substr", {
         "input": args.input,
@@ -29,8 +28,13 @@ export interface SubstrResult {
 /**
  * Extracts a substring from the given string.
  */
-export function substrOutput(args: SubstrOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<SubstrResult> {
-    return pulumi.output(args).apply((a: any) => substr(a, opts))
+export function substrOutput(args: SubstrOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<SubstrResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:substr", {
+        "input": args.input,
+        "length": args.length,
+        "offset": args.offset,
+    }, opts);
 }
 
 export interface SubstrOutputArgs {

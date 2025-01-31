@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Base64sha512Result> Invoke(Base64sha512InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Base64sha512Result>("std:index:base64sha512", args ?? new Base64sha512InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a base64-encoded representation of raw SHA-512 sum of the given string.
+        /// This is not equivalent of base64encode(sha512(string)) since sha512() returns hexadecimal representation.
+        /// </summary>
+        public static Output<Base64sha512Result> Invoke(Base64sha512InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Base64sha512Result>("std:index:base64sha512", args ?? new Base64sha512InvokeArgs(), options.WithDefaults());
     }
 
 

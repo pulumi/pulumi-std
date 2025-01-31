@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<CeilResult> Invoke(CeilInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CeilResult>("std:index:ceil", args ?? new CeilInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the least integer value greater than or equal to the argument.
+        /// </summary>
+        public static Output<CeilResult> Invoke(CeilInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<CeilResult>("std:index:ceil", args ?? new CeilInvokeArgs(), options.WithDefaults());
     }
 
 

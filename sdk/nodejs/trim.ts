@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Removes the specified set of characters from the start and end of the given string.
  */
 export function trim(args: TrimArgs, opts?: pulumi.InvokeOptions): Promise<TrimResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:trim", {
         "cutset": args.cutset,
@@ -27,8 +26,12 @@ export interface TrimResult {
 /**
  * Removes the specified set of characters from the start and end of the given string.
  */
-export function trimOutput(args: TrimOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TrimResult> {
-    return pulumi.output(args).apply((a: any) => trim(a, opts))
+export function trimOutput(args: TrimOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TrimResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:trim", {
+        "cutset": args.cutset,
+        "input": args.input,
+    }, opts);
 }
 
 export interface TrimOutputArgs {

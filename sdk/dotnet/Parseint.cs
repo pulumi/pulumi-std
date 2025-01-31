@@ -26,6 +26,14 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ParseintResult> Invoke(ParseintInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ParseintResult>("std:index:parseint", args ?? new ParseintInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Parses the given string as a representation of an integer in the specified base
+        /// and returns the resulting number. The base must be between 2 and 62 inclusive.
+        /// 	.
+        /// </summary>
+        public static Output<ParseintResult> Invoke(ParseintInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ParseintResult>("std:index:parseint", args ?? new ParseintInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TrimsuffixResult> Invoke(TrimsuffixInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TrimsuffixResult>("std:index:trimsuffix", args ?? new TrimsuffixInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Removes the specified suffix from the end of the given string, if present.
+        /// </summary>
+        public static Output<TrimsuffixResult> Invoke(TrimsuffixInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TrimsuffixResult>("std:index:trimsuffix", args ?? new TrimsuffixInvokeArgs(), options.WithDefaults());
     }
 
 

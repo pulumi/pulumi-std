@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Reads the contents of a file into a string and returns the SHA1 hash of it.
  */
 export function filesha1(args: Filesha1Args, opts?: pulumi.InvokeOptions): Promise<Filesha1Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:filesha1", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Filesha1Result {
 /**
  * Reads the contents of a file into a string and returns the SHA1 hash of it.
  */
-export function filesha1Output(args: Filesha1OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Filesha1Result> {
-    return pulumi.output(args).apply((a: any) => filesha1(a, opts))
+export function filesha1Output(args: Filesha1OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Filesha1Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:filesha1", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Filesha1OutputArgs {

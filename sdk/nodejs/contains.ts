@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns true if a list contains the given element and returns false otherwise.
  */
 export function contains(args: ContainsArgs, opts?: pulumi.InvokeOptions): Promise<ContainsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:contains", {
         "element": args.element,
@@ -27,8 +26,12 @@ export interface ContainsResult {
 /**
  * Returns true if a list contains the given element and returns false otherwise.
  */
-export function containsOutput(args: ContainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ContainsResult> {
-    return pulumi.output(args).apply((a: any) => contains(a, opts))
+export function containsOutput(args: ContainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ContainsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:contains", {
+        "element": args.element,
+        "input": args.input,
+    }, opts);
 }
 
 export interface ContainsOutputArgs {

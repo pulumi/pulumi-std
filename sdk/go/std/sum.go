@@ -31,15 +31,11 @@ type SumResult struct {
 }
 
 func SumOutput(ctx *pulumi.Context, args SumOutputArgs, opts ...pulumi.InvokeOption) SumResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (SumResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (SumResultOutput, error) {
 			args := v.(SumArgs)
-			r, err := Sum(ctx, &args, opts...)
-			var s SumResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:sum", args, SumResultOutput{}, options).(SumResultOutput), nil
 		}).(SumResultOutput)
 }
 

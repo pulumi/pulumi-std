@@ -35,15 +35,11 @@ type ParseintResult struct {
 }
 
 func ParseintOutput(ctx *pulumi.Context, args ParseintOutputArgs, opts ...pulumi.InvokeOption) ParseintResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ParseintResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (ParseintResultOutput, error) {
 			args := v.(ParseintArgs)
-			r, err := Parseint(ctx, &args, opts...)
-			var s ParseintResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:parseint", args, ParseintResultOutput{}, options).(ParseintResultOutput), nil
 		}).(ParseintResultOutput)
 }
 
