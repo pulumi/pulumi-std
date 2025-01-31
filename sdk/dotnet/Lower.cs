@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<LowerResult> Invoke(LowerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<LowerResult>("std:index:lower", args ?? new LowerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a copy of the string with all Unicode letters mapped to their lower case.
+        /// </summary>
+        public static Output<LowerResult> Invoke(LowerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<LowerResult>("std:index:lower", args ?? new LowerInvokeArgs(), options.WithDefaults());
     }
 
 

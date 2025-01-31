@@ -31,15 +31,11 @@ type DirnameResult struct {
 }
 
 func DirnameOutput(ctx *pulumi.Context, args DirnameOutputArgs, opts ...pulumi.InvokeOption) DirnameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (DirnameResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (DirnameResultOutput, error) {
 			args := v.(DirnameArgs)
-			r, err := Dirname(ctx, &args, opts...)
-			var s DirnameResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:dirname", args, DirnameResultOutput{}, options).(DirnameResultOutput), nil
 		}).(DirnameResultOutput)
 }
 

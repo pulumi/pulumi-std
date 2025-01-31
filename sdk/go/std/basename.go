@@ -31,15 +31,11 @@ type BasenameResult struct {
 }
 
 func BasenameOutput(ctx *pulumi.Context, args BasenameOutputArgs, opts ...pulumi.InvokeOption) BasenameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (BasenameResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (BasenameResultOutput, error) {
 			args := v.(BasenameArgs)
-			r, err := Basename(ctx, &args, opts...)
-			var s BasenameResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:basename", args, BasenameResultOutput{}, options).(BasenameResultOutput), nil
 		}).(BasenameResultOutput)
 }
 

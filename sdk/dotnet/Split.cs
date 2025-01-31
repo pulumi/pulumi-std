@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<SplitResult> Invoke(SplitInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<SplitResult>("std:index:split", args ?? new SplitInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Produces a list by dividing a given string at all occurrences of a given separator
+        /// </summary>
+        public static Output<SplitResult> Invoke(SplitInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<SplitResult>("std:index:split", args ?? new SplitInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -51,13 +56,15 @@ def flatten(input: Optional[Sequence[Any]] = None,
 
     return AwaitableFlattenResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(flatten)
 def flatten_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[FlattenResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[FlattenResult]:
     """
     Flattens lists of lists down to a flat list of primitive values,
     eliminating any nested lists recursively.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:flatten', __args__, opts=opts, typ=FlattenResult)
+    return __ret__.apply(lambda __response__: FlattenResult(
+        result=pulumi.get(__response__, 'result')))

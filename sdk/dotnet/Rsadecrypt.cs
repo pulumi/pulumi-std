@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<RsadecryptResult> Invoke(RsadecryptInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<RsadecryptResult>("std:index:rsadecrypt", args ?? new RsadecryptInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Decrypts an RSA-encrypted ciphertext.
+        /// The cipher text must be base64-encoded and the key must be in PEM format.
+        /// </summary>
+        public static Output<RsadecryptResult> Invoke(RsadecryptInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<RsadecryptResult>("std:index:rsadecrypt", args ?? new RsadecryptInvokeArgs(), options.WithDefaults());
     }
 
 

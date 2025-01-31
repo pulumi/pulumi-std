@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Reads the contents of a file into a string and returns the SHA512 hash of it.
  */
 export function filesha512(args: Filesha512Args, opts?: pulumi.InvokeOptions): Promise<Filesha512Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:filesha512", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Filesha512Result {
 /**
  * Reads the contents of a file into a string and returns the SHA512 hash of it.
  */
-export function filesha512Output(args: Filesha512OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Filesha512Result> {
-    return pulumi.output(args).apply((a: any) => filesha512(a, opts))
+export function filesha512Output(args: Filesha512OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Filesha512Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:filesha512", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Filesha512OutputArgs {

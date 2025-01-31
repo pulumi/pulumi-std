@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a filepath string with ~ expanded to the home directory.
  */
 export function pathexpand(args: PathexpandArgs, opts?: pulumi.InvokeOptions): Promise<PathexpandResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:pathexpand", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface PathexpandResult {
 /**
  * Returns a filepath string with ~ expanded to the home directory.
  */
-export function pathexpandOutput(args: PathexpandOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<PathexpandResult> {
-    return pulumi.output(args).apply((a: any) => pathexpand(a, opts))
+export function pathexpandOutput(args: PathexpandOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<PathexpandResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:pathexpand", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface PathexpandOutputArgs {

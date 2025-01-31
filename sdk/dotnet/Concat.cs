@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ConcatResult> Invoke(ConcatInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ConcatResult>("std:index:concat", args ?? new ConcatInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Combines two or more lists into a single list.
+        /// </summary>
+        public static Output<ConcatResult> Invoke(ConcatInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ConcatResult>("std:index:concat", args ?? new ConcatInvokeArgs(), options.WithDefaults());
     }
 
 

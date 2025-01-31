@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  * 	If 'timestamp_a' is after 'timestamp_b', 1 is returned.
  */
 export function timecmp(args: TimecmpArgs, opts?: pulumi.InvokeOptions): Promise<TimecmpResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:timecmp", {
         "timestampa": args.timestampa,
@@ -39,8 +38,12 @@ export interface TimecmpResult {
  * 	If 'timestamp_a' is equal to 'timestamp_b', 0 is returned.
  * 	If 'timestamp_a' is after 'timestamp_b', 1 is returned.
  */
-export function timecmpOutput(args: TimecmpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TimecmpResult> {
-    return pulumi.output(args).apply((a: any) => timecmp(a, opts))
+export function timecmpOutput(args: TimecmpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TimecmpResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:timecmp", {
+        "timestampa": args.timestampa,
+        "timestampb": args.timestampb,
+    }, opts);
 }
 
 export interface TimecmpOutputArgs {

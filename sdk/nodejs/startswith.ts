@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Determines if the input string starts with the suffix.
  */
 export function startswith(args: StartswithArgs, opts?: pulumi.InvokeOptions): Promise<StartswithResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:startswith", {
         "input": args.input,
@@ -27,8 +26,12 @@ export interface StartswithResult {
 /**
  * Determines if the input string starts with the suffix.
  */
-export function startswithOutput(args: StartswithOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<StartswithResult> {
-    return pulumi.output(args).apply((a: any) => startswith(a, opts))
+export function startswithOutput(args: StartswithOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<StartswithResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:startswith", {
+        "input": args.input,
+        "prefix": args.prefix,
+    }, opts);
 }
 
 export interface StartswithOutputArgs {

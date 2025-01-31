@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Converts all cased letters in the given string to uppercase.
  */
 export function upper(args: UpperArgs, opts?: pulumi.InvokeOptions): Promise<UpperResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:upper", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface UpperResult {
 /**
  * Converts all cased letters in the given string to uppercase.
  */
-export function upperOutput(args: UpperOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<UpperResult> {
-    return pulumi.output(args).apply((a: any) => upper(a, opts))
+export function upperOutput(args: UpperOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<UpperResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:upper", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface UpperOutputArgs {

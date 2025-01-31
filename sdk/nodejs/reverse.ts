@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a sequence with the same elements but in reverse order.
  */
 export function reverse(args: ReverseArgs, opts?: pulumi.InvokeOptions): Promise<ReverseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:reverse", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface ReverseResult {
 /**
  * Returns a sequence with the same elements but in reverse order.
  */
-export function reverseOutput(args: ReverseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ReverseResult> {
-    return pulumi.output(args).apply((a: any) => reverse(a, opts))
+export function reverseOutput(args: ReverseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ReverseResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:reverse", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface ReverseOutputArgs {

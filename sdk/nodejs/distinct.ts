@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Removes duplicate items from a list.
  */
 export function distinct(args: DistinctArgs, opts?: pulumi.InvokeOptions): Promise<DistinctResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:distinct", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface DistinctResult {
 /**
  * Removes duplicate items from a list.
  */
-export function distinctOutput(args: DistinctOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<DistinctResult> {
-    return pulumi.output(args).apply((a: any) => distinct(a, opts))
+export function distinctOutput(args: DistinctOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<DistinctResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:distinct", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface DistinctOutputArgs {

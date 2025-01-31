@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a hexadecimal representation of the SHA-1 hash of the given string.
  */
 export function sha1(args: Sha1Args, opts?: pulumi.InvokeOptions): Promise<Sha1Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:sha1", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Sha1Result {
 /**
  * Returns a hexadecimal representation of the SHA-1 hash of the given string.
  */
-export function sha1Output(args: Sha1OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Sha1Result> {
-    return pulumi.output(args).apply((a: any) => sha1(a, opts))
+export function sha1Output(args: Sha1OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Sha1Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:sha1", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Sha1OutputArgs {

@@ -31,15 +31,11 @@ type CeilResult struct {
 }
 
 func CeilOutput(ctx *pulumi.Context, args CeilOutputArgs, opts ...pulumi.InvokeOption) CeilResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (CeilResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (CeilResultOutput, error) {
 			args := v.(CeilArgs)
-			r, err := Ceil(ctx, &args, opts...)
-			var s CeilResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:ceil", args, CeilResultOutput{}, options).(CeilResultOutput), nil
 		}).(CeilResultOutput)
 }
 

@@ -33,15 +33,11 @@ type SliceResult struct {
 }
 
 func SliceOutput(ctx *pulumi.Context, args SliceOutputArgs, opts ...pulumi.InvokeOption) SliceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (SliceResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (SliceResultOutput, error) {
 			args := v.(SliceArgs)
-			r, err := Slice(ctx, &args, opts...)
-			var s SliceResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:slice", args, SliceResultOutput{}, options).(SliceResultOutput), nil
 		}).(SliceResultOutput)
 }
 

@@ -26,6 +26,14 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<JsondecodeResult> Invoke(JsondecodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<JsondecodeResult>("std:index:jsondecode", args ?? new JsondecodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Interprets a given string as JSON and returns a represetation
+        /// 	of the result of decoding that string.
+        /// 	If input is not valid JSON, the result will be the input unchanged.
+        /// </summary>
+        public static Output<JsondecodeResult> Invoke(JsondecodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<JsondecodeResult>("std:index:jsondecode", args ?? new JsondecodeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -38,10 +43,10 @@ class AwaitableCompactResult(CompactResult):
             result=self.result)
 
 
-def compact(input: Optional[Sequence[str]] = None,
+def compact(input: Optional[Sequence[Any]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableCompactResult:
     """
-    Removes empty string elements from a list.
+    Removes empty and nil string elements from a list.
     """
     __args__ = dict()
     __args__['input'] = input
@@ -50,12 +55,14 @@ def compact(input: Optional[Sequence[str]] = None,
 
     return AwaitableCompactResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(compact)
-def compact_output(input: Optional[pulumi.Input[Sequence[str]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[CompactResult]:
+def compact_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CompactResult]:
     """
-    Removes empty string elements from a list.
+    Removes empty and nil string elements from a list.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:compact', __args__, opts=opts, typ=CompactResult)
+    return __ret__.apply(lambda __response__: CompactResult(
+        result=pulumi.get(__response__, 'result')))

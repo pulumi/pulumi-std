@@ -31,15 +31,11 @@ type FileexistsResult struct {
 }
 
 func FileexistsOutput(ctx *pulumi.Context, args FileexistsOutputArgs, opts ...pulumi.InvokeOption) FileexistsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (FileexistsResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (FileexistsResultOutput, error) {
 			args := v.(FileexistsArgs)
-			r, err := Fileexists(ctx, &args, opts...)
-			var s FileexistsResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:fileexists", args, FileexistsResultOutput{}, options).(FileexistsResultOutput), nil
 		}).(FileexistsResultOutput)
 }
 

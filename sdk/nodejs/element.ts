@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the element at the specified index.
  */
 export function element(args: ElementArgs, opts?: pulumi.InvokeOptions): Promise<ElementResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:element", {
         "index": args.index,
@@ -27,8 +26,12 @@ export interface ElementResult {
 /**
  * Returns the element at the specified index.
  */
-export function elementOutput(args: ElementOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ElementResult> {
-    return pulumi.output(args).apply((a: any) => element(a, opts))
+export function elementOutput(args: ElementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ElementResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:element", {
+        "index": args.index,
+        "input": args.input,
+    }, opts);
 }
 
 export interface ElementOutputArgs {

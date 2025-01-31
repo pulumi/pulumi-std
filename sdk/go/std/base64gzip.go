@@ -31,15 +31,11 @@ type Base64gzipResult struct {
 }
 
 func Base64gzipOutput(ctx *pulumi.Context, args Base64gzipOutputArgs, opts ...pulumi.InvokeOption) Base64gzipResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (Base64gzipResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (Base64gzipResultOutput, error) {
 			args := v.(Base64gzipArgs)
-			r, err := Base64gzip(ctx, &args, opts...)
-			var s Base64gzipResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:base64gzip", args, Base64gzipResultOutput{}, options).(Base64gzipResultOutput), nil
 		}).(Base64gzipResultOutput)
 }
 

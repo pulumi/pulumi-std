@@ -36,15 +36,11 @@ type CidrsubnetResult struct {
 }
 
 func CidrsubnetOutput(ctx *pulumi.Context, args CidrsubnetOutputArgs, opts ...pulumi.InvokeOption) CidrsubnetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (CidrsubnetResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (CidrsubnetResultOutput, error) {
 			args := v.(CidrsubnetArgs)
-			r, err := Cidrsubnet(ctx, &args, opts...)
-			var s CidrsubnetResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:cidrsubnet", args, CidrsubnetResultOutput{}, options).(CidrsubnetResultOutput), nil
 		}).(CidrsubnetResultOutput)
 }
 

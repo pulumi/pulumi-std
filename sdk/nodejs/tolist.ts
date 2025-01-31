@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Converts its argument to a list value.
  */
 export function tolist(args: TolistArgs, opts?: pulumi.InvokeOptions): Promise<TolistResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:tolist", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface TolistResult {
 /**
  * Converts its argument to a list value.
  */
-export function tolistOutput(args: TolistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TolistResult> {
-    return pulumi.output(args).apply((a: any) => tolist(a, opts))
+export function tolistOutput(args: TolistOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TolistResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:tolist", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface TolistOutputArgs {

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a list of the values of the map.
  */
 export function values(args: ValuesArgs, opts?: pulumi.InvokeOptions): Promise<ValuesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:values", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface ValuesResult {
 /**
  * Returns a list of the values of the map.
  */
-export function valuesOutput(args: ValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ValuesResult> {
-    return pulumi.output(args).apply((a: any) => values(a, opts))
+export function valuesOutput(args: ValuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ValuesResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:values", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface ValuesOutputArgs {

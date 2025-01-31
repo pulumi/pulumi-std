@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the greatest integer value less than or equal to the argument.
  */
 export function log(args: LogArgs, opts?: pulumi.InvokeOptions): Promise<LogResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:log", {
         "base": args.base,
@@ -27,8 +26,12 @@ export interface LogResult {
 /**
  * Returns the greatest integer value less than or equal to the argument.
  */
-export function logOutput(args: LogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LogResult> {
-    return pulumi.output(args).apply((a: any) => log(a, opts))
+export function logOutput(args: LogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<LogResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:log", {
+        "base": args.base,
+        "input": args.input,
+    }, opts);
 }
 
 export interface LogOutputArgs {

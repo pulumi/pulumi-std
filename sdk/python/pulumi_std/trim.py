@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -52,13 +57,16 @@ def trim(cutset: Optional[str] = None,
 
     return AwaitableTrimResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(trim)
 def trim_output(cutset: Optional[pulumi.Input[str]] = None,
                 input: Optional[pulumi.Input[str]] = None,
-                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[TrimResult]:
+                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TrimResult]:
     """
     Removes the specified set of characters from the start and end of the given string.
     """
-    ...
+    __args__ = dict()
+    __args__['cutset'] = cutset
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:trim', __args__, opts=opts, typ=TrimResult)
+    return __ret__.apply(lambda __response__: TrimResult(
+        result=pulumi.get(__response__, 'result')))

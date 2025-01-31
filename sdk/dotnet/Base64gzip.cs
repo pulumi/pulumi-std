@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Base64gzipResult> Invoke(Base64gzipInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Base64gzipResult>("std:index:base64gzip", args ?? new Base64gzipInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Compresses the given string with gzip and then encodes the result to base64.
+        /// </summary>
+        public static Output<Base64gzipResult> Invoke(Base64gzipInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Base64gzipResult>("std:index:base64gzip", args ?? new Base64gzipInvokeArgs(), options.WithDefaults());
     }
 
 

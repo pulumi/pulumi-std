@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -57,11 +62,8 @@ def csvdecode(input: Optional[str] = None,
 
     return AwaitableCsvdecodeResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(csvdecode)
 def csvdecode_output(input: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[CsvdecodeResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CsvdecodeResult]:
     """
     Decodes a string containing CSV-formatted data and produces a list of maps representing that data.
     	The first line of the CSV data is interpreted as a "header" row: the values given
@@ -72,4 +74,9 @@ def csvdecode_output(input: Optional[pulumi.Input[str]] = None,
     	or this function will produce an error.
     	Follows the format defined in RFC 4180.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:csvdecode', __args__, opts=opts, typ=CsvdecodeResult)
+    return __ret__.apply(lambda __response__: CsvdecodeResult(
+        result=pulumi.get(__response__, 'result')))

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the given string with all of its Unicode characters in reverse order.
  */
 export function strrev(args: StrrevArgs, opts?: pulumi.InvokeOptions): Promise<StrrevResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:strrev", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface StrrevResult {
 /**
  * Returns the given string with all of its Unicode characters in reverse order.
  */
-export function strrevOutput(args: StrrevOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<StrrevResult> {
-    return pulumi.output(args).apply((a: any) => strrev(a, opts))
+export function strrevOutput(args: StrrevOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<StrrevResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:strrev", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface StrrevOutputArgs {

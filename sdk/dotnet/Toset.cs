@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TosetResult> Invoke(TosetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TosetResult>("std:index:toset", args ?? new TosetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Converts its argument to a set value.
+        /// </summary>
+        public static Output<TosetResult> Invoke(TosetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TosetResult>("std:index:toset", args ?? new TosetInvokeArgs(), options.WithDefaults());
     }
 
 

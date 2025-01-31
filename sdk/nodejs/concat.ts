@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Combines two or more lists into a single list.
  */
 export function concat(args: ConcatArgs, opts?: pulumi.InvokeOptions): Promise<ConcatResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:concat", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface ConcatResult {
 /**
  * Combines two or more lists into a single list.
  */
-export function concatOutput(args: ConcatOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ConcatResult> {
-    return pulumi.output(args).apply((a: any) => concat(a, opts))
+export function concatOutput(args: ConcatOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ConcatResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:concat", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface ConcatOutputArgs {

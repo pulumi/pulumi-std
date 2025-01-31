@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Removes one or more newline characters from the end of the given string.
  */
 export function chomp(args: ChompArgs, opts?: pulumi.InvokeOptions): Promise<ChompResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:chomp", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface ChompResult {
 /**
  * Removes one or more newline characters from the end of the given string.
  */
-export function chompOutput(args: ChompOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ChompResult> {
-    return pulumi.output(args).apply((a: any) => chomp(a, opts))
+export function chompOutput(args: ChompOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ChompResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:chomp", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface ChompOutputArgs {

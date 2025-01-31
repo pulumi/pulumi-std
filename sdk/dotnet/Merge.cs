@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<MergeResult> Invoke(MergeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<MergeResult>("std:index:merge", args ?? new MergeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the union of 2 or more maps. The maps are consumed in the order provided,
+        /// and duplicate keys overwrite previous entries.
+        /// </summary>
+        public static Output<MergeResult> Invoke(MergeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<MergeResult>("std:index:merge", args ?? new MergeInvokeArgs(), options.WithDefaults());
     }
 
 

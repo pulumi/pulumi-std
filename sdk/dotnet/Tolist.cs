@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TolistResult> Invoke(TolistInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TolistResult>("std:index:tolist", args ?? new TolistInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Converts its argument to a list value.
+        /// </summary>
+        public static Output<TolistResult> Invoke(TolistInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TolistResult>("std:index:tolist", args ?? new TolistInvokeArgs(), options.WithDefaults());
     }
 
 

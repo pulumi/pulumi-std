@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ValuesResult> Invoke(ValuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ValuesResult>("std:index:values", args ?? new ValuesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a list of the values of the map.
+        /// </summary>
+        public static Output<ValuesResult> Invoke(ValuesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ValuesResult>("std:index:values", args ?? new ValuesInvokeArgs(), options.WithDefaults());
     }
 
 

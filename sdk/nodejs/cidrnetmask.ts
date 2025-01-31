@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * Not applicable to IPv6 networks since CIDR notation is the only valid notation for IPv6.
  */
 export function cidrnetmask(args: CidrnetmaskArgs, opts?: pulumi.InvokeOptions): Promise<CidrnetmaskResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:cidrnetmask", {
         "input": args.input,
@@ -31,8 +30,11 @@ export interface CidrnetmaskResult {
  * For example, cidrnetmask("10.0.0.0/8") returns 255.0.0.0.
  * Not applicable to IPv6 networks since CIDR notation is the only valid notation for IPv6.
  */
-export function cidrnetmaskOutput(args: CidrnetmaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CidrnetmaskResult> {
-    return pulumi.output(args).apply((a: any) => cidrnetmask(a, opts))
+export function cidrnetmaskOutput(args: CidrnetmaskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CidrnetmaskResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:cidrnetmask", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface CidrnetmaskOutputArgs {

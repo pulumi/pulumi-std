@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the base input raised to the power of the exponent.
  */
 export function pow(args: PowArgs, opts?: pulumi.InvokeOptions): Promise<PowResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:pow", {
         "base": args.base,
@@ -27,8 +26,12 @@ export interface PowResult {
 /**
  * Returns the base input raised to the power of the exponent.
  */
-export function powOutput(args: PowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<PowResult> {
-    return pulumi.output(args).apply((a: any) => pow(a, opts))
+export function powOutput(args: PowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<PowResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:pow", {
+        "base": args.base,
+        "exponent": args.exponent,
+    }, opts);
 }
 
 export interface PowOutputArgs {

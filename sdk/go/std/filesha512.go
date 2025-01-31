@@ -31,15 +31,11 @@ type Filesha512Result struct {
 }
 
 func Filesha512Output(ctx *pulumi.Context, args Filesha512OutputArgs, opts ...pulumi.InvokeOption) Filesha512ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (Filesha512Result, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (Filesha512ResultOutput, error) {
 			args := v.(Filesha512Args)
-			r, err := Filesha512(ctx, &args, opts...)
-			var s Filesha512Result
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:filesha512", args, Filesha512ResultOutput{}, options).(Filesha512ResultOutput), nil
 		}).(Filesha512ResultOutput)
 }
 

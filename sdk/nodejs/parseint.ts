@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * 	.
  */
 export function parseint(args: ParseintArgs, opts?: pulumi.InvokeOptions): Promise<ParseintResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:parseint", {
         "base": args.base,
@@ -31,8 +30,12 @@ export interface ParseintResult {
  * and returns the resulting number. The base must be between 2 and 62 inclusive.
  * 	.
  */
-export function parseintOutput(args: ParseintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ParseintResult> {
-    return pulumi.output(args).apply((a: any) => parseint(a, opts))
+export function parseintOutput(args: ParseintOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ParseintResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:parseint", {
+        "base": args.base,
+        "input": args.input,
+    }, opts);
 }
 
 export interface ParseintOutputArgs {

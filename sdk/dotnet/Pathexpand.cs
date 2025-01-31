@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<PathexpandResult> Invoke(PathexpandInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<PathexpandResult>("std:index:pathexpand", args ?? new PathexpandInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a filepath string with ~ expanded to the home directory.
+        /// </summary>
+        public static Output<PathexpandResult> Invoke(PathexpandInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<PathexpandResult>("std:index:pathexpand", args ?? new PathexpandInvokeArgs(), options.WithDefaults());
     }
 
 

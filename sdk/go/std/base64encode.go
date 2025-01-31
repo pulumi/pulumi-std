@@ -31,15 +31,11 @@ type Base64encodeResult struct {
 }
 
 func Base64encodeOutput(ctx *pulumi.Context, args Base64encodeOutputArgs, opts ...pulumi.InvokeOption) Base64encodeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (Base64encodeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (Base64encodeResultOutput, error) {
 			args := v.(Base64encodeArgs)
-			r, err := Base64encode(ctx, &args, opts...)
-			var s Base64encodeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:base64encode", args, Base64encodeResultOutput{}, options).(Base64encodeResultOutput), nil
 		}).(Base64encodeResultOutput)
 }
 

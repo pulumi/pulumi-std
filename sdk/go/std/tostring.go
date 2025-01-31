@@ -33,15 +33,11 @@ type TostringResult struct {
 }
 
 func TostringOutput(ctx *pulumi.Context, args TostringOutputArgs, opts ...pulumi.InvokeOption) TostringResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TostringResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TostringResultOutput, error) {
 			args := v.(TostringArgs)
-			r, err := Tostring(ctx, &args, opts...)
-			var s TostringResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:tostring", args, TostringResultOutput{}, options).(TostringResultOutput), nil
 		}).(TostringResultOutput)
 }
 

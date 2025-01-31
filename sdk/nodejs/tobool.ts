@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * 	"true" and "false" can be converted to boolean. All other values will result in an error.
  */
 export function tobool(args: ToboolArgs, opts?: pulumi.InvokeOptions): Promise<ToboolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:tobool", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface ToboolResult {
  * Converts its argument to a boolean value. Only boolean values, null, and the exact strings
  * 	"true" and "false" can be converted to boolean. All other values will result in an error.
  */
-export function toboolOutput(args: ToboolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ToboolResult> {
-    return pulumi.output(args).apply((a: any) => tobool(a, opts))
+export function toboolOutput(args: ToboolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ToboolResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:tobool", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface ToboolOutputArgs {

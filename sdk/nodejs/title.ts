@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Converts the first letter of each word in the given string to uppercase.
  */
 export function title(args: TitleArgs, opts?: pulumi.InvokeOptions): Promise<TitleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:title", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface TitleResult {
 /**
  * Converts the first letter of each word in the given string to uppercase.
  */
-export function titleOutput(args: TitleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TitleResult> {
-    return pulumi.output(args).apply((a: any) => title(a, opts))
+export function titleOutput(args: TitleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TitleResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:title", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface TitleOutputArgs {

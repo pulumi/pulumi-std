@@ -31,15 +31,11 @@ type FloorResult struct {
 }
 
 func FloorOutput(ctx *pulumi.Context, args FloorOutputArgs, opts ...pulumi.InvokeOption) FloorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (FloorResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (FloorResultOutput, error) {
 			args := v.(FloorArgs)
-			r, err := Floor(ctx, &args, opts...)
-			var s FloorResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:floor", args, FloorResultOutput{}, options).(FloorResultOutput), nil
 		}).(FloorResultOutput)
 }
 

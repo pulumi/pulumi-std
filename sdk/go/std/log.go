@@ -32,15 +32,11 @@ type LogResult struct {
 }
 
 func LogOutput(ctx *pulumi.Context, args LogOutputArgs, opts ...pulumi.InvokeOption) LogResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LogResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LogResultOutput, error) {
 			args := v.(LogArgs)
-			r, err := Log(ctx, &args, opts...)
-			var s LogResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:log", args, LogResultOutput{}, options).(LogResultOutput), nil
 		}).(LogResultOutput)
 }
 

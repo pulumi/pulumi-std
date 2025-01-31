@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<UrlencodeResult> Invoke(UrlencodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<UrlencodeResult>("std:index:urlencode", args ?? new UrlencodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Applies URL encoding to a given string.
+        /// </summary>
+        public static Output<UrlencodeResult> Invoke(UrlencodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<UrlencodeResult>("std:index:urlencode", args ?? new UrlencodeInvokeArgs(), options.WithDefaults());
     }
 
 

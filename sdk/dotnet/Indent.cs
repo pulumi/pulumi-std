@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<IndentResult> Invoke(IndentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<IndentResult>("std:index:indent", args ?? new IndentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Adds a given number of spaces after each newline character in the given string.
+        /// </summary>
+        public static Output<IndentResult> Invoke(IndentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<IndentResult>("std:index:indent", args ?? new IndentInvokeArgs(), options.WithDefaults());
     }
 
 

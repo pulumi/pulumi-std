@@ -31,15 +31,11 @@ type SortResult struct {
 }
 
 func SortOutput(ctx *pulumi.Context, args SortOutputArgs, opts ...pulumi.InvokeOption) SortResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (SortResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (SortResultOutput, error) {
 			args := v.(SortArgs)
-			r, err := Sort(ctx, &args, opts...)
-			var s SortResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:sort", args, SortResultOutput{}, options).(SortResultOutput), nil
 		}).(SortResultOutput)
 }
 

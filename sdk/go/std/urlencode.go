@@ -31,15 +31,11 @@ type UrlencodeResult struct {
 }
 
 func UrlencodeOutput(ctx *pulumi.Context, args UrlencodeOutputArgs, opts ...pulumi.InvokeOption) UrlencodeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (UrlencodeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (UrlencodeResultOutput, error) {
 			args := v.(UrlencodeArgs)
-			r, err := Urlencode(ctx, &args, opts...)
-			var s UrlencodeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:urlencode", args, UrlencodeResultOutput{}, options).(UrlencodeResultOutput), nil
 		}).(UrlencodeResultOutput)
 }
 

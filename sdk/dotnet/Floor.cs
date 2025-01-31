@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<FloorResult> Invoke(FloorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<FloorResult>("std:index:floor", args ?? new FloorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the greatest integer value less than or equal to the argument.
+        /// </summary>
+        public static Output<FloorResult> Invoke(FloorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<FloorResult>("std:index:floor", args ?? new FloorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Reads the contents of a file and returns them as a base64-encoded string.
  */
 export function filebase64(args: Filebase64Args, opts?: pulumi.InvokeOptions): Promise<Filebase64Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:filebase64", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Filebase64Result {
 /**
  * Reads the contents of a file and returns them as a base64-encoded string.
  */
-export function filebase64Output(args: Filebase64OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Filebase64Result> {
-    return pulumi.output(args).apply((a: any) => filebase64(a, opts))
+export function filebase64Output(args: Filebase64OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Filebase64Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:filebase64", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Filebase64OutputArgs {

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -53,14 +58,17 @@ def matchkeys(search_list: Optional[Sequence[str]] = None,
 
     return AwaitableMatchkeysResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(matchkeys)
 def matchkeys_output(search_list: Optional[pulumi.Input[Sequence[str]]] = None,
                      values: Optional[pulumi.Input[Sequence[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[MatchkeysResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[MatchkeysResult]:
     """
     For two lists values and keys of equal length,
     returns all elements from values where the corresponding element from keys exists in the searchset list.
     """
-    ...
+    __args__ = dict()
+    __args__['searchList'] = search_list
+    __args__['values'] = values
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:matchkeys', __args__, opts=opts, typ=MatchkeysResult)
+    return __ret__.apply(lambda __response__: MatchkeysResult(
+        result=pulumi.get(__response__, 'result')))

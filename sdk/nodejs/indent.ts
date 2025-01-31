@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Adds a given number of spaces after each newline character in the given string.
  */
 export function indent(args: IndentArgs, opts?: pulumi.InvokeOptions): Promise<IndentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:indent", {
         "input": args.input,
@@ -27,8 +26,12 @@ export interface IndentResult {
 /**
  * Adds a given number of spaces after each newline character in the given string.
  */
-export function indentOutput(args: IndentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<IndentResult> {
-    return pulumi.output(args).apply((a: any) => indent(a, opts))
+export function indentOutput(args: IndentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<IndentResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:indent", {
+        "input": args.input,
+        "spaces": args.spaces,
+    }, opts);
 }
 
 export interface IndentOutputArgs {
