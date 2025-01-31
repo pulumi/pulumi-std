@@ -1,4 +1,4 @@
-// Copyright 2022, Pulumi Corporation.
+// Copyright 2022-2025, Pulumi Corporation.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -113,6 +113,9 @@ func expectedOutputs() map[string]interface{} {
 		"coalesce":                   "hello",
 		"coalescelist":               []interface{}{1},
 		"compact":                    []string{"one"},
+		"compactMixed":               []string{"one", "two"},
+		"compactMixedEmpty":          []string{},
+		"compactNullsEmpty":          []string{},
 		"concat":                     []int{1, 2, 3, 4, 5},
 		"containsWithIntegers":       true,
 		"containsWithStrings":        true,

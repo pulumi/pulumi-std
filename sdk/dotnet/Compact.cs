@@ -12,19 +12,19 @@ namespace Pulumi.Std
     public static class Compact
     {
         /// <summary>
-        /// Removes empty string elements from a list.
+        /// Removes empty and nil string elements from a list.
         /// </summary>
         public static Task<CompactResult> InvokeAsync(CompactArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<CompactResult>("std:index:compact", args ?? new CompactArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Removes empty string elements from a list.
+        /// Removes empty and nil string elements from a list.
         /// </summary>
         public static Output<CompactResult> Invoke(CompactInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CompactResult>("std:index:compact", args ?? new CompactInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Removes empty string elements from a list.
+        /// Removes empty and nil string elements from a list.
         /// </summary>
         public static Output<CompactResult> Invoke(CompactInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<CompactResult>("std:index:compact", args ?? new CompactInvokeArgs(), options.WithDefaults());
@@ -34,10 +34,10 @@ namespace Pulumi.Std
     public sealed class CompactArgs : global::Pulumi.InvokeArgs
     {
         [Input("input", required: true)]
-        private List<string>? _input;
-        public List<string> Input
+        private List<object>? _input;
+        public List<object> Input
         {
-            get => _input ?? (_input = new List<string>());
+            get => _input ?? (_input = new List<object>());
             set => _input = value;
         }
 
@@ -50,10 +50,10 @@ namespace Pulumi.Std
     public sealed class CompactInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("input", required: true)]
-        private InputList<string>? _input;
-        public InputList<string> Input
+        private InputList<object>? _input;
+        public InputList<object> Input
         {
-            get => _input ?? (_input = new InputList<string>());
+            get => _input ?? (_input = new InputList<object>());
             set => _input = value;
         }
 
