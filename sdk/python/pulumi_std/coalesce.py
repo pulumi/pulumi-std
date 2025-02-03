@@ -24,13 +24,13 @@ __all__ = [
 @pulumi.output_type
 class CoalesceResult:
     def __init__(__self__, result=None):
-        if result and not isinstance(result, str):
-            raise TypeError("Expected argument 'result' to be a str")
+        if result and not isinstance(result, dict):
+            raise TypeError("Expected argument 'result' to be a dict")
         pulumi.set(__self__, "result", result)
 
     @property
     @pulumi.getter
-    def result(self) -> str:
+    def result(self) -> Any:
         return pulumi.get(self, "result")
 
 
@@ -43,10 +43,10 @@ class AwaitableCoalesceResult(CoalesceResult):
             result=self.result)
 
 
-def coalesce(input: Optional[Sequence[str]] = None,
+def coalesce(input: Optional[Sequence[Any]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableCoalesceResult:
     """
-    Returns the first non-empty value from the given arguments.
+    Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
     """
     __args__ = dict()
     __args__['input'] = input
@@ -55,10 +55,10 @@ def coalesce(input: Optional[Sequence[str]] = None,
 
     return AwaitableCoalesceResult(
         result=pulumi.get(__ret__, 'result'))
-def coalesce_output(input: Optional[pulumi.Input[Sequence[str]]] = None,
+def coalesce_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CoalesceResult]:
     """
-    Returns the first non-empty value from the given arguments.
+    Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
     """
     __args__ = dict()
     __args__['input'] = input

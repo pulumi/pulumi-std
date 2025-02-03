@@ -59,6 +59,7 @@ gen_java_sdk: bin/pulumi-java-gen
 		gradle --console=plain build
 
 test: build
+	cd std && go test ./...
 	cd tests && go run main.go
 
 lint: lint-golang lint-copyright

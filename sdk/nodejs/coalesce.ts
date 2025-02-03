@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Returns the first non-empty value from the given arguments.
+ * Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
  */
 export function coalesce(args: CoalesceArgs, opts?: pulumi.InvokeOptions): Promise<CoalesceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -15,14 +15,14 @@ export function coalesce(args: CoalesceArgs, opts?: pulumi.InvokeOptions): Promi
 }
 
 export interface CoalesceArgs {
-    input: string[];
+    input: any[];
 }
 
 export interface CoalesceResult {
-    readonly result: string;
+    readonly result: any;
 }
 /**
- * Returns the first non-empty value from the given arguments.
+ * Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
  */
 export function coalesceOutput(args: CoalesceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CoalesceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,5 +32,5 @@ export function coalesceOutput(args: CoalesceOutputArgs, opts?: pulumi.InvokeOut
 }
 
 export interface CoalesceOutputArgs {
-    input: pulumi.Input<pulumi.Input<string>[]>;
+    input: pulumi.Input<any[]>;
 }

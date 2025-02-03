@@ -12,19 +12,19 @@ namespace Pulumi.Std
     public static class Coalesce
     {
         /// <summary>
-        /// Returns the first non-empty value from the given arguments.
+        /// Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
         /// </summary>
         public static Task<CoalesceResult> InvokeAsync(CoalesceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<CoalesceResult>("std:index:coalesce", args ?? new CoalesceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the first non-empty value from the given arguments.
+        /// Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
         /// </summary>
         public static Output<CoalesceResult> Invoke(CoalesceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CoalesceResult>("std:index:coalesce", args ?? new CoalesceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the first non-empty value from the given arguments.
+        /// Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
         /// </summary>
         public static Output<CoalesceResult> Invoke(CoalesceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<CoalesceResult>("std:index:coalesce", args ?? new CoalesceInvokeArgs(), options.WithDefaults());
@@ -34,10 +34,10 @@ namespace Pulumi.Std
     public sealed class CoalesceArgs : global::Pulumi.InvokeArgs
     {
         [Input("input", required: true)]
-        private List<string>? _input;
-        public List<string> Input
+        private List<object>? _input;
+        public List<object> Input
         {
-            get => _input ?? (_input = new List<string>());
+            get => _input ?? (_input = new List<object>());
             set => _input = value;
         }
 
@@ -50,10 +50,10 @@ namespace Pulumi.Std
     public sealed class CoalesceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("input", required: true)]
-        private InputList<string>? _input;
-        public InputList<string> Input
+        private InputList<object>? _input;
+        public InputList<object> Input
         {
-            get => _input ?? (_input = new InputList<string>());
+            get => _input ?? (_input = new InputList<object>());
             set => _input = value;
         }
 
@@ -67,10 +67,10 @@ namespace Pulumi.Std
     [OutputType]
     public sealed class CoalesceResult
     {
-        public readonly string Result;
+        public readonly object Result;
 
         [OutputConstructor]
-        private CoalesceResult(string result)
+        private CoalesceResult(object result)
         {
             Result = result;
         }

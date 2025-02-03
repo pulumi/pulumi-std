@@ -481,13 +481,13 @@
       }
     },
     "std:index:coalesce": {
-      "description": "Returns the first non-empty value from the given arguments.",
+      "description": "Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.",
       "inputs": {
         "properties": {
           "input": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "pulumi.json#/Any"
             }
           }
         },
@@ -499,7 +499,7 @@
       "outputs": {
         "properties": {
           "result": {
-            "type": "string"
+            "$ref": "pulumi.json#/Any"
           }
         },
         "required": [
