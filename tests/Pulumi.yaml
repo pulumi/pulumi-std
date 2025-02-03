@@ -68,6 +68,15 @@ variables:
   coalesce:
     fn::std:coalesce:
       input: ["hello", "world"]
+  coalesceWithNil:
+    fn::std:coalesce:
+      input: [null, "hello", "world"]
+  coalesceWithInts:
+    fn::std:coalesce:
+      input: [1,2,3]
+  coalesceWithIntsAndFloats:
+    fn::std:coalesce:
+      input: [1,2.0,3]
   coalescelist:
     fn::std:coalescelist:
       input: [[], [1]]
