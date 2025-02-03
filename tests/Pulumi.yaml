@@ -68,6 +68,24 @@ variables:
   coalesce:
     fn::std:coalesce:
       input: ["hello", "world"]
+  coalesceWithNil:
+    fn::std:coalesce:
+      input: [null, "hello", "world"]
+  coalesceWithInts:
+    fn::std:coalesce:
+      input: [1,2,3]
+  coalesceWithIntsAndFloats:
+    fn::std:coalesce:
+      input: [1,2.0,null,3,null]
+  coalesceWithFloatsAndStrings:
+    fn::std:coalesce:
+      input: [null, 1.0, "hello"]
+  coalesceWithIntsAndStrings:
+    fn::std:coalesce:
+      input: [null, 1, "hello"]
+  coalesceWithBoolsAndStrings:
+    fn::std:coalesce:
+      input: [true, null, "hello"]
   coalescelist:
     fn::std:coalescelist:
       input: [[], [1]]
@@ -368,6 +386,12 @@ outputs:
   cidrnetmask: ${cidrnetmask.result}
   cidrsubnet: ${cidrsubnet.result}
   coalesce: ${coalesce.result}
+  coalesceWithNil: ${coalesceWithNil.result}
+  coalesceWithInts: ${coalesceWithInts.result}
+  coalesceWithIntsAndFloats: ${coalesceWithIntsAndFloats.result}
+  coalesceWithFloatsAndStrings: ${coalesceWithFloatsAndStrings.result}
+  coalesceWithIntsAndStrings: ${coalesceWithIntsAndStrings.result}
+  coalesceWithBoolsAndStrings: ${coalesceWithBoolsAndStrings.result}
   coalescelist: ${coalescelist.result}
   compact: ${compact.result}
   compactMixed: ${compactMixed.result}

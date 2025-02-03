@@ -7,14 +7,17 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/pulumi/pulumi-go-provider v0.8.0
 	github.com/pulumi/pulumi/sdk/v3 v3.44.0
+	github.com/stretchr/testify v1.8.4
 	golang.org/x/crypto v0.21.0
 )
 
 require (
 	dario.cat/mergo v1.0.0 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/pjbgf/sha1cd v0.3.0 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/skeema/knownhosts v1.2.1 // indirect
 )
 
@@ -66,7 +69,6 @@ require (
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/spf13/cobra v1.6.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/stretchr/objx v0.4.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the first non-empty value from the given arguments.
+// Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.
 func Coalesce(ctx *pulumi.Context, args *CoalesceArgs, opts ...pulumi.InvokeOption) (*CoalesceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CoalesceResult
@@ -23,11 +23,11 @@ func Coalesce(ctx *pulumi.Context, args *CoalesceArgs, opts ...pulumi.InvokeOpti
 }
 
 type CoalesceArgs struct {
-	Input []string `pulumi:"input"`
+	Input []interface{} `pulumi:"input"`
 }
 
 type CoalesceResult struct {
-	Result string `pulumi:"result"`
+	Result interface{} `pulumi:"result"`
 }
 
 func CoalesceOutput(ctx *pulumi.Context, args CoalesceOutputArgs, opts ...pulumi.InvokeOption) CoalesceResultOutput {
@@ -40,7 +40,7 @@ func CoalesceOutput(ctx *pulumi.Context, args CoalesceOutputArgs, opts ...pulumi
 }
 
 type CoalesceOutputArgs struct {
-	Input pulumi.StringArrayInput `pulumi:"input"`
+	Input pulumi.ArrayInput `pulumi:"input"`
 }
 
 func (CoalesceOutputArgs) ElementType() reflect.Type {
@@ -61,8 +61,8 @@ func (o CoalesceResultOutput) ToCoalesceResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CoalesceResultOutput) Result() pulumi.StringOutput {
-	return o.ApplyT(func(v CoalesceResult) string { return v.Result }).(pulumi.StringOutput)
+func (o CoalesceResultOutput) Result() pulumi.AnyOutput {
+	return o.ApplyT(func(v CoalesceResult) interface{} { return v.Result }).(pulumi.AnyOutput)
 }
 
 func init() {
