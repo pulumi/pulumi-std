@@ -40,10 +40,10 @@ func (*Max) Call(_ p.Context, args MaxArgs) (MaxResult, error) {
 		return MaxResult{}, fmt.Errorf("input list must not be empty")
 	}
 
-	max := args.Input[0]
+	maximum := args.Input[0]
 	for _, current := range args.Input {
-		max = math.Max(max, current)
+		maximum = math.Max(maximum, current)
 	}
 
-	return MaxResult{max}, nil
+	return MaxResult{maximum}, nil
 }

@@ -40,10 +40,10 @@ func (*Min) Call(_ p.Context, args MinArgs) (MinResult, error) {
 		return MinResult{}, fmt.Errorf("input list must not be empty")
 	}
 
-	min := args.Input[0]
+	minimum := args.Input[0]
 	for _, current := range args.Input {
-		min = math.Min(min, current)
+		minimum = math.Min(minimum, current)
 	}
 
-	return MinResult{min}, nil
+	return MinResult{minimum}, nil
 }
