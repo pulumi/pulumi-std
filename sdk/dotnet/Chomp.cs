@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ChompResult> Invoke(ChompInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ChompResult>("std:index:chomp", args ?? new ChompInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Removes one or more newline characters from the end of the given string.
+        /// </summary>
+        public static Output<ChompResult> Invoke(ChompInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ChompResult>("std:index:chomp", args ?? new ChompInvokeArgs(), options.WithDefaults());
     }
 
 

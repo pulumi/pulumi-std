@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a list of strings sorted lexicographically.
  */
 export function sort(args: SortArgs, opts?: pulumi.InvokeOptions): Promise<SortResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:sort", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface SortResult {
 /**
  * Returns a list of strings sorted lexicographically.
  */
-export function sortOutput(args: SortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<SortResult> {
-    return pulumi.output(args).apply((a: any) => sort(a, opts))
+export function sortOutput(args: SortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<SortResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:sort", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface SortOutputArgs {

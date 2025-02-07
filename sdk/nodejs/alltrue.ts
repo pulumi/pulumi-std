@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * It also returns true if the collection is empty.
  */
 export function alltrue(args: AlltrueArgs, opts?: pulumi.InvokeOptions): Promise<AlltrueResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:alltrue", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface AlltrueResult {
  * Returns true if all elements in a given collection are true or \"true\".
  * It also returns true if the collection is empty.
  */
-export function alltrueOutput(args: AlltrueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<AlltrueResult> {
-    return pulumi.output(args).apply((a: any) => alltrue(a, opts))
+export function alltrueOutput(args: AlltrueOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<AlltrueResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:alltrue", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface AlltrueOutputArgs {

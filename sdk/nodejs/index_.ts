@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Finds the index of a given element in a list.
  */
 export function index(args: IndexArgs, opts?: pulumi.InvokeOptions): Promise<IndexResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:index", {
         "element": args.element,
@@ -27,8 +26,12 @@ export interface IndexResult {
 /**
  * Finds the index of a given element in a list.
  */
-export function indexOutput(args: IndexOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<IndexResult> {
-    return pulumi.output(args).apply((a: any) => index(a, opts))
+export function indexOutput(args: IndexOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<IndexResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:index", {
+        "element": args.element,
+        "input": args.input,
+    }, opts);
 }
 
 export interface IndexOutputArgs {

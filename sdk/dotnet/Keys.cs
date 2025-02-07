@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<KeysResult> Invoke(KeysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<KeysResult>("std:index:keys", args ?? new KeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a lexically sorted list of the map keys.
+        /// </summary>
+        public static Output<KeysResult> Invoke(KeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<KeysResult>("std:index:keys", args ?? new KeysInvokeArgs(), options.WithDefaults());
     }
 
 

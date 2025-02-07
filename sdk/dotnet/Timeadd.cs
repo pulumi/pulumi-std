@@ -34,6 +34,18 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TimeaddResult> Invoke(TimeaddInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TimeaddResult>("std:index:timeadd", args ?? new TimeaddInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Adds a duration to a timestamp, returning a new timestamp.
+        /// 	Timestamps are represented as strings using RFC 3339 "Date and time format" syntax.
+        /// 	'timestamp' must be a string adhering this syntax, i.e. "2017-11-22T00:00:00Z".
+        /// 	'duration' is a string representation of a time difference, comprised of sequences of
+        /// 	numbers and unit pairs, i.e. "3.5h" or "2h15m".
+        /// 	Accepted units are "ns", "us" or "µs", "ms", "s", "m", and "h". The first number may be negative
+        /// 	to provide a negative duration, i.e. "-2h15m".
+        /// </summary>
+        public static Output<TimeaddResult> Invoke(TimeaddInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TimeaddResult>("std:index:timeadd", args ?? new TimeaddInvokeArgs(), options.WithDefaults());
     }
 
 

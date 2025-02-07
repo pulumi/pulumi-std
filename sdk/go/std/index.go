@@ -32,15 +32,11 @@ type IndexResult struct {
 }
 
 func IndexOutput(ctx *pulumi.Context, args IndexOutputArgs, opts ...pulumi.InvokeOption) IndexResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (IndexResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (IndexResultOutput, error) {
 			args := v.(IndexArgs)
-			r, err := Index(ctx, &args, opts...)
-			var s IndexResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:index", args, IndexResultOutput{}, options).(IndexResultOutput), nil
 		}).(IndexResultOutput)
 }
 

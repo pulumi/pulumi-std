@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  */
 export function uuid(args?: UuidArgs, opts?: pulumi.InvokeOptions): Promise<UuidResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:uuid", {
     }, opts);
@@ -24,6 +23,9 @@ export interface UuidResult {
 /**
  * Returns a unique identifier string, generated and formatted as required by RFC 4122.
  */
-export function uuidOutput(opts?: pulumi.InvokeOptions): pulumi.Output<UuidResult> {
-    return pulumi.output(uuid(opts))
+export function uuidOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<UuidResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:uuid", {
+    }, opts);
 }
+

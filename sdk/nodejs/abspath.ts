@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * If the path is not absolute it will be joined with the current working directory to turn it into an absolute path.
  */
 export function abspath(args: AbspathArgs, opts?: pulumi.InvokeOptions): Promise<AbspathResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:abspath", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface AbspathResult {
  * Returns an absolute representation of the specified path.
  * If the path is not absolute it will be joined with the current working directory to turn it into an absolute path.
  */
-export function abspathOutput(args: AbspathOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<AbspathResult> {
-    return pulumi.output(args).apply((a: any) => abspath(a, opts))
+export function abspathOutput(args: AbspathOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<AbspathResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:abspath", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface AbspathOutputArgs {

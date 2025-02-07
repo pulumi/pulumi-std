@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * 	If input is not valid JSON, the result will be the input unchanged.
  */
 export function jsondecode(args: JsondecodeArgs, opts?: pulumi.InvokeOptions): Promise<JsondecodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:jsondecode", {
         "input": args.input,
@@ -29,8 +28,11 @@ export interface JsondecodeResult {
  * 	of the result of decoding that string.
  * 	If input is not valid JSON, the result will be the input unchanged.
  */
-export function jsondecodeOutput(args: JsondecodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<JsondecodeResult> {
-    return pulumi.output(args).apply((a: any) => jsondecode(a, opts))
+export function jsondecodeOutput(args: JsondecodeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<JsondecodeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:jsondecode", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface JsondecodeOutputArgs {

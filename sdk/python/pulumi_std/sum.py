@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -50,12 +55,14 @@ def sum(input: Optional[Sequence[float]] = None,
 
     return AwaitableSumResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(sum)
 def sum_output(input: Optional[pulumi.Input[Sequence[float]]] = None,
-               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[SumResult]:
+               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SumResult]:
     """
     Returns the total sum of the elements of the input list.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:sum', __args__, opts=opts, typ=SumResult)
+    return __ret__.apply(lambda __response__: SumResult(
+        result=pulumi.get(__response__, 'result')))

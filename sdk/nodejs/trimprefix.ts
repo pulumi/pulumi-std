@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Removes the specified prefix from the start of the given string, if present.
  */
 export function trimprefix(args: TrimprefixArgs, opts?: pulumi.InvokeOptions): Promise<TrimprefixResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:trimprefix", {
         "input": args.input,
@@ -27,8 +26,12 @@ export interface TrimprefixResult {
 /**
  * Removes the specified prefix from the start of the given string, if present.
  */
-export function trimprefixOutput(args: TrimprefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TrimprefixResult> {
-    return pulumi.output(args).apply((a: any) => trimprefix(a, opts))
+export function trimprefixOutput(args: TrimprefixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TrimprefixResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:trimprefix", {
+        "input": args.input,
+        "prefix": args.prefix,
+    }, opts);
 }
 
 export interface TrimprefixOutputArgs {

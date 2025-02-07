@@ -31,15 +31,11 @@ type ReverseResult struct {
 }
 
 func ReverseOutput(ctx *pulumi.Context, args ReverseOutputArgs, opts ...pulumi.InvokeOption) ReverseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ReverseResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (ReverseResultOutput, error) {
 			args := v.(ReverseArgs)
-			r, err := Reverse(ctx, &args, opts...)
-			var s ReverseResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:reverse", args, ReverseResultOutput{}, options).(ReverseResultOutput), nil
 		}).(ReverseResultOutput)
 }
 

@@ -32,15 +32,11 @@ type AbspathResult struct {
 }
 
 func AbspathOutput(ctx *pulumi.Context, args AbspathOutputArgs, opts ...pulumi.InvokeOption) AbspathResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (AbspathResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (AbspathResultOutput, error) {
 			args := v.(AbspathArgs)
-			r, err := Abspath(ctx, &args, opts...)
-			var s AbspathResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:abspath", args, AbspathResultOutput{}, options).(AbspathResultOutput), nil
 		}).(AbspathResultOutput)
 }
 

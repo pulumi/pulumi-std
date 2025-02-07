@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Note that if the value is a string then its value will be placed in quotes.
  */
 export function jsonencode(args: JsonencodeArgs, opts?: pulumi.InvokeOptions): Promise<JsonencodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:jsonencode", {
         "input": args.input,
@@ -29,8 +28,11 @@ export interface JsonencodeResult {
  * which can contain arbitrarily-nested lists and maps.
  * Note that if the value is a string then its value will be placed in quotes.
  */
-export function jsonencodeOutput(args: JsonencodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<JsonencodeResult> {
-    return pulumi.output(args).apply((a: any) => jsonencode(a, opts))
+export function jsonencodeOutput(args: JsonencodeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<JsonencodeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:jsonencode", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface JsonencodeOutputArgs {

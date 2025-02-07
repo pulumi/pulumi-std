@@ -31,15 +31,11 @@ type FileResult struct {
 }
 
 func FileOutput(ctx *pulumi.Context, args FileOutputArgs, opts ...pulumi.InvokeOption) FileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (FileResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (FileResultOutput, error) {
 			args := v.(FileArgs)
-			r, err := File(ctx, &args, opts...)
-			var s FileResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:file", args, FileResultOutput{}, options).(FileResultOutput), nil
 		}).(FileResultOutput)
 }
 

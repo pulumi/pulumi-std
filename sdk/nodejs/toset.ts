@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Converts its argument to a set value.
  */
 export function toset(args: TosetArgs, opts?: pulumi.InvokeOptions): Promise<TosetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:toset", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface TosetResult {
 /**
  * Converts its argument to a set value.
  */
-export function tosetOutput(args: TosetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TosetResult> {
-    return pulumi.output(args).apply((a: any) => toset(a, opts))
+export function tosetOutput(args: TosetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TosetResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:toset", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface TosetOutputArgs {

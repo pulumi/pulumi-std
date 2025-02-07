@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<StrrevResult> Invoke(StrrevInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<StrrevResult>("std:index:strrev", args ?? new StrrevInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the given string with all of its Unicode characters in reverse order.
+        /// </summary>
+        public static Output<StrrevResult> Invoke(StrrevInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<StrrevResult>("std:index:strrev", args ?? new StrrevInvokeArgs(), options.WithDefaults());
     }
 
 

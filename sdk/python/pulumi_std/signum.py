@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -50,12 +55,14 @@ def signum(input: Optional[float] = None,
 
     return AwaitableSignumResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(signum)
 def signum_output(input: Optional[pulumi.Input[float]] = None,
-                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[SignumResult]:
+                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SignumResult]:
     """
     Returns the greatest integer value less than or equal to the argument.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:signum', __args__, opts=opts, typ=SignumResult)
+    return __ret__.apply(lambda __response__: SignumResult(
+        result=pulumi.get(__response__, 'result')))

@@ -32,15 +32,11 @@ type TrimsuffixResult struct {
 }
 
 func TrimsuffixOutput(ctx *pulumi.Context, args TrimsuffixOutputArgs, opts ...pulumi.InvokeOption) TrimsuffixResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TrimsuffixResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TrimsuffixResultOutput, error) {
 			args := v.(TrimsuffixArgs)
-			r, err := Trimsuffix(ctx, &args, opts...)
-			var s TrimsuffixResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:trimsuffix", args, TrimsuffixResultOutput{}, options).(TrimsuffixResultOutput), nil
 		}).(TrimsuffixResultOutput)
 }
 

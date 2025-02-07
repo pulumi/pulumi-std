@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<CoalescelistResult> Invoke(CoalescelistInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CoalescelistResult>("std:index:coalescelist", args ?? new CoalescelistInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the first non-empty list from the given list of lists.
+        /// </summary>
+        public static Output<CoalescelistResult> Invoke(CoalescelistInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<CoalescelistResult>("std:index:coalescelist", args ?? new CoalescelistInvokeArgs(), options.WithDefaults());
     }
 
 

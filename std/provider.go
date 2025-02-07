@@ -30,11 +30,6 @@ func Provider() p.Provider {
 			Homepage:    "https://github.com/pulumi/pulumi-std",
 			Repository:  "https://github.com/pulumi/pulumi-std",
 			LanguageMap: map[string]any{
-				"nodejs": map[string]any{
-					"dependencies": map[string]string{
-						"@pulumi/pulumi": "^3.0.0",
-					},
-				},
 				"go": map[string]any{
 					"importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std",
 				},

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a (conventional) hexadecimal representation of the MD5 hash of the given string.
  */
 export function md5(args: Md5Args, opts?: pulumi.InvokeOptions): Promise<Md5Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:md5", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface Md5Result {
 /**
  * Returns a (conventional) hexadecimal representation of the MD5 hash of the given string.
  */
-export function md5Output(args: Md5OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<Md5Result> {
-    return pulumi.output(args).apply((a: any) => md5(a, opts))
+export function md5Output(args: Md5OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<Md5Result> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:md5", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface Md5OutputArgs {

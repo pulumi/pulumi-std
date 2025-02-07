@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the first non-empty list from the given list of lists.
  */
 export function coalescelist(args: CoalescelistArgs, opts?: pulumi.InvokeOptions): Promise<CoalescelistResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:coalescelist", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface CoalescelistResult {
 /**
  * Returns the first non-empty list from the given list of lists.
  */
-export function coalescelistOutput(args: CoalescelistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CoalescelistResult> {
-    return pulumi.output(args).apply((a: any) => coalescelist(a, opts))
+export function coalescelistOutput(args: CoalescelistOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CoalescelistResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:coalescelist", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface CoalescelistOutputArgs {

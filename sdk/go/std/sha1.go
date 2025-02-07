@@ -31,15 +31,11 @@ type Sha1Result struct {
 }
 
 func Sha1Output(ctx *pulumi.Context, args Sha1OutputArgs, opts ...pulumi.InvokeOption) Sha1ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (Sha1Result, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (Sha1ResultOutput, error) {
 			args := v.(Sha1Args)
-			r, err := Sha1(ctx, &args, opts...)
-			var s Sha1Result
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:sha1", args, Sha1ResultOutput{}, options).(Sha1ResultOutput), nil
 		}).(Sha1ResultOutput)
 }
 

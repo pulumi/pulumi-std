@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * returns all elements from values where the corresponding element from keys exists in the searchset list.
  */
 export function matchkeys(args: MatchkeysArgs, opts?: pulumi.InvokeOptions): Promise<MatchkeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:matchkeys", {
         "searchList": args.searchList,
@@ -29,8 +28,12 @@ export interface MatchkeysResult {
  * For two lists values and keys of equal length,
  * returns all elements from values where the corresponding element from keys exists in the searchset list.
  */
-export function matchkeysOutput(args: MatchkeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<MatchkeysResult> {
-    return pulumi.output(args).apply((a: any) => matchkeys(a, opts))
+export function matchkeysOutput(args: MatchkeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<MatchkeysResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:matchkeys", {
+        "searchList": args.searchList,
+        "values": args.values,
+    }, opts);
 }
 
 export interface MatchkeysOutputArgs {

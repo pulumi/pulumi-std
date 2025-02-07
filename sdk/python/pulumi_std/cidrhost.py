@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -55,16 +60,19 @@ def cidrhost(host: Optional[int] = None,
 
     return AwaitableCidrhostResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(cidrhost)
 def cidrhost_output(host: Optional[pulumi.Input[int]] = None,
                     input: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[CidrhostResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CidrhostResult]:
     """
     Takes an IP address range in CIDR notation as input
     and creates an IP address with the given host number.
     If given host number is negative, the count starts from the end of the range.
     For example, cidrhost("10.0.0.0/8", 2) returns 10.0.0.2 and cidrhost("10.0.0.0/8", -2) returns 10.255.255.254.
     """
-    ...
+    __args__ = dict()
+    __args__['host'] = host
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:cidrhost', __args__, opts=opts, typ=CidrhostResult)
+    return __ret__.apply(lambda __response__: CidrhostResult(
+        result=pulumi.get(__response__, 'result')))

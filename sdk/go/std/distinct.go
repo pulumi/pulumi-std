@@ -31,15 +31,11 @@ type DistinctResult struct {
 }
 
 func DistinctOutput(ctx *pulumi.Context, args DistinctOutputArgs, opts ...pulumi.InvokeOption) DistinctResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (DistinctResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (DistinctResultOutput, error) {
 			args := v.(DistinctArgs)
-			r, err := Distinct(ctx, &args, opts...)
-			var s DistinctResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:distinct", args, DistinctResultOutput{}, options).(DistinctResultOutput), nil
 		}).(DistinctResultOutput)
 }
 

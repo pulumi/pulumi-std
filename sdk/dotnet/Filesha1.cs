@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Filesha1Result> Invoke(Filesha1InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Filesha1Result>("std:index:filesha1", args ?? new Filesha1InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Reads the contents of a file into a string and returns the SHA1 hash of it.
+        /// </summary>
+        public static Output<Filesha1Result> Invoke(Filesha1InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Filesha1Result>("std:index:filesha1", args ?? new Filesha1InvokeArgs(), options.WithDefaults());
     }
 
 

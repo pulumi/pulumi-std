@@ -31,15 +31,11 @@ type MinResult struct {
 }
 
 func MinOutput(ctx *pulumi.Context, args MinOutputArgs, opts ...pulumi.InvokeOption) MinResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (MinResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (MinResultOutput, error) {
 			args := v.(MinArgs)
-			r, err := Min(ctx, &args, opts...)
-			var s MinResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:min", args, MinResultOutput{}, options).(MinResultOutput), nil
 		}).(MinResultOutput)
 }
 

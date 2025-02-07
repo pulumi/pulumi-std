@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Determines if the input string ends with the suffix.
  */
 export function endswith(args: EndswithArgs, opts?: pulumi.InvokeOptions): Promise<EndswithResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:endswith", {
         "input": args.input,
@@ -27,8 +26,12 @@ export interface EndswithResult {
 /**
  * Determines if the input string ends with the suffix.
  */
-export function endswithOutput(args: EndswithOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<EndswithResult> {
-    return pulumi.output(args).apply((a: any) => endswith(a, opts))
+export function endswithOutput(args: EndswithOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<EndswithResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:endswith", {
+        "input": args.input,
+        "suffix": args.suffix,
+    }, opts);
 }
 
 export interface EndswithOutputArgs {

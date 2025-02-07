@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -52,13 +57,16 @@ def contains(element: Optional[Any] = None,
 
     return AwaitableContainsResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(contains)
 def contains_output(element: Optional[Any] = None,
                     input: Optional[pulumi.Input[Sequence[Any]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[ContainsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ContainsResult]:
     """
     Returns true if a list contains the given element and returns false otherwise.
     """
-    ...
+    __args__ = dict()
+    __args__['element'] = element
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:contains', __args__, opts=opts, typ=ContainsResult)
+    return __ret__.apply(lambda __response__: ContainsResult(
+        result=pulumi.get(__response__, 'result')))

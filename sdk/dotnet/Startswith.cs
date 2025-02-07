@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<StartswithResult> Invoke(StartswithInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<StartswithResult>("std:index:startswith", args ?? new StartswithInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Determines if the input string starts with the suffix.
+        /// </summary>
+        public static Output<StartswithResult> Invoke(StartswithInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<StartswithResult>("std:index:startswith", args ?? new StartswithInvokeArgs(), options.WithDefaults());
     }
 
 

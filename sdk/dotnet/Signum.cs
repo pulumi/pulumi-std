@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<SignumResult> Invoke(SignumInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<SignumResult>("std:index:signum", args ?? new SignumInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the greatest integer value less than or equal to the argument.
+        /// </summary>
+        public static Output<SignumResult> Invoke(SignumInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<SignumResult>("std:index:signum", args ?? new SignumInvokeArgs(), options.WithDefaults());
     }
 
 

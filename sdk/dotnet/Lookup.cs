@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<LookupResult> Invoke(LookupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<LookupResult>("std:index:lookup", args ?? new LookupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Performs a dynamic lookup into a map variable.
+        /// </summary>
+        public static Output<LookupResult> Invoke(LookupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<LookupResult>("std:index:lookup", args ?? new LookupInvokeArgs(), options.WithDefaults());
     }
 
 

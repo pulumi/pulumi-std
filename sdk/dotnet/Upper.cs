@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<UpperResult> Invoke(UpperInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<UpperResult>("std:index:upper", args ?? new UpperInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Converts all cased letters in the given string to uppercase.
+        /// </summary>
+        public static Output<UpperResult> Invoke(UpperInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<UpperResult>("std:index:upper", args ?? new UpperInvokeArgs(), options.WithDefaults());
     }
 
 
