@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+## 2.1.0 (2025-02-07)
+
+### Improvements
+
+- Handle `null` values in `compact`.
+- Handle `null` values in `coalesce` and try to convert values to the most general type.
+
 ## 1.7.3 (2024-07-17)
 
 ### Improvements
