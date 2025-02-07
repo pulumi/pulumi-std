@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * 2607:f298:6051:516c:200::/72.
  */
 export function cidrsubnet(args: CidrsubnetArgs, opts?: pulumi.InvokeOptions): Promise<CidrsubnetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:cidrsubnet", {
         "input": args.input,
@@ -35,8 +34,13 @@ export interface CidrsubnetResult {
  * returns 10.2.0.0/16; cidrsubnet("2607:f298:6051:516c::/64", netnum: 2, newbits: 8) returns
  * 2607:f298:6051:516c:200::/72.
  */
-export function cidrsubnetOutput(args: CidrsubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CidrsubnetResult> {
-    return pulumi.output(args).apply((a: any) => cidrsubnet(a, opts))
+export function cidrsubnetOutput(args: CidrsubnetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CidrsubnetResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:cidrsubnet", {
+        "input": args.input,
+        "netnum": args.netnum,
+        "newbits": args.newbits,
+    }, opts);
 }
 
 export interface CidrsubnetOutputArgs {

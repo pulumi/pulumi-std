@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the greatest integer value less than or equal to the argument.
  */
 export function floor(args: FloorArgs, opts?: pulumi.InvokeOptions): Promise<FloorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:floor", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface FloorResult {
 /**
  * Returns the greatest integer value less than or equal to the argument.
  */
-export function floorOutput(args: FloorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<FloorResult> {
-    return pulumi.output(args).apply((a: any) => floor(a, opts))
+export function floorOutput(args: FloorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<FloorResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:floor", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface FloorOutputArgs {

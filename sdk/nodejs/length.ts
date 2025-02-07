@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Determines the length of a given list, map, or string.
  */
 export function length(args: LengthArgs, opts?: pulumi.InvokeOptions): Promise<LengthResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:length", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface LengthResult {
 /**
  * Determines the length of a given list, map, or string.
  */
-export function lengthOutput(args: LengthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LengthResult> {
-    return pulumi.output(args).apply((a: any) => length(a, opts))
+export function lengthOutput(args: LengthOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<LengthResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:length", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface LengthOutputArgs {

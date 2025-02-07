@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TrimResult> Invoke(TrimInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TrimResult>("std:index:trim", args ?? new TrimInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Removes the specified set of characters from the start and end of the given string.
+        /// </summary>
+        public static Output<TrimResult> Invoke(TrimInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TrimResult>("std:index:trim", args ?? new TrimInvokeArgs(), options.WithDefaults());
     }
 
 

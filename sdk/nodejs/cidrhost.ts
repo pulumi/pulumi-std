@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * For example, cidrhost("10.0.0.0/8", 2) returns 10.0.0.2 and cidrhost("10.0.0.0/8", -2) returns 10.255.255.254.
  */
 export function cidrhost(args: CidrhostArgs, opts?: pulumi.InvokeOptions): Promise<CidrhostResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:cidrhost", {
         "host": args.host,
@@ -33,8 +32,12 @@ export interface CidrhostResult {
  * If given host number is negative, the count starts from the end of the range.
  * For example, cidrhost("10.0.0.0/8", 2) returns 10.0.0.2 and cidrhost("10.0.0.0/8", -2) returns 10.255.255.254.
  */
-export function cidrhostOutput(args: CidrhostOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<CidrhostResult> {
-    return pulumi.output(args).apply((a: any) => cidrhost(a, opts))
+export function cidrhostOutput(args: CidrhostOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CidrhostResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:cidrhost", {
+        "host": args.host,
+        "input": args.input,
+    }, opts);
 }
 
 export interface CidrhostOutputArgs {

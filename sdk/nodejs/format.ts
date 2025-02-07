@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Formats a string according to the given format. The syntax for the format is standard sprintf syntax.
  */
 export function format(args: FormatArgs, opts?: pulumi.InvokeOptions): Promise<FormatResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:format", {
         "args": args.args,
@@ -27,8 +26,12 @@ export interface FormatResult {
 /**
  * Formats a string according to the given format. The syntax for the format is standard sprintf syntax.
  */
-export function formatOutput(args: FormatOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<FormatResult> {
-    return pulumi.output(args).apply((a: any) => format(a, opts))
+export function formatOutput(args: FormatOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<FormatResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:format", {
+        "args": args.args,
+        "input": args.input,
+    }, opts);
 }
 
 export interface FormatOutputArgs {

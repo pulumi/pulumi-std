@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<Filemd5Result> Invoke(Filemd5InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<Filemd5Result>("std:index:filemd5", args ?? new Filemd5InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Reads the contents of a file into a string and returns the MD5 hash of it.
+        /// </summary>
+        public static Output<Filemd5Result> Invoke(Filemd5InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<Filemd5Result>("std:index:filemd5", args ?? new Filemd5InvokeArgs(), options.WithDefaults());
     }
 
 

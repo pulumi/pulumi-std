@@ -31,15 +31,11 @@ type TransposeResult struct {
 }
 
 func TransposeOutput(ctx *pulumi.Context, args TransposeOutputArgs, opts ...pulumi.InvokeOption) TransposeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TransposeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TransposeResultOutput, error) {
 			args := v.(TransposeArgs)
-			r, err := Transpose(ctx, &args, opts...)
-			var s TransposeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:transpose", args, TransposeResultOutput{}, options).(TransposeResultOutput), nil
 		}).(TransposeResultOutput)
 }
 

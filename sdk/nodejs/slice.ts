@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the portion of list between from (inclusive) and to (exclusive).
  */
 export function slice(args: SliceArgs, opts?: pulumi.InvokeOptions): Promise<SliceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:slice", {
         "from": args.from,
@@ -29,8 +28,13 @@ export interface SliceResult {
 /**
  * Returns the portion of list between from (inclusive) and to (exclusive).
  */
-export function sliceOutput(args: SliceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<SliceResult> {
-    return pulumi.output(args).apply((a: any) => slice(a, opts))
+export function sliceOutput(args: SliceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<SliceResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:slice", {
+        "from": args.from,
+        "list": args.list,
+        "to": args.to,
+    }, opts);
 }
 
 export interface SliceOutputArgs {

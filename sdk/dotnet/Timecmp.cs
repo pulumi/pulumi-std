@@ -34,6 +34,18 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TimecmpResult> Invoke(TimecmpInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TimecmpResult>("std:index:timecmp", args ?? new TimecmpInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Compares two timestamps and returns a number that represents the ordering
+        /// 	of the instants those timestamps represent.
+        /// 	Timestamps are represented as strings using RFC 3339 "Date and time format" syntax.
+        /// 	Both timestamps must be strings adhering this syntax, i.e. "2017-11-22T00:00:00Z".
+        /// 	If 'timestamp_a' is before 'timestamp_b', -1 is returned.
+        /// 	If 'timestamp_a' is equal to 'timestamp_b', 0 is returned.
+        /// 	If 'timestamp_a' is after 'timestamp_b', 1 is returned.
+        /// </summary>
+        public static Output<TimecmpResult> Invoke(TimecmpInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TimecmpResult>("std:index:timecmp", args ?? new TimecmpInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -53,14 +58,17 @@ def rsadecrypt(cipher_text: Optional[str] = None,
 
     return AwaitableRsadecryptResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(rsadecrypt)
 def rsadecrypt_output(cipher_text: Optional[pulumi.Input[str]] = None,
                       key: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[RsadecryptResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[RsadecryptResult]:
     """
     Decrypts an RSA-encrypted ciphertext.
     The cipher text must be base64-encoded and the key must be in PEM format.
     """
-    ...
+    __args__ = dict()
+    __args__['cipherText'] = cipher_text
+    __args__['key'] = key
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:rsadecrypt', __args__, opts=opts, typ=RsadecryptResult)
+    return __ret__.apply(lambda __response__: RsadecryptResult(
+        result=pulumi.get(__response__, 'result')))

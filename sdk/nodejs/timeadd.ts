@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  * 	to provide a negative duration, i.e. "-2h15m".
  */
 export function timeadd(args: TimeaddArgs, opts?: pulumi.InvokeOptions): Promise<TimeaddResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:timeadd", {
         "duration": args.duration,
@@ -39,8 +38,12 @@ export interface TimeaddResult {
  * 	Accepted units are "ns", "us" or "µs", "ms", "s", "m", and "h". The first number may be negative
  * 	to provide a negative duration, i.e. "-2h15m".
  */
-export function timeaddOutput(args: TimeaddOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TimeaddResult> {
-    return pulumi.output(args).apply((a: any) => timeadd(a, opts))
+export function timeaddOutput(args: TimeaddOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TimeaddResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:timeadd", {
+        "duration": args.duration,
+        "timestamp": args.timestamp,
+    }, opts);
 }
 
 export interface TimeaddOutputArgs {

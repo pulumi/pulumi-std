@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ZipmapResult> Invoke(ZipmapInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ZipmapResult>("std:index:zipmap", args ?? new ZipmapInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Constructs a map from a list of keys and a corresponding list of values.
+        /// </summary>
+        public static Output<ZipmapResult> Invoke(ZipmapInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ZipmapResult>("std:index:zipmap", args ?? new ZipmapInvokeArgs(), options.WithDefaults());
     }
 
 

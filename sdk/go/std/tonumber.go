@@ -33,15 +33,11 @@ type TonumberResult struct {
 }
 
 func TonumberOutput(ctx *pulumi.Context, args TonumberOutputArgs, opts ...pulumi.InvokeOption) TonumberResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TonumberResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TonumberResultOutput, error) {
 			args := v.(TonumberArgs)
-			r, err := Tonumber(ctx, &args, opts...)
-			var s TonumberResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:tonumber", args, TonumberResultOutput{}, options).(TonumberResultOutput), nil
 		}).(TonumberResultOutput)
 }
 

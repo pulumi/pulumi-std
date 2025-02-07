@@ -31,15 +31,11 @@ type MaxResult struct {
 }
 
 func MaxOutput(ctx *pulumi.Context, args MaxOutputArgs, opts ...pulumi.InvokeOption) MaxResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (MaxResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (MaxResultOutput, error) {
 			args := v.(MaxArgs)
-			r, err := Max(ctx, &args, opts...)
-			var s MaxResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:max", args, MaxResultOutput{}, options).(MaxResultOutput), nil
 		}).(MaxResultOutput)
 }
 

@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<DistinctResult> Invoke(DistinctInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<DistinctResult>("std:index:distinct", args ?? new DistinctInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Removes duplicate items from a list.
+        /// </summary>
+        public static Output<DistinctResult> Invoke(DistinctInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<DistinctResult>("std:index:distinct", args ?? new DistinctInvokeArgs(), options.WithDefaults());
     }
 
 

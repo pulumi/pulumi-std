@@ -31,15 +31,11 @@ type KeysResult struct {
 }
 
 func KeysOutput(ctx *pulumi.Context, args KeysOutputArgs, opts ...pulumi.InvokeOption) KeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (KeysResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (KeysResultOutput, error) {
 			args := v.(KeysArgs)
-			r, err := Keys(ctx, &args, opts...)
-			var s KeysResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:keys", args, KeysResultOutput{}, options).(KeysResultOutput), nil
 		}).(KeysResultOutput)
 }
 

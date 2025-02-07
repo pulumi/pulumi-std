@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<FileResult> Invoke(FileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<FileResult>("std:index:file", args ?? new FileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Reads the contents of a file into the string.
+        /// </summary>
+        public static Output<FileResult> Invoke(FileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<FileResult>("std:index:file", args ?? new FileInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Splits a single list into multiple lists where each has at most the given number of elements.
  */
 export function chunklist(args: ChunklistArgs, opts?: pulumi.InvokeOptions): Promise<ChunklistResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:chunklist", {
         "input": args.input,
@@ -27,8 +26,12 @@ export interface ChunklistResult {
 /**
  * Splits a single list into multiple lists where each has at most the given number of elements.
  */
-export function chunklistOutput(args: ChunklistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ChunklistResult> {
-    return pulumi.output(args).apply((a: any) => chunklist(a, opts))
+export function chunklistOutput(args: ChunklistOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ChunklistResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:chunklist", {
+        "input": args.input,
+        "size": args.size,
+    }, opts);
 }
 
 export interface ChunklistOutputArgs {

@@ -31,15 +31,11 @@ type SignumResult struct {
 }
 
 func SignumOutput(ctx *pulumi.Context, args SignumOutputArgs, opts ...pulumi.InvokeOption) SignumResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (SignumResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (SignumResultOutput, error) {
 			args := v.(SignumArgs)
-			r, err := Signum(ctx, &args, opts...)
-			var s SignumResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:signum", args, SignumResultOutput{}, options).(SignumResultOutput), nil
 		}).(SignumResultOutput)
 }
 

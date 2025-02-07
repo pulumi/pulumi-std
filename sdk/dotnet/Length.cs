@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<LengthResult> Invoke(LengthInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<LengthResult>("std:index:length", args ?? new LengthInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Determines the length of a given list, map, or string.
+        /// </summary>
+        public static Output<LengthResult> Invoke(LengthInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<LengthResult>("std:index:length", args ?? new LengthInvokeArgs(), options.WithDefaults());
     }
 
 

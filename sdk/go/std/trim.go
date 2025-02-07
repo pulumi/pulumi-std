@@ -32,15 +32,11 @@ type TrimResult struct {
 }
 
 func TrimOutput(ctx *pulumi.Context, args TrimOutputArgs, opts ...pulumi.InvokeOption) TrimResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TrimResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TrimResultOutput, error) {
 			args := v.(TrimArgs)
-			r, err := Trim(ctx, &args, opts...)
-			var s TrimResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:trim", args, TrimResultOutput{}, options).(TrimResultOutput), nil
 		}).(TrimResultOutput)
 }
 

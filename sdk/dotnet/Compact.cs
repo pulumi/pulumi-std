@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<CompactResult> Invoke(CompactInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CompactResult>("std:index:compact", args ?? new CompactInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Removes empty string elements from a list.
+        /// </summary>
+        public static Output<CompactResult> Invoke(CompactInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<CompactResult>("std:index:compact", args ?? new CompactInvokeArgs(), options.WithDefaults());
     }
 
 

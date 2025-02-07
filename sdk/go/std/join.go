@@ -32,15 +32,11 @@ type JoinResult struct {
 }
 
 func JoinOutput(ctx *pulumi.Context, args JoinOutputArgs, opts ...pulumi.InvokeOption) JoinResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (JoinResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (JoinResultOutput, error) {
 			args := v.(JoinArgs)
-			r, err := Join(ctx, &args, opts...)
-			var s JoinResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:join", args, JoinResultOutput{}, options).(JoinResultOutput), nil
 		}).(JoinResultOutput)
 }
 

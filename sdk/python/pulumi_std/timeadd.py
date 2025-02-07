@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -58,12 +63,9 @@ def timeadd(duration: Optional[str] = None,
 
     return AwaitableTimeaddResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(timeadd)
 def timeadd_output(duration: Optional[pulumi.Input[str]] = None,
                    timestamp: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[TimeaddResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TimeaddResult]:
     """
     Adds a duration to a timestamp, returning a new timestamp.
     	Timestamps are represented as strings using RFC 3339 "Date and time format" syntax.
@@ -73,4 +75,10 @@ def timeadd_output(duration: Optional[pulumi.Input[str]] = None,
     	Accepted units are "ns", "us" or "µs", "ms", "s", "m", and "h". The first number may be negative
     	to provide a negative duration, i.e. "-2h15m".
     """
-    ...
+    __args__ = dict()
+    __args__['duration'] = duration
+    __args__['timestamp'] = timestamp
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:timeadd', __args__, opts=opts, typ=TimeaddResult)
+    return __ret__.apply(lambda __response__: TimeaddResult(
+        result=pulumi.get(__response__, 'result')))

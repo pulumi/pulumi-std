@@ -31,15 +31,11 @@ type Md5Result struct {
 }
 
 func Md5Output(ctx *pulumi.Context, args Md5OutputArgs, opts ...pulumi.InvokeOption) Md5ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (Md5Result, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (Md5ResultOutput, error) {
 			args := v.(Md5Args)
-			r, err := Md5(ctx, &args, opts...)
-			var s Md5Result
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:md5", args, Md5ResultOutput{}, options).(Md5ResultOutput), nil
 		}).(Md5ResultOutput)
 }
 

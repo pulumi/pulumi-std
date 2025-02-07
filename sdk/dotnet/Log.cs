@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<LogResult> Invoke(LogInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<LogResult>("std:index:log", args ?? new LogInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the greatest integer value less than or equal to the argument.
+        /// </summary>
+        public static Output<LogResult> Invoke(LogInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<LogResult>("std:index:log", args ?? new LogInvokeArgs(), options.WithDefaults());
     }
 
 

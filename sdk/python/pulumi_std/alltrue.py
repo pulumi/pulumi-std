@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -51,13 +56,15 @@ def alltrue(input: Optional[Sequence[Any]] = None,
 
     return AwaitableAlltrueResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(alltrue)
 def alltrue_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[AlltrueResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[AlltrueResult]:
     """
     Returns true if all elements in a given collection are true or \\"true\\".
     It also returns true if the collection is empty.
     """
-    ...
+    __args__ = dict()
+    __args__['input'] = input
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:alltrue', __args__, opts=opts, typ=AlltrueResult)
+    return __ret__.apply(lambda __response__: AlltrueResult(
+        result=pulumi.get(__response__, 'result')))

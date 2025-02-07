@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * the syntax conforms to the re2 regular expression syntax.
  */
 export function replace(args: ReplaceArgs, opts?: pulumi.InvokeOptions): Promise<ReplaceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:replace", {
         "replace": args.replace,
@@ -39,8 +38,13 @@ export interface ReplaceResult {
  * using $n where n is the index or name of the subcapture. If using a regular expression,
  * the syntax conforms to the re2 regular expression syntax.
  */
-export function replaceOutput(args: ReplaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ReplaceResult> {
-    return pulumi.output(args).apply((a: any) => replace(a, opts))
+export function replaceOutput(args: ReplaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ReplaceResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:replace", {
+        "replace": args.replace,
+        "search": args.search,
+        "text": args.text,
+    }, opts);
 }
 
 export interface ReplaceOutputArgs {

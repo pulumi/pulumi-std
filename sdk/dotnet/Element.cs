@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ElementResult> Invoke(ElementInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ElementResult>("std:index:element", args ?? new ElementInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the element at the specified index.
+        /// </summary>
+        public static Output<ElementResult> Invoke(ElementInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ElementResult>("std:index:element", args ?? new ElementInvokeArgs(), options.WithDefaults());
     }
 
 

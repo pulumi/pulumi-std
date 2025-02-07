@@ -32,15 +32,11 @@ type AnytrueResult struct {
 }
 
 func AnytrueOutput(ctx *pulumi.Context, args AnytrueOutputArgs, opts ...pulumi.InvokeOption) AnytrueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (AnytrueResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (AnytrueResultOutput, error) {
 			args := v.(AnytrueArgs)
-			r, err := Anytrue(ctx, &args, opts...)
-			var s AnytrueResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:anytrue", args, AnytrueResultOutput{}, options).(AnytrueResultOutput), nil
 		}).(AnytrueResultOutput)
 }
 

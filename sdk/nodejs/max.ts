@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns the largest of the floats.
  */
 export function max(args: MaxArgs, opts?: pulumi.InvokeOptions): Promise<MaxResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:max", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface MaxResult {
 /**
  * Returns the largest of the floats.
  */
-export function maxOutput(args: MaxOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<MaxResult> {
-    return pulumi.output(args).apply((a: any) => max(a, opts))
+export function maxOutput(args: MaxOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<MaxResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:max", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface MaxOutputArgs {

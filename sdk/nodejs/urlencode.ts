@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Applies URL encoding to a given string.
  */
 export function urlencode(args: UrlencodeArgs, opts?: pulumi.InvokeOptions): Promise<UrlencodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:urlencode", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface UrlencodeResult {
 /**
  * Applies URL encoding to a given string.
  */
-export function urlencodeOutput(args: UrlencodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<UrlencodeResult> {
-    return pulumi.output(args).apply((a: any) => urlencode(a, opts))
+export function urlencodeOutput(args: UrlencodeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<UrlencodeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:urlencode", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface UrlencodeOutputArgs {

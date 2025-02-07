@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.
  */
 export function abs(args: AbsArgs, opts?: pulumi.InvokeOptions): Promise<AbsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:abs", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface AbsResult {
  * Returns the absolute value of a given float.
  * Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.
  */
-export function absOutput(args: AbsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<AbsResult> {
-    return pulumi.output(args).apply((a: any) => abs(a, opts))
+export function absOutput(args: AbsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<AbsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:abs", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface AbsOutputArgs {

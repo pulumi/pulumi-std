@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<ChunklistResult> Invoke(ChunklistInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ChunklistResult>("std:index:chunklist", args ?? new ChunklistInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Splits a single list into multiple lists where each has at most the given number of elements.
+        /// </summary>
+        public static Output<ChunklistResult> Invoke(ChunklistInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<ChunklistResult>("std:index:chunklist", args ?? new ChunklistInvokeArgs(), options.WithDefaults());
     }
 
 

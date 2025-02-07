@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<SliceResult> Invoke(SliceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<SliceResult>("std:index:slice", args ?? new SliceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the portion of list between from (inclusive) and to (exclusive).
+        /// </summary>
+        public static Output<SliceResult> Invoke(SliceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<SliceResult>("std:index:slice", args ?? new SliceInvokeArgs(), options.WithDefaults());
     }
 
 

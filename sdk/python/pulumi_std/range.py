@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -56,16 +61,20 @@ def range(limit: Optional[float] = None,
 
     return AwaitableRangeResult(
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(range)
 def range_output(limit: Optional[pulumi.Input[float]] = None,
                  start: Optional[pulumi.Input[Optional[float]]] = None,
                  step: Optional[pulumi.Input[Optional[float]]] = None,
-                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[RangeResult]:
+                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[RangeResult]:
     """
     Generates a list of numbers using a start value, a limit value, and a step value.
     Start and step may be omitted, in which case start defaults to zero and step defaults to either one or negative one
     depending on whether limit is greater than or less than start.
     """
-    ...
+    __args__ = dict()
+    __args__['limit'] = limit
+    __args__['start'] = start
+    __args__['step'] = step
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('std:index:range', __args__, opts=opts, typ=RangeResult)
+    return __ret__.apply(lambda __response__: RangeResult(
+        result=pulumi.get(__response__, 'result')))

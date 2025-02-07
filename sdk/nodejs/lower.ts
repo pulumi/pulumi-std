@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Returns a copy of the string with all Unicode letters mapped to their lower case.
  */
 export function lower(args: LowerArgs, opts?: pulumi.InvokeOptions): Promise<LowerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:lower", {
         "input": args.input,
@@ -25,8 +24,11 @@ export interface LowerResult {
 /**
  * Returns a copy of the string with all Unicode letters mapped to their lower case.
  */
-export function lowerOutput(args: LowerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LowerResult> {
-    return pulumi.output(args).apply((a: any) => lower(a, opts))
+export function lowerOutput(args: LowerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<LowerResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:lower", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface LowerOutputArgs {

@@ -35,15 +35,11 @@ type RangeResult struct {
 }
 
 func RangeOutput(ctx *pulumi.Context, args RangeOutputArgs, opts ...pulumi.InvokeOption) RangeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (RangeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (RangeResultOutput, error) {
 			args := v.(RangeArgs)
-			r, err := Range(ctx, &args, opts...)
-			var s RangeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:range", args, RangeResultOutput{}, options).(RangeResultOutput), nil
 		}).(RangeResultOutput)
 }
 

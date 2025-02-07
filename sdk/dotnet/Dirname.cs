@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<DirnameResult> Invoke(DirnameInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<DirnameResult>("std:index:dirname", args ?? new DirnameInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns all but the last element of path, typically the path's directory.
+        /// </summary>
+        public static Output<DirnameResult> Invoke(DirnameInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<DirnameResult>("std:index:dirname", args ?? new DirnameInvokeArgs(), options.WithDefaults());
     }
 
 

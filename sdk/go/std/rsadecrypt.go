@@ -33,15 +33,11 @@ type RsadecryptResult struct {
 }
 
 func RsadecryptOutput(ctx *pulumi.Context, args RsadecryptOutputArgs, opts ...pulumi.InvokeOption) RsadecryptResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (RsadecryptResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (RsadecryptResultOutput, error) {
 			args := v.(RsadecryptArgs)
-			r, err := Rsadecrypt(ctx, &args, opts...)
-			var s RsadecryptResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:rsadecrypt", args, RsadecryptResultOutput{}, options).(RsadecryptResultOutput), nil
 		}).(RsadecryptResultOutput)
 }
 

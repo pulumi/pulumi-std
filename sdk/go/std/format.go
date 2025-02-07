@@ -32,15 +32,11 @@ type FormatResult struct {
 }
 
 func FormatOutput(ctx *pulumi.Context, args FormatOutputArgs, opts ...pulumi.InvokeOption) FormatResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (FormatResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (FormatResultOutput, error) {
 			args := v.(FormatArgs)
-			r, err := Format(ctx, &args, opts...)
-			var s FormatResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:format", args, FormatResultOutput{}, options).(FormatResultOutput), nil
 		}).(FormatResultOutput)
 }
 

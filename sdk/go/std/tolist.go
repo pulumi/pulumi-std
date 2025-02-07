@@ -31,15 +31,11 @@ type TolistResult struct {
 }
 
 func TolistOutput(ctx *pulumi.Context, args TolistOutputArgs, opts ...pulumi.InvokeOption) TolistResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TolistResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TolistResultOutput, error) {
 			args := v.(TolistArgs)
-			r, err := Tolist(ctx, &args, opts...)
-			var s TolistResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:tolist", args, TolistResultOutput{}, options).(TolistResultOutput), nil
 		}).(TolistResultOutput)
 }
 

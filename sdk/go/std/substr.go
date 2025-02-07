@@ -33,15 +33,11 @@ type SubstrResult struct {
 }
 
 func SubstrOutput(ctx *pulumi.Context, args SubstrOutputArgs, opts ...pulumi.InvokeOption) SubstrResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (SubstrResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (SubstrResultOutput, error) {
 			args := v.(SubstrArgs)
-			r, err := Substr(ctx, &args, opts...)
-			var s SubstrResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:substr", args, SubstrResultOutput{}, options).(SubstrResultOutput), nil
 		}).(SubstrResultOutput)
 }
 

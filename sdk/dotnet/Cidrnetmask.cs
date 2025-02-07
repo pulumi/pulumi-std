@@ -28,6 +28,15 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<CidrnetmaskResult> Invoke(CidrnetmaskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CidrnetmaskResult>("std:index:cidrnetmask", args ?? new CidrnetmaskInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format
+        /// that some systems expect for IPv4 interfaces.
+        /// For example, cidrnetmask("10.0.0.0/8") returns 255.0.0.0.
+        /// Not applicable to IPv6 networks since CIDR notation is the only valid notation for IPv6.
+        /// </summary>
+        public static Output<CidrnetmaskResult> Invoke(CidrnetmaskInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<CidrnetmaskResult>("std:index:cidrnetmask", args ?? new CidrnetmaskInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<BasenameResult> Invoke(BasenameInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<BasenameResult>("std:index:basename", args ?? new BasenameInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the last element of the input path.
+        /// </summary>
+        public static Output<BasenameResult> Invoke(BasenameInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<BasenameResult>("std:index:basename", args ?? new BasenameInvokeArgs(), options.WithDefaults());
     }
 
 

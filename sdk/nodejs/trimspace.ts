@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * 	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).
  */
 export function trimspace(args: TrimspaceArgs, opts?: pulumi.InvokeOptions): Promise<TrimspaceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:trimspace", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface TrimspaceResult {
  * Removes any space characters from the start and end of the given string,
  * 	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).
  */
-export function trimspaceOutput(args: TrimspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<TrimspaceResult> {
-    return pulumi.output(args).apply((a: any) => trimspace(a, opts))
+export function trimspaceOutput(args: TrimspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<TrimspaceResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:trimspace", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface TrimspaceOutputArgs {

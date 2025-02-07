@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<FileexistsResult> Invoke(FileexistsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<FileexistsResult>("std:index:fileexists", args ?? new FileexistsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Determines whether a file exists at a given path.
+        /// </summary>
+        public static Output<FileexistsResult> Invoke(FileexistsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<FileexistsResult>("std:index:fileexists", args ?? new FileexistsInvokeArgs(), options.WithDefaults());
     }
 
 

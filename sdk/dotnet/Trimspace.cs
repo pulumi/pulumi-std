@@ -24,6 +24,13 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<TrimspaceResult> Invoke(TrimspaceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<TrimspaceResult>("std:index:trimspace", args ?? new TrimspaceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Removes any space characters from the start and end of the given string,
+        /// 	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).
+        /// </summary>
+        public static Output<TrimspaceResult> Invoke(TrimspaceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<TrimspaceResult>("std:index:trimspace", args ?? new TrimspaceInvokeArgs(), options.WithDefaults());
     }
 
 

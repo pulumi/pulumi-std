@@ -22,6 +22,12 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<SumResult> Invoke(SumInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<SumResult>("std:index:sum", args ?? new SumInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the total sum of the elements of the input list.
+        /// </summary>
+        public static Output<SumResult> Invoke(SumInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<SumResult>("std:index:sum", args ?? new SumInvokeArgs(), options.WithDefaults());
     }
 
 

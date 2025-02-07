@@ -26,6 +26,14 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<JsonencodeResult> Invoke(JsonencodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<JsonencodeResult>("std:index:jsonencode", args ?? new JsonencodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns a JSON-encoded representation of the given value,
+        /// which can contain arbitrarily-nested lists and maps.
+        /// Note that if the value is a string then its value will be placed in quotes.
+        /// </summary>
+        public static Output<JsonencodeResult> Invoke(JsonencodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<JsonencodeResult>("std:index:jsonencode", args ?? new JsonencodeInvokeArgs(), options.WithDefaults());
     }
 
 

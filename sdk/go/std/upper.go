@@ -31,15 +31,11 @@ type UpperResult struct {
 }
 
 func UpperOutput(ctx *pulumi.Context, args UpperOutputArgs, opts ...pulumi.InvokeOption) UpperResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (UpperResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (UpperResultOutput, error) {
 			args := v.(UpperArgs)
-			r, err := Upper(ctx, &args, opts...)
-			var s UpperResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:upper", args, UpperResultOutput{}, options).(UpperResultOutput), nil
 		}).(UpperResultOutput)
 }
 

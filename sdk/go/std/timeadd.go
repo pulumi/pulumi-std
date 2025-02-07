@@ -39,15 +39,11 @@ type TimeaddResult struct {
 }
 
 func TimeaddOutput(ctx *pulumi.Context, args TimeaddOutputArgs, opts ...pulumi.InvokeOption) TimeaddResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (TimeaddResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (TimeaddResultOutput, error) {
 			args := v.(TimeaddArgs)
-			r, err := Timeadd(ctx, &args, opts...)
-			var s TimeaddResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("std:index:timeadd", args, TimeaddResultOutput{}, options).(TimeaddResultOutput), nil
 		}).(TimeaddResultOutput)
 }
 

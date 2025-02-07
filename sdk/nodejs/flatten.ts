@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * eliminating any nested lists recursively.
  */
 export function flatten(args: FlattenArgs, opts?: pulumi.InvokeOptions): Promise<FlattenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:flatten", {
         "input": args.input,
@@ -27,8 +26,11 @@ export interface FlattenResult {
  * Flattens lists of lists down to a flat list of primitive values,
  * eliminating any nested lists recursively.
  */
-export function flattenOutput(args: FlattenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<FlattenResult> {
-    return pulumi.output(args).apply((a: any) => flatten(a, opts))
+export function flattenOutput(args: FlattenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<FlattenResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:flatten", {
+        "input": args.input,
+    }, opts);
 }
 
 export interface FlattenOutputArgs {

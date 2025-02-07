@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  */
 export function timestamp(args?: TimestampArgs, opts?: pulumi.InvokeOptions): Promise<TimestampResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("std:index:timestamp", {
     }, opts);
@@ -24,6 +23,9 @@ export interface TimestampResult {
 /**
  * Returns a UTC timestamp string of the current time in RFC 3339 format
  */
-export function timestampOutput(opts?: pulumi.InvokeOptions): pulumi.Output<TimestampResult> {
-    return pulumi.output(timestamp(opts))
+export function timestampOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<TimestampResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("std:index:timestamp", {
+    }, opts);
 }
+

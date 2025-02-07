@@ -36,6 +36,19 @@ namespace Pulumi.Std
         /// </summary>
         public static Output<CsvdecodeResult> Invoke(CsvdecodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CsvdecodeResult>("std:index:csvdecode", args ?? new CsvdecodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Decodes a string containing CSV-formatted data and produces a list of maps representing that data.
+        /// 	The first line of the CSV data is interpreted as a "header" row: the values given
+        /// 	are used as the keys in the resulting maps.
+        /// 	Each subsequent line becomes a single map in the resulting list,
+        /// 	matching the keys from the header row with the given values by index.
+        /// 	All lines in the file must contain the same number of fields,
+        /// 	or this function will produce an error.
+        /// 	Follows the format defined in RFC 4180.
+        /// </summary>
+        public static Output<CsvdecodeResult> Invoke(CsvdecodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<CsvdecodeResult>("std:index:csvdecode", args ?? new CsvdecodeInvokeArgs(), options.WithDefaults());
     }
 
 
