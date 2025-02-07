@@ -1,6 +1,4 @@
 VERSION := 1.7.3
-JAVA_GEN := pulumi-java-gen
-JAVA_GEN_VERSION := v0.7.1
 
 build:
 	mkdir -p bin
@@ -15,7 +13,7 @@ tidy:
 sdk_prep: build
 	mkdir -p sdk
 
-gen_sdks: gen_dotnet_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk gen_schema
+gen_sdks: gen_dotnet_sdk gen_java_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk gen_schema
 
 gen_schema: sdk_prep
 	pulumi package get-schema bin/pulumi-resource-std > sdk/schema.json
@@ -51,9 +49,7 @@ build_python_sdk: gen_python_sdk
 build_go_sdk: gen_go_sdk
 	# No-op
 
-gen_java_sdk: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-gen_java_sdk: bin/pulumi-java-gen
-	bin/$(JAVA_GEN) generate --schema sdk/schema.json --out sdk/java  --build gradle-nexus
+build_java_sdk: gen_java_sdk
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build
@@ -67,6 +63,3 @@ lint-golang:
 	cd std && golangci-lint run -c ../.golangci.yml --timeout 5m
 lint-copyright:
 	pulumictl copyright -x 'examples/**' -x 'sdk/**'
-
-bin/pulumi-java-gen:
-	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
