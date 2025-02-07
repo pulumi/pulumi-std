@@ -17,6 +17,10 @@
     },
     "go": {
       "importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std"
+    },
+    "java": {
+      "buildFiles": "gradle",
+      "gradleNexusPublishPluginVersion": "2.0.0"
     }
   },
   "config": {},

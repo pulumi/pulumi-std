@@ -33,6 +33,10 @@ func Provider() p.Provider {
 				"go": map[string]any{
 					"importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std",
 				},
+				"java": map[string]any{
+					"buildFiles":                      "gradle",
+					"gradleNexusPublishPluginVersion": "2.0.0",
+				},
 				"csharp": map[string]any{
 					"packageReferences": map[string]string{
 						"Pulumi": "3.*",
