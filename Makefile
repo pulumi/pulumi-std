@@ -1,4 +1,4 @@
-VERSION := 1.7.3
+VERSION := 2.1.0
 
 build:
 	mkdir -p bin
