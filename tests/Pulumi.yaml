@@ -107,18 +107,38 @@ variables:
   concat:
     fn::std:concat:
       input: [[1,2], [3,4], [5]]
-  containsWithIntegers:
+  containsWithBooleansYes:
+    fn::std:contains:
+      input: [false, false, true, false, false]
+      element: true
+  containsWithBooleansNo:
+    fn::std:contains:
+      input: [false, false, false, false]
+      element: true
+  containsWithIntegersYes:
     fn::std:contains:
       input: [1,2,3,4,5]
       element: 1
-  containsWithStrings:
+  containsWithIntegersNo:
+    fn::std:contains:
+      input: [1,2,3,4,5]
+      element: 10
+  containsWithStringsYes:
     fn::std:contains:
       input: [one, two, three]
       element: two
-  containsWithLists:
+  containsWithStringsNo:
+    fn::std:contains:
+      input: [one, two, three]
+      element: four
+  containsWithListsYes:
     fn::std:contains:
       input: [[1], [2], [3]]
       element: [2]
+  containsWithListsNo:
+    fn::std:contains:
+      input: [[1], [2], [3]]
+      element: []
   csvdecode:
     fn::std:csvdecode:
       input: "a,b,c\n 1,2, 3\n 4, 5,6"
@@ -462,9 +482,14 @@ outputs:
   compactMixedEmpty: ${compactMixedEmpty.result}
   compactNullsEmpty: ${compactNullsEmpty.result}
   concat: ${concat.result}
-  containsWithIntegers: ${containsWithIntegers.result}
-  containsWithStrings: ${containsWithStrings.result}
-  containsWithLists: ${containsWithLists.result}
+  containsWithBooleansYes: ${containsWithBooleansYes.result}
+  containsWithBooleansNo: ${containsWithBooleansNo.result}
+  containsWithIntegersYes: ${containsWithIntegersYes.result}
+  containsWithIntegersNo: ${containsWithIntegersNo.result}
+  containsWithStringsYes: ${containsWithStringsYes.result}
+  containsWithStringsNo: ${containsWithStringsNo.result}
+  containsWithListsYes: ${containsWithListsYes.result}
+  containsWithListsNo: ${containsWithListsNo.result}
   csvdecode: ${csvdecode.result}
   shouldNotContain: ${shouldNotContain.result}
   dirname: ${dirname.result}
