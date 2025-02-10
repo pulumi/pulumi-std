@@ -138,6 +138,7 @@ func expectedOutputs() map[string]interface{} {
 		"csvdecode":                      []map[string]string{{"a": "1", "b": "2", "c": "3"}, {"a": "4", "b": "5", "c": "6"}},
 		"shouldNotContain":               false,
 		"dirname":                        "/path/to/directory",
+		"distinctWithBooleans":           []bool{true, false},
 		"distinctWithIntegers":           []int{1, 2, 3, 4, 5},
 		"distinctWithStrings":            []string{"one", "two", "three"},
 		"element":                        20,
