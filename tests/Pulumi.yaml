@@ -183,10 +183,70 @@ variables:
   floor:
     fn::std:floor:
       input: 1.1
-  format:
+  formatPercent:
     fn::std:format:
-      input: "hello-%s"
+      input: "hello-%%-%s"
       args: [world]
+  formatValues:
+    fn::std:format:
+      input: "hello-%v-%v-%v-%v-%v"
+      args: [42, hello, true, [1,2,3], {hello: world}]
+  formatJSONs:
+    fn::std:format:
+      input: "hello-%#v-%#v-%#v-%#v-%#v"
+      args: [42, hello, true, [1,2,3], {hello: world}]
+  formatBooleans:
+    fn::std:format:
+      input: "hello-%t-%t"
+      args: [true, false]
+  formatIntegersBinary:
+    fn::std:format:
+      input: "hello-%b-%b"
+      args: [42, 5]
+  formatIntegersDecimal:
+    fn::std:format:
+      input: "hello-%d-%d"
+      args: [42, 5]
+  formatIntegersOctal:
+    fn::std:format:
+      input: "hello-%o-%o"
+      args: [42, 5]
+  formatIntegersHexLower:
+    fn::std:format:
+      input: "hello-%x-%x"
+      args: [42, 13]
+  formatIntegersHexUpper:
+    fn::std:format:
+      input: "hello-%X-%X"
+      args: [42, 13]
+  formatFloatsScientificLower:
+    fn::std:format:
+      input: "hello-%e-%e"
+      args: [42000042.42, 13.13]
+  formatFloatsScientificUpper:
+    fn::std:format:
+      input: "hello-%E-%E"
+      args: [42000042.42, 13.13]
+  formatFloatsDecimal:
+    fn::std:format:
+      input: "hello-%f-%f"
+      args: [42000042.42, 13.13]
+  formatFloatsGeneralLower:
+    fn::std:format:
+      input: "hello-%g-%g"
+      args: [42000042.42, 13.13]
+  formatFloatsGeneralUpper:
+    fn::std:format:
+      input: "hello-%G-%G"
+      args: [42000042.42, 13.13]
+  formatStrings:
+    fn::std:format:
+      input: "hello-%s-%s"
+      args: [world, hello]
+  formatQuotedStrings:
+    fn::std:format:
+      input: "hello-%q-%q"
+      args: [world, hello]
   index:
     fn::std:index:
       input: [one, two, three]
@@ -423,7 +483,22 @@ outputs:
   filebase64sha512: ${filebase64sha512.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
-  format: ${format.result}
+  formatPercent: ${formatPercent.result}
+  formatValues: ${formatValues.result}
+  formatJSONs: ${formatJSONs.result}
+  formatBooleans: ${formatBooleans.result}
+  formatIntegersBinary: ${formatIntegersBinary.result}
+  formatIntegersDecimal: ${formatIntegersDecimal.result}
+  formatIntegersOctal: ${formatIntegersOctal.result}
+  formatIntegersHexLower: ${formatIntegersHexLower.result}
+  formatIntegersHexUpper: ${formatIntegersHexUpper.result}
+  formatFloatsScientificLower: ${formatFloatsScientificLower.result}
+  formatFloatsScientificUpper: ${formatFloatsScientificUpper.result}
+  formatFloatsDecimal: ${formatFloatsDecimal.result}
+  formatFloatsGeneralLower: ${formatFloatsGeneralLower.result}
+  formatFloatsGeneralUpper: ${formatFloatsGeneralUpper.result}
+  formatStrings: ${formatStrings.result}
+  formatQuotedStrings: ${formatQuotedStrings.result}
   index: ${index.result}
   join: ${join.result}
   jsonencode: ${jsonencode.result}
