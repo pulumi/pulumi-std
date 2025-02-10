@@ -149,6 +149,9 @@ variables:
   dirname:
     fn::std:dirname:
       input: /path/to/directory/file.txt
+  distinctWithBooleans:
+    fn::std:distinct:
+      input: [true, false, true, true, false, true, false]
   distinctWithIntegers:
     fn::std:distinct:
       input: [1,2,2,3,3,4,5]
@@ -496,7 +499,9 @@ outputs:
   csvdecode: ${csvdecode.result}
   shouldNotContain: ${shouldNotContain.result}
   dirname: ${dirname.result}
+  distinctWithBooleans: ${distinctWithBooleans.result}
   distinctWithIntegers: ${distinctWithIntegers.result}
+  distinctWithStrings: ${distinctWithStrings.result}
   element: ${element.result}
   elementOverflow: ${elementOverflow.result}
   elementNegativeIndex: ${elementNegativeIndex.result}
