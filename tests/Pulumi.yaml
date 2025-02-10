@@ -282,7 +282,10 @@ variables:
   jsondecode:
     fn::std:jsondecode:
       input: '{"str": "hello", "num":6.13,"strs":["a","b"], "bool": true}'
-  keys:
+  keysEmpty:
+    fn::std:keys:
+      input: {}
+  keysNonEmpty:
     fn::std:keys:
       input:
         hello: world
@@ -528,7 +531,8 @@ outputs:
   join: ${join.result}
   jsonencode: ${jsonencode.result}
   jsondecode: ${jsondecode.result}
-  keys: ${keys.result}
+  keysEmpty: ${keysEmpty.result}
+  keysNonEmpty: ${keysNonEmpty.result}
   log: ${log.result}
   pathexpand: ${pathexpand.result}
   md5: ${md5.result}
