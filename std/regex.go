@@ -46,23 +46,22 @@ func (*Regex) Call(_ p.Context, args RegexArgs) (RegexResult, error) {
 	match := re.FindStringSubmatch(args.String)
 
 	if match == nil {
-		return RegexResult{Result: nil}, nil
+		return RegexResult{Result: []interface{}{}}, nil
 	}
 
 	// If there are no groups/submatches, return the full match
 	if re.NumSubexp() == 0 {
-		var result interface{} = match[0]
-		return RegexResult{Result: result}, nil
+		return RegexResult{Result: interface{}(match[0])}, nil
 	}
 
 	hasNamedSubExp := false
 	for _, name := range re.SubexpNames() {
-		if name != "" {
-			if hasNamedSubExp {
-				return RegexResult{},
-					errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
-			}
+		if name == "" && hasNamedSubExp {
+			return RegexResult{},
+				errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
+		}
 
+		if name != "" {
 			hasNamedSubExp = true
 		}
 	}
@@ -77,7 +76,7 @@ func (*Regex) Call(_ p.Context, args RegexArgs) (RegexResult, error) {
 			}
 			result = append(result, submatch)
 		}
-		return RegexResult{Result: result}, nil
+		return RegexResult{Result: interface{}(result)}, nil
 	}
 
 	// If there are named submatches return a map of the named submatches
@@ -90,5 +89,5 @@ func (*Regex) Call(_ p.Context, args RegexArgs) (RegexResult, error) {
 		result[name] = match[i]
 	}
 
-	return RegexResult{Result: result}, nil
+	return RegexResult{Result: interface{}(result)}, nil
 }

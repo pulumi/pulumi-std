@@ -317,7 +317,7 @@ variables:
       base: 16
   regexNoGroup:
     fn::std:regex:
-      pattern: "a.*b"
+      pattern: "a[a-z]+b"
       string: "athentextb athenmoretextb"
   regexNoMatch:
     fn::std:regex:
@@ -333,7 +333,7 @@ variables:
       string: "1234"
   regexallNoGroup:
     fn::std:regexall:
-      pattern: "a.*b"
+      pattern: "a[a-z]+b"
       string: "athentextb athenmoretextb"
   regexallNoMatch:
     fn::std:regexall:
