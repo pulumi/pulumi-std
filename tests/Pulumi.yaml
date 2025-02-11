@@ -86,9 +86,12 @@ variables:
   coalesceWithBoolsAndStrings:
     fn::std:coalesce:
       input: [true, null, "hello"]
-  coalescelist:
+  coalescelistWithNonEmptyFirst:
     fn::std:coalescelist:
-      input: [[], [1]]
+      input: [[1], [], [2]]
+  coalescelistWithNonEmptySecond:
+    fn::std:coalescelist:
+      input: [[], [1], [2]]
   compact:
     fn::std:compact:
       input: ["", "one", "", null]
@@ -392,7 +395,8 @@ outputs:
   coalesceWithFloatsAndStrings: ${coalesceWithFloatsAndStrings.result}
   coalesceWithIntsAndStrings: ${coalesceWithIntsAndStrings.result}
   coalesceWithBoolsAndStrings: ${coalesceWithBoolsAndStrings.result}
-  coalescelist: ${coalescelist.result}
+  coalescelistWithNonEmptyFirst: ${coalescelistWithNonEmptyFirst.result}
+  coalescelistWithNonEmptySecond: ${coalescelistWithNonEmptySecond.result}
   compact: ${compact.result}
   compactMixed: ${compactMixed.result}
   compactMixedEmpty: ${compactMixedEmpty.result}
