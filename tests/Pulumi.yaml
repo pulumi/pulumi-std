@@ -315,6 +315,22 @@ variables:
     fn::std:parseint:
       input: "FF"
       base: 16
+  regexNoGroup:
+    fn::std:regex:
+      pattern: "a.*b"
+      string: "athentextb athenmoretextb"
+  regexNoMatch:
+    fn::std:regex:
+      pattern: "a.*b"
+      string: "asdfsdfsdfdsf"
+  regexNumberedGroups:
+    fn::std:regex:
+      pattern: "([0-9])([0-9])"
+      string: "1234"
+  regexNamedGroups:
+    fn::std:regex:
+      pattern: "(?P<first>[0-9])(?P<second>[0-9])"
+      string: "1234"
   regexallNoGroup:
     fn::std:regexall:
       pattern: "a.*b"
@@ -585,6 +601,10 @@ outputs:
   parseint: ${parseint.result}
   parseintWithBase: ${parseintWithBase.result}
   reverse: ${reverse.result}
+  regexNoGroup: ${regexNoGroup.result}
+  regexNoMatch: ${regexNoMatch.result}
+  regexNumberedGroups: ${regexNumberedGroups.result}
+  regexNamedGroups: ${regexNamedGroups.result}
   regexallNoGroup: ${regexallNoGroup.result}
   regexallNoMatch: ${regexallNoMatch.result}
   regexallNumberedGroups: ${regexallNumberedGroups.result}
