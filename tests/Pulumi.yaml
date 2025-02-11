@@ -360,6 +360,30 @@ variables:
       input:
         one: 1
         two: 2
+  setintersectionEmpty:
+    fn::std:setintersection:
+      input: []
+  setintersectionSingle:
+    fn::std:setintersection:
+      input: [["a", "b", "c"]]
+  setintersectionStrings:
+    fn::std:setintersection:
+      input: [["a", "b", "c"], ["a", "b"], ["a", "d", "e"]]
+  setintersectionBools:
+    fn::std:setintersection:
+      input: [[true, false], [true]]
+  setintersectionIntegers:
+    fn::std:setintersection:
+      input: [[1, 2, 3], [2, 3], [3, 4, 5]]
+  setintersectionFloats:
+    fn::std:setintersection:
+      input: [[1.1, 2.2, 3.3], [2.2, 3.3], [3.3, 4.4, 5.5]]
+  setintersectionIntsAndFloats:
+    fn::std:setintersection:
+      input: [[1.1, 2.2, 3], [2.2, 3], [2.2, 3.0, 4.4, 5.5]]
+  setintersectionMixed:
+    fn::std:setintersection:
+      input: [["bob",true,"jane",3], ["jane",3.0,"ajax",10,"true"], [true,"3","jane",26,"nomad"]]
   split:
     fn::std:split:
       separator: ","
@@ -555,6 +579,14 @@ outputs:
   startswith: ${startswith.result}
   endswith: ${endswith.result}
   values: ${values.result}
+  setintersectionEmpty: ${setintersectionEmpty.result}
+  setintersectionSingle: ${setintersectionSingle.result}
+  setintersectionStrings: ${setintersectionStrings.result}
+  setintersectionBools: ${setintersectionBools.result}
+  setintersectionIntegers: ${setintersectionIntegers.result}
+  setintersectionFloats: ${setintersectionFloats.result}
+  setintersectionIntsAndFloats: ${setintersectionIntsAndFloats.result}
+  setintersectionMixed: ${setintersectionMixed.result}
   split: ${split.result}
   strrev: ${strrev.result}
   substr: ${substr.result}

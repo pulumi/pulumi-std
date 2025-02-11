@@ -21,7 +21,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCoalesceAssignableType(t *testing.T) {
+func TestAssignableType(t *testing.T) {
 	t.Parallel()
 
 	// Arrange.

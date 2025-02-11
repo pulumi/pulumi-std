@@ -133,6 +133,8 @@ import com.pulumi.std.inputs.ReverseArgs;
 import com.pulumi.std.inputs.ReversePlainArgs;
 import com.pulumi.std.inputs.RsadecryptArgs;
 import com.pulumi.std.inputs.RsadecryptPlainArgs;
+import com.pulumi.std.inputs.SetintersectionArgs;
+import com.pulumi.std.inputs.SetintersectionPlainArgs;
 import com.pulumi.std.inputs.Sha1Args;
 import com.pulumi.std.inputs.Sha1PlainArgs;
 import com.pulumi.std.inputs.Sha256Args;
@@ -255,6 +257,7 @@ import com.pulumi.std.outputs.RangeResult;
 import com.pulumi.std.outputs.ReplaceResult;
 import com.pulumi.std.outputs.ReverseResult;
 import com.pulumi.std.outputs.RsadecryptResult;
+import com.pulumi.std.outputs.SetintersectionResult;
 import com.pulumi.std.outputs.Sha1Result;
 import com.pulumi.std.outputs.Sha256Result;
 import com.pulumi.std.outputs.Sha512Result;
@@ -2657,6 +2660,41 @@ public final class StdFunctions {
      */
     public static CompletableFuture<RsadecryptResult> rsadecryptPlain(RsadecryptPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("std:index:rsadecrypt", TypeShape.of(RsadecryptResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the set of elements that all the input sets have in common.
+     * 
+     */
+    public static Output<SetintersectionResult> setintersection(SetintersectionArgs args) {
+        return setintersection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the set of elements that all the input sets have in common.
+     * 
+     */
+    public static CompletableFuture<SetintersectionResult> setintersectionPlain(SetintersectionPlainArgs args) {
+        return setintersectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the set of elements that all the input sets have in common.
+     * 
+     */
+    public static Output<SetintersectionResult> setintersection(SetintersectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("std:index:setintersection", TypeShape.of(SetintersectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the set of elements that all the input sets have in common.
+     * 
+     */
+    public static Output<SetintersectionResult> setintersection(SetintersectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("std:index:setintersection", TypeShape.of(SetintersectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the set of elements that all the input sets have in common.
+     * 
+     */
+    public static CompletableFuture<SetintersectionResult> setintersectionPlain(SetintersectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("std:index:setintersection", TypeShape.of(SetintersectionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Returns a hexadecimal representation of the SHA-1 hash of the given string.

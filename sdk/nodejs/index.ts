@@ -320,6 +320,11 @@ export const rsadecrypt: typeof import("./rsadecrypt").rsadecrypt = null as any;
 export const rsadecryptOutput: typeof import("./rsadecrypt").rsadecryptOutput = null as any;
 utilities.lazyLoad(exports, ["rsadecrypt","rsadecryptOutput"], () => require("./rsadecrypt"));
 
+export { SetintersectionArgs, SetintersectionResult, SetintersectionOutputArgs } from "./setintersection";
+export const setintersection: typeof import("./setintersection").setintersection = null as any;
+export const setintersectionOutput: typeof import("./setintersection").setintersectionOutput = null as any;
+utilities.lazyLoad(exports, ["setintersection","setintersectionOutput"], () => require("./setintersection"));
+
 export { Sha1Args, Sha1Result, Sha1OutputArgs } from "./sha1";
 export const sha1: typeof import("./sha1").sha1 = null as any;
 export const sha1Output: typeof import("./sha1").sha1Output = null as any;

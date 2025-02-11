@@ -68,6 +68,7 @@ from .range import *
 from .replace import *
 from .reverse import *
 from .rsadecrypt import *
+from .setintersection import *
 from .sha1 import *
 from .sha256 import *
 from .sha512 import *
