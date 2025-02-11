@@ -1692,6 +1692,35 @@
         "type": "object"
       }
     },
+    "std:index:regex": {
+      "description": "Returns the first match of a regular expression in a string (including named or indexed groups).",
+      "inputs": {
+        "properties": {
+          "pattern": {
+            "type": "string"
+          },
+          "string": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pattern",
+          "string"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "$ref": "pulumi.json#/Any"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object"
+      }
+    },
     "std:index:regexall": {
       "description": "Returns a list of all matches of a regular expression in a string (including named or indexed groups).",
       "inputs": {

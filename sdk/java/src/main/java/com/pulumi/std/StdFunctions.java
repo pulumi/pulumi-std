@@ -127,6 +127,8 @@ import com.pulumi.std.inputs.PowArgs;
 import com.pulumi.std.inputs.PowPlainArgs;
 import com.pulumi.std.inputs.RangeArgs;
 import com.pulumi.std.inputs.RangePlainArgs;
+import com.pulumi.std.inputs.RegexArgs;
+import com.pulumi.std.inputs.RegexPlainArgs;
 import com.pulumi.std.inputs.RegexallArgs;
 import com.pulumi.std.inputs.RegexallPlainArgs;
 import com.pulumi.std.inputs.ReplaceArgs;
@@ -256,6 +258,7 @@ import com.pulumi.std.outputs.ParseintResult;
 import com.pulumi.std.outputs.PathexpandResult;
 import com.pulumi.std.outputs.PowResult;
 import com.pulumi.std.outputs.RangeResult;
+import com.pulumi.std.outputs.RegexResult;
 import com.pulumi.std.outputs.RegexallResult;
 import com.pulumi.std.outputs.ReplaceResult;
 import com.pulumi.std.outputs.ReverseResult;
@@ -2528,6 +2531,41 @@ public final class StdFunctions {
      */
     public static CompletableFuture<RangeResult> rangePlain(RangePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("std:index:range", TypeShape.of(RangeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static Output<RegexResult> regex(RegexArgs args) {
+        return regex(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static CompletableFuture<RegexResult> regexPlain(RegexPlainArgs args) {
+        return regexPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static Output<RegexResult> regex(RegexArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("std:index:regex", TypeShape.of(RegexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static Output<RegexResult> regex(RegexArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("std:index:regex", TypeShape.of(RegexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static CompletableFuture<RegexResult> regexPlain(RegexPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("std:index:regex", TypeShape.of(RegexResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Returns a list of all matches of a regular expression in a string (including named or indexed groups).
