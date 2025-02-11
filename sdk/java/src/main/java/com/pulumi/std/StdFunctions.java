@@ -979,45 +979,35 @@ public final class StdFunctions {
         return Deployment.getInstance().invokeAsync("std:index:cidrsubnet", TypeShape.of(CidrsubnetResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-     * consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-     * for additional information
+     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
      * 
      */
     public static Output<CidrsubnetsResult> cidrsubnets(CidrsubnetsArgs args) {
         return cidrsubnets(args, InvokeOptions.Empty);
     }
     /**
-     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-     * consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-     * for additional information
+     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
      * 
      */
     public static CompletableFuture<CidrsubnetsResult> cidrsubnetsPlain(CidrsubnetsPlainArgs args) {
         return cidrsubnetsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-     * consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-     * for additional information
+     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
      * 
      */
     public static Output<CidrsubnetsResult> cidrsubnets(CidrsubnetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("std:index:cidrsubnets", TypeShape.of(CidrsubnetsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-     * consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-     * for additional information
+     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
      * 
      */
     public static Output<CidrsubnetsResult> cidrsubnets(CidrsubnetsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("std:index:cidrsubnets", TypeShape.of(CidrsubnetsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-     * consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-     * for additional information
+     * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
      * 
      */
     public static CompletableFuture<CidrsubnetsResult> cidrsubnetsPlain(CidrsubnetsPlainArgs args, InvokeOptions options) {

@@ -485,7 +485,7 @@
       }
     },
     "std:index:cidrsubnets": {
-      "description": "Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of \nconsecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ \nfor additional information",
+      "description": "Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information",
       "inputs": {
         "properties": {
           "input": {

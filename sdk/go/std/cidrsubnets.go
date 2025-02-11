@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-// consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-// for additional information
+// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
 func Cidrsubnets(ctx *pulumi.Context, args *CidrsubnetsArgs, opts ...pulumi.InvokeOption) (*CidrsubnetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CidrsubnetsResult

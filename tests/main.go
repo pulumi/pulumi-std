@@ -282,12 +282,15 @@ func main() {
 	expected := expectedOutputs()
 	outputs := outputs()
 
+	seen := make(map[string]bool)
 	for key, value := range outputs {
+		seen[key] = true
+
 		if key == "pathexpand" {
 			// pathexpand is a special case, because it returns a different value on each machine
 			if strings.Contains(value.(string), "~") {
 				fmt.Printf("❌ Output '%s' => '%s' did not expand the home directory", key, value)
-				exitCode++
+				exitCode = 1
 			}
 		}
 
@@ -314,7 +317,14 @@ func main() {
 			fmt.Printf("✅ Output '%s' has value '%v' as expected\n", key, originalValue)
 		} else {
 			fmt.Printf("❌ Output '%s' was '%v' but should be '%v'\n", key, originalValue, originalExpectedValue)
-			exitCode++
+			exitCode = 1
+		}
+	}
+
+	for key := range expected {
+		if !seen[key] {
+			fmt.Printf("❌ Expected output '%s' was not present\n", key)
+			exitCode = 1
 		}
 	}
 }
