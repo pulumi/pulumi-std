@@ -51,6 +51,7 @@
 - [merge](std/merge.go)
 - [range](std/range.go)
 - [replace](std/replace.go)
+- [setintersection](std/setintersection.go)
 - [slice](std/slice.go)
 - [sort](std/sort.go)
 - [sum](std/sum.go)

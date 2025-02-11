@@ -25,8 +25,8 @@ import (
 
 func exitOnError(msg string, err error) {
 	if err != nil {
-		fmt.Println(msg, "\n", err)
-		cleanup()
+		fmt.Println(msg, "\n", err.Error())
+		cleanup(false)
 		os.Exit(1)
 	}
 }
@@ -48,18 +48,24 @@ func prepare() {
 	err := os.Setenv("PULUMI_CONFIG_PASSPHRASE", "test")
 	exitOnError("Could not set PULUMI_CONFIG_PASSPHRASE", err)
 	err = os.Setenv("PULUMI_DEBUG_GRPC", grpcJsonDebug())
+	exitOnError("Could not set PULUMI_DEBUG_GRPC", err)
 	stateDir := stateDir()
 	// make state dir
 	err = os.Mkdir(stateDir, 0755)
 	exitOnError("Could not create state directory", err)
 	_, err = exec.Command("pulumi", "login", "--cloud-url", fmt.Sprintf("file://%s", stateDir)).Output()
+	exitOnError("Could not login to pulumi cloud", err)
 	_, err = exec.Command("pulumi", "stack", "init", "dev").Output()
 	exitOnError("Could not init pulumi stack", err)
 }
 
-func cleanup() {
-	_, err := exec.Command("pulumi", "logout").Output()
-	exitOnError("Could not logout from pulumi", err)
+func cleanup(logout bool) {
+	var err error
+	if logout {
+		output, err := exec.Command("pulumi", "logout").CombinedOutput()
+		exitOnError(fmt.Sprintf("Could not logout from pulumi: %s", output), err)
+	}
+
 	stateDir := stateDir()
 	err = os.RemoveAll(stateDir)
 	exitOnError("Could not remove state directory", err)
@@ -194,6 +200,14 @@ func expectedOutputs() map[string]interface{} {
 		"startswith":                     true,
 		"endswith":                       true,
 		"values":                         []int{1, 2},
+		"setintersectionEmpty":           newSet(),
+		"setintersectionSingle":          newSet("a", "b", "c"),
+		"setintersectionStrings":         newSet("a"),
+		"setintersectionBools":           newSet(true),
+		"setintersectionIntegers":        newSet(3),
+		"setintersectionFloats":          newSet(3.3),
+		"setintersectionIntsAndFloats":   newSet(2.2, 3.0),
+		"setintersectionMixed":           newSet("jane", "3", "true"),
 		"split":                          []string{"one", "two", "three"},
 		"strrev":                         "olleh",
 		"substr":                         "hello",
@@ -226,18 +240,20 @@ func expectedOutputs() map[string]interface{} {
 }
 
 func main() {
-	cleanup()
+	cleanup(true)
 	prepare()
 
 	exitCode := 0
 	exit := func() {
-		cleanup()
+		cleanup(true)
 		os.Exit(exitCode)
 	}
 
 	defer func() {
 		// If we panic, we want to make sure we clean up.
 		if r := recover(); r != nil {
+			fmt.Println("❌ Panic occurred:", r)
+
 			exitCode = 1
 			exit()
 		}
@@ -249,7 +265,6 @@ func main() {
 	outputs := outputs()
 
 	for key, value := range outputs {
-
 		if key == "pathexpand" {
 			// pathexpand is a special case, because it returns a different value on each machine
 			if strings.Contains(value.(string), "~") {
@@ -263,11 +278,47 @@ func main() {
 			continue
 		}
 
+		originalValue := value
+		originalExpectedValue := expectedValue
+
+		// Some functions such as setintersection return a logical set, so ordering must be ignored. We use the set helper
+		// for this.
+		if sv, ok := expectedValue.(set); ok {
+			expectedValue = sv.values
+			originalExpectedValue = sv.inputs
+
+			if values, ok := value.([]interface{}); ok {
+				value = newSet(values...).values
+			}
+		}
+
 		if reflect.DeepEqual(expectedValue, value) || jsonDeepEquals(expectedValue, value) {
-			fmt.Printf("✅ Output '%s' has value '%v' as expected\n", key, value)
+			fmt.Printf("✅ Output '%s' has value '%v' as expected\n", key, originalValue)
 		} else {
-			fmt.Printf("❌ Output '%s' was '%v' but should be '%v'\n", key, value, expectedValue)
+			fmt.Printf("❌ Output '%s' was '%v' but should be '%v'\n", key, originalValue, originalExpectedValue)
 			exitCode++
 		}
 	}
+}
+
+// set wraps a set of values into a map so that DeepEqual can be used for order-ignorant comparisons. It captures the
+// slice of inputs it was given (so that it can be printed in error messages) and the deduplicated values themselves.
+type set struct {
+	inputs []interface{}
+	values map[string]bool
+}
+
+// newSet creates a new set from the given inputs. The inputs are deduplicated into a map so that DeepEqual can be used
+// for order-ignorant comparisons. The original slice is also preserved so that it can be used for printing error
+// messages when things don't compare as equal.
+func newSet(inputs ...interface{}) set {
+	values := map[string]bool{}
+	for _, v := range inputs {
+		bytes, err := json.Marshal(v)
+		if err != nil {
+			panic(err)
+		}
+		values[string(bytes)] = true
+	}
+	return set{inputs: inputs, values: values}
 }
