@@ -46,7 +46,7 @@ func (*Regexall) Call(_ p.Context, args RegexallArgs) (RegexallResult, error) {
 	matches := re.FindAllStringSubmatch(args.String, -1)
 
 	if matches == nil {
-		return RegexallResult{Result: nil}, nil
+		return RegexallResult{Result: []interface{}{}}, nil
 	}
 
 	result := make([]interface{}, len(matches))
@@ -60,12 +60,12 @@ func (*Regexall) Call(_ p.Context, args RegexallArgs) (RegexallResult, error) {
 
 	hasNamedSubExp := false
 	for _, name := range re.SubexpNames() {
-		if name != "" {
-			if hasNamedSubExp {
-				return RegexallResult{},
-					errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
-			}
+		if name == "" && hasNamedSubExp {
+			return RegexallResult{},
+				errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
+		}
 
+		if name != "" {
 			hasNamedSubExp = true
 		}
 	}
@@ -74,7 +74,7 @@ func (*Regexall) Call(_ p.Context, args RegexallArgs) (RegexallResult, error) {
 	if !hasNamedSubExp {
 		for i, match := range matches {
 			// do not include the full match, just submatches
-			result[i] = match[1:]
+			result[i] = interface{}(match[1:])
 		}
 		return RegexallResult{Result: result}, nil
 	}
@@ -90,7 +90,7 @@ func (*Regexall) Call(_ p.Context, args RegexallArgs) (RegexallResult, error) {
 			}
 		}
 
-		result[i] = submatches
+		result[i] = interface{}(submatches)
 	}
 
 	return RegexallResult{Result: result}, nil
