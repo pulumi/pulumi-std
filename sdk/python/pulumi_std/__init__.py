@@ -65,6 +65,7 @@ from .pathexpand import *
 from .pow import *
 from .provider import *
 from .range import *
+from .regexall import *
 from .replace import *
 from .reverse import *
 from .rsadecrypt import *
