@@ -127,6 +127,8 @@ import com.pulumi.std.inputs.PowArgs;
 import com.pulumi.std.inputs.PowPlainArgs;
 import com.pulumi.std.inputs.RangeArgs;
 import com.pulumi.std.inputs.RangePlainArgs;
+import com.pulumi.std.inputs.RegexallArgs;
+import com.pulumi.std.inputs.RegexallPlainArgs;
 import com.pulumi.std.inputs.ReplaceArgs;
 import com.pulumi.std.inputs.ReplacePlainArgs;
 import com.pulumi.std.inputs.ReverseArgs;
@@ -254,6 +256,7 @@ import com.pulumi.std.outputs.ParseintResult;
 import com.pulumi.std.outputs.PathexpandResult;
 import com.pulumi.std.outputs.PowResult;
 import com.pulumi.std.outputs.RangeResult;
+import com.pulumi.std.outputs.RegexallResult;
 import com.pulumi.std.outputs.ReplaceResult;
 import com.pulumi.std.outputs.ReverseResult;
 import com.pulumi.std.outputs.RsadecryptResult;
@@ -2525,6 +2528,41 @@ public final class StdFunctions {
      */
     public static CompletableFuture<RangeResult> rangePlain(RangePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("std:index:range", TypeShape.of(RangeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of all matches of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static Output<RegexallResult> regexall(RegexallArgs args) {
+        return regexall(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of all matches of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static CompletableFuture<RegexallResult> regexallPlain(RegexallPlainArgs args) {
+        return regexallPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of all matches of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static Output<RegexallResult> regexall(RegexallArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("std:index:regexall", TypeShape.of(RegexallResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of all matches of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static Output<RegexallResult> regexall(RegexallArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("std:index:regexall", TypeShape.of(RegexallResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of all matches of a regular expression in a string (including named or indexed groups).
+     * 
+     */
+    public static CompletableFuture<RegexallResult> regexallPlain(RegexallPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("std:index:regexall", TypeShape.of(RegexallResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Does a search and replace on the given string.

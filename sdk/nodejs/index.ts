@@ -305,6 +305,11 @@ export const range: typeof import("./range").range = null as any;
 export const rangeOutput: typeof import("./range").rangeOutput = null as any;
 utilities.lazyLoad(exports, ["range","rangeOutput"], () => require("./range"));
 
+export { RegexallArgs, RegexallResult, RegexallOutputArgs } from "./regexall";
+export const regexall: typeof import("./regexall").regexall = null as any;
+export const regexallOutput: typeof import("./regexall").regexallOutput = null as any;
+utilities.lazyLoad(exports, ["regexall","regexallOutput"], () => require("./regexall"));
+
 export { ReplaceArgs, ReplaceResult, ReplaceOutputArgs } from "./replace";
 export const replace: typeof import("./replace").replace = null as any;
 export const replaceOutput: typeof import("./replace").replaceOutput = null as any;

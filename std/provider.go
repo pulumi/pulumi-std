@@ -114,6 +114,7 @@ func Provider() p.Provider {
 			infer.Function[*Setintersection, SetintersectionArgs, SetintersectionResult](),
 			infer.Function[*Range, RangeArgs, RangeResults](),
 			infer.Function[*Replace, ReplaceArgs, ReplaceResult](),
+			infer.Function[*Regexall, RegexallArgs, RegexallResult](),
 			infer.Function[*Split, SplitArgs, SplitResult](),
 			infer.Function[*Strrev, StrrevArgs, StrrevResult](),
 			infer.Function[*Substr, SubstrArgs, SubstrResult](),
