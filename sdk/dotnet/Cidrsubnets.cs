@@ -12,25 +12,19 @@ namespace Pulumi.Std
     public static class Cidrsubnets
     {
         /// <summary>
-        /// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of 
-        /// consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ 
-        /// for additional information
+        /// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
         /// </summary>
         public static Task<CidrsubnetsResult> InvokeAsync(CidrsubnetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<CidrsubnetsResult>("std:index:cidrsubnets", args ?? new CidrsubnetsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of 
-        /// consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ 
-        /// for additional information
+        /// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
         /// </summary>
         public static Output<CidrsubnetsResult> Invoke(CidrsubnetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<CidrsubnetsResult>("std:index:cidrsubnets", args ?? new CidrsubnetsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of 
-        /// consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ 
-        /// for additional information
+        /// Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
         /// </summary>
         public static Output<CidrsubnetsResult> Invoke(CidrsubnetsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<CidrsubnetsResult>("std:index:cidrsubnets", args ?? new CidrsubnetsInvokeArgs(), options.WithDefaults());

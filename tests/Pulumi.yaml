@@ -570,6 +570,10 @@ outputs:
   cidrhostV2: ${cidrhostV2.result}
   cidrnetmask: ${cidrnetmask.result}
   cidrsubnet: ${cidrsubnet.result}
+  cidrsubnetsEmpty: ${cidrsubnetsEmpty.result}
+  cidrsubnetsSingle: ${cidrsubnetsSingle.result}
+  cidrsubnetsBasic: ${cidrsubnetsBasic.result}
+  cidrsubnetsIpv6: ${cidrsubnetsIpv6.result}
   coalesce: ${coalesce.result}
   coalesceWithNil: ${coalesceWithNil.result}
   coalesceWithInts: ${coalesceWithInts.result}
@@ -612,6 +616,7 @@ outputs:
   filebase64sha512: ${filebase64sha512.result}
   flatten: ${flatten.result}
   flattenWithStrings: ${flattenWithStrings.result}
+  floor: ${floor.result}
   formatPercent: ${formatPercent.result}
   formatValues: ${formatValues.result}
   formatJSONs: ${formatJSONs.result}

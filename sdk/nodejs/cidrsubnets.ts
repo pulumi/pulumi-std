@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
- * consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
- * for additional information
+ * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
  */
 export function cidrsubnets(args: CidrsubnetsArgs, opts?: pulumi.InvokeOptions): Promise<CidrsubnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,9 +24,7 @@ export interface CidrsubnetsResult {
     readonly result: string[];
 }
 /**
- * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
- * consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
- * for additional information
+ * Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
  */
 export function cidrsubnetsOutput(args: CidrsubnetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CidrsubnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

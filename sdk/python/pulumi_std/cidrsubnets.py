@@ -47,9 +47,7 @@ def cidrsubnets(input: Optional[str] = None,
                 newbits: Optional[Sequence[int]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableCidrsubnetsResult:
     """
-    Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-    consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-    for additional information
+    Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
     """
     __args__ = dict()
     __args__['input'] = input
@@ -63,9 +61,7 @@ def cidrsubnets_output(input: Optional[pulumi.Input[str]] = None,
                        newbits: Optional[pulumi.Input[Sequence[int]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CidrsubnetsResult]:
     """
-    Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of
-    consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/
-    for additional information
+    Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of consecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information
     """
     __args__ = dict()
     __args__['input'] = input
