@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+## 2.2.0 (2025-02-13)
+
+### Improvements
+
+- Add `setintersection` function to std.
+- Add `regexall` function to std.
+- Add `regex` function to std.
+- Add `cidrsubnets` function to std.
+- Add `formatlist` to std.
+
 ## 2.1.0 (2025-02-07)
 
 ### Improvements
