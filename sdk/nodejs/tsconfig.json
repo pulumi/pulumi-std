@@ -30,6 +30,7 @@
         "cidrhost.ts",
         "cidrnetmask.ts",
         "cidrsubnet.ts",
+        "cidrsubnets.ts",
         "coalesce.ts",
         "coalescelist.ts",
         "compact.ts",

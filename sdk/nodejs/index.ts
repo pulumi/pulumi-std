@@ -90,6 +90,11 @@ export const cidrsubnet: typeof import("./cidrsubnet").cidrsubnet = null as any;
 export const cidrsubnetOutput: typeof import("./cidrsubnet").cidrsubnetOutput = null as any;
 utilities.lazyLoad(exports, ["cidrsubnet","cidrsubnetOutput"], () => require("./cidrsubnet"));
 
+export { CidrsubnetsArgs, CidrsubnetsResult, CidrsubnetsOutputArgs } from "./cidrsubnets";
+export const cidrsubnets: typeof import("./cidrsubnets").cidrsubnets = null as any;
+export const cidrsubnetsOutput: typeof import("./cidrsubnets").cidrsubnetsOutput = null as any;
+utilities.lazyLoad(exports, ["cidrsubnets","cidrsubnetsOutput"], () => require("./cidrsubnets"));
+
 export { CoalesceArgs, CoalesceResult, CoalesceOutputArgs } from "./coalesce";
 export const coalesce: typeof import("./coalesce").coalesce = null as any;
 export const coalesceOutput: typeof import("./coalesce").coalesceOutput = null as any;
