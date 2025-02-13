@@ -60,6 +60,7 @@ func Provider() p.Provider {
 			infer.Function[*Cidrhost, CidrhostArgs, CidrhostResult](),
 			infer.Function[*Cidrnetmask, CidrnetmaskArgs, CidrnetmaskResult](),
 			infer.Function[*Cidrsubnet, CidrsubnetArgs, CidrsubnetResult](),
+			infer.Function[*Cidrsubnets, CidrsubnetsArgs, CidrsubnetsResult](),
 			infer.Function[*Coalesce, CoalesceArgs, CoalesceResult](),
 			infer.Function[*Coalescelist, CoalescelistArgs, CoalescelistResult](),
 			infer.Function[*Compact, CompactArgs, CompactResult](),

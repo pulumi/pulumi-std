@@ -484,6 +484,41 @@
         "type": "object"
       }
     },
+    "std:index:cidrsubnets": {
+      "description": "Takes an IP address prefix in CIDR notation (like 10.0.0.0/8) and creates a series of \nconsecutive IP address ranges within that CIDR prefix. See https://opentofu.org/docs/language/functions/cidrsubnets/ \nfor additional information",
+      "inputs": {
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "newbits": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "input",
+          "newbits"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object"
+      }
+    },
     "std:index:coalesce": {
       "description": "Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.",
       "inputs": {

@@ -65,6 +65,22 @@ variables:
       input: "10.0.0.0/8"
       newbits: 8
       netnum: 2
+  cidrsubnetsEmpty:
+    fn::std:cidrsubnets:
+      input: "10.0.0.0/8"
+      newbits: []
+  cidrsubnetsSingle:
+    fn::std:cidrsubnets:
+      input: "10.0.0.0/8"
+      newbits: [1]
+  cidrsubnetsBasic:
+    fn::std:cidrsubnets:
+      input: "10.1.0.0/16"
+      newbits: [4, 4, 8, 4]
+  cidrsubnetsIpv6:
+    fn::std:cidrsubnets:
+      input: "fd00:fd12:3456:7890::/56"
+      newbits: [16, 16, 16, 32]
   coalesce:
     fn::std:coalesce:
       input: ["hello", "world"]

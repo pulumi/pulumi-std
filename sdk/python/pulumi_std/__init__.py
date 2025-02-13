@@ -22,6 +22,7 @@ from .chunklist import *
 from .cidrhost import *
 from .cidrnetmask import *
 from .cidrsubnet import *
+from .cidrsubnets import *
 from .coalesce import *
 from .coalescelist import *
 from .compact import *

@@ -105,6 +105,7 @@
 - [cidrhost](std/cecidrhostil.go)
 - [cidrnetmask](std/cidrnetmask.go)
 - [cidrsubnet](std/cidrsubnet.go)
+- [cidrsubnets](std/cidrsubnets.go)
 
 ## Type conversion functions:
 - [tobool](std/tobool.go)

@@ -6,6 +6,7 @@
 - Add `setintersection` function to std.
 - Add `regexall` function to std.
 - Add `regex` function to std.
+- Add `cidrsubnets` function to std.
 
 ### Bug Fixes
 
