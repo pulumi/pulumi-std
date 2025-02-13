@@ -89,6 +89,8 @@ import com.pulumi.std.inputs.FloorArgs;
 import com.pulumi.std.inputs.FloorPlainArgs;
 import com.pulumi.std.inputs.FormatArgs;
 import com.pulumi.std.inputs.FormatPlainArgs;
+import com.pulumi.std.inputs.FormatlistArgs;
+import com.pulumi.std.inputs.FormatlistPlainArgs;
 import com.pulumi.std.inputs.IndentArgs;
 import com.pulumi.std.inputs.IndentPlainArgs;
 import com.pulumi.std.inputs.IndexArgs;
@@ -241,6 +243,7 @@ import com.pulumi.std.outputs.Filesha512Result;
 import com.pulumi.std.outputs.FlattenResult;
 import com.pulumi.std.outputs.FloorResult;
 import com.pulumi.std.outputs.FormatResult;
+import com.pulumi.std.outputs.FormatlistResult;
 import com.pulumi.std.outputs.IndentResult;
 import com.pulumi.std.outputs.IndexResult;
 import com.pulumi.std.outputs.JoinResult;
@@ -1831,6 +1834,41 @@ public final class StdFunctions {
         return Deployment.getInstance().invokeAsync("std:index:format", TypeShape.of(FormatResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Formats a list of strings according to the given format. Argument values which are lists are &#34;zipped&#34; together to produce a list of results.
+     * 
+     */
+    public static Output<FormatlistResult> formatlist(FormatlistArgs args) {
+        return formatlist(args, InvokeOptions.Empty);
+    }
+    /**
+     * Formats a list of strings according to the given format. Argument values which are lists are &#34;zipped&#34; together to produce a list of results.
+     * 
+     */
+    public static CompletableFuture<FormatlistResult> formatlistPlain(FormatlistPlainArgs args) {
+        return formatlistPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Formats a list of strings according to the given format. Argument values which are lists are &#34;zipped&#34; together to produce a list of results.
+     * 
+     */
+    public static Output<FormatlistResult> formatlist(FormatlistArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("std:index:formatlist", TypeShape.of(FormatlistResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Formats a list of strings according to the given format. Argument values which are lists are &#34;zipped&#34; together to produce a list of results.
+     * 
+     */
+    public static Output<FormatlistResult> formatlist(FormatlistArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("std:index:formatlist", TypeShape.of(FormatlistResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Formats a list of strings according to the given format. Argument values which are lists are &#34;zipped&#34; together to produce a list of results.
+     * 
+     */
+    public static CompletableFuture<FormatlistResult> formatlistPlain(FormatlistPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("std:index:formatlist", TypeShape.of(FormatlistResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Adds a given number of spaces after each newline character in the given string.
      * 
      */
@@ -2581,35 +2619,35 @@ public final class StdFunctions {
         return Deployment.getInstance().invokeAsync("std:index:range", TypeShape.of(RangeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * Returns the first match of a regular expression in a string (including named or indexed groups).
      * 
      */
     public static Output<RegexResult> regex(RegexArgs args) {
         return regex(args, InvokeOptions.Empty);
     }
     /**
-     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * Returns the first match of a regular expression in a string (including named or indexed groups).
      * 
      */
     public static CompletableFuture<RegexResult> regexPlain(RegexPlainArgs args) {
         return regexPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * Returns the first match of a regular expression in a string (including named or indexed groups).
      * 
      */
     public static Output<RegexResult> regex(RegexArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("std:index:regex", TypeShape.of(RegexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * Returns the first match of a regular expression in a string (including named or indexed groups).
      * 
      */
     public static Output<RegexResult> regex(RegexArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("std:index:regex", TypeShape.of(RegexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns the first matche of a regular expression in a string (including named or indexed groups).
+     * Returns the first match of a regular expression in a string (including named or indexed groups).
      * 
      */
     public static CompletableFuture<RegexResult> regexPlain(RegexPlainArgs args, InvokeOptions options) {

@@ -12,19 +12,19 @@ namespace Pulumi.Std
     public static class Regex
     {
         /// <summary>
-        /// Returns the first matche of a regular expression in a string (including named or indexed groups).
+        /// Returns the first match of a regular expression in a string (including named or indexed groups).
         /// </summary>
         public static Task<RegexResult> InvokeAsync(RegexArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<RegexResult>("std:index:regex", args ?? new RegexArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the first matche of a regular expression in a string (including named or indexed groups).
+        /// Returns the first match of a regular expression in a string (including named or indexed groups).
         /// </summary>
         public static Output<RegexResult> Invoke(RegexInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<RegexResult>("std:index:regex", args ?? new RegexInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the first matche of a regular expression in a string (including named or indexed groups).
+        /// Returns the first match of a regular expression in a string (including named or indexed groups).
         /// </summary>
         public static Output<RegexResult> Invoke(RegexInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<RegexResult>("std:index:regex", args ?? new RegexInvokeArgs(), options.WithDefaults());

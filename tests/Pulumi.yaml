@@ -286,6 +286,30 @@ variables:
     fn::std:format:
       input: "hello-%q-%q"
       args: [world, hello]
+  formatlistInputOnly:
+    fn::std:formatlist:
+      input: "hello"
+      args: []
+  formatlistEmptySingle:
+    fn::std:formatlist:
+      input: "hello %s"
+      args: [[]]
+  formatlistEmptyMultiple:
+    fn::std:formatlist:
+      input: "hello %s %d %s"
+      args: [[], 32, []]
+  formatlistScalars:
+    fn::std:formatlist:
+      input: "hello %s %d %s"
+      args: [world, 32, hello]
+  formatlistLists:
+    fn::std:formatlist:
+      input: "hello %s %d %s"
+      args: [[foo, bar], [13, 46], [baz, quux]]
+  formatlistMixed:
+    fn::std:formatlist:
+      input: "hello %s %d %s"
+      args: [[foo, bar], 32, [baz, quux]]
   index:
     fn::std:index:
       input: [one, two, three]
@@ -604,6 +628,12 @@ outputs:
   formatFloatsGeneralUpper: ${formatFloatsGeneralUpper.result}
   formatStrings: ${formatStrings.result}
   formatQuotedStrings: ${formatQuotedStrings.result}
+  formatlistInputOnly: ${formatlistInputOnly.result}
+  formatlistEmptySingle: ${formatlistEmptySingle.result}
+  formatlistEmptyMultiple: ${formatlistEmptyMultiple.result}
+  formatlistScalars: ${formatlistScalars.result}
+  formatlistLists: ${formatlistLists.result}
+  formatlistMixed: ${formatlistMixed.result}
   index: ${index.result}
   join: ${join.result}
   jsonencode: ${jsonencode.result}

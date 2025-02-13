@@ -47,7 +47,7 @@ def regex(pattern: Optional[str] = None,
           string: Optional[str] = None,
           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableRegexResult:
     """
-    Returns the first matche of a regular expression in a string (including named or indexed groups).
+    Returns the first match of a regular expression in a string (including named or indexed groups).
     """
     __args__ = dict()
     __args__['pattern'] = pattern
@@ -61,7 +61,7 @@ def regex_output(pattern: Optional[pulumi.Input[str]] = None,
                  string: Optional[pulumi.Input[str]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[RegexResult]:
     """
-    Returns the first matche of a regular expression in a string (including named or indexed groups).
+    Returns the first match of a regular expression in a string (including named or indexed groups).
     """
     __args__ = dict()
     __args__['pattern'] = pattern

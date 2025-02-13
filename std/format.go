@@ -45,12 +45,18 @@ func (r *Format) Annotate(a infer.Annotator) {
 // compatibility, this source can be used as a reference (and is, for instance, the source of existing checks such as
 // whether numbers are floating-point or integers).
 func (*Format) Call(_ p.Context, args FormatArgs) (FormatResult, error) {
-	processedArgs := make([]interface{}, len(args.Args))
-	for i, arg := range args.Args {
+	return FormatResult{format(args.Input, args.Args...)}, nil
+}
+
+// format is a helper function that implements the shared logic of the `format` and `formatlist` functions. It takes a
+// format string and a list of arguments, and returns the formatted string.
+func format(input string, args ...interface{}) string {
+	processedArgs := make([]interface{}, len(args))
+	for i, arg := range args {
 		processedArgs[i] = formattable{value: arg}
 	}
 
-	return FormatResult{fmt.Sprintf(args.Input, processedArgs...)}, nil
+	return fmt.Sprintf(input, processedArgs...)
 }
 
 // formattable is a type that wraps a value and implements the fmt.Formatter interface. This allows us to control how
