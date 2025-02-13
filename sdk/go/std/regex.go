@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the first matche of a regular expression in a string (including named or indexed groups).
+// Returns the first match of a regular expression in a string (including named or indexed groups).
 func Regex(ctx *pulumi.Context, args *RegexArgs, opts ...pulumi.InvokeOption) (*RegexResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv RegexResult

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Returns the first matche of a regular expression in a string (including named or indexed groups).
+ * Returns the first match of a regular expression in a string (including named or indexed groups).
  */
 export function regex(args: RegexArgs, opts?: pulumi.InvokeOptions): Promise<RegexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -24,7 +24,7 @@ export interface RegexResult {
     readonly result: any;
 }
 /**
- * Returns the first matche of a regular expression in a string (including named or indexed groups).
+ * Returns the first match of a regular expression in a string (including named or indexed groups).
  */
 export function regexOutput(args: RegexOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<RegexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

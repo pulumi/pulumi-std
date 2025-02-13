@@ -82,6 +82,7 @@ func Provider() p.Provider {
 			infer.Function[*Floor, FloorArgs, FloorResult](),
 			infer.Function[*Flatten, FlattenArgs, FlattenResult](),
 			infer.Function[*Format, FormatArgs, FormatResult](),
+			infer.Function[*Formatlist, FormatlistArgs, FormatlistResult](),
 			infer.Function[*Index, IndexArgs, IndexResult](),
 			infer.Function[*Indent, IndentArgs, IndentResult](),
 			infer.Function[*Join, JoinArgs, JoinResult](),

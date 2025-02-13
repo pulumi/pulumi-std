@@ -1139,6 +1139,41 @@
         "type": "object"
       }
     },
+    "std:index:formatlist": {
+      "description": "Formats a list of strings according to the given format. Argument values which are lists are \"zipped\" together to produce a list of results.",
+      "inputs": {
+        "properties": {
+          "args": {
+            "type": "array",
+            "items": {
+              "$ref": "pulumi.json#/Any"
+            }
+          },
+          "input": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "args",
+          "input"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object"
+      }
+    },
     "std:index:indent": {
       "description": "Adds a given number of spaces after each newline character in the given string.",
       "inputs": {

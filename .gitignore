@@ -22,13 +22,17 @@ node_modules
 
 yarn.lock
 
-# csharp
+# .Net
 sdk/dotnet/version.txt
 sdk/dotnet/obj/**
+
+# Java
+sdk/java/build
+sdk/java/.gradle
+
 .pulumi
 terraform.tfstate
 .terraform.tfstate.lock.info
 .idea
 grpc.json
-sdk/java/build
-sdk/java/.gradle
+schema-std.json

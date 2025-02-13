@@ -205,6 +205,11 @@ export const format: typeof import("./format").format = null as any;
 export const formatOutput: typeof import("./format").formatOutput = null as any;
 utilities.lazyLoad(exports, ["format","formatOutput"], () => require("./format"));
 
+export { FormatlistArgs, FormatlistResult, FormatlistOutputArgs } from "./formatlist";
+export const formatlist: typeof import("./formatlist").formatlist = null as any;
+export const formatlistOutput: typeof import("./formatlist").formatlistOutput = null as any;
+utilities.lazyLoad(exports, ["formatlist","formatlistOutput"], () => require("./formatlist"));
+
 export { IndentArgs, IndentResult, IndentOutputArgs } from "./indent";
 export const indent: typeof import("./indent").indent = null as any;
 export const indentOutput: typeof import("./indent").indentOutput = null as any;
