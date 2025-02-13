@@ -20,6 +20,8 @@
 - [join](std/join.go)
 - [lower](std/lower.go)
 - [replace](std/replace.go)
+- [regex](std/regex.go)
+- [regexall](std/regexall.go)
 - [split](std/split.go)
 - [startswith](std/startswith.go)
 - [strrev](std/strrev.go)

@@ -75,6 +75,8 @@
         "pow.ts",
         "provider.ts",
         "range.ts",
+        "regex.ts",
+        "regexall.ts",
         "replace.ts",
         "reverse.ts",
         "rsadecrypt.ts",
