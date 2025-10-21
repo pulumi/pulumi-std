@@ -1,0 +1,9 @@
+template: native
+provider: std
+major-version: 2
+providerVersion: github.com/pulumi/pulumi-docker-build/std/version.Version
+modulePath: ./std/
+parallel: 3
+esc:
+    enabled: true
+    environment: imports/github-secrets
