@@ -63,3 +63,46 @@ lint-golang:
 	cd std && golangci-lint run -c ../.golangci.yml --timeout 5m
 lint-copyright:
 	pulumictl copyright -x 'examples/**' -x 'sdk/**'
+
+.PHONY: codegen
+codegen: # Required by CI
+
+.PHONY: provider
+provider: build # Required by CI
+
+.PHONY: local_generate
+local_generate: gen_sdks # Required by CI
+
+.PHONY: test_provider
+test_provider: test # Required by CI
+
+.PHONY: generate_schema
+generate_schema: gen_schema # Required by CI
+
+.PHONY: generate_java_sdk build_go generate_go
+generate_go: gen_go_sdk # Required by CI
+build_go: build_go_sdk # Required by CI
+install_go_sdk: # Required by CI
+
+.PHONY: generate_java_sdk build_java install_java_sdk
+generate_java: gen_java_sdk # Required by CI
+build_java: build_java_sdk # Required by CI
+install_java_sdk: # Required by CI
+
+.PHONY: generate_python_sdk build_python install_python_sdk
+generate_python: gen_python_sdk # Required by CI
+build_python: build_python_sdk # Required by CI
+install_python_sdk: # Required by CI
+
+.PHONY: generate_nodejs_sdk build_nodejs install_nodejs_sdk
+generate_nodejs: gen_nodejs_sdk # Required by CI
+build_nodejs: build_nodejs_sdk # Required by CI
+install_nodejs_sdk: # Required by CI
+
+.PHONY: generate_dotnet_sdk build_dotnet_sdk install_dotnet_sdk
+generate_dotnet: gen_dotnet_sdk # Required by CI
+build_dotnet: build_dotnet_sdk # Required by CI
+install_dotnet_sdk: # Required by CI
+
+bin/pulumi-gen-${PACK}: # Required by CI
+	touch bin/pulumi-gen-${PACK}
