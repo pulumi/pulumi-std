@@ -2,7 +2,7 @@ VERSION := 2.2.0
 
 build:
 	mkdir -p bin
-	cd std && go build \
+	go build -C std \
 		-o ../bin \
 		-ldflags "-X github.com/pulumi/pulumi-std/std/version.Version=${VERSION}" ./...
 
