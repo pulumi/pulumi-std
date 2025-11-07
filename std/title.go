@@ -15,7 +15,8 @@
 package std
 
 import (
-	"strings"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
@@ -35,5 +36,5 @@ func (r *Title) Annotate(a infer.Annotator) {
 }
 
 func (*Title) Call(_ p.Context, args TitleArgs) (TitleResult, error) {
-	return TitleResult{strings.Title(args.Input)}, nil
+	return TitleResult{cases.Title(language.English).String(args.Input)}, nil
 }

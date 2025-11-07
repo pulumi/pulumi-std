@@ -35,9 +35,7 @@ func (r *Concat) Annotate(a infer.Annotator) {
 func (*Concat) Call(_ p.Context, args ConcatArgs) (ConcatResult, error) {
 	output := make([]interface{}, 0)
 	for _, list := range args.Input {
-		for _, value := range list {
-			output = append(output, value)
-		}
+		output = append(output, list...)
 	}
 
 	return ConcatResult{output}, nil

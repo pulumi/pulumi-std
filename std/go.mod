@@ -11,6 +11,7 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.44.0
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/crypto v0.21.0
+	golang.org/x/text v0.14.0
 )
 
 require (
@@ -71,7 +72,6 @@ require (
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/term v0.18.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/genproto v0.0.0-20220802133213-ce4fa296bf78 // indirect
 	google.golang.org/grpc v1.49.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
