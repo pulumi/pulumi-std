@@ -15,8 +15,9 @@
 package std
 
 import (
+	"context"
+
 	"github.com/google/uuid"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +36,6 @@ func (r *Uuid) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a unique identifier string, generated and formatted as required by RFC 4122.")
 }
 
-func (*Uuid) Call(_ p.Context, _ UuidArgs) (UuidResult, error) {
+func (*Uuid) Call(_ context.Context, _ UuidArgs) (UuidResult, error) {
 	return UuidResult{uuid.New().String()}, nil
 }

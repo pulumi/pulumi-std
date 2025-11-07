@@ -17,10 +17,10 @@ package std
 import (
 	"bytes"
 	"compress/gzip"
+	"context"
 	"encoding/base64"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -52,7 +52,7 @@ func base64gzip(input string) (string, error) {
 	return base64.StdEncoding.EncodeToString(buffer.Bytes()), nil
 }
 
-func (*Base64gzip) Call(_ p.Context, args Base64GzipArgs) (Base64GzipResult, error) {
+func (*Base64gzip) Call(_ context.Context, args Base64GzipArgs) (Base64GzipResult, error) {
 	result, err := base64gzip(args.Input)
 	if err != nil {
 		return Base64GzipResult{}, err

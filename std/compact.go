@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -36,7 +36,7 @@ func (r *Compact) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes empty and nil string elements from a list.")
 }
 
-func (*Compact) Call(_ p.Context, args CompactArgs) (CompactResult, error) {
+func (*Compact) Call(_ context.Context, args CompactArgs) (CompactResult, error) {
 	output := make([]string, 0)
 	for _, value := range args.Input {
 		if value == nil {

@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,6 @@ func (r *Split) Annotate(a infer.Annotator) {
 	a.Describe(r, `Produces a list by dividing a given string at all occurrences of a given separator`)
 }
 
-func (*Split) Call(_ p.Context, args SplitArgs) (SplitResult, error) {
+func (*Split) Call(_ context.Context, args SplitArgs) (SplitResult, error) {
 	return SplitResult{strings.Split(args.Text, args.Separator)}, nil
 }

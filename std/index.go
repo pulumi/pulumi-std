@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,7 @@ func (r *Index) Annotate(a infer.Annotator) {
 	a.Describe(r, "Finds the index of a given element in a list.")
 }
 
-func (*Index) Call(_ p.Context, args IndexArgs) (IndexResult, error) {
+func (*Index) Call(_ context.Context, args IndexArgs) (IndexResult, error) {
 	if len(args.Input) == 0 {
 		return IndexResult{}, errors.New("input list must not be empty when using the index function")
 	}

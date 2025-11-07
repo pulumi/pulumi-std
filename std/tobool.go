@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -36,7 +36,7 @@ func (r *Tobool) Annotate(a infer.Annotator) {
 	"true" and "false" can be converted to boolean. All other values will result in an error.`)
 }
 
-func (*Tobool) Call(_ p.Context, args ToboolArgs) (ToboolResult, error) {
+func (*Tobool) Call(_ context.Context, args ToboolArgs) (ToboolResult, error) {
 	if args.Input == nil {
 		return ToboolResult{nil}, nil
 	}

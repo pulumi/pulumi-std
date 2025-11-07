@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -53,6 +54,6 @@ func flatten(input []interface{}) []interface{} {
 	return output
 }
 
-func (*Flatten) Call(_ p.Context, args FlattenArgs) (FlattenResult, error) {
+func (*Flatten) Call(_ context.Context, args FlattenArgs) (FlattenResult, error) {
 	return FlattenResult{flatten(args.Input)}, nil
 }

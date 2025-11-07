@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,7 +33,7 @@ func (r *Filemd5) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into a string and returns the MD5 hash of it.")
 }
 
-func (*Filemd5) Call(_ p.Context, args Filemd5Args) (Filemd5Result, error) {
+func (*Filemd5) Call(_ context.Context, args Filemd5Args) (Filemd5Result, error) {
 	contents, err := readFileContents(args.Input)
 	if err != nil {
 		return Filemd5Result{}, err

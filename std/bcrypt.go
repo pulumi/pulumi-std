@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -37,7 +37,7 @@ func (r *Bcrypt) Annotate(a infer.Annotator) {
 A default cost of 10 will be used if not provided.`)
 }
 
-func (*Bcrypt) Call(_ p.Context, args BcryptArgs) (BcryptResult, error) {
+func (*Bcrypt) Call(_ context.Context, args BcryptArgs) (BcryptResult, error) {
 	defaultCost := 10
 	if args.Cost != nil {
 		defaultCost = *args.Cost

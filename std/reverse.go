@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -41,7 +42,7 @@ func reverse(input []interface{}) {
 	}
 }
 
-func (*Reverse) Call(_ p.Context, args ReverseArgs) (ReverseResult, error) {
+func (*Reverse) Call(_ context.Context, args ReverseArgs) (ReverseResult, error) {
 	reverse(args.Input)
 	return ReverseResult{args.Input}, nil
 }

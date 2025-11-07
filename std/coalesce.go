@@ -15,11 +15,11 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"reflect"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -42,7 +42,7 @@ func (r *Coalesce) Annotate(a infer.Annotator) {
 	)
 }
 
-func (*Coalesce) Call(_ p.Context, args CoalesceArgs) (CoalesceResult, error) {
+func (*Coalesce) Call(_ context.Context, args CoalesceArgs) (CoalesceResult, error) {
 	resultType, err := assignableType(args.Input)
 	if err != nil {
 		return CoalesceResult{}, err

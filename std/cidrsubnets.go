@@ -15,11 +15,11 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"net"
 
 	"github.com/apparentlymart/go-cidr/cidr"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -72,7 +72,7 @@ func cidrsubnets(ipaddress string, newbitsList ...int) ([]string, error) {
 	return subnets, nil
 }
 
-func (*Cidrsubnets) Call(_ p.Context, args CidrsubnetsArgs) (CidrsubnetsResult, error) {
+func (*Cidrsubnets) Call(_ context.Context, args CidrsubnetsArgs) (CidrsubnetsResult, error) {
 	_, network, err := net.ParseCIDR(args.Input)
 	if err != nil {
 		return CidrsubnetsResult{}, fmt.Errorf("invalid CIDR expression: %w", err)

@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -33,7 +34,7 @@ func (r *Merge) Annotate(a infer.Annotator) {
 and duplicate keys overwrite previous entries.`)
 }
 
-func (*Merge) Call(_ p.Context, args MergeArgs) (MergeResult, error) {
+func (*Merge) Call(_ context.Context, args MergeArgs) (MergeResult, error) {
 	result := make(map[string]interface{})
 	for _, m := range args.Input {
 		for k, v := range m {

@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,6 @@ func (r *Trimprefix) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified prefix from the start of the given string, if present.`)
 }
 
-func (*Trimprefix) Call(_ p.Context, args TrimprefixArgs) (TrimprefixResult, error) {
+func (*Trimprefix) Call(_ context.Context, args TrimprefixArgs) (TrimprefixResult, error) {
 	return TrimprefixResult{strings.TrimPrefix(args.Input, args.Prefix)}, nil
 }

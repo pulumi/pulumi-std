@@ -15,10 +15,11 @@
 package std
 
 import (
+	"context"
 	"fmt"
-	p "github.com/pulumi/pulumi-go-provider"
-	"github.com/pulumi/pulumi-go-provider/infer"
 	"net"
+
+	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
 type Cidrnetmask struct{}
@@ -50,7 +51,7 @@ func cidrnetmask(ipaddress string) (string, error) {
 	return net.IP(network.Mask).String(), nil
 }
 
-func (*Cidrnetmask) Call(_ p.Context, args CidrnetmaskArgs) (CidrnetmaskResult, error) {
+func (*Cidrnetmask) Call(_ context.Context, args CidrnetmaskArgs) (CidrnetmaskResult, error) {
 	result, err := cidrnetmask(args.Input)
 	if err != nil {
 		return CidrnetmaskResult{}, err

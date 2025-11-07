@@ -15,12 +15,12 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"math/big"
 	"net"
 
 	"github.com/apparentlymart/go-cidr/cidr"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -57,7 +57,7 @@ func cidrsubnet(ipaddress string, newbits int, netnum int) (string, error) {
 	return newNetwork.String(), nil
 }
 
-func (*Cidrsubnet) Call(_ p.Context, args CidrsubnetArgs) (CidrsubnetResult, error) {
+func (*Cidrsubnet) Call(_ context.Context, args CidrsubnetArgs) (CidrsubnetResult, error) {
 	result, err := cidrsubnet(args.Input, args.Newbits, args.Netnum)
 	if err != nil {
 		return CidrsubnetResult{}, err

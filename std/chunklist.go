@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,7 @@ func (r *Chunklist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Splits a single list into multiple lists where each has at most the given number of elements.")
 }
 
-func (*Chunklist) Call(_ p.Context, args ChunklistArgs) (ChunklistResult, error) {
+func (*Chunklist) Call(_ context.Context, args ChunklistArgs) (ChunklistResult, error) {
 	if args.Size < 0 {
 		return ChunklistResult{}, errors.New("size must be greater than or equal to 0")
 	}

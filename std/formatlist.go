@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -41,7 +41,7 @@ func (r *Formatlist) Annotate(a infer.Annotator) {
 	)
 }
 
-func (*Formatlist) Call(_ p.Context, args FormatlistArgs) (FormatlistResult, error) {
+func (*Formatlist) Call(_ context.Context, args FormatlistArgs) (FormatlistResult, error) {
 	// If we weren't passed any arguments, we can only attempt to format the input string.
 	if len(args.Args) == 0 {
 		return FormatlistResult{[]string{format(args.Input)}}, nil

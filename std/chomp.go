@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"regexp"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,7 +34,7 @@ func (r *Chomp) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes one or more newline characters from the end of the given string.")
 }
 
-func (*Chomp) Call(_ p.Context, args ChompArgs) (ChompResult, error) {
+func (*Chomp) Call(_ context.Context, args ChompArgs) (ChompResult, error) {
 	newlines := regexp.MustCompile(`(?:\r\n?|\n)*\z`)
 	result := newlines.ReplaceAllString(args.Input, "")
 	return ChompResult{result}, nil

@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,6 +34,6 @@ func (r *Title) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts the first letter of each word in the given string to uppercase.")
 }
 
-func (*Title) Call(_ p.Context, args TitleArgs) (TitleResult, error) {
+func (*Title) Call(_ context.Context, args TitleArgs) (TitleResult, error) {
 	return TitleResult{strings.Title(args.Input)}, nil
 }

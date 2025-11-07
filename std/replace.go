@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"regexp"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -42,7 +42,7 @@ using $n where n is the index or name of the subcapture. If using a regular expr
 the syntax conforms to the re2 regular expression syntax.`)
 }
 
-func (*Replace) Call(_ p.Context, args ReplaceArgs) (ReplaceResult, error) {
+func (*Replace) Call(_ context.Context, args ReplaceArgs) (ReplaceResult, error) {
 	if len(args.Search) > 1 && args.Search[0] == '/' && args.Search[len(args.Search)-1] == '/' {
 		re, err := regexp.Compile(args.Search[1 : len(args.Search)-1])
 		if err != nil {

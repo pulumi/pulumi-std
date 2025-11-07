@@ -15,11 +15,11 @@
 package std
 
 import (
+	"context"
 	"encoding/base64"
 	"fmt"
 	"unicode/utf8"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -48,7 +48,7 @@ func base64Decode(input string) (string, error) {
 	return string(decoded), nil
 }
 
-func (*Base64decode) Call(_ p.Context, args Base64DecodeArgs) (Base64DecodeResult, error) {
+func (*Base64decode) Call(_ context.Context, args Base64DecodeArgs) (Base64DecodeResult, error) {
 	decoded, err := base64Decode(args.Input)
 	if err != nil {
 		return Base64DecodeResult{}, err

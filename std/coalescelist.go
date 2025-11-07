@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,7 +34,7 @@ func (r *Coalescelist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the first non-empty list from the given list of lists.")
 }
 
-func (*Coalescelist) Call(_ p.Context, args CoalescelistArgs) (CoalescelistResult, error) {
+func (*Coalescelist) Call(_ context.Context, args CoalescelistArgs) (CoalescelistResult, error) {
 	for _, list := range args.Input {
 		if len(list) > 0 {
 			return CoalescelistResult{list}, nil

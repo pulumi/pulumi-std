@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"reflect"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -42,7 +42,7 @@ func (r *Setintersection) Annotate(a infer.Annotator) {
 // In practice this is hopefully not a massive issue -- Terraform itself is not super consistent in how it treats
 // compound literals like this (e.g. `setintersection([[1, 2]], [[2, 1]])` returns `[[]]` -- the inner lists are *not*
 // treated as sets, while the outer ones are).
-func (*Setintersection) Call(_ p.Context, args SetintersectionArgs) (SetintersectionResult, error) {
+func (*Setintersection) Call(_ context.Context, args SetintersectionArgs) (SetintersectionResult, error) {
 	if len(args.Input) == 0 {
 		return SetintersectionResult{Result: []interface{}{}}, nil
 	}

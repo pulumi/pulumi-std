@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -59,7 +59,7 @@ func genRange(start, limit, step float64) []float64 {
 	return res
 }
 
-func (*Range) Call(_ p.Context, args RangeArgs) (RangeResults, error) {
+func (*Range) Call(_ context.Context, args RangeArgs) (RangeResults, error) {
 	if args.Start == nil {
 		start := 0.0
 		args.Start = &start

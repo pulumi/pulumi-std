@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,7 +33,7 @@ func (r *Signum) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the greatest integer value less than or equal to the argument.")
 }
 
-func (*Signum) Call(_ p.Context, args SignumArgs) (SignumResult, error) {
+func (*Signum) Call(_ context.Context, args SignumArgs) (SignumResult, error) {
 	switch {
 	case args.Input > 0:
 		return SignumResult{1}, nil

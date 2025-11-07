@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,7 +33,7 @@ func (r *Sum) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the total sum of the elements of the input list.")
 }
 
-func (*Sum) Call(_ p.Context, args SumArgs) (SumResult, error) {
+func (*Sum) Call(_ context.Context, args SumArgs) (SumResult, error) {
 	sum := 0.0
 	for _, current := range args.Input {
 		sum += current

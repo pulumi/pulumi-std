@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"regexp"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -38,7 +38,7 @@ func (r *Regex) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the first match of a regular expression in a string (including named or indexed groups).")
 }
 
-func (*Regex) Call(_ p.Context, args RegexArgs) (RegexResult, error) {
+func (*Regex) Call(_ context.Context, args RegexArgs) (RegexResult, error) {
 	re, err := regexp.Compile(args.Pattern)
 	if err != nil {
 		return RegexResult{}, err

@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"crypto/sha256"
 	"encoding/base64"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -38,6 +38,6 @@ This is not equivalent of base64encode(sha256(string)) since sha256() returns he
 
 var base64Sha256 = stringHashFunction(sha256.New, base64.StdEncoding.EncodeToString)
 
-func (*Base64sha256) Call(_ p.Context, args Base64Sha256Args) (Base64Sha256Result, error) {
+func (*Base64sha256) Call(_ context.Context, args Base64Sha256Args) (Base64Sha256Result, error) {
 	return Base64Sha256Result{base64Sha256(args.Input)}, nil
 }

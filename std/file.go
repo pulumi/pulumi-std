@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,7 +33,7 @@ func (r *File) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into the string.")
 }
 
-func (*File) Call(_ p.Context, args FileArgs) (FileResult, error) {
+func (*File) Call(_ context.Context, args FileArgs) (FileResult, error) {
 	contents, err := readFileContents(args.Input)
 	if err != nil {
 		return FileResult{}, err

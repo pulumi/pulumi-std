@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -38,7 +38,7 @@ and returns the resulting number. The base must be between 2 and 62 inclusive.
 	.`)
 }
 
-func (*Parseint) Call(_ p.Context, args ParseintArgs) (ParseintResult, error) {
+func (*Parseint) Call(_ context.Context, args ParseintArgs) (ParseintResult, error) {
 	base := 10
 	if args.Base != nil {
 		base = *args.Base

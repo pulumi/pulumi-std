@@ -15,11 +15,11 @@
 package std
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -44,7 +44,7 @@ func (r *Format) Annotate(a infer.Annotator) {
 // https://github.com/zclconf/go-cty/blob/main/cty/function/stdlib/format.go. When making changes here to ensure
 // compatibility, this source can be used as a reference (and is, for instance, the source of existing checks such as
 // whether numbers are floating-point or integers).
-func (*Format) Call(_ p.Context, args FormatArgs) (FormatResult, error) {
+func (*Format) Call(_ context.Context, args FormatArgs) (FormatResult, error) {
 	return FormatResult{format(args.Input, args.Args...)}, nil
 }
 

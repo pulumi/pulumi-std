@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -36,7 +36,7 @@ func (r *Lookup) Annotate(a infer.Annotator) {
 	a.Describe(r, "Performs a dynamic lookup into a map variable.")
 }
 
-func (*Lookup) Call(_ p.Context, args LookupArgs) (LookupResult, error) {
+func (*Lookup) Call(_ context.Context, args LookupArgs) (LookupResult, error) {
 	for key, value := range args.Map {
 		if key == args.Key {
 			return LookupResult{value}, nil

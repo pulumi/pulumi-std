@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,7 +34,7 @@ func (r *Tolist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts its argument to a list value.")
 }
 
-func (*Tolist) Call(_ p.Context, args TolistArgs) (TolistResult, error) {
+func (*Tolist) Call(_ context.Context, args TolistArgs) (TolistResult, error) {
 	if len(args.Input) == 0 {
 		return TolistResult{make([]interface{}, 0)}, nil
 	}

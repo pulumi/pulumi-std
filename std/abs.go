@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,6 @@ func (r *Abs) Annotate(a infer.Annotator) {
 Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.`)
 }
 
-func (*Abs) Call(_ p.Context, input AbsArgs) (AbsResult, error) {
+func (*Abs) Call(_ context.Context, input AbsArgs) (AbsResult, error) {
 	return AbsResult{math.Abs(input.Input)}, nil
 }

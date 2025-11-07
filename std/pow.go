@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,6 @@ func (r *Pow) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the base input raised to the power of the exponent.")
 }
 
-func (*Pow) Call(_ p.Context, args PowArgs) (PowResult, error) {
+func (*Pow) Call(_ context.Context, args PowArgs) (PowResult, error) {
 	return PowResult{math.Pow(args.Base, args.Exponent)}, nil
 }

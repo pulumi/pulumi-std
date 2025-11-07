@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,7 +34,7 @@ func (r *Length) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines the length of a given list, map, or string.")
 }
 
-func (*Length) Call(_ p.Context, args LengthArgs) (LengthResult, error) {
+func (*Length) Call(_ context.Context, args LengthArgs) (LengthResult, error) {
 	switch v := args.Input.(type) {
 	case string:
 		return LengthResult{len(v)}, nil

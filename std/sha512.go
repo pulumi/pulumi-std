@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"crypto/sha512"
 	"encoding/hex"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -37,6 +37,6 @@ func (r *Sha512) Annotate(a infer.Annotator) {
 
 var sha512AsHex = stringHashFunction(sha512.New, hex.EncodeToString)
 
-func (*Sha512) Call(_ p.Context, args Sha512Args) (Sha512Result, error) {
+func (*Sha512) Call(_ context.Context, args Sha512Args) (Sha512Result, error) {
 	return Sha512Result{sha512AsHex(args.Input)}, nil
 }

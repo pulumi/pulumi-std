@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"time"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -41,7 +41,7 @@ func (r *Timecmp) Annotate(a infer.Annotator) {
 	If 'timestamp_a' is after 'timestamp_b', 1 is returned.`)
 }
 
-func (*Timecmp) Call(_ p.Context, args TimecmpArgs) (TimecmpResult, error) {
+func (*Timecmp) Call(_ context.Context, args TimecmpArgs) (TimecmpResult, error) {
 	timestampA, err := time.Parse(time.RFC3339, args.TimestampA)
 	if err != nil {
 		return TimecmpResult{}, err

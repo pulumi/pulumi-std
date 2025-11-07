@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,7 @@ func (r *Tostring) Annotate(a infer.Annotator) {
 	and null can be converted to string. All other values will result in an error.`)
 }
 
-func (*Tostring) Call(_ p.Context, args TostringArgs) (TostringResult, error) {
+func (*Tostring) Call(_ context.Context, args TostringArgs) (TostringResult, error) {
 	if args.Input == nil {
 		return TostringResult{nil}, nil
 	}

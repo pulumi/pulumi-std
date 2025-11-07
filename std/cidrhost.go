@@ -15,12 +15,12 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"math/big"
 	"net"
 
 	"github.com/apparentlymart/go-cidr/cidr"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -55,7 +55,7 @@ func cidrhost(ipaddress string, hostnum int) (string, error) {
 	return ip.String(), nil
 }
 
-func (*Cidrhost) Call(_ p.Context, args CidrhostArgs) (CidrhostResult, error) {
+func (*Cidrhost) Call(_ context.Context, args CidrhostArgs) (CidrhostResult, error) {
 	result, err := cidrhost(args.Input, args.Host)
 	if err != nil {
 		return CidrhostResult{}, err

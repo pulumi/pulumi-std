@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"time"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -41,7 +41,7 @@ func (r *Timeadd) Annotate(a infer.Annotator) {
 	to provide a negative duration, i.e. "-2h15m".`)
 }
 
-func (*Timeadd) Call(_ p.Context, args TimeaddArgs) (TimeaddResult, error) {
+func (*Timeadd) Call(_ context.Context, args TimeaddArgs) (TimeaddResult, error) {
 	duration, err := time.ParseDuration(args.Duration)
 	if err != nil {
 		return TimeaddResult{}, err

@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -42,7 +42,7 @@ func (r *Csvdecode) Annotate(a infer.Annotator) {
 	Follows the format defined in RFC 4180.`)
 }
 
-func (*Csvdecode) Call(_ p.Context, args CsvdecodeArgs) (CsvdecodeResult, error) {
+func (*Csvdecode) Call(_ context.Context, args CsvdecodeArgs) (CsvdecodeResult, error) {
 	res := make([]map[string]string, 0)
 	if args.Input == "" {
 		return CsvdecodeResult{res}, nil

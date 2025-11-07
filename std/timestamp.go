@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"time"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,6 +32,6 @@ func (r *Timestamp) Annotate(a infer.Annotator) {
 	a.Describe(r, `Returns a UTC timestamp string of the current time in RFC 3339 format`)
 }
 
-func (*Timestamp) Call(_ p.Context, _ TimestampArgs) (TimestampResult, error) {
+func (*Timestamp) Call(_ context.Context, _ TimestampArgs) (TimestampResult, error) {
 	return TimestampResult{time.Now().Format(time.RFC3339)}, nil
 }

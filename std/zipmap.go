@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,7 @@ func (r *Zipmap) Annotate(a infer.Annotator) {
 	a.Describe(r, `Constructs a map from a list of keys and a corresponding list of values.`)
 }
 
-func (*Zipmap) Call(_ p.Context, args ZipmapArgs) (ZipmapResult, error) {
+func (*Zipmap) Call(_ context.Context, args ZipmapArgs) (ZipmapResult, error) {
 	if len(args.Keys) != len(args.Values) {
 		return ZipmapResult{}, errors.New("keys and values must be the same length")
 	}

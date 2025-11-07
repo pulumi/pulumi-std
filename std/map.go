@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,7 @@ func (r *Map) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a map consisting of the key/value pairs specified as arguments.")
 }
 
-func (*Map) Call(_ p.Context, args MapArgs) (MapResult, error) {
+func (*Map) Call(_ context.Context, args MapArgs) (MapResult, error) {
 	if len(args.Args)%2 != 0 {
 		return MapResult{}, errors.New("expected an even number of arguments")
 	}

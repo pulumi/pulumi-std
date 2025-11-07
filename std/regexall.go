@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"regexp"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -38,7 +38,7 @@ func (r *Regexall) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a list of all matches of a regular expression in a string (including named or indexed groups).")
 }
 
-func (*Regexall) Call(_ p.Context, args RegexallArgs) (RegexallResult, error) {
+func (*Regexall) Call(_ context.Context, args RegexallArgs) (RegexallResult, error) {
 	re, err := regexp.Compile(args.Pattern)
 	if err != nil {
 		return RegexallResult{}, err

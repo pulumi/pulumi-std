@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,7 +33,7 @@ func (r *Toset) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts its argument to a set value.")
 }
 
-func (*Toset) Call(_ p.Context, args TosetArgs) (TosetResult, error) {
+func (*Toset) Call(_ context.Context, args TosetArgs) (TosetResult, error) {
 	if len(args.Input) == 0 {
 		return TosetResult{make([]interface{}, 0)}, nil
 	}

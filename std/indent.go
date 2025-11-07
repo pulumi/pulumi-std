@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,7 @@ func (r *Indent) Annotate(a infer.Annotator) {
 	a.Describe(r, "Adds a given number of spaces after each newline character in the given string.")
 }
 
-func (*Indent) Call(_ p.Context, args IndentArgs) (IndentResult, error) {
+func (*Indent) Call(_ context.Context, args IndentArgs) (IndentResult, error) {
 	pad := strings.Repeat(" ", args.Spaces)
 	return IndentResult{strings.Replace(args.Input, "\n", "\n"+pad, -1)}, nil
 }

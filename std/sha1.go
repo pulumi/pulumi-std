@@ -16,10 +16,10 @@ package std
 
 import (
 	//nolint // we need sha1 support for compatibility
+	"context"
 	"crypto/sha1"
 	"encoding/hex"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -38,6 +38,6 @@ func (r *Sha1) Annotate(a infer.Annotator) {
 
 var sha1AsHex = stringHashFunction(sha1.New, hex.EncodeToString)
 
-func (*Sha1) Call(_ p.Context, args Sha1Args) (Sha1Result, error) {
+func (*Sha1) Call(_ context.Context, args Sha1Args) (Sha1Result, error) {
 	return Sha1Result{sha1AsHex(args.Input)}, nil
 }

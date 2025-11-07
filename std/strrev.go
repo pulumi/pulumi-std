@@ -15,8 +15,9 @@
 package std
 
 import (
+	"context"
+
 	"github.com/apparentlymart/go-textseg/textseg"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -33,7 +34,7 @@ func (r *Strrev) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the given string with all of its Unicode characters in reverse order.")
 }
 
-func (*Strrev) Call(_ p.Context, args StrrevArgs) (StrrevResult, error) {
+func (*Strrev) Call(_ context.Context, args StrrevArgs) (StrrevResult, error) {
 	in := []byte(args.Input)
 	out := make([]byte, len(in))
 	pos := len(out)

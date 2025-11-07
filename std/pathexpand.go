@@ -15,8 +15,9 @@
 package std
 
 import (
+	"context"
+
 	homedir "github.com/mitchellh/go-homedir"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -33,7 +34,7 @@ func (r *Pathexpand) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a filepath string with ~ expanded to the home directory.")
 }
 
-func (*Pathexpand) Call(_ p.Context, args PathexpandArgs) (PathexpandResult, error) {
+func (*Pathexpand) Call(_ context.Context, args PathexpandArgs) (PathexpandResult, error) {
 	expanded, err := homedir.Expand(args.Input)
 	if err != nil {
 		return PathexpandResult{}, err

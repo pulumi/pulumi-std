@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,6 @@ func (r *Join) Annotate(a infer.Annotator) {
 	a.Describe(r, "Joins the list with the delimiter for a resultant string.")
 }
 
-func (*Join) Call(_ p.Context, args JoinArgs) (JoinResult, error) {
+func (*Join) Call(_ context.Context, args JoinArgs) (JoinResult, error) {
 	return JoinResult{strings.Join(args.Input, args.Separator)}, nil
 }

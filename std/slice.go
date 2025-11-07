@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -36,7 +36,7 @@ func (r *Slice) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the portion of list between from (inclusive) and to (exclusive).")
 }
 
-func (*Slice) Call(_ p.Context, args SliceArgs) (SliceResult, error) {
+func (*Slice) Call(_ context.Context, args SliceArgs) (SliceResult, error) {
 	from := 0
 	if args.From != nil {
 		from = *args.From

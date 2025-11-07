@@ -15,8 +15,9 @@
 package std
 
 import (
+	"context"
+
 	"github.com/apparentlymart/go-textseg/textseg"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +36,7 @@ func (r *Substr) Annotate(a infer.Annotator) {
 	a.Describe(r, "Extracts a substring from the given string.")
 }
 
-func (*Substr) Call(_ p.Context, args SubstrArgs) (SubstrResult, error) {
+func (*Substr) Call(_ context.Context, args SubstrArgs) (SubstrResult, error) {
 	in := []byte(args.Input)
 	if args.Length == 0 {
 		return SubstrResult{""}, nil

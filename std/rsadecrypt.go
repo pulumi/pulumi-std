@@ -15,6 +15,7 @@
 package std
 
 import (
+	"context"
 	"crypto/rsa"
 	"encoding/asn1"
 	"encoding/base64"
@@ -22,7 +23,6 @@ import (
 	"fmt"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"golang.org/x/crypto/ssh"
 )
@@ -53,7 +53,7 @@ func formatError(err error) string {
 	}
 }
 
-func (*Rsadecrypt) Call(_ p.Context, args RsadecryptArgs) (RsadecryptResult, error) {
+func (*Rsadecrypt) Call(_ context.Context, args RsadecryptArgs) (RsadecryptResult, error) {
 
 	cipherTextBytes, err := base64.StdEncoding.DecodeString(args.CipherText)
 	if err != nil {

@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,7 @@ func (r *Max) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the largest of the floats.")
 }
 
-func (*Max) Call(_ p.Context, args MaxArgs) (MaxResult, error) {
+func (*Max) Call(_ context.Context, args MaxArgs) (MaxResult, error) {
 	if len(args.Input) == 0 {
 		return MaxResult{}, fmt.Errorf("input list must not be empty")
 	}

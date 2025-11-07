@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"encoding/json"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -36,7 +36,7 @@ which can contain arbitrarily-nested lists and maps.
 Note that if the value is a string then its value will be placed in quotes.`)
 }
 
-func (*Jsonencode) Call(_ p.Context, args JsonencodeArgs) (JsonencodeResult, error) {
+func (*Jsonencode) Call(_ context.Context, args JsonencodeArgs) (JsonencodeResult, error) {
 	inputBytes, err := json.Marshal(args.Input)
 	if err != nil {
 		return JsonencodeResult{}, err
