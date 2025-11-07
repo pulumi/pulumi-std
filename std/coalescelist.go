@@ -34,12 +34,12 @@ func (r *Coalescelist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the first non-empty list from the given list of lists.")
 }
 
-func (*Coalescelist) Call(_ context.Context, args CoalescelistArgs) (CoalescelistResult, error) {
-	for _, list := range args.Input {
+func (*Coalescelist) Invoke(_ context.Context, input infer.FunctionRequest[CoalescelistArgs]) (infer.FunctionResponse[CoalescelistResult], error) {
+	for _, list := range input.Input.Input {
 		if len(list) > 0 {
-			return CoalescelistResult{list}, nil
+			return infer.FunctionResponse[CoalescelistResult]{Output: CoalescelistResult{list}}, nil
 		}
 	}
 
-	return CoalescelistResult{}, errors.New("no non-empty list found")
+	return infer.FunctionResponse[CoalescelistResult]{Output: CoalescelistResult{}}, errors.New("no non-empty list found")
 }

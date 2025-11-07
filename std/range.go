@@ -59,20 +59,20 @@ func genRange(start, limit, step float64) []float64 {
 	return res
 }
 
-func (*Range) Call(_ context.Context, args RangeArgs) (RangeResults, error) {
-	if args.Start == nil {
+func (*Range) Invoke(_ context.Context, input infer.FunctionRequest[RangeArgs]) (infer.FunctionResponse[RangeResults], error) {
+	if input.Input.Start == nil {
 		start := 0.0
-		args.Start = &start
+		input.Input.Start = &start
 	}
 
-	if args.Step == nil {
+	if input.Input.Step == nil {
 		step := 1.0
-		if *args.Start > args.Limit {
+		if *input.Input.Start > input.Input.Limit {
 			step = -1.0
 		}
 
-		args.Step = &step
+		input.Input.Step = &step
 	}
 
-	return RangeResults{genRange(*args.Start, args.Limit, *args.Step)}, nil
+	return infer.FunctionResponse[RangeResults]{Output: RangeResults{genRange(*input.Input.Start, input.Input.Limit, *input.Input.Step)}}, nil
 }

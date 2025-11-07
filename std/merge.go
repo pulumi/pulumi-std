@@ -34,12 +34,12 @@ func (r *Merge) Annotate(a infer.Annotator) {
 and duplicate keys overwrite previous entries.`)
 }
 
-func (*Merge) Call(_ context.Context, args MergeArgs) (MergeResult, error) {
+func (*Merge) Invoke(_ context.Context, input infer.FunctionRequest[MergeArgs]) (infer.FunctionResponse[MergeResult], error) {
 	result := make(map[string]interface{})
-	for _, m := range args.Input {
+	for _, m := range input.Input.Input {
 		for k, v := range m {
 			result[k] = v
 		}
 	}
-	return MergeResult{result}, nil
+	return infer.FunctionResponse[MergeResult]{Output: MergeResult{result}}, nil
 }

@@ -35,19 +35,19 @@ func (r *Chunklist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Splits a single list into multiple lists where each has at most the given number of elements.")
 }
 
-func (*Chunklist) Call(_ context.Context, args ChunklistArgs) (ChunklistResult, error) {
-	if args.Size < 0 {
-		return ChunklistResult{}, errors.New("size must be greater than or equal to 0")
+func (*Chunklist) Invoke(_ context.Context, input infer.FunctionRequest[ChunklistArgs]) (infer.FunctionResponse[ChunklistResult], error) {
+	if input.Input.Size < 0 {
+		return infer.FunctionResponse[ChunklistResult]{Output: ChunklistResult{}}, errors.New("size must be greater than or equal to 0")
 	}
 
 	output := make([]interface{}, 0)
-	for i := 0; i < len(args.Input); i += args.Size {
-		end := i + args.Size
-		if end > len(args.Input) {
-			end = len(args.Input)
+	for i := 0; i < len(input.Input.Input); i += input.Input.Size {
+		end := i + input.Input.Size
+		if end > len(input.Input.Input) {
+			end = len(input.Input.Input)
 		}
-		output = append(output, args.Input[i:end])
+		output = append(output, input.Input.Input[i:end])
 	}
 
-	return ChunklistResult{output}, nil
+	return infer.FunctionResponse[ChunklistResult]{Output: ChunklistResult{output}}, nil
 }

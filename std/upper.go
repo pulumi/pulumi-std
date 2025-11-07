@@ -34,6 +34,6 @@ func (r *Upper) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts all cased letters in the given string to uppercase.")
 }
 
-func (*Upper) Call(_ context.Context, args UpperArgs) (UpperResult, error) {
-	return UpperResult{strings.ToUpper(args.Input)}, nil
+func (*Upper) Invoke(_ context.Context, input infer.FunctionRequest[UpperArgs]) (infer.FunctionResponse[UpperResult], error) {
+	return infer.FunctionResponse[UpperResult]{Output: UpperResult{strings.ToUpper(input.Input.Input)}}, nil
 }

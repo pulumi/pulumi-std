@@ -38,6 +38,6 @@ This is not equivalent of base64encode(sha512(string)) since sha512() returns he
 
 var base64Sha512 = stringHashFunction(sha512.New, base64.StdEncoding.EncodeToString)
 
-func (*Base64sha512) Call(_ context.Context, args Base64Sha512Args) (Base64Sha512Result, error) {
-	return Base64Sha512Result{base64Sha512(args.Input)}, nil
+func (*Base64sha512) Invoke(_ context.Context, input infer.FunctionRequest[Base64Sha512Args]) (infer.FunctionResponse[Base64Sha512Result], error) {
+	return infer.FunctionResponse[Base64Sha512Result]{Output: Base64Sha512Result{base64Sha512(input.Input.Input)}}, nil
 }

@@ -33,11 +33,11 @@ func (r *Sum) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the total sum of the elements of the input list.")
 }
 
-func (*Sum) Call(_ context.Context, args SumArgs) (SumResult, error) {
+func (*Sum) Invoke(_ context.Context, input infer.FunctionRequest[SumArgs]) (infer.FunctionResponse[SumResult], error) {
 	sum := 0.0
-	for _, current := range args.Input {
+	for _, current := range input.Input.Input {
 		sum += current
 	}
 
-	return SumResult{sum}, nil
+	return infer.FunctionResponse[SumResult]{Output: SumResult{sum}}, nil
 }

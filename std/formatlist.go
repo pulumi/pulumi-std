@@ -41,33 +41,33 @@ func (r *Formatlist) Annotate(a infer.Annotator) {
 	)
 }
 
-func (*Formatlist) Call(_ context.Context, args FormatlistArgs) (FormatlistResult, error) {
+func (*Formatlist) Invoke(_ context.Context, input infer.FunctionRequest[FormatlistArgs]) (infer.FunctionResponse[FormatlistResult], error) {
 	// If we weren't passed any arguments, we can only attempt to format the input string.
-	if len(args.Args) == 0 {
-		return FormatlistResult{[]string{format(args.Input)}}, nil
+	if len(input.Input.Args) == 0 {
+		return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{[]string{format(input.Input.Input)}}}, nil
 	}
 
 	// We have arguments -- ensure that all lists which appear are of the same length, and calculate that length.
 	resultLength := -1
-	for _, arg := range args.Args {
+	for _, arg := range input.Input.Args {
 		if list, ok := arg.([]interface{}); ok {
 			if resultLength == -1 {
 				resultLength = len(list)
 			} else if len(list) != resultLength {
-				return FormatlistResult{}, fmt.Errorf("all list arguments must be of the same length")
+				return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{}}, fmt.Errorf("all list arguments must be of the same length")
 			}
 		}
 	}
 
 	if resultLength == -1 {
 		// There are no lists in the arguments, so we can just format the input string.
-		return FormatlistResult{[]string{format(args.Input, args.Args...)}}, nil
+		return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{[]string{format(input.Input.Input, input.Input.Args...)}}}, nil
 	}
 
 	if resultLength == 0 {
 		// There are lists with no elements in them, so we can return an empty list (this matches the behaviour of
 		// Terraform's formatlist).
-		return FormatlistResult{[]string{}}, nil
+		return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{[]string{}}}, nil
 	}
 
 	// We have lists with elements in them, so we need to "zip" them together and format each combination. We do this by
@@ -75,8 +75,8 @@ func (*Formatlist) Call(_ context.Context, args FormatlistArgs) (FormatlistResul
 	// ith set of arguments consists of the ith element of each list, or the original argument if it's not a list.
 	results := make([]string, resultLength)
 	for i := 0; i < resultLength; i++ {
-		callArgs := make([]interface{}, len(args.Args))
-		for j, arg := range args.Args {
+		callArgs := make([]interface{}, len(input.Input.Args))
+		for j, arg := range input.Input.Args {
 			if list, ok := arg.([]interface{}); ok {
 				callArgs[j] = list[i]
 			} else {
@@ -84,8 +84,8 @@ func (*Formatlist) Call(_ context.Context, args FormatlistArgs) (FormatlistResul
 			}
 		}
 
-		results[i] = format(args.Input, callArgs...)
+		results[i] = format(input.Input.Input, callArgs...)
 	}
 
-	return FormatlistResult{results}, nil
+	return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{results}}, nil
 }

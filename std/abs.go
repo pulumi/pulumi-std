@@ -35,6 +35,6 @@ func (r *Abs) Annotate(a infer.Annotator) {
 Example: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.`)
 }
 
-func (*Abs) Call(_ context.Context, input AbsArgs) (AbsResult, error) {
-	return AbsResult{math.Abs(input.Input)}, nil
+func (*Abs) Invoke(_ context.Context, input infer.FunctionRequest[AbsArgs]) (infer.FunctionResponse[AbsResult], error) {
+	return infer.FunctionResponse[AbsResult]{Output: AbsResult{math.Abs(input.Input.Input)}}, nil
 }

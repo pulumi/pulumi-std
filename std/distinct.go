@@ -33,15 +33,15 @@ func (r *Distinct) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes duplicate items from a list.")
 }
 
-func (*Distinct) Call(_ context.Context, args DistinctArgs) (DistinctResult, error) {
+func (*Distinct) Invoke(_ context.Context, input infer.FunctionRequest[DistinctArgs]) (infer.FunctionResponse[DistinctResult], error) {
 	seen := make(map[interface{}]bool)
 	output := make([]interface{}, 0)
-	for _, value := range args.Input {
+	for _, value := range input.Input.Input {
 		if !seen[value] {
 			seen[value] = true
 			output = append(output, value)
 		}
 	}
 
-	return DistinctResult{output}, nil
+	return infer.FunctionResponse[DistinctResult]{Output: DistinctResult{output}}, nil
 }

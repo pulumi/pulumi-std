@@ -35,24 +35,24 @@ func (r *Tostring) Annotate(a infer.Annotator) {
 	and null can be converted to string. All other values will result in an error.`)
 }
 
-func (*Tostring) Call(_ context.Context, args TostringArgs) (TostringResult, error) {
-	if args.Input == nil {
-		return TostringResult{nil}, nil
+func (*Tostring) Invoke(_ context.Context, input infer.FunctionRequest[TostringArgs]) (infer.FunctionResponse[TostringResult], error) {
+	if input.Input.Input == nil {
+		return infer.FunctionResponse[TostringResult]{Output: TostringResult{nil}}, nil
 	}
-	if v, ok := args.Input.(string); ok {
-		return TostringResult{toStrPtr(v)}, nil
-	} else if b, ok := args.Input.(bool); ok {
+	if v, ok := input.Input.Input.(string); ok {
+		return infer.FunctionResponse[TostringResult]{Output: TostringResult{toStrPtr(v)}}, nil
+	} else if b, ok := input.Input.Input.(bool); ok {
 		if b {
-			return TostringResult{toStrPtr("true")}, nil
+			return infer.FunctionResponse[TostringResult]{Output: TostringResult{toStrPtr("true")}}, nil
 		}
-		return TostringResult{toStrPtr("false")}, nil
-	} else if i, ok := args.Input.(int); ok {
-		return TostringResult{toStrPtr(fmt.Sprintf("%v", i))}, nil
-	} else if f, ok := args.Input.(float64); ok {
-		return TostringResult{toStrPtr(fmt.Sprintf("%v", f))}, nil
+		return infer.FunctionResponse[TostringResult]{Output: TostringResult{toStrPtr("false")}}, nil
+	} else if i, ok := input.Input.Input.(int); ok {
+		return infer.FunctionResponse[TostringResult]{Output: TostringResult{toStrPtr(fmt.Sprintf("%v", i))}}, nil
+	} else if f, ok := input.Input.Input.(float64); ok {
+		return infer.FunctionResponse[TostringResult]{Output: TostringResult{toStrPtr(fmt.Sprintf("%v", f))}}, nil
 	}
 
-	return TostringResult{nil}, fmt.Errorf("%v is not a string value", args.Input)
+	return infer.FunctionResponse[TostringResult]{Output: TostringResult{nil}}, fmt.Errorf("%v is not a string value", input.Input.Input)
 }
 
 func toStrPtr(s string) *string {

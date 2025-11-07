@@ -34,17 +34,17 @@ func (r *Values) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a list of the values of the map.")
 }
 
-func (*Values) Call(_ context.Context, args ValuesArgs) (ValuesResult, error) {
-	keys := make([]string, 0, len(args.Input))
-	for key := range args.Input {
+func (*Values) Invoke(_ context.Context, input infer.FunctionRequest[ValuesArgs]) (infer.FunctionResponse[ValuesResult], error) {
+	keys := make([]string, 0, len(input.Input.Input))
+	for key := range input.Input.Input {
 		keys = append(keys, key)
 	}
 	// Sort the keys so that the output is deterministic.
 	sort.Strings(keys)
 
-	values := make([]interface{}, 0, len(args.Input))
+	values := make([]interface{}, 0, len(input.Input.Input))
 	for _, key := range keys {
-		values = append(values, args.Input[key])
+		values = append(values, input.Input.Input[key])
 	}
-	return ValuesResult{values}, nil
+	return infer.FunctionResponse[ValuesResult]{Output: ValuesResult{values}}, nil
 }

@@ -35,15 +35,15 @@ func (r *Zipmap) Annotate(a infer.Annotator) {
 	a.Describe(r, `Constructs a map from a list of keys and a corresponding list of values.`)
 }
 
-func (*Zipmap) Call(_ context.Context, args ZipmapArgs) (ZipmapResult, error) {
-	if len(args.Keys) != len(args.Values) {
-		return ZipmapResult{}, errors.New("keys and values must be the same length")
+func (*Zipmap) Invoke(_ context.Context, input infer.FunctionRequest[ZipmapArgs]) (infer.FunctionResponse[ZipmapResult], error) {
+	if len(input.Input.Keys) != len(input.Input.Values) {
+		return infer.FunctionResponse[ZipmapResult]{Output: ZipmapResult{}}, errors.New("keys and values must be the same length")
 	}
 
 	result := map[string]interface{}{}
-	for i, key := range args.Keys {
-		result[key] = args.Values[i]
+	for i, key := range input.Input.Keys {
+		result[key] = input.Input.Values[i]
 	}
 
-	return ZipmapResult{result}, nil
+	return infer.FunctionResponse[ZipmapResult]{Output: ZipmapResult{result}}, nil
 }

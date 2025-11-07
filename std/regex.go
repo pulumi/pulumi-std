@@ -38,26 +38,26 @@ func (r *Regex) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the first match of a regular expression in a string (including named or indexed groups).")
 }
 
-func (*Regex) Call(_ context.Context, args RegexArgs) (RegexResult, error) {
-	re, err := regexp.Compile(args.Pattern)
+func (*Regex) Invoke(_ context.Context, input infer.FunctionRequest[RegexArgs]) (infer.FunctionResponse[RegexResult], error) {
+	re, err := regexp.Compile(input.Input.Pattern)
 	if err != nil {
-		return RegexResult{}, err
+		return infer.FunctionResponse[RegexResult]{Output: RegexResult{}}, err
 	}
-	match := re.FindStringSubmatch(args.String)
+	match := re.FindStringSubmatch(input.Input.String)
 
 	if match == nil {
-		return RegexResult{Result: []interface{}{}}, nil
+		return infer.FunctionResponse[RegexResult]{Output: RegexResult{Result: []interface{}{}}}, nil
 	}
 
 	// If there are no groups/submatches, return the full match
 	if re.NumSubexp() == 0 {
-		return RegexResult{Result: interface{}(match[0])}, nil
+		return infer.FunctionResponse[RegexResult]{Output: RegexResult{Result: interface{}(match[0])}}, nil
 	}
 
 	hasNamedSubExp := false
 	for _, name := range re.SubexpNames() {
 		if name == "" && hasNamedSubExp {
-			return RegexResult{},
+			return infer.FunctionResponse[RegexResult]{Output: RegexResult{}},
 				errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
 		}
 
@@ -76,7 +76,7 @@ func (*Regex) Call(_ context.Context, args RegexArgs) (RegexResult, error) {
 			}
 			result = append(result, submatch)
 		}
-		return RegexResult{Result: interface{}(result)}, nil
+		return infer.FunctionResponse[RegexResult]{Output: RegexResult{Result: interface{}(result)}}, nil
 	}
 
 	// If there are named submatches return a map of the named submatches
@@ -89,5 +89,5 @@ func (*Regex) Call(_ context.Context, args RegexArgs) (RegexResult, error) {
 		result[name] = match[i]
 	}
 
-	return RegexResult{Result: interface{}(result)}, nil
+	return infer.FunctionResponse[RegexResult]{Output: RegexResult{Result: interface{}(result)}}, nil
 }

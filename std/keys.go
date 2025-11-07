@@ -34,11 +34,11 @@ func (r *Keys) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a lexically sorted list of the map keys.")
 }
 
-func (*Keys) Call(_ context.Context, args KeysArgs) (KeysResult, error) {
-	keys := make([]string, 0, len(args.Input))
-	for key := range args.Input {
+func (*Keys) Invoke(_ context.Context, input infer.FunctionRequest[KeysArgs]) (infer.FunctionResponse[KeysResult], error) {
+	keys := make([]string, 0, len(input.Input.Input))
+	for key := range input.Input.Input {
 		keys = append(keys, key)
 	}
 	sort.Strings(keys)
-	return KeysResult{keys}, nil
+	return infer.FunctionResponse[KeysResult]{Output: KeysResult{keys}}, nil
 }

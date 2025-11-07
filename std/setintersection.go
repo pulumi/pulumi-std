@@ -42,25 +42,25 @@ func (r *Setintersection) Annotate(a infer.Annotator) {
 // In practice this is hopefully not a massive issue -- Terraform itself is not super consistent in how it treats
 // compound literals like this (e.g. `setintersection([[1, 2]], [[2, 1]])` returns `[[]]` -- the inner lists are *not*
 // treated as sets, while the outer ones are).
-func (*Setintersection) Call(_ context.Context, args SetintersectionArgs) (SetintersectionResult, error) {
-	if len(args.Input) == 0 {
-		return SetintersectionResult{Result: []interface{}{}}, nil
+func (*Setintersection) Invoke(_ context.Context, input infer.FunctionRequest[SetintersectionArgs]) (infer.FunctionResponse[SetintersectionResult], error) {
+	if len(input.Input.Input) == 0 {
+		return infer.FunctionResponse[SetintersectionResult]{Output: SetintersectionResult{Result: []interface{}{}}}, nil
 	}
 
 	allInputs := []interface{}{}
-	for _, set := range args.Input {
+	for _, set := range input.Input.Input {
 		allInputs = append(allInputs, set...)
 	}
 
 	resultType, err := assignableType(allInputs)
 	if resultType == nil || err != nil {
-		return SetintersectionResult{Result: []interface{}{}}, err
+		return infer.FunctionResponse[SetintersectionResult]{Output: SetintersectionResult{Result: []interface{}{}}}, err
 	}
 
 	seen := map[interface{}]int{}
 	resultTypeIsString := resultType == reflect.TypeOf("")
 
-	for i, set := range args.Input {
+	for i, set := range input.Input.Input {
 		for _, item := range set {
 			if resultTypeIsString {
 				if stringer, ok := item.(fmt.Stringer); ok {
@@ -80,12 +80,12 @@ func (*Setintersection) Call(_ context.Context, args SetintersectionArgs) (Setin
 	}
 
 	result := []interface{}{}
-	requiredCount := len(args.Input)
+	requiredCount := len(input.Input.Input)
 	for item, count := range seen {
 		if count == requiredCount {
 			result = append(result, item)
 		}
 	}
 
-	return SetintersectionResult{Result: result}, nil
+	return infer.FunctionResponse[SetintersectionResult]{Output: SetintersectionResult{Result: result}}, nil
 }

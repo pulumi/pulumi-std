@@ -37,6 +37,6 @@ func (r *Sha512) Annotate(a infer.Annotator) {
 
 var sha512AsHex = stringHashFunction(sha512.New, hex.EncodeToString)
 
-func (*Sha512) Call(_ context.Context, args Sha512Args) (Sha512Result, error) {
-	return Sha512Result{sha512AsHex(args.Input)}, nil
+func (*Sha512) Invoke(_ context.Context, input infer.FunctionRequest[Sha512Args]) (infer.FunctionResponse[Sha512Result], error) {
+	return infer.FunctionResponse[Sha512Result]{Output: Sha512Result{sha512AsHex(input.Input.Input)}}, nil
 }

@@ -36,38 +36,38 @@ func (r *Substr) Annotate(a infer.Annotator) {
 	a.Describe(r, "Extracts a substring from the given string.")
 }
 
-func (*Substr) Call(_ context.Context, args SubstrArgs) (SubstrResult, error) {
-	in := []byte(args.Input)
-	if args.Length == 0 {
-		return SubstrResult{""}, nil
+func (*Substr) Invoke(_ context.Context, input infer.FunctionRequest[SubstrArgs]) (infer.FunctionResponse[SubstrResult], error) {
+	in := []byte(input.Input.Input)
+	if input.Input.Length == 0 {
+		return infer.FunctionResponse[SubstrResult]{Output: SubstrResult{""}}, nil
 	}
 
-	for args.Offset < 0 {
-		args.Offset += len(args.Input)
+	for input.Input.Offset < 0 {
+		input.Input.Offset += len(input.Input.Input)
 	}
 
 	sub := in
 	pos := 0
 	var i int
 
-	if args.Offset > 0 {
+	if input.Input.Offset > 0 {
 		for i = 0; i < len(sub); {
 			d, _, _ := textseg.ScanGraphemeClusters(sub[i:], true)
 			i += d
 			pos++
-			if pos == args.Offset {
+			if pos == input.Input.Offset {
 				break
 			}
 			if i >= len(in) {
-				return SubstrResult{""}, nil
+				return infer.FunctionResponse[SubstrResult]{Output: SubstrResult{""}}, nil
 			}
 		}
 
 		sub = sub[i:]
 	}
 
-	if args.Length < 0 {
-		return SubstrResult{string(sub)}, nil
+	if input.Input.Length < 0 {
+		return infer.FunctionResponse[SubstrResult]{Output: SubstrResult{string(sub)}}, nil
 	}
 
 	pos = 0
@@ -75,11 +75,11 @@ func (*Substr) Call(_ context.Context, args SubstrArgs) (SubstrResult, error) {
 		d, _, _ := textseg.ScanGraphemeClusters(sub[i:], true)
 		i += d
 		pos++
-		if pos == args.Length {
+		if pos == input.Input.Length {
 			break
 		}
 	}
 
 	sub = sub[:i]
-	return SubstrResult{string(sub)}, nil
+	return infer.FunctionResponse[SubstrResult]{Output: SubstrResult{string(sub)}}, nil
 }

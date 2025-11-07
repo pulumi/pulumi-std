@@ -35,7 +35,7 @@ func (r *Indent) Annotate(a infer.Annotator) {
 	a.Describe(r, "Adds a given number of spaces after each newline character in the given string.")
 }
 
-func (*Indent) Call(_ context.Context, args IndentArgs) (IndentResult, error) {
-	pad := strings.Repeat(" ", args.Spaces)
-	return IndentResult{strings.Replace(args.Input, "\n", "\n"+pad, -1)}, nil
+func (*Indent) Invoke(_ context.Context, input infer.FunctionRequest[IndentArgs]) (infer.FunctionResponse[IndentResult], error) {
+	pad := strings.Repeat(" ", input.Input.Spaces)
+	return infer.FunctionResponse[IndentResult]{Output: IndentResult{strings.Replace(input.Input.Input, "\n", "\n"+pad, -1)}}, nil
 }

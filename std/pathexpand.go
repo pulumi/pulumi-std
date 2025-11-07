@@ -34,10 +34,10 @@ func (r *Pathexpand) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a filepath string with ~ expanded to the home directory.")
 }
 
-func (*Pathexpand) Call(_ context.Context, args PathexpandArgs) (PathexpandResult, error) {
-	expanded, err := homedir.Expand(args.Input)
+func (*Pathexpand) Invoke(_ context.Context, input infer.FunctionRequest[PathexpandArgs]) (infer.FunctionResponse[PathexpandResult], error) {
+	expanded, err := homedir.Expand(input.Input.Input)
 	if err != nil {
-		return PathexpandResult{}, err
+		return infer.FunctionResponse[PathexpandResult]{Output: PathexpandResult{}}, err
 	}
-	return PathexpandResult{expanded}, nil
+	return infer.FunctionResponse[PathexpandResult]{Output: PathexpandResult{expanded}}, nil
 }

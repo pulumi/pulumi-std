@@ -34,9 +34,9 @@ func (r *Transpose) Annotate(a infer.Annotator) {
 	a.Describe(r, `Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.`)
 }
 
-func (*Transpose) Call(_ context.Context, args TransposeArgs) (TransposeResult, error) {
+func (*Transpose) Invoke(_ context.Context, input infer.FunctionRequest[TransposeArgs]) (infer.FunctionResponse[TransposeResult], error) {
 	res := make(map[string][]string)
-	for k, l := range args.Input {
+	for k, l := range input.Input.Input {
 		for _, v := range l {
 			if _, ok := res[v]; ok {
 				res[v] = append(res[v], k)
@@ -49,5 +49,5 @@ func (*Transpose) Call(_ context.Context, args TransposeArgs) (TransposeResult, 
 	for _, v := range res {
 		sort.Strings(v)
 	}
-	return TransposeResult{res}, nil
+	return infer.FunctionResponse[TransposeResult]{Output: TransposeResult{res}}, nil
 }

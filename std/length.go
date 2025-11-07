@@ -34,15 +34,15 @@ func (r *Length) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines the length of a given list, map, or string.")
 }
 
-func (*Length) Call(_ context.Context, args LengthArgs) (LengthResult, error) {
-	switch v := args.Input.(type) {
+func (*Length) Invoke(_ context.Context, input infer.FunctionRequest[LengthArgs]) (infer.FunctionResponse[LengthResult], error) {
+	switch v := input.Input.Input.(type) {
 	case string:
-		return LengthResult{len(v)}, nil
+		return infer.FunctionResponse[LengthResult]{Output: LengthResult{len(v)}}, nil
 	case []interface{}:
-		return LengthResult{len(v)}, nil
+		return infer.FunctionResponse[LengthResult]{Output: LengthResult{len(v)}}, nil
 	case map[string]interface{}:
-		return LengthResult{len(v)}, nil
+		return infer.FunctionResponse[LengthResult]{Output: LengthResult{len(v)}}, nil
 	default:
-		return LengthResult{}, errors.New("input must be a string, list, or map")
+		return infer.FunctionResponse[LengthResult]{Output: LengthResult{}}, errors.New("input must be a string, list, or map")
 	}
 }

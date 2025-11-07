@@ -36,26 +36,26 @@ func (r *Tonumber) Annotate(a infer.Annotator) {
 	containing decimal representations of numbers can be converted to number. All other values will result in an error`)
 }
 
-func (*Tonumber) Call(_ context.Context, args TonumberArgs) (TonumberResult, error) {
-	if args.Input == nil {
-		return TonumberResult{nil}, nil
+func (*Tonumber) Invoke(_ context.Context, input infer.FunctionRequest[TonumberArgs]) (infer.FunctionResponse[TonumberResult], error) {
+	if input.Input.Input == nil {
+		return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{nil}}, nil
 	}
-	if v, ok := args.Input.(int); ok {
-		return TonumberResult{toFloat64Ptr(float64(v))}, nil
-	} else if v, ok := args.Input.(float64); ok {
-		return TonumberResult{toFloat64Ptr(v)}, nil
-	} else if str, ok := args.Input.(string); ok {
+	if v, ok := input.Input.Input.(int); ok {
+		return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{toFloat64Ptr(float64(v))}}, nil
+	} else if v, ok := input.Input.Input.(float64); ok {
+		return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{toFloat64Ptr(v)}}, nil
+	} else if str, ok := input.Input.Input.(string); ok {
 		vInt, err := strconv.ParseInt(str, 10, 64)
 		if err != nil {
 			vFloat, err := strconv.ParseFloat(str, 64)
 			if err != nil {
-				return TonumberResult{nil}, fmt.Errorf("%v is not a number value", args.Input)
+				return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{nil}}, fmt.Errorf("%v is not a number value", input.Input.Input)
 			}
-			return TonumberResult{toFloat64Ptr(vFloat)}, nil
+			return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{toFloat64Ptr(vFloat)}}, nil
 		}
-		return TonumberResult{toFloat64Ptr(float64(vInt))}, nil
+		return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{toFloat64Ptr(float64(vInt))}}, nil
 	}
-	return TonumberResult{nil}, fmt.Errorf("%v is not a number value", args.Input)
+	return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{nil}}, fmt.Errorf("%v is not a number value", input.Input.Input)
 }
 
 func toFloat64Ptr(f float64) *float64 {

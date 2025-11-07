@@ -38,15 +38,15 @@ func (r *Regexall) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a list of all matches of a regular expression in a string (including named or indexed groups).")
 }
 
-func (*Regexall) Call(_ context.Context, args RegexallArgs) (RegexallResult, error) {
-	re, err := regexp.Compile(args.Pattern)
+func (*Regexall) Invoke(_ context.Context, input infer.FunctionRequest[RegexallArgs]) (infer.FunctionResponse[RegexallResult], error) {
+	re, err := regexp.Compile(input.Input.Pattern)
 	if err != nil {
-		return RegexallResult{}, err
+		return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{}}, err
 	}
-	matches := re.FindAllStringSubmatch(args.String, -1)
+	matches := re.FindAllStringSubmatch(input.Input.String, -1)
 
 	if matches == nil {
-		return RegexallResult{Result: []interface{}{}}, nil
+		return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{Result: []interface{}{}}}, nil
 	}
 
 	result := make([]interface{}, len(matches))
@@ -55,13 +55,13 @@ func (*Regexall) Call(_ context.Context, args RegexallArgs) (RegexallResult, err
 		for i, match := range matches {
 			result[i] = match[0]
 		}
-		return RegexallResult{Result: result}, nil
+		return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{Result: result}}, nil
 	}
 
 	hasNamedSubExp := false
 	for _, name := range re.SubexpNames() {
 		if name == "" && hasNamedSubExp {
-			return RegexallResult{},
+			return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{}},
 				errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
 		}
 
@@ -76,7 +76,7 @@ func (*Regexall) Call(_ context.Context, args RegexallArgs) (RegexallResult, err
 			// do not include the full match, just submatches
 			result[i] = interface{}(match[1:])
 		}
-		return RegexallResult{Result: result}, nil
+		return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{Result: result}}, nil
 	}
 
 	// If there are named submatches return a map of the named submatches
@@ -93,5 +93,5 @@ func (*Regexall) Call(_ context.Context, args RegexallArgs) (RegexallResult, err
 		result[i] = interface{}(submatches)
 	}
 
-	return RegexallResult{Result: result}, nil
+	return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{Result: result}}, nil
 }

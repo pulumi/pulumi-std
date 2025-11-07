@@ -52,10 +52,10 @@ func base64gzip(input string) (string, error) {
 	return base64.StdEncoding.EncodeToString(buffer.Bytes()), nil
 }
 
-func (*Base64gzip) Call(_ context.Context, args Base64GzipArgs) (Base64GzipResult, error) {
-	result, err := base64gzip(args.Input)
+func (*Base64gzip) Invoke(_ context.Context, input infer.FunctionRequest[Base64GzipArgs]) (infer.FunctionResponse[Base64GzipResult], error) {
+	result, err := base64gzip(input.Input.Input)
 	if err != nil {
-		return Base64GzipResult{}, err
+		return infer.FunctionResponse[Base64GzipResult]{Output: Base64GzipResult{}}, err
 	}
-	return Base64GzipResult{result}, nil
+	return infer.FunctionResponse[Base64GzipResult]{Output: Base64GzipResult{result}}, nil
 }

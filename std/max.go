@@ -35,15 +35,15 @@ func (r *Max) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the largest of the floats.")
 }
 
-func (*Max) Call(_ context.Context, args MaxArgs) (MaxResult, error) {
-	if len(args.Input) == 0 {
-		return MaxResult{}, fmt.Errorf("input list must not be empty")
+func (*Max) Invoke(_ context.Context, input infer.FunctionRequest[MaxArgs]) (infer.FunctionResponse[MaxResult], error) {
+	if len(input.Input.Input) == 0 {
+		return infer.FunctionResponse[MaxResult]{Output: MaxResult{}}, fmt.Errorf("input list must not be empty")
 	}
 
-	maximum := args.Input[0]
-	for _, current := range args.Input {
+	maximum := input.Input.Input[0]
+	for _, current := range input.Input.Input {
 		maximum = math.Max(maximum, current)
 	}
 
-	return MaxResult{maximum}, nil
+	return infer.FunctionResponse[MaxResult]{Output: MaxResult{maximum}}, nil
 }

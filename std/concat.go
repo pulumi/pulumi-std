@@ -33,13 +33,13 @@ func (r *Concat) Annotate(a infer.Annotator) {
 	a.Describe(r, "Combines two or more lists into a single list.")
 }
 
-func (*Concat) Call(_ context.Context, args ConcatArgs) (ConcatResult, error) {
+func (*Concat) Invoke(_ context.Context, input infer.FunctionRequest[ConcatArgs]) (infer.FunctionResponse[ConcatResult], error) {
 	output := make([]interface{}, 0)
-	for _, list := range args.Input {
+	for _, list := range input.Input.Input {
 		for _, value := range list {
 			output = append(output, value)
 		}
 	}
 
-	return ConcatResult{output}, nil
+	return infer.FunctionResponse[ConcatResult]{Output: ConcatResult{output}}, nil
 }

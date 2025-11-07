@@ -55,11 +55,11 @@ func cidrhost(ipaddress string, hostnum int) (string, error) {
 	return ip.String(), nil
 }
 
-func (*Cidrhost) Call(_ context.Context, args CidrhostArgs) (CidrhostResult, error) {
-	result, err := cidrhost(args.Input, args.Host)
+func (*Cidrhost) Invoke(_ context.Context, input infer.FunctionRequest[CidrhostArgs]) (infer.FunctionResponse[CidrhostResult], error) {
+	result, err := cidrhost(input.Input.Input, input.Input.Host)
 	if err != nil {
-		return CidrhostResult{}, err
+		return infer.FunctionResponse[CidrhostResult]{Output: CidrhostResult{}}, err
 	}
 
-	return CidrhostResult{result}, nil
+	return infer.FunctionResponse[CidrhostResult]{Output: CidrhostResult{result}}, nil
 }

@@ -36,21 +36,21 @@ func (r *Tobool) Annotate(a infer.Annotator) {
 	"true" and "false" can be converted to boolean. All other values will result in an error.`)
 }
 
-func (*Tobool) Call(_ context.Context, args ToboolArgs) (ToboolResult, error) {
-	if args.Input == nil {
-		return ToboolResult{nil}, nil
+func (*Tobool) Invoke(_ context.Context, input infer.FunctionRequest[ToboolArgs]) (infer.FunctionResponse[ToboolResult], error) {
+	if input.Input.Input == nil {
+		return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{nil}}, nil
 	}
-	if v, ok := args.Input.(bool); ok {
-		return ToboolResult{toBoolPtr(v)}, nil
-	} else if str, ok := args.Input.(string); ok {
+	if v, ok := input.Input.Input.(bool); ok {
+		return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{toBoolPtr(v)}}, nil
+	} else if str, ok := input.Input.Input.(string); ok {
 		v, err := strconv.ParseBool(str)
 		if err != nil {
-			return ToboolResult{nil}, fmt.Errorf("%v is not a boolean value", args.Input)
+			return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{nil}}, fmt.Errorf("%v is not a boolean value", input.Input.Input)
 		}
-		return ToboolResult{toBoolPtr(v)}, nil
+		return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{toBoolPtr(v)}}, nil
 	}
 
-	return ToboolResult{nil}, fmt.Errorf("%v is not a boolean value", args.Input)
+	return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{nil}}, fmt.Errorf("%v is not a boolean value", input.Input.Input)
 }
 
 func toBoolPtr(b bool) *bool {

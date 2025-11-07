@@ -33,13 +33,12 @@ func (r *Toset) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts its argument to a set value.")
 }
 
-func (*Toset) Call(_ context.Context, args TosetArgs) (TosetResult, error) {
-	if len(args.Input) == 0 {
-		return TosetResult{make([]interface{}, 0)}, nil
+func (*Toset) Invoke(_ context.Context, input infer.FunctionRequest[TosetArgs]) (infer.FunctionResponse[TosetResult], error) {
+	if len(input.Input.Input) == 0 {
+		return infer.FunctionResponse[TosetResult]{Output: TosetResult{make([]interface{}, 0)}}, nil
 	}
 
-	return TosetResult{convertListSameType(removeDuplicateElements(args.Input))}, nil
-
+	return infer.FunctionResponse[TosetResult]{Output: TosetResult{convertListSameType(removeDuplicateElements(input.Input.Input))}}, nil
 }
 
 func removeDuplicateElements(input []interface{}) []interface{} {

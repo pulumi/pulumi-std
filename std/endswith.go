@@ -35,6 +35,6 @@ func (r *Endswith) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines if the input string ends with the suffix.")
 }
 
-func (*Endswith) Call(_ context.Context, args EndswithArgs) (EndswithResult, error) {
-	return EndswithResult{strings.HasSuffix(args.Input, args.Suffix)}, nil
+func (*Endswith) Invoke(_ context.Context, input infer.FunctionRequest[EndswithArgs]) (infer.FunctionResponse[EndswithResult], error) {
+	return infer.FunctionResponse[EndswithResult]{Output: EndswithResult{strings.HasSuffix(input.Input.Input, input.Input.Suffix)}}, nil
 }
