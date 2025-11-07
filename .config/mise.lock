@@ -11,7 +11,7 @@ version = "0.6.0"
 backend = "github:pulumi/schema-tools"
 
 [[tools.go]]
-version = "1.25.1"
+version = "1.21.13"
 backend = "core:go"
 
 [[tools.golangci-lint]]
@@ -35,7 +35,7 @@ version = "1.22.22"
 backend = "npm:yarn"
 
 [[tools.pulumi]]
-version = "3.203.0"
+version = "3.44.0"
 backend = "asdf:pulumi"
 
 [[tools.python]]

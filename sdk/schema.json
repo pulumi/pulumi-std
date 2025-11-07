@@ -1,27 +1,11 @@
 {
   "name": "std",
-  "displayName": "StandardLibrary",
   "version": "2.2.0",
   "description": "Standard library functions",
   "homepage": "https://github.com/pulumi/pulumi-std",
   "repository": "https://github.com/pulumi/pulumi-std",
-  "publisher": "Pulumi",
   "meta": {
     "moduleFormat": "(.*)"
-  },
-  "language": {
-    "csharp": {
-      "packageReferences": {
-        "Pulumi": "3.*"
-      }
-    },
-    "go": {
-      "importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std"
-    },
-    "java": {
-      "buildFiles": "gradle",
-      "gradleNexusPublishPluginVersion": "2.0.0"
-    }
   },
   "config": {},
   "provider": {
@@ -47,10 +31,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:abspath": {
@@ -72,10 +56,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:alltrue": {
@@ -100,10 +84,10 @@
             "type": "boolean"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:anytrue": {
@@ -128,10 +112,10 @@
             "type": "boolean"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:base64decode": {
@@ -153,10 +137,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:base64encode": {
@@ -178,10 +162,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:base64gzip": {
@@ -203,10 +187,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:base64sha256": {
@@ -228,10 +212,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:base64sha512": {
@@ -253,10 +237,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:basename": {
@@ -278,10 +262,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:bcrypt": {
@@ -306,10 +290,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:ceil": {
@@ -331,10 +315,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:chomp": {
@@ -356,10 +340,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:chunklist": {
@@ -385,16 +369,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:cidrhost": {
@@ -420,10 +404,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:cidrnetmask": {
@@ -445,10 +429,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:cidrsubnet": {
@@ -478,10 +462,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:cidrsubnets": {
@@ -507,16 +491,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "string"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:coalesce": {
@@ -541,10 +525,10 @@
             "$ref": "pulumi.json#/Any"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:coalescelist": {
@@ -569,16 +553,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:compact": {
@@ -600,16 +584,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "string"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:concat": {
@@ -634,16 +618,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:contains": {
@@ -672,10 +656,10 @@
             "type": "boolean"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:csvdecode": {
@@ -694,19 +678,19 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
+              "type": "object",
               "additionalProperties": {
                 "type": "string"
-              },
-              "type": "object"
-            },
-            "type": "array"
+              }
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:dirname": {
@@ -728,10 +712,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:distinct": {
@@ -753,16 +737,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:element": {
@@ -791,10 +775,10 @@
             "$ref": "pulumi.json#/Any"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:endswith": {
@@ -820,10 +804,10 @@
             "type": "boolean"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:file": {
@@ -845,10 +829,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:filebase64": {
@@ -870,10 +854,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:filebase64sha256": {
@@ -895,10 +879,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:filebase64sha512": {
@@ -920,10 +904,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:fileexists": {
@@ -945,10 +929,10 @@
             "type": "boolean"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:filemd5": {
@@ -970,10 +954,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:filesha1": {
@@ -995,10 +979,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:filesha256": {
@@ -1020,10 +1004,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:filesha512": {
@@ -1045,10 +1029,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:flatten": {
@@ -1070,16 +1054,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:floor": {
@@ -1101,10 +1085,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:format": {
@@ -1133,10 +1117,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:formatlist": {
@@ -1162,16 +1146,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "string"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:indent": {
@@ -1197,10 +1181,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:index": {
@@ -1229,10 +1213,10 @@
             "type": "integer"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:join": {
@@ -1261,10 +1245,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:jsondecode": {
@@ -1286,10 +1270,10 @@
             "$ref": "pulumi.json#/Any"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:jsonencode": {
@@ -1311,10 +1295,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:keys": {
@@ -1336,16 +1320,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "string"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:length": {
@@ -1367,10 +1351,10 @@
             "type": "integer"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:log": {
@@ -1396,10 +1380,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:lookup": {
@@ -1431,10 +1415,10 @@
             "$ref": "pulumi.json#/Any"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:lower": {
@@ -1456,10 +1440,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:map": {
@@ -1481,16 +1465,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "object",
             "additionalProperties": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "object"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:matchkeys": {
@@ -1519,16 +1503,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "string"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:max": {
@@ -1553,10 +1537,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:md5": {
@@ -1578,10 +1562,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:merge": {
@@ -1606,16 +1590,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "object",
             "additionalProperties": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "object"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:min": {
@@ -1640,10 +1624,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:parseint": {
@@ -1668,10 +1652,10 @@
             "type": "integer"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:pathexpand": {
@@ -1693,10 +1677,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:pow": {
@@ -1722,10 +1706,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:range": {
@@ -1750,16 +1734,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "number"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:regex": {
@@ -1785,10 +1769,10 @@
             "$ref": "pulumi.json#/Any"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:regexall": {
@@ -1811,16 +1795,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:replace": {
@@ -1850,10 +1834,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:reverse": {
@@ -1875,16 +1859,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:rsadecrypt": {
@@ -1910,10 +1894,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:setintersection": {
@@ -1938,16 +1922,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:sha1": {
@@ -1969,10 +1953,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:sha256": {
@@ -1994,10 +1978,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:sha512": {
@@ -2019,10 +2003,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:signum": {
@@ -2044,10 +2028,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:slice": {
@@ -2075,16 +2059,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:sort": {
@@ -2106,16 +2090,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "string"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:split": {
@@ -2138,16 +2122,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "type": "string"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:startswith": {
@@ -2173,10 +2157,10 @@
             "type": "boolean"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:strrev": {
@@ -2198,10 +2182,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:substr": {
@@ -2231,10 +2215,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:sum": {
@@ -2259,10 +2243,10 @@
             "type": "number"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:timeadd": {
@@ -2288,10 +2272,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:timecmp": {
@@ -2317,10 +2301,10 @@
             "type": "integer"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:timestamp": {
@@ -2334,10 +2318,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:title": {
@@ -2359,10 +2343,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:tobool": {
@@ -2406,16 +2390,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:tonumber": {
@@ -2459,16 +2443,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:tostring": {
@@ -2515,19 +2499,19 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "object",
             "additionalProperties": {
+              "type": "array",
               "items": {
                 "type": "string"
-              },
-              "type": "array"
-            },
-            "type": "object"
+              }
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:trim": {
@@ -2553,10 +2537,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:trimprefix": {
@@ -2582,10 +2566,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:trimspace": {
@@ -2607,10 +2591,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:trimsuffix": {
@@ -2636,10 +2620,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:upper": {
@@ -2661,10 +2645,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:urlencode": {
@@ -2686,10 +2670,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:uuid": {
@@ -2703,10 +2687,10 @@
             "type": "string"
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:values": {
@@ -2728,16 +2712,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "array",
             "items": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "array"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     },
     "std:index:zipmap": {
@@ -2766,16 +2750,16 @@
       "outputs": {
         "properties": {
           "result": {
+            "type": "object",
             "additionalProperties": {
               "$ref": "pulumi.json#/Any"
-            },
-            "type": "object"
+            }
           }
         },
+        "type": "object",
         "required": [
           "result"
-        ],
-        "type": "object"
+        ]
       }
     }
   }

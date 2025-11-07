@@ -16,7 +16,7 @@ dotnet = '8.0.414'
 java = 'corretto-11'
 
 # Executable tools
-pulumi = "{{ get_env(name='PULUMI_VERSION_MISE', default='latest') }}"
+pulumi = "3.44.0"
 "github:pulumi/pulumictl" = 'latest'
 "github:pulumi/schema-tools" = "latest"
 gradle = '7.6'
