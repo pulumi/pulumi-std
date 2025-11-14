@@ -4,6 +4,7 @@ major-version: 2
 providerVersion: github.com/pulumi/pulumi-docker-build/std/version.Version
 modulePath: ./std/
 parallel: 3
+noSchema: true # Schema checks are disabled since schema.json isn't in a standard location.
 esc:
     enabled: true
     environment: imports/github-secrets
