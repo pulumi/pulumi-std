@@ -75,6 +75,7 @@ ci-mgmt: .ci-mgmt.yaml
 
 .PHONY: codegen
 codegen: # Required by CI
+	touch bin/pulumi-gen-std
 
 .PHONY: provider
 provider: build # Required by CI
