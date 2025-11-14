@@ -19,7 +19,7 @@ version = "1.64.8"
 backend = "asdf:golangci-lint"
 
 [[tools.gradle]]
-version = "7.6"
+version = "7.6.0"
 backend = "aqua:gradle/gradle"
 
 [[tools.java]]
