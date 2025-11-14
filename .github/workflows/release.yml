@@ -66,7 +66,7 @@ jobs:
         {
           echo 'SCHEMA_CHANGES<<EOF';
 
-          schema-tools compare -p ${{ env.PROVIDER }} -o ${{ github.event.repository.default_branch }} -n --local-path=provider/cmd/pulumi-resource-${{ env.PROVIDER }}/schema.json;
+          schema-tools compare -p ${{ env.PROVIDER }} -o ${{ github.event.repository.default_branch }} -n --local-path=$(find . -name schema.json | head -n1);
 
           echo 'EOF';
         } >> "$GITHUB_ENV"
