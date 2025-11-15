@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+## Unreleased
+
+- Upgrade to `pulumi-go-provider` v1.
+
 ## 2.2.0 (2025-02-13)
 
 ### Improvements
