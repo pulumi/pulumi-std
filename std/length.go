@@ -46,6 +46,6 @@ func (*Length) Invoke(
 	case map[string]interface{}:
 		return infer.FunctionResponse[LengthResult]{Output: LengthResult{len(v)}}, nil
 	default:
-		return infer.FunctionResponse[LengthResult]{Output: LengthResult{}}, errors.New("input must be a string, list, or map")
+		return infer.FunctionResponse[LengthResult]{}, errors.New("input must be a string, list, or map")
 	}
 }

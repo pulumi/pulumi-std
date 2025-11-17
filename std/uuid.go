@@ -38,7 +38,7 @@ func (r *Uuid) Annotate(a infer.Annotator) {
 
 func (*Uuid) Invoke(
 	_ context.Context,
-	input infer.FunctionRequest[UuidArgs],
+	_ infer.FunctionRequest[UuidArgs],
 ) (infer.FunctionResponse[UuidResult], error) {
 	return infer.FunctionResponse[UuidResult]{Output: UuidResult{uuid.New().String()}}, nil
 }

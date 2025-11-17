@@ -34,7 +34,7 @@ func (r *Timestamp) Annotate(a infer.Annotator) {
 
 func (*Timestamp) Invoke(
 	_ context.Context,
-	input infer.FunctionRequest[TimestampArgs],
+	_ infer.FunctionRequest[TimestampArgs],
 ) (infer.FunctionResponse[TimestampResult], error) {
 	return infer.FunctionResponse[TimestampResult]{Output: TimestampResult{time.Now().Format(time.RFC3339)}}, nil
 }

@@ -15,9 +15,8 @@
 package std
 
 import (
-	//nolint // we need sha1 support for compatibility
 	"context"
-	"crypto/sha1"
+	"crypto/sha1" //nolint:gosec // we need sha1 support for compatibility
 	"encoding/hex"
 
 	"github.com/pulumi/pulumi-go-provider/infer"

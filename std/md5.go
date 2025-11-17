@@ -15,9 +15,8 @@
 package std
 
 import (
-	//nolint // we need md5 support for compatibility
 	"context"
-	"crypto/md5"
+	"crypto/md5" //nolint:gosec // we need md5 support for compatibility
 	"encoding/hex"
 
 	"github.com/pulumi/pulumi-go-provider/infer"

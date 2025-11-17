@@ -59,7 +59,7 @@ func (*Formatlist) Invoke(
 			if resultLength == -1 {
 				resultLength = len(list)
 			} else if len(list) != resultLength {
-				return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{}}, fmt.Errorf("all list arguments must be of the same length")
+				return infer.FunctionResponse[FormatlistResult]{}, fmt.Errorf("all list arguments must be of the same length")
 			}
 		}
 	}

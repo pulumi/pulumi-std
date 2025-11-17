@@ -48,7 +48,7 @@ func (*Tobool) Invoke(
 	} else if str, ok := input.Input.Input.(string); ok {
 		v, err := strconv.ParseBool(str)
 		if err != nil {
-			return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{nil}}, fmt.Errorf("%v is not a boolean value", input.Input.Input)
+			return infer.FunctionResponse[ToboolResult]{}, fmt.Errorf("%v is not a boolean value", input.Input.Input)
 		}
 		return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{toBoolPtr(v)}}, nil
 	}

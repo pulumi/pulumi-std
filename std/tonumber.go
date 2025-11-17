@@ -52,7 +52,7 @@ func (*Tonumber) Invoke(
 		if err != nil {
 			vFloat, err := strconv.ParseFloat(str, 64)
 			if err != nil {
-				return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{nil}}, fmt.Errorf("%v is not a number value", input.Input.Input)
+				return infer.FunctionResponse[TonumberResult]{}, fmt.Errorf("%v is not a number value", input.Input.Input)
 			}
 			return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{toFloat64Ptr(vFloat)}}, nil
 		}
