@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,6 +34,9 @@ func (r *Floor) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the greatest integer value less than or equal to the argument.")
 }
 
-func (*Floor) Call(_ p.Context, input FloorArgs) (FloorResult, error) {
-	return FloorResult{math.Floor(input.Input)}, nil
+func (*Floor) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FloorArgs],
+) (infer.FunctionResponse[FloorResult], error) {
+	return infer.FunctionResponse[FloorResult]{Output: FloorResult{math.Floor(input.Input.Input)}}, nil
 }

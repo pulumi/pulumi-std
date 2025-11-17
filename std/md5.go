@@ -15,11 +15,10 @@
 package std
 
 import (
-	//nolint // we need md5 support for compatibility
-	"crypto/md5"
+	"context"
+	"crypto/md5" //nolint:gosec // we need md5 support for compatibility
 	"encoding/hex"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -38,6 +37,6 @@ func (r *Md5) Annotate(a infer.Annotator) {
 
 var md5AsHex = stringHashFunction(md5.New, hex.EncodeToString)
 
-func (*Md5) Call(_ p.Context, args Md5Args) (Md5Result, error) {
-	return Md5Result{md5AsHex(args.Input)}, nil
+func (*Md5) Invoke(_ context.Context, input infer.FunctionRequest[Md5Args]) (infer.FunctionResponse[Md5Result], error) {
+	return infer.FunctionResponse[Md5Result]{Output: Md5Result{md5AsHex(input.Input.Input)}}, nil
 }

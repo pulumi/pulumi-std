@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -36,30 +36,33 @@ func (r *Slice) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the portion of list between from (inclusive) and to (exclusive).")
 }
 
-func (*Slice) Call(_ p.Context, args SliceArgs) (SliceResult, error) {
+func (*Slice) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[SliceArgs],
+) (infer.FunctionResponse[SliceResult], error) {
 	from := 0
-	if args.From != nil {
-		from = *args.From
+	if input.Input.From != nil {
+		from = *input.Input.From
 	}
 
-	to := len(args.List)
-	if args.To != nil {
-		to = *args.To
+	to := len(input.Input.List)
+	if input.Input.To != nil {
+		to = *input.Input.To
 	}
 
 	if from < 0 {
-		from += len(args.List)
+		from += len(input.Input.List)
 	}
 	if to < 0 {
-		to += len(args.List)
+		to += len(input.Input.List)
 	}
 
-	if from < 0 || from > len(args.List) {
-		return SliceResult{}, errors.New("from index out of range")
+	if from < 0 || from > len(input.Input.List) {
+		return infer.FunctionResponse[SliceResult]{Output: SliceResult{}}, errors.New("from index out of range")
 	}
-	if to < 0 || to > len(args.List) {
-		return SliceResult{}, errors.New("to index out of range")
+	if to < 0 || to > len(input.Input.List) {
+		return infer.FunctionResponse[SliceResult]{Output: SliceResult{}}, errors.New("to index out of range")
 	}
 
-	return SliceResult{args.List[from:to]}, nil
+	return infer.FunctionResponse[SliceResult]{Output: SliceResult{input.Input.List[from:to]}}, nil
 }

@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"path/filepath"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,7 +35,10 @@ func (r *Abspath) Annotate(a infer.Annotator) {
 If the path is not absolute it will be joined with the current working directory to turn it into an absolute path.`)
 }
 
-func (*Abspath) Call(_ p.Context, args AbspathArgs) (AbspathResult, error) {
-	abs, err := filepath.Abs(args.Input)
-	return AbspathResult{abs}, err
+func (*Abspath) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[AbspathArgs],
+) (infer.FunctionResponse[AbspathResult], error) {
+	abs, err := filepath.Abs(input.Input.Input)
+	return infer.FunctionResponse[AbspathResult]{Output: AbspathResult{abs}}, err
 }

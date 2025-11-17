@@ -15,10 +15,11 @@
 package std
 
 import (
+	"context"
+
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +36,11 @@ func (r *Title) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts the first letter of each word in the given string to uppercase.")
 }
 
-func (*Title) Call(_ p.Context, args TitleArgs) (TitleResult, error) {
-	return TitleResult{cases.Title(language.English).String(args.Input)}, nil
+func (*Title) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TitleArgs],
+) (infer.FunctionResponse[TitleResult], error) {
+	return infer.FunctionResponse[TitleResult]{
+		Output: TitleResult{cases.Title(language.English).String(input.Input.Input)},
+	}, nil
 }

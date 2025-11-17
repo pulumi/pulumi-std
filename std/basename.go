@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"path/filepath"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,6 +34,9 @@ func (r *Basename) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the last element of the input path.")
 }
 
-func (*Basename) Call(_ p.Context, args BasenameArgs) (BasenameResult, error) {
-	return BasenameResult{filepath.Base(args.Input)}, nil
+func (*Basename) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[BasenameArgs],
+) (infer.FunctionResponse[BasenameResult], error) {
+	return infer.FunctionResponse[BasenameResult]{Output: BasenameResult{filepath.Base(input.Input.Input)}}, nil
 }

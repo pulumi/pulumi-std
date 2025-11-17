@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,6 +34,9 @@ func (r *Lower) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a copy of the string with all Unicode letters mapped to their lower case.")
 }
 
-func (*Lower) Call(_ p.Context, args LowerArgs) (LowerResult, error) {
-	return LowerResult{strings.ToLower(args.Input)}, nil
+func (*Lower) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[LowerArgs],
+) (infer.FunctionResponse[LowerResult], error) {
+	return infer.FunctionResponse[LowerResult]{Output: LowerResult{strings.ToLower(input.Input.Input)}}, nil
 }

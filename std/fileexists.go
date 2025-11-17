@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,10 +33,13 @@ func (r *Fileexists) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines whether a file exists at a given path.")
 }
 
-func (*Fileexists) Call(_ p.Context, args FileexistsArgs) (FileexistsResult, error) {
-	_, err := readFileContents(args.Input)
+func (*Fileexists) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FileexistsArgs],
+) (infer.FunctionResponse[FileexistsResult], error) {
+	_, err := readFileContents(input.Input.Input)
 	if err != nil {
-		return FileexistsResult{false}, err
+		return infer.FunctionResponse[FileexistsResult]{Output: FileexistsResult{false}}, err
 	}
-	return FileexistsResult{true}, nil
+	return infer.FunctionResponse[FileexistsResult]{Output: FileexistsResult{true}}, nil
 }

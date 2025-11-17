@@ -15,6 +15,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -25,7 +26,7 @@ import (
 )
 
 func main() {
-	err := p.RunProvider("std", version.Version, std.Provider())
+	err := p.RunProvider(context.Background(), "std", version.Version, std.Provider())
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 		os.Exit(1)

@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -42,14 +42,17 @@ func (r *Csvdecode) Annotate(a infer.Annotator) {
 	Follows the format defined in RFC 4180.`)
 }
 
-func (*Csvdecode) Call(_ p.Context, args CsvdecodeArgs) (CsvdecodeResult, error) {
+func (*Csvdecode) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CsvdecodeArgs],
+) (infer.FunctionResponse[CsvdecodeResult], error) {
 	res := make([]map[string]string, 0)
-	if args.Input == "" {
-		return CsvdecodeResult{res}, nil
+	if input.Input.Input == "" {
+		return infer.FunctionResponse[CsvdecodeResult]{Output: CsvdecodeResult{res}}, nil
 	}
-	rows := strings.Split(args.Input, "\n")
+	rows := strings.Split(input.Input.Input, "\n")
 	if len(rows) == 1 {
-		return CsvdecodeResult{res}, nil
+		return infer.FunctionResponse[CsvdecodeResult]{Output: CsvdecodeResult{res}}, nil
 	}
 
 	header := strings.Split(rows[0], ",")
@@ -57,7 +60,11 @@ func (*Csvdecode) Call(_ p.Context, args CsvdecodeArgs) (CsvdecodeResult, error)
 	for i := 1; i < len(rows); i++ {
 		row := strings.Split(rows[i], ",")
 		if len(row) != numColumns {
-			return CsvdecodeResult{res}, errors.New("Invalid input: each line must contain the same number of fields")
+			return infer.FunctionResponse[CsvdecodeResult]{
+					Output: CsvdecodeResult{res},
+				}, errors.New(
+					"Invalid input: each line must contain the same number of fields",
+				)
 		}
 		m := make(map[string]string)
 		for c := 0; c < numColumns; c++ {
@@ -67,5 +74,5 @@ func (*Csvdecode) Call(_ p.Context, args CsvdecodeArgs) (CsvdecodeResult, error)
 		res = append(res, m)
 	}
 
-	return CsvdecodeResult{res}, nil
+	return infer.FunctionResponse[CsvdecodeResult]{Output: CsvdecodeResult{res}}, nil
 }

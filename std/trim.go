@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,11 @@ func (r *Trim) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified set of characters from the start and end of the given string.`)
 }
 
-func (*Trim) Call(_ p.Context, args TrimArgs) (TrimResult, error) {
-	return TrimResult{strings.Trim(args.Input, args.CutSet)}, nil
+func (*Trim) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TrimArgs],
+) (infer.FunctionResponse[TrimResult], error) {
+	return infer.FunctionResponse[TrimResult]{
+		Output: TrimResult{strings.Trim(input.Input.Input, input.Input.CutSet)},
+	}, nil
 }

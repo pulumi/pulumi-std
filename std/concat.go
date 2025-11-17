@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,11 +33,14 @@ func (r *Concat) Annotate(a infer.Annotator) {
 	a.Describe(r, "Combines two or more lists into a single list.")
 }
 
-func (*Concat) Call(_ p.Context, args ConcatArgs) (ConcatResult, error) {
+func (*Concat) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ConcatArgs],
+) (infer.FunctionResponse[ConcatResult], error) {
 	output := make([]interface{}, 0)
-	for _, list := range args.Input {
+	for _, list := range input.Input.Input {
 		output = append(output, list...)
 	}
 
-	return ConcatResult{output}, nil
+	return infer.FunctionResponse[ConcatResult]{Output: ConcatResult{output}}, nil
 }
