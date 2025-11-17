@@ -72,10 +72,18 @@ func cidrsubnets(ipaddress string, newbitsList ...int) ([]string, error) {
 	return subnets, nil
 }
 
-func (*Cidrsubnets) Invoke(_ context.Context, input infer.FunctionRequest[CidrsubnetsArgs]) (infer.FunctionResponse[CidrsubnetsResult], error) {
+func (*Cidrsubnets) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CidrsubnetsArgs],
+) (infer.FunctionResponse[CidrsubnetsResult], error) {
 	_, network, err := net.ParseCIDR(input.Input.Input)
 	if err != nil {
-		return infer.FunctionResponse[CidrsubnetsResult]{Output: CidrsubnetsResult{}}, fmt.Errorf("invalid CIDR expression: %w", err)
+		return infer.FunctionResponse[CidrsubnetsResult]{
+				Output: CidrsubnetsResult{},
+			}, fmt.Errorf(
+				"invalid CIDR expression: %w",
+				err,
+			)
 	}
 
 	startPrefixLen, _ := network.Mask.Size()

@@ -31,10 +31,16 @@ type TransposeResult struct {
 }
 
 func (r *Transpose) Annotate(a infer.Annotator) {
-	a.Describe(r, `Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.`)
+	a.Describe(
+		r,
+		`Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.`,
+	)
 }
 
-func (*Transpose) Invoke(_ context.Context, input infer.FunctionRequest[TransposeArgs]) (infer.FunctionResponse[TransposeResult], error) {
+func (*Transpose) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TransposeArgs],
+) (infer.FunctionResponse[TransposeResult], error) {
 	res := make(map[string][]string)
 	for k, l := range input.Input.Input {
 		for _, v := range l {

@@ -37,7 +37,10 @@ func (r *Bcrypt) Annotate(a infer.Annotator) {
 A default cost of 10 will be used if not provided.`)
 }
 
-func (*Bcrypt) Invoke(_ context.Context, input infer.FunctionRequest[BcryptArgs]) (infer.FunctionResponse[BcryptResult], error) {
+func (*Bcrypt) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[BcryptArgs],
+) (infer.FunctionResponse[BcryptResult], error) {
 	defaultCost := 10
 	if input.Input.Cost != nil {
 		defaultCost = *input.Input.Cost
@@ -45,7 +48,12 @@ func (*Bcrypt) Invoke(_ context.Context, input infer.FunctionRequest[BcryptArgs]
 
 	hash, err := bcrypt.GenerateFromPassword([]byte(input.Input.Input), defaultCost)
 	if err != nil {
-		return infer.FunctionResponse[BcryptResult]{Output: BcryptResult{}}, fmt.Errorf("error occurred generating password %s", err.Error())
+		return infer.FunctionResponse[BcryptResult]{
+				Output: BcryptResult{},
+			}, fmt.Errorf(
+				"error occurred generating password %s",
+				err.Error(),
+			)
 	}
 	return infer.FunctionResponse[BcryptResult]{Output: BcryptResult{string(hash)}}, nil
 }

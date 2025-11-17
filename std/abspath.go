@@ -35,7 +35,10 @@ func (r *Abspath) Annotate(a infer.Annotator) {
 If the path is not absolute it will be joined with the current working directory to turn it into an absolute path.`)
 }
 
-func (*Abspath) Invoke(_ context.Context, input infer.FunctionRequest[AbspathArgs]) (infer.FunctionResponse[AbspathResult], error) {
+func (*Abspath) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[AbspathArgs],
+) (infer.FunctionResponse[AbspathResult], error) {
 	abs, err := filepath.Abs(input.Input.Input)
 	return infer.FunctionResponse[AbspathResult]{Output: AbspathResult{abs}}, err
 }

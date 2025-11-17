@@ -36,7 +36,10 @@ func (r *Substr) Annotate(a infer.Annotator) {
 	a.Describe(r, "Extracts a substring from the given string.")
 }
 
-func (*Substr) Invoke(_ context.Context, input infer.FunctionRequest[SubstrArgs]) (infer.FunctionResponse[SubstrResult], error) {
+func (*Substr) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[SubstrArgs],
+) (infer.FunctionResponse[SubstrResult], error) {
 	in := []byte(input.Input.Input)
 	if input.Input.Length == 0 {
 		return infer.FunctionResponse[SubstrResult]{Output: SubstrResult{""}}, nil

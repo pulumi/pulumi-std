@@ -35,9 +35,16 @@ func (r *Element) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the element at the specified index.")
 }
 
-func (*Element) Invoke(_ context.Context, input infer.FunctionRequest[ElementArgs]) (infer.FunctionResponse[ElementResult], error) {
+func (*Element) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ElementArgs],
+) (infer.FunctionResponse[ElementResult], error) {
 	if len(input.Input.Input) == 0 {
-		return infer.FunctionResponse[ElementResult]{Output: ElementResult{}}, errors.New("input list must not be empty when using the element function")
+		return infer.FunctionResponse[ElementResult]{
+				Output: ElementResult{},
+			}, errors.New(
+				"input list must not be empty when using the element function",
+			)
 	}
 
 	index := input.Input.Index % len(input.Input.Input)

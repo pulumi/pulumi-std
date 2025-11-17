@@ -37,9 +37,16 @@ func (r *Matchkeys) Annotate(a infer.Annotator) {
 returns all elements from values where the corresponding element from keys exists in the searchset list.`)
 }
 
-func (*Matchkeys) Invoke(_ context.Context, input infer.FunctionRequest[MatchkeysArgs]) (infer.FunctionResponse[MatchkeysResult], error) {
+func (*Matchkeys) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[MatchkeysArgs],
+) (infer.FunctionResponse[MatchkeysResult], error) {
 	if len(input.Input.Values) != len(input.Input.keys) {
-		return infer.FunctionResponse[MatchkeysResult]{Output: MatchkeysResult{}}, errors.New("values and keys must be of equal length")
+		return infer.FunctionResponse[MatchkeysResult]{
+				Output: MatchkeysResult{},
+			}, errors.New(
+				"values and keys must be of equal length",
+			)
 	}
 
 	var output []string

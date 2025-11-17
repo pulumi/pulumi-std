@@ -34,7 +34,10 @@ func (r *Merge) Annotate(a infer.Annotator) {
 and duplicate keys overwrite previous entries.`)
 }
 
-func (*Merge) Invoke(_ context.Context, input infer.FunctionRequest[MergeArgs]) (infer.FunctionResponse[MergeResult], error) {
+func (*Merge) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[MergeArgs],
+) (infer.FunctionResponse[MergeResult], error) {
 	result := make(map[string]interface{})
 	for _, m := range input.Input.Input {
 		for k, v := range m {

@@ -33,7 +33,10 @@ func (r *Signum) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the greatest integer value less than or equal to the argument.")
 }
 
-func (*Signum) Invoke(_ context.Context, input infer.FunctionRequest[SignumArgs]) (infer.FunctionResponse[SignumResult], error) {
+func (*Signum) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[SignumArgs],
+) (infer.FunctionResponse[SignumResult], error) {
 	switch {
 	case input.Input.Input > 0:
 		return infer.FunctionResponse[SignumResult]{Output: SignumResult{1}}, nil

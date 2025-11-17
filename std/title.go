@@ -34,6 +34,9 @@ func (r *Title) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts the first letter of each word in the given string to uppercase.")
 }
 
-func (*Title) Invoke(_ context.Context, input infer.FunctionRequest[TitleArgs]) (infer.FunctionResponse[TitleResult], error) {
+func (*Title) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TitleArgs],
+) (infer.FunctionResponse[TitleResult], error) {
 	return infer.FunctionResponse[TitleResult]{Output: TitleResult{strings.Title(input.Input.Input)}}, nil
 }

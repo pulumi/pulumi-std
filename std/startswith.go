@@ -35,6 +35,11 @@ func (r *Startswith) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines if the input string starts with the suffix.")
 }
 
-func (*Startswith) Invoke(_ context.Context, input infer.FunctionRequest[StartswithArgs]) (infer.FunctionResponse[StartswithResult], error) {
-	return infer.FunctionResponse[StartswithResult]{Output: StartswithResult{strings.HasPrefix(input.Input.Input, input.Input.Prefix)}}, nil
+func (*Startswith) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[StartswithArgs],
+) (infer.FunctionResponse[StartswithResult], error) {
+	return infer.FunctionResponse[StartswithResult]{
+		Output: StartswithResult{strings.HasPrefix(input.Input.Input, input.Input.Prefix)},
+	}, nil
 }

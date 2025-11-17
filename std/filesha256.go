@@ -33,7 +33,10 @@ func (r *Filesha256) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into a string and returns the SHA256 hash of it.")
 }
 
-func (*Filesha256) Invoke(_ context.Context, input infer.FunctionRequest[Filesha256Args]) (infer.FunctionResponse[Filesha256Result], error) {
+func (*Filesha256) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[Filesha256Args],
+) (infer.FunctionResponse[Filesha256Result], error) {
 	contents, err := readFileContents(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[Filesha256Result]{Output: Filesha256Result{}}, err

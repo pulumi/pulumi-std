@@ -42,7 +42,10 @@ func (r *Csvdecode) Annotate(a infer.Annotator) {
 	Follows the format defined in RFC 4180.`)
 }
 
-func (*Csvdecode) Invoke(_ context.Context, input infer.FunctionRequest[CsvdecodeArgs]) (infer.FunctionResponse[CsvdecodeResult], error) {
+func (*Csvdecode) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CsvdecodeArgs],
+) (infer.FunctionResponse[CsvdecodeResult], error) {
 	res := make([]map[string]string, 0)
 	if input.Input.Input == "" {
 		return infer.FunctionResponse[CsvdecodeResult]{Output: CsvdecodeResult{res}}, nil
@@ -57,7 +60,11 @@ func (*Csvdecode) Invoke(_ context.Context, input infer.FunctionRequest[Csvdecod
 	for i := 1; i < len(rows); i++ {
 		row := strings.Split(rows[i], ",")
 		if len(row) != numColumns {
-			return infer.FunctionResponse[CsvdecodeResult]{Output: CsvdecodeResult{res}}, errors.New("Invalid input: each line must contain the same number of fields")
+			return infer.FunctionResponse[CsvdecodeResult]{
+					Output: CsvdecodeResult{res},
+				}, errors.New(
+					"Invalid input: each line must contain the same number of fields",
+				)
 		}
 		m := make(map[string]string)
 		for c := 0; c < numColumns; c++ {

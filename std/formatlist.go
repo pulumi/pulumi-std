@@ -41,10 +41,15 @@ func (r *Formatlist) Annotate(a infer.Annotator) {
 	)
 }
 
-func (*Formatlist) Invoke(_ context.Context, input infer.FunctionRequest[FormatlistArgs]) (infer.FunctionResponse[FormatlistResult], error) {
+func (*Formatlist) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FormatlistArgs],
+) (infer.FunctionResponse[FormatlistResult], error) {
 	// If we weren't passed any arguments, we can only attempt to format the input string.
 	if len(input.Input.Args) == 0 {
-		return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{[]string{format(input.Input.Input)}}}, nil
+		return infer.FunctionResponse[FormatlistResult]{
+			Output: FormatlistResult{[]string{format(input.Input.Input)}},
+		}, nil
 	}
 
 	// We have arguments -- ensure that all lists which appear are of the same length, and calculate that length.
@@ -61,7 +66,9 @@ func (*Formatlist) Invoke(_ context.Context, input infer.FunctionRequest[Formatl
 
 	if resultLength == -1 {
 		// There are no lists in the arguments, so we can just format the input string.
-		return infer.FunctionResponse[FormatlistResult]{Output: FormatlistResult{[]string{format(input.Input.Input, input.Input.Args...)}}}, nil
+		return infer.FunctionResponse[FormatlistResult]{
+			Output: FormatlistResult{[]string{format(input.Input.Input, input.Input.Args...)}},
+		}, nil
 	}
 
 	if resultLength == 0 {

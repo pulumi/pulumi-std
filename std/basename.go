@@ -34,6 +34,9 @@ func (r *Basename) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the last element of the input path.")
 }
 
-func (*Basename) Invoke(_ context.Context, input infer.FunctionRequest[BasenameArgs]) (infer.FunctionResponse[BasenameResult], error) {
+func (*Basename) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[BasenameArgs],
+) (infer.FunctionResponse[BasenameResult], error) {
 	return infer.FunctionResponse[BasenameResult]{Output: BasenameResult{filepath.Base(input.Input.Input)}}, nil
 }

@@ -38,7 +38,10 @@ func (r *Regex) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the first match of a regular expression in a string (including named or indexed groups).")
 }
 
-func (*Regex) Invoke(_ context.Context, input infer.FunctionRequest[RegexArgs]) (infer.FunctionResponse[RegexResult], error) {
+func (*Regex) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[RegexArgs],
+) (infer.FunctionResponse[RegexResult], error) {
 	re, err := regexp.Compile(input.Input.Pattern)
 	if err != nil {
 		return infer.FunctionResponse[RegexResult]{Output: RegexResult{}}, err
@@ -58,7 +61,9 @@ func (*Regex) Invoke(_ context.Context, input infer.FunctionRequest[RegexArgs]) 
 	for _, name := range re.SubexpNames() {
 		if name == "" && hasNamedSubExp {
 			return infer.FunctionResponse[RegexResult]{Output: RegexResult{}},
-				errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
+				errors.New(
+					"regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed",
+				)
 		}
 
 		if name != "" {

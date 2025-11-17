@@ -42,7 +42,10 @@ func (r *Coalesce) Annotate(a infer.Annotator) {
 	)
 }
 
-func (*Coalesce) Invoke(_ context.Context, input infer.FunctionRequest[CoalesceArgs]) (infer.FunctionResponse[CoalesceResult], error) {
+func (*Coalesce) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CoalesceArgs],
+) (infer.FunctionResponse[CoalesceResult], error) {
 	resultType, err := assignableType(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[CoalesceResult]{Output: CoalesceResult{}}, err

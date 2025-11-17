@@ -48,7 +48,10 @@ func base64Decode(input string) (string, error) {
 	return string(decoded), nil
 }
 
-func (*Base64decode) Invoke(_ context.Context, input infer.FunctionRequest[Base64DecodeArgs]) (infer.FunctionResponse[Base64DecodeResult], error) {
+func (*Base64decode) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[Base64DecodeArgs],
+) (infer.FunctionResponse[Base64DecodeResult], error) {
 	decoded, err := base64Decode(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[Base64DecodeResult]{Output: Base64DecodeResult{}}, err

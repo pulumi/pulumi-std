@@ -35,6 +35,11 @@ func (r *Trimsuffix) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified suffix from the end of the given string, if present.`)
 }
 
-func (*Trimsuffix) Invoke(_ context.Context, input infer.FunctionRequest[TrimsuffixArgs]) (infer.FunctionResponse[TrimsuffixResult], error) {
-	return infer.FunctionResponse[TrimsuffixResult]{Output: TrimsuffixResult{strings.TrimSuffix(input.Input.Input, input.Input.Suffix)}}, nil
+func (*Trimsuffix) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TrimsuffixArgs],
+) (infer.FunctionResponse[TrimsuffixResult], error) {
+	return infer.FunctionResponse[TrimsuffixResult]{
+		Output: TrimsuffixResult{strings.TrimSuffix(input.Input.Input, input.Input.Suffix)},
+	}, nil
 }

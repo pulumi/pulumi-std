@@ -41,7 +41,10 @@ func (r *Timecmp) Annotate(a infer.Annotator) {
 	If 'timestamp_a' is after 'timestamp_b', 1 is returned.`)
 }
 
-func (*Timecmp) Invoke(_ context.Context, input infer.FunctionRequest[TimecmpArgs]) (infer.FunctionResponse[TimecmpResult], error) {
+func (*Timecmp) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TimecmpArgs],
+) (infer.FunctionResponse[TimecmpResult], error) {
 	timestampA, err := time.Parse(time.RFC3339, input.Input.TimestampA)
 	if err != nil {
 		return infer.FunctionResponse[TimecmpResult]{Output: TimecmpResult{}}, err

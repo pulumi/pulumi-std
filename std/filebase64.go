@@ -59,7 +59,10 @@ func readFileContentsToBase64(path string) (string, error) {
 	return base64.StdEncoding.EncodeToString(fileBytes), nil
 }
 
-func (*Filebase64) Invoke(_ context.Context, input infer.FunctionRequest[Filebase64Args]) (infer.FunctionResponse[Filebase64Result], error) {
+func (*Filebase64) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[Filebase64Args],
+) (infer.FunctionResponse[Filebase64Result], error) {
 	encoded, err := readFileContentsToBase64(input.Input.Input)
 	return infer.FunctionResponse[Filebase64Result]{Output: Filebase64Result{encoded}}, err
 }

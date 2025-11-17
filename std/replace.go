@@ -42,15 +42,23 @@ using $n where n is the index or name of the subcapture. If using a regular expr
 the syntax conforms to the re2 regular expression syntax.`)
 }
 
-func (*Replace) Invoke(_ context.Context, input infer.FunctionRequest[ReplaceArgs]) (infer.FunctionResponse[ReplaceResult], error) {
-	if len(input.Input.Search) > 1 && input.Input.Search[0] == '/' && input.Input.Search[len(input.Input.Search)-1] == '/' {
+func (*Replace) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ReplaceArgs],
+) (infer.FunctionResponse[ReplaceResult], error) {
+	if len(input.Input.Search) > 1 && input.Input.Search[0] == '/' &&
+		input.Input.Search[len(input.Input.Search)-1] == '/' {
 		re, err := regexp.Compile(input.Input.Search[1 : len(input.Input.Search)-1])
 		if err != nil {
 			return infer.FunctionResponse[ReplaceResult]{Output: ReplaceResult{}}, err
 		}
 
-		return infer.FunctionResponse[ReplaceResult]{Output: ReplaceResult{re.ReplaceAllString(input.Input.Text, input.Input.Replace)}}, nil
+		return infer.FunctionResponse[ReplaceResult]{
+			Output: ReplaceResult{re.ReplaceAllString(input.Input.Text, input.Input.Replace)},
+		}, nil
 	}
 
-	return infer.FunctionResponse[ReplaceResult]{Output: ReplaceResult{strings.Replace(input.Input.Text, input.Input.Search, input.Input.Replace, -1)}}, nil
+	return infer.FunctionResponse[ReplaceResult]{
+		Output: ReplaceResult{strings.Replace(input.Input.Text, input.Input.Search, input.Input.Replace, -1)},
+	}, nil
 }

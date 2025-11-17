@@ -35,6 +35,11 @@ func (r *Split) Annotate(a infer.Annotator) {
 	a.Describe(r, `Produces a list by dividing a given string at all occurrences of a given separator`)
 }
 
-func (*Split) Invoke(_ context.Context, input infer.FunctionRequest[SplitArgs]) (infer.FunctionResponse[SplitResult], error) {
-	return infer.FunctionResponse[SplitResult]{Output: SplitResult{strings.Split(input.Input.Text, input.Input.Separator)}}, nil
+func (*Split) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[SplitArgs],
+) (infer.FunctionResponse[SplitResult], error) {
+	return infer.FunctionResponse[SplitResult]{
+		Output: SplitResult{strings.Split(input.Input.Text, input.Input.Separator)},
+	}, nil
 }

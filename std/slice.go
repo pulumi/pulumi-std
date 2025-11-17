@@ -36,7 +36,10 @@ func (r *Slice) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the portion of list between from (inclusive) and to (exclusive).")
 }
 
-func (*Slice) Invoke(_ context.Context, input infer.FunctionRequest[SliceArgs]) (infer.FunctionResponse[SliceResult], error) {
+func (*Slice) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[SliceArgs],
+) (infer.FunctionResponse[SliceResult], error) {
 	from := 0
 	if input.Input.From != nil {
 		from = *input.Input.From

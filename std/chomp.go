@@ -34,7 +34,10 @@ func (r *Chomp) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes one or more newline characters from the end of the given string.")
 }
 
-func (*Chomp) Invoke(_ context.Context, input infer.FunctionRequest[ChompArgs]) (infer.FunctionResponse[ChompResult], error) {
+func (*Chomp) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ChompArgs],
+) (infer.FunctionResponse[ChompResult], error) {
 	newlines := regexp.MustCompile(`(?:\r\n?|\n)*\z`)
 	result := newlines.ReplaceAllString(input.Input.Input, "")
 	return infer.FunctionResponse[ChompResult]{Output: ChompResult{result}}, nil

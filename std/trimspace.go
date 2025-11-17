@@ -35,6 +35,9 @@ func (r *Trimspace) Annotate(a infer.Annotator) {
 	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).`)
 }
 
-func (*Trimspace) Invoke(_ context.Context, input infer.FunctionRequest[TrimspaceArgs]) (infer.FunctionResponse[TrimspaceResult], error) {
+func (*Trimspace) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TrimspaceArgs],
+) (infer.FunctionResponse[TrimspaceResult], error) {
 	return infer.FunctionResponse[TrimspaceResult]{Output: TrimspaceResult{strings.TrimSpace(input.Input.Input)}}, nil
 }

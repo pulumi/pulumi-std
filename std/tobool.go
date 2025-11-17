@@ -36,7 +36,10 @@ func (r *Tobool) Annotate(a infer.Annotator) {
 	"true" and "false" can be converted to boolean. All other values will result in an error.`)
 }
 
-func (*Tobool) Invoke(_ context.Context, input infer.FunctionRequest[ToboolArgs]) (infer.FunctionResponse[ToboolResult], error) {
+func (*Tobool) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ToboolArgs],
+) (infer.FunctionResponse[ToboolResult], error) {
 	if input.Input.Input == nil {
 		return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{nil}}, nil
 	}
@@ -50,7 +53,12 @@ func (*Tobool) Invoke(_ context.Context, input infer.FunctionRequest[ToboolArgs]
 		return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{toBoolPtr(v)}}, nil
 	}
 
-	return infer.FunctionResponse[ToboolResult]{Output: ToboolResult{nil}}, fmt.Errorf("%v is not a boolean value", input.Input.Input)
+	return infer.FunctionResponse[ToboolResult]{
+			Output: ToboolResult{nil},
+		}, fmt.Errorf(
+			"%v is not a boolean value",
+			input.Input.Input,
+		)
 }
 
 func toBoolPtr(b bool) *bool {

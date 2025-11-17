@@ -51,7 +51,10 @@ func cidrnetmask(ipaddress string) (string, error) {
 	return net.IP(network.Mask).String(), nil
 }
 
-func (*Cidrnetmask) Invoke(_ context.Context, input infer.FunctionRequest[CidrnetmaskArgs]) (infer.FunctionResponse[CidrnetmaskResult], error) {
+func (*Cidrnetmask) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CidrnetmaskArgs],
+) (infer.FunctionResponse[CidrnetmaskResult], error) {
 	result, err := cidrnetmask(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[CidrnetmaskResult]{Output: CidrnetmaskResult{}}, err

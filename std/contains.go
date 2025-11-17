@@ -34,7 +34,10 @@ func (r *Contains) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns true if a list contains the given element and returns false otherwise.")
 }
 
-func (*Contains) Invoke(_ context.Context, input infer.FunctionRequest[ContainsArgs]) (infer.FunctionResponse[ContainsResult], error) {
+func (*Contains) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ContainsArgs],
+) (infer.FunctionResponse[ContainsResult], error) {
 	for _, element := range input.Input.Input {
 		if jsonDeepEquals(element, input.Input.Element) {
 			return infer.FunctionResponse[ContainsResult]{Output: ContainsResult{true}}, nil

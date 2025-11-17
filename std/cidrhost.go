@@ -55,7 +55,10 @@ func cidrhost(ipaddress string, hostnum int) (string, error) {
 	return ip.String(), nil
 }
 
-func (*Cidrhost) Invoke(_ context.Context, input infer.FunctionRequest[CidrhostArgs]) (infer.FunctionResponse[CidrhostResult], error) {
+func (*Cidrhost) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CidrhostArgs],
+) (infer.FunctionResponse[CidrhostResult], error) {
 	result, err := cidrhost(input.Input.Input, input.Input.Host)
 	if err != nil {
 		return infer.FunctionResponse[CidrhostResult]{Output: CidrhostResult{}}, err

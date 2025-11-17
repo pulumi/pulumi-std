@@ -54,6 +54,9 @@ func flatten(input []interface{}) []interface{} {
 	return output
 }
 
-func (*Flatten) Invoke(_ context.Context, input infer.FunctionRequest[FlattenArgs]) (infer.FunctionResponse[FlattenResult], error) {
+func (*Flatten) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FlattenArgs],
+) (infer.FunctionResponse[FlattenResult], error) {
 	return infer.FunctionResponse[FlattenResult]{Output: FlattenResult{flatten(input.Input.Input)}}, nil
 }

@@ -35,7 +35,10 @@ func (r *Tostring) Annotate(a infer.Annotator) {
 	and null can be converted to string. All other values will result in an error.`)
 }
 
-func (*Tostring) Invoke(_ context.Context, input infer.FunctionRequest[TostringArgs]) (infer.FunctionResponse[TostringResult], error) {
+func (*Tostring) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TostringArgs],
+) (infer.FunctionResponse[TostringResult], error) {
 	if input.Input.Input == nil {
 		return infer.FunctionResponse[TostringResult]{Output: TostringResult{nil}}, nil
 	}
@@ -52,7 +55,12 @@ func (*Tostring) Invoke(_ context.Context, input infer.FunctionRequest[TostringA
 		return infer.FunctionResponse[TostringResult]{Output: TostringResult{toStrPtr(fmt.Sprintf("%v", f))}}, nil
 	}
 
-	return infer.FunctionResponse[TostringResult]{Output: TostringResult{nil}}, fmt.Errorf("%v is not a string value", input.Input.Input)
+	return infer.FunctionResponse[TostringResult]{
+			Output: TostringResult{nil},
+		}, fmt.Errorf(
+			"%v is not a string value",
+			input.Input.Input,
+		)
 }
 
 func toStrPtr(s string) *string {

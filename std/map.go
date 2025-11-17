@@ -37,14 +37,23 @@ func (r *Map) Annotate(a infer.Annotator) {
 
 func (*Map) Invoke(_ context.Context, input infer.FunctionRequest[MapArgs]) (infer.FunctionResponse[MapResult], error) {
 	if len(input.Input.Args)%2 != 0 {
-		return infer.FunctionResponse[MapResult]{Output: MapResult{}}, errors.New("expected an even number of arguments")
+		return infer.FunctionResponse[MapResult]{
+				Output: MapResult{},
+			}, errors.New(
+				"expected an even number of arguments",
+			)
 	}
 
 	result := make(map[string]interface{})
 	for i := 0; i < len(input.Input.Args); i += 2 {
 		key, ok := input.Input.Args[i].(string)
 		if !ok {
-			return infer.FunctionResponse[MapResult]{Output: MapResult{}}, fmt.Errorf("expected a string key at index %d", i)
+			return infer.FunctionResponse[MapResult]{
+					Output: MapResult{},
+				}, fmt.Errorf(
+					"expected a string key at index %d",
+					i,
+				)
 		}
 		result[key] = input.Input.Args[i+1]
 	}

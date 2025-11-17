@@ -35,6 +35,11 @@ func (r *Trim) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified set of characters from the start and end of the given string.`)
 }
 
-func (*Trim) Invoke(_ context.Context, input infer.FunctionRequest[TrimArgs]) (infer.FunctionResponse[TrimResult], error) {
-	return infer.FunctionResponse[TrimResult]{Output: TrimResult{strings.Trim(input.Input.Input, input.Input.CutSet)}}, nil
+func (*Trim) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TrimArgs],
+) (infer.FunctionResponse[TrimResult], error) {
+	return infer.FunctionResponse[TrimResult]{
+		Output: TrimResult{strings.Trim(input.Input.Input, input.Input.CutSet)},
+	}, nil
 }

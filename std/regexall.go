@@ -35,10 +35,16 @@ type RegexallResult struct {
 }
 
 func (r *Regexall) Annotate(a infer.Annotator) {
-	a.Describe(r, "Returns a list of all matches of a regular expression in a string (including named or indexed groups).")
+	a.Describe(
+		r,
+		"Returns a list of all matches of a regular expression in a string (including named or indexed groups).",
+	)
 }
 
-func (*Regexall) Invoke(_ context.Context, input infer.FunctionRequest[RegexallArgs]) (infer.FunctionResponse[RegexallResult], error) {
+func (*Regexall) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[RegexallArgs],
+) (infer.FunctionResponse[RegexallResult], error) {
 	re, err := regexp.Compile(input.Input.Pattern)
 	if err != nil {
 		return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{}}, err
@@ -62,7 +68,9 @@ func (*Regexall) Invoke(_ context.Context, input infer.FunctionRequest[RegexallA
 	for _, name := range re.SubexpNames() {
 		if name == "" && hasNamedSubExp {
 			return infer.FunctionResponse[RegexallResult]{Output: RegexallResult{}},
-				errors.New("regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed")
+				errors.New(
+					"regex pattern contains a mix of named and unnamed submatches, must be all named or all unnamed",
+				)
 		}
 
 		if name != "" {

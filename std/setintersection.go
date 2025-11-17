@@ -42,9 +42,14 @@ func (r *Setintersection) Annotate(a infer.Annotator) {
 // In practice this is hopefully not a massive issue -- Terraform itself is not super consistent in how it treats
 // compound literals like this (e.g. `setintersection([[1, 2]], [[2, 1]])` returns `[[]]` -- the inner lists are *not*
 // treated as sets, while the outer ones are).
-func (*Setintersection) Invoke(_ context.Context, input infer.FunctionRequest[SetintersectionArgs]) (infer.FunctionResponse[SetintersectionResult], error) {
+func (*Setintersection) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[SetintersectionArgs],
+) (infer.FunctionResponse[SetintersectionResult], error) {
 	if len(input.Input.Input) == 0 {
-		return infer.FunctionResponse[SetintersectionResult]{Output: SetintersectionResult{Result: []interface{}{}}}, nil
+		return infer.FunctionResponse[SetintersectionResult]{
+			Output: SetintersectionResult{Result: []interface{}{}},
+		}, nil
 	}
 
 	allInputs := []interface{}{}
@@ -54,7 +59,9 @@ func (*Setintersection) Invoke(_ context.Context, input infer.FunctionRequest[Se
 
 	resultType, err := assignableType(allInputs)
 	if resultType == nil || err != nil {
-		return infer.FunctionResponse[SetintersectionResult]{Output: SetintersectionResult{Result: []interface{}{}}}, err
+		return infer.FunctionResponse[SetintersectionResult]{
+			Output: SetintersectionResult{Result: []interface{}{}},
+		}, err
 	}
 
 	seen := map[interface{}]int{}

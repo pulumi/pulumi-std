@@ -33,7 +33,10 @@ func (r *Fileexists) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines whether a file exists at a given path.")
 }
 
-func (*Fileexists) Invoke(_ context.Context, input infer.FunctionRequest[FileexistsArgs]) (infer.FunctionResponse[FileexistsResult], error) {
+func (*Fileexists) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FileexistsArgs],
+) (infer.FunctionResponse[FileexistsResult], error) {
 	_, err := readFileContents(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[FileexistsResult]{Output: FileexistsResult{false}}, err

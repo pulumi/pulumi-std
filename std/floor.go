@@ -34,6 +34,9 @@ func (r *Floor) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the greatest integer value less than or equal to the argument.")
 }
 
-func (*Floor) Invoke(_ context.Context, input infer.FunctionRequest[FloorArgs]) (infer.FunctionResponse[FloorResult], error) {
+func (*Floor) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FloorArgs],
+) (infer.FunctionResponse[FloorResult], error) {
 	return infer.FunctionResponse[FloorResult]{Output: FloorResult{math.Floor(input.Input.Input)}}, nil
 }

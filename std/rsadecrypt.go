@@ -53,11 +53,18 @@ func formatError(err error) string {
 	}
 }
 
-func (*Rsadecrypt) Invoke(_ context.Context, input infer.FunctionRequest[RsadecryptArgs]) (infer.FunctionResponse[RsadecryptResult], error) {
+func (*Rsadecrypt) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[RsadecryptArgs],
+) (infer.FunctionResponse[RsadecryptResult], error) {
 
 	cipherTextBytes, err := base64.StdEncoding.DecodeString(input.Input.CipherText)
 	if err != nil {
-		return infer.FunctionResponse[RsadecryptResult]{Output: RsadecryptResult{}}, errors.New("failed to decode input cipher text. It must be base64-encoded")
+		return infer.FunctionResponse[RsadecryptResult]{
+				Output: RsadecryptResult{},
+			}, errors.New(
+				"failed to decode input cipher text. It must be base64-encoded",
+			)
 	}
 
 	// Parse the private key.
@@ -69,13 +76,23 @@ func (*Rsadecrypt) Invoke(_ context.Context, input infer.FunctionRequest[Rsadecr
 
 	privateKey, ok := key.(*rsa.PrivateKey)
 	if !ok {
-		return infer.FunctionResponse[RsadecryptResult]{Output: RsadecryptResult{}}, fmt.Errorf("invalid private key type %t", key)
+		return infer.FunctionResponse[RsadecryptResult]{
+				Output: RsadecryptResult{},
+			}, fmt.Errorf(
+				"invalid private key type %t",
+				key,
+			)
 	}
 
 	// Decrypt the ciphertext.
 	decrypted, err := rsa.DecryptPKCS1v15(nil, privateKey, cipherTextBytes)
 	if err != nil {
-		return infer.FunctionResponse[RsadecryptResult]{Output: RsadecryptResult{}}, fmt.Errorf("failed to decrypt: %s", err.Error())
+		return infer.FunctionResponse[RsadecryptResult]{
+				Output: RsadecryptResult{},
+			}, fmt.Errorf(
+				"failed to decrypt: %s",
+				err.Error(),
+			)
 	}
 
 	return infer.FunctionResponse[RsadecryptResult]{Output: RsadecryptResult{string(decrypted)}}, nil

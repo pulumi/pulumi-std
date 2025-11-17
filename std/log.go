@@ -36,5 +36,7 @@ func (r *Log) Annotate(a infer.Annotator) {
 }
 
 func (*Log) Invoke(_ context.Context, input infer.FunctionRequest[LogArgs]) (infer.FunctionResponse[LogResult], error) {
-	return infer.FunctionResponse[LogResult]{Output: LogResult{math.Log(input.Input.Input) / math.Log(input.Input.Base)}}, nil
+	return infer.FunctionResponse[LogResult]{
+		Output: LogResult{math.Log(input.Input.Input) / math.Log(input.Input.Base)},
+	}, nil
 }

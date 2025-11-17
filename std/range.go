@@ -59,7 +59,10 @@ func genRange(start, limit, step float64) []float64 {
 	return res
 }
 
-func (*Range) Invoke(_ context.Context, input infer.FunctionRequest[RangeArgs]) (infer.FunctionResponse[RangeResults], error) {
+func (*Range) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[RangeArgs],
+) (infer.FunctionResponse[RangeResults], error) {
 	if input.Input.Start == nil {
 		start := 0.0
 		input.Input.Start = &start
@@ -74,5 +77,7 @@ func (*Range) Invoke(_ context.Context, input infer.FunctionRequest[RangeArgs]) 
 		input.Input.Step = &step
 	}
 
-	return infer.FunctionResponse[RangeResults]{Output: RangeResults{genRange(*input.Input.Start, input.Input.Limit, *input.Input.Step)}}, nil
+	return infer.FunctionResponse[RangeResults]{
+		Output: RangeResults{genRange(*input.Input.Start, input.Input.Limit, *input.Input.Step)},
+	}, nil
 }

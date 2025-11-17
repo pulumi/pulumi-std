@@ -36,7 +36,10 @@ type FormatResult struct {
 }
 
 func (r *Format) Annotate(a infer.Annotator) {
-	a.Describe(r, "Formats a string according to the given format. The syntax for the format is standard sprintf syntax.")
+	a.Describe(
+		r,
+		"Formats a string according to the given format. The syntax for the format is standard sprintf syntax.",
+	)
 }
 
 // Call implements the `format` function. It is designed to match the behaviour of the Terraform `format` function. The
@@ -44,8 +47,13 @@ func (r *Format) Annotate(a infer.Annotator) {
 // https://github.com/zclconf/go-cty/blob/main/cty/function/stdlib/format.go. When making changes here to ensure
 // compatibility, this source can be used as a reference (and is, for instance, the source of existing checks such as
 // whether numbers are floating-point or integers).
-func (*Format) Invoke(_ context.Context, input infer.FunctionRequest[FormatArgs]) (infer.FunctionResponse[FormatResult], error) {
-	return infer.FunctionResponse[FormatResult]{Output: FormatResult{format(input.Input.Input, input.Input.Args...)}}, nil
+func (*Format) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FormatArgs],
+) (infer.FunctionResponse[FormatResult], error) {
+	return infer.FunctionResponse[FormatResult]{
+		Output: FormatResult{format(input.Input.Input, input.Input.Args...)},
+	}, nil
 }
 
 // format is a helper function that implements the shared logic of the `format` and `formatlist` functions. It takes a

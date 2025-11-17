@@ -36,7 +36,10 @@ func (r *Compact) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes empty and nil string elements from a list.")
 }
 
-func (*Compact) Invoke(_ context.Context, input infer.FunctionRequest[CompactArgs]) (infer.FunctionResponse[CompactResult], error) {
+func (*Compact) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CompactArgs],
+) (infer.FunctionResponse[CompactResult], error) {
 	output := make([]string, 0)
 	for _, value := range input.Input.Input {
 		if value == nil {
@@ -45,7 +48,11 @@ func (*Compact) Invoke(_ context.Context, input infer.FunctionRequest[CompactArg
 
 		v, ok := value.(string)
 		if !ok {
-			return infer.FunctionResponse[CompactResult]{Output: CompactResult{nil}}, errors.New("compact arg is not a string value")
+			return infer.FunctionResponse[CompactResult]{
+					Output: CompactResult{nil},
+				}, errors.New(
+					"compact arg is not a string value",
+				)
 		}
 
 		if ok && v != "" {

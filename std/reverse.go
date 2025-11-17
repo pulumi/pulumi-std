@@ -42,7 +42,10 @@ func reverse(input []interface{}) {
 	}
 }
 
-func (*Reverse) Invoke(_ context.Context, input infer.FunctionRequest[ReverseArgs]) (infer.FunctionResponse[ReverseResult], error) {
+func (*Reverse) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ReverseArgs],
+) (infer.FunctionResponse[ReverseResult], error) {
 	reverse(input.Input.Input)
 	return infer.FunctionResponse[ReverseResult]{Output: ReverseResult{input.Input.Input}}, nil
 }

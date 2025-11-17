@@ -36,7 +36,10 @@ which can contain arbitrarily-nested lists and maps.
 Note that if the value is a string then its value will be placed in quotes.`)
 }
 
-func (*Jsonencode) Invoke(_ context.Context, input infer.FunctionRequest[JsonencodeArgs]) (infer.FunctionResponse[JsonencodeResult], error) {
+func (*Jsonencode) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[JsonencodeArgs],
+) (infer.FunctionResponse[JsonencodeResult], error) {
 	inputBytes, err := json.Marshal(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[JsonencodeResult]{Output: JsonencodeResult{}}, err

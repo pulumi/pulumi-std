@@ -33,7 +33,10 @@ func (r *Filemd5) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into a string and returns the MD5 hash of it.")
 }
 
-func (*Filemd5) Invoke(_ context.Context, input infer.FunctionRequest[Filemd5Args]) (infer.FunctionResponse[Filemd5Result], error) {
+func (*Filemd5) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[Filemd5Args],
+) (infer.FunctionResponse[Filemd5Result], error) {
 	contents, err := readFileContents(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[Filemd5Result]{Output: Filemd5Result{}}, err

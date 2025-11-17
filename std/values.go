@@ -34,7 +34,10 @@ func (r *Values) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a list of the values of the map.")
 }
 
-func (*Values) Invoke(_ context.Context, input infer.FunctionRequest[ValuesArgs]) (infer.FunctionResponse[ValuesResult], error) {
+func (*Values) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ValuesArgs],
+) (infer.FunctionResponse[ValuesResult], error) {
 	keys := make([]string, 0, len(input.Input.Input))
 	for key := range input.Input.Input {
 		keys = append(keys, key)

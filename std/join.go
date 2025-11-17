@@ -35,6 +35,11 @@ func (r *Join) Annotate(a infer.Annotator) {
 	a.Describe(r, "Joins the list with the delimiter for a resultant string.")
 }
 
-func (*Join) Invoke(_ context.Context, input infer.FunctionRequest[JoinArgs]) (infer.FunctionResponse[JoinResult], error) {
-	return infer.FunctionResponse[JoinResult]{Output: JoinResult{strings.Join(input.Input.Input, input.Input.Separator)}}, nil
+func (*Join) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[JoinArgs],
+) (infer.FunctionResponse[JoinResult], error) {
+	return infer.FunctionResponse[JoinResult]{
+		Output: JoinResult{strings.Join(input.Input.Input, input.Input.Separator)},
+	}, nil
 }

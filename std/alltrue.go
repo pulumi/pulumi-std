@@ -34,7 +34,10 @@ func (r *Alltrue) Annotate(a infer.Annotator) {
 It also returns true if the collection is empty.`)
 }
 
-func (*Alltrue) Invoke(_ context.Context, input infer.FunctionRequest[AlltrueArgs]) (infer.FunctionResponse[AlltrueResult], error) {
+func (*Alltrue) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[AlltrueArgs],
+) (infer.FunctionResponse[AlltrueResult], error) {
 	for _, v := range input.Input.Input {
 		value, isBool := v.(bool)
 		if isBool && !value {

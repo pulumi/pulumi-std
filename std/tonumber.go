@@ -36,7 +36,10 @@ func (r *Tonumber) Annotate(a infer.Annotator) {
 	containing decimal representations of numbers can be converted to number. All other values will result in an error`)
 }
 
-func (*Tonumber) Invoke(_ context.Context, input infer.FunctionRequest[TonumberArgs]) (infer.FunctionResponse[TonumberResult], error) {
+func (*Tonumber) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TonumberArgs],
+) (infer.FunctionResponse[TonumberResult], error) {
 	if input.Input.Input == nil {
 		return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{nil}}, nil
 	}
@@ -55,7 +58,12 @@ func (*Tonumber) Invoke(_ context.Context, input infer.FunctionRequest[TonumberA
 		}
 		return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{toFloat64Ptr(float64(vInt))}}, nil
 	}
-	return infer.FunctionResponse[TonumberResult]{Output: TonumberResult{nil}}, fmt.Errorf("%v is not a number value", input.Input.Input)
+	return infer.FunctionResponse[TonumberResult]{
+			Output: TonumberResult{nil},
+		}, fmt.Errorf(
+			"%v is not a number value",
+			input.Input.Input,
+		)
 }
 
 func toFloat64Ptr(f float64) *float64 {

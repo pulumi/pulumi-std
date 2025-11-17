@@ -57,7 +57,10 @@ func cidrsubnet(ipaddress string, newbits int, netnum int) (string, error) {
 	return newNetwork.String(), nil
 }
 
-func (*Cidrsubnet) Invoke(_ context.Context, input infer.FunctionRequest[CidrsubnetArgs]) (infer.FunctionResponse[CidrsubnetResult], error) {
+func (*Cidrsubnet) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CidrsubnetArgs],
+) (infer.FunctionResponse[CidrsubnetResult], error) {
 	result, err := cidrsubnet(input.Input.Input, input.Input.Newbits, input.Input.Netnum)
 	if err != nil {
 		return infer.FunctionResponse[CidrsubnetResult]{Output: CidrsubnetResult{}}, err

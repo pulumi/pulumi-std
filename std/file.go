@@ -33,7 +33,10 @@ func (r *File) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into the string.")
 }
 
-func (*File) Invoke(_ context.Context, input infer.FunctionRequest[FileArgs]) (infer.FunctionResponse[FileResult], error) {
+func (*File) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[FileArgs],
+) (infer.FunctionResponse[FileResult], error) {
 	contents, err := readFileContents(input.Input.Input)
 	if err != nil {
 		return infer.FunctionResponse[FileResult]{Output: FileResult{}}, err

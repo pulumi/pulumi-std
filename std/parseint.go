@@ -38,13 +38,20 @@ and returns the resulting number. The base must be between 2 and 62 inclusive.
 	.`)
 }
 
-func (*Parseint) Invoke(_ context.Context, input infer.FunctionRequest[ParseintArgs]) (infer.FunctionResponse[ParseintResult], error) {
+func (*Parseint) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ParseintArgs],
+) (infer.FunctionResponse[ParseintResult], error) {
 	base := 10
 	if input.Input.Base != nil {
 		base = *input.Input.Base
 	}
 	if base < 2 || base > 62 {
-		return infer.FunctionResponse[ParseintResult]{Output: ParseintResult{}}, fmt.Errorf("base must be between 2 and 62 inclusive")
+		return infer.FunctionResponse[ParseintResult]{
+				Output: ParseintResult{},
+			}, fmt.Errorf(
+				"base must be between 2 and 62 inclusive",
+			)
 	}
 	result, err := strconv.ParseInt(input.Input.Input, base, 64)
 	if err != nil {
