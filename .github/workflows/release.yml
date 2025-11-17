@@ -52,11 +52,6 @@ jobs:
       with:
         cache: 'true'
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - if: github.event_name == 'pull_request'
-      name: Install Schema Tools
-      uses: jaxxstorm/action-install-gh-release@6096f2a2bbfee498ced520b6922ac2c06e990ed2 # v2.1.0
-      with:
-        repo: pulumi/schema-tools
     - name: Build codegen binaries
       run: make codegen
     - name: Build Schema
