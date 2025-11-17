@@ -43,7 +43,7 @@ jobs:
     steps:
       - name: Fetch secrets from ESC
         id: esc-secrets
-        uses: pulumi/esc-action@v1
+        uses: pulumi/esc-action@6cf9520e68354d86f81c455e8d43eabd58f5c9f5 # v1
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Unshallow clone for tags
@@ -58,7 +58,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v2.0.0
+        uses: pulumi/action-install-pulumi-cli@b374ceb6168550de27c6eba92e01c1a774040e11 # v2.0.0
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -131,7 +131,7 @@ jobs:
     steps:
     - name: Fetch secrets from ESC
       id: esc-secrets
-      uses: pulumi/esc-action@v1
+      uses: pulumi/esc-action@6cf9520e68354d86f81c455e8d43eabd58f5c9f5 # v1
     - name: Checkout Repo
       uses: actions/checkout@v3
     - name: Checkout Scripts Repo
@@ -151,7 +151,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/action-install-pulumi-cli@b374ceb6168550de27c6eba92e01c1a774040e11 # v2
     - name: Setup Java
       uses: actions/setup-java@v3
       with:
