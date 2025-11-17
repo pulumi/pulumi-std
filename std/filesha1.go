@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -32,10 +33,13 @@ func (r *Filesha1) Annotate(a infer.Annotator) {
 	a.Describe(r, "Reads the contents of a file into a string and returns the SHA1 hash of it.")
 }
 
-func (*Filesha1) Call(_ p.Context, args Filesha1Args) (Filesha1Result, error) {
-	contents, err := readFileContents(args.Input)
+func (*Filesha1) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[Filesha1Args],
+) (infer.FunctionResponse[Filesha1Result], error) {
+	contents, err := readFileContents(input.Input.Input)
 	if err != nil {
-		return Filesha1Result{}, err
+		return infer.FunctionResponse[Filesha1Result]{Output: Filesha1Result{}}, err
 	}
-	return Filesha1Result{sha1AsHex(contents)}, nil
+	return infer.FunctionResponse[Filesha1Result]{Output: Filesha1Result{sha1AsHex(contents)}}, nil
 }

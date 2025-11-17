@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -37,15 +37,23 @@ func (r *Bcrypt) Annotate(a infer.Annotator) {
 A default cost of 10 will be used if not provided.`)
 }
 
-func (*Bcrypt) Call(_ p.Context, args BcryptArgs) (BcryptResult, error) {
+func (*Bcrypt) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[BcryptArgs],
+) (infer.FunctionResponse[BcryptResult], error) {
 	defaultCost := 10
-	if args.Cost != nil {
-		defaultCost = *args.Cost
+	if input.Input.Cost != nil {
+		defaultCost = *input.Input.Cost
 	}
 
-	hash, err := bcrypt.GenerateFromPassword([]byte(args.Input), defaultCost)
+	hash, err := bcrypt.GenerateFromPassword([]byte(input.Input.Input), defaultCost)
 	if err != nil {
-		return BcryptResult{}, fmt.Errorf("error occurred generating password %s", err.Error())
+		return infer.FunctionResponse[BcryptResult]{
+				Output: BcryptResult{},
+			}, fmt.Errorf(
+				"error occurred generating password %s",
+				err.Error(),
+			)
 	}
-	return BcryptResult{string(hash)}, nil
+	return infer.FunctionResponse[BcryptResult]{Output: BcryptResult{string(hash)}}, nil
 }

@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,15 +35,15 @@ func (r *Min) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the smallest of the floats.")
 }
 
-func (*Min) Call(_ p.Context, args MinArgs) (MinResult, error) {
-	if len(args.Input) == 0 {
-		return MinResult{}, fmt.Errorf("input list must not be empty")
+func (*Min) Invoke(_ context.Context, input infer.FunctionRequest[MinArgs]) (infer.FunctionResponse[MinResult], error) {
+	if len(input.Input.Input) == 0 {
+		return infer.FunctionResponse[MinResult]{Output: MinResult{}}, fmt.Errorf("input list must not be empty")
 	}
 
-	minimum := args.Input[0]
-	for _, current := range args.Input {
+	minimum := input.Input.Input[0]
+	for _, current := range input.Input.Input {
 		minimum = math.Min(minimum, current)
 	}
 
-	return MinResult{minimum}, nil
+	return infer.FunctionResponse[MinResult]{Output: MinResult{minimum}}, nil
 }

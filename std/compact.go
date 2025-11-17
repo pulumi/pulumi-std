@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -36,16 +36,23 @@ func (r *Compact) Annotate(a infer.Annotator) {
 	a.Describe(r, "Removes empty and nil string elements from a list.")
 }
 
-func (*Compact) Call(_ p.Context, args CompactArgs) (CompactResult, error) {
+func (*Compact) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CompactArgs],
+) (infer.FunctionResponse[CompactResult], error) {
 	output := make([]string, 0)
-	for _, value := range args.Input {
+	for _, value := range input.Input.Input {
 		if value == nil {
 			continue
 		}
 
 		v, ok := value.(string)
 		if !ok {
-			return CompactResult{nil}, errors.New("compact arg is not a string value")
+			return infer.FunctionResponse[CompactResult]{
+					Output: CompactResult{nil},
+				}, errors.New(
+					"compact arg is not a string value",
+				)
 		}
 
 		if ok && v != "" {
@@ -53,5 +60,5 @@ func (*Compact) Call(_ p.Context, args CompactArgs) (CompactResult, error) {
 		}
 	}
 
-	return CompactResult{output}, nil
+	return infer.FunctionResponse[CompactResult]{Output: CompactResult{output}}, nil
 }

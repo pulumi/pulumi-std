@@ -15,11 +15,11 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"reflect"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -42,14 +42,17 @@ func (r *Coalesce) Annotate(a infer.Annotator) {
 	)
 }
 
-func (*Coalesce) Call(_ p.Context, args CoalesceArgs) (CoalesceResult, error) {
-	resultType, err := assignableType(args.Input)
+func (*Coalesce) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CoalesceArgs],
+) (infer.FunctionResponse[CoalesceResult], error) {
+	resultType, err := assignableType(input.Input.Input)
 	if err != nil {
-		return CoalesceResult{}, err
+		return infer.FunctionResponse[CoalesceResult]{Output: CoalesceResult{}}, err
 	}
 
 	if resultType == reflect.TypeOf("") {
-		for _, v := range args.Input {
+		for _, v := range input.Input.Input {
 			if v == nil {
 				continue
 			}
@@ -62,19 +65,19 @@ func (*Coalesce) Call(_ p.Context, args CoalesceArgs) (CoalesceResult, error) {
 			}
 
 			if s != "" {
-				return CoalesceResult{s}, nil
+				return infer.FunctionResponse[CoalesceResult]{Output: CoalesceResult{s}}, nil
 			}
 		}
 	} else if resultType != nil {
-		for _, v := range args.Input {
+		for _, v := range input.Input.Input {
 			if v == nil {
 				continue
 			}
 
 			result := reflect.ValueOf(v).Convert(resultType).Interface()
-			return CoalesceResult{result}, nil
+			return infer.FunctionResponse[CoalesceResult]{Output: CoalesceResult{result}}, nil
 		}
 	}
 
-	return CoalesceResult{}, errors.New("no non-empty values found")
+	return infer.FunctionResponse[CoalesceResult]{Output: CoalesceResult{}}, errors.New("no non-empty values found")
 }

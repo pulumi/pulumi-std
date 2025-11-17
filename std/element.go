@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,15 +35,22 @@ func (r *Element) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the element at the specified index.")
 }
 
-func (*Element) Call(_ p.Context, args ElementArgs) (ElementResult, error) {
-	if len(args.Input) == 0 {
-		return ElementResult{}, errors.New("input list must not be empty when using the element function")
+func (*Element) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ElementArgs],
+) (infer.FunctionResponse[ElementResult], error) {
+	if len(input.Input.Input) == 0 {
+		return infer.FunctionResponse[ElementResult]{
+				Output: ElementResult{},
+			}, errors.New(
+				"input list must not be empty when using the element function",
+			)
 	}
 
-	index := args.Index % len(args.Input)
+	index := input.Input.Index % len(input.Input.Input)
 	for index < 0 {
-		index += len(args.Input)
+		index += len(input.Input.Input)
 	}
 
-	return ElementResult{args.Input[index]}, nil
+	return infer.FunctionResponse[ElementResult]{Output: ElementResult{input.Input.Input[index]}}, nil
 }

@@ -15,10 +15,10 @@
 package std
 
 import (
+	"context"
 	"errors"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,19 +35,28 @@ func (r *Map) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns a map consisting of the key/value pairs specified as arguments.")
 }
 
-func (*Map) Call(_ p.Context, args MapArgs) (MapResult, error) {
-	if len(args.Args)%2 != 0 {
-		return MapResult{}, errors.New("expected an even number of arguments")
+func (*Map) Invoke(_ context.Context, input infer.FunctionRequest[MapArgs]) (infer.FunctionResponse[MapResult], error) {
+	if len(input.Input.Args)%2 != 0 {
+		return infer.FunctionResponse[MapResult]{
+				Output: MapResult{},
+			}, errors.New(
+				"expected an even number of arguments",
+			)
 	}
 
 	result := make(map[string]interface{})
-	for i := 0; i < len(args.Args); i += 2 {
-		key, ok := args.Args[i].(string)
+	for i := 0; i < len(input.Input.Args); i += 2 {
+		key, ok := input.Input.Args[i].(string)
 		if !ok {
-			return MapResult{}, fmt.Errorf("expected a string key at index %d", i)
+			return infer.FunctionResponse[MapResult]{
+					Output: MapResult{},
+				}, fmt.Errorf(
+					"expected a string key at index %d",
+					i,
+				)
 		}
-		result[key] = args.Args[i+1]
+		result[key] = input.Input.Args[i+1]
 	}
 
-	return MapResult{result}, nil
+	return infer.FunctionResponse[MapResult]{Output: MapResult{result}}, nil
 }

@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"fmt"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -34,11 +34,14 @@ func (r *Tolist) Annotate(a infer.Annotator) {
 	a.Describe(r, "Converts its argument to a list value.")
 }
 
-func (*Tolist) Call(_ p.Context, args TolistArgs) (TolistResult, error) {
-	if len(args.Input) == 0 {
-		return TolistResult{make([]interface{}, 0)}, nil
+func (*Tolist) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TolistArgs],
+) (infer.FunctionResponse[TolistResult], error) {
+	if len(input.Input.Input) == 0 {
+		return infer.FunctionResponse[TolistResult]{Output: TolistResult{make([]interface{}, 0)}}, nil
 	}
-	return TolistResult{convertListSameType(args.Input)}, nil
+	return infer.FunctionResponse[TolistResult]{Output: TolistResult{convertListSameType(input.Input.Input)}}, nil
 }
 
 func isSameType(a, b interface{}) bool {

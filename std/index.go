@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,16 +35,23 @@ func (r *Index) Annotate(a infer.Annotator) {
 	a.Describe(r, "Finds the index of a given element in a list.")
 }
 
-func (*Index) Call(_ p.Context, args IndexArgs) (IndexResult, error) {
-	if len(args.Input) == 0 {
-		return IndexResult{}, errors.New("input list must not be empty when using the index function")
+func (*Index) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[IndexArgs],
+) (infer.FunctionResponse[IndexResult], error) {
+	if len(input.Input.Input) == 0 {
+		return infer.FunctionResponse[IndexResult]{
+				Output: IndexResult{},
+			}, errors.New(
+				"input list must not be empty when using the index function",
+			)
 	}
 
-	for index, value := range args.Input {
-		if jsonDeepEquals(value, args.Element) {
-			return IndexResult{index}, nil
+	for index, value := range input.Input.Input {
+		if jsonDeepEquals(value, input.Input.Element) {
+			return infer.FunctionResponse[IndexResult]{Output: IndexResult{index}}, nil
 		}
 	}
 
-	return IndexResult{}, errors.New("item not found")
+	return infer.FunctionResponse[IndexResult]{Output: IndexResult{}}, errors.New("item not found")
 }

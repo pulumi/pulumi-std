@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,9 @@ func (r *Trimspace) Annotate(a infer.Annotator) {
 	following the Unicode definition of \"space\" (i.e. spaces, tabs, newline, etc.).`)
 }
 
-func (*Trimspace) Call(_ p.Context, args TrimspaceArgs) (TrimspaceResult, error) {
-	return TrimspaceResult{strings.TrimSpace(args.Input)}, nil
+func (*Trimspace) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TrimspaceArgs],
+) (infer.FunctionResponse[TrimspaceResult], error) {
+	return infer.FunctionResponse[TrimspaceResult]{Output: TrimspaceResult{strings.TrimSpace(input.Input.Input)}}, nil
 }

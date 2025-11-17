@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"sort"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -31,12 +31,18 @@ type TransposeResult struct {
 }
 
 func (r *Transpose) Annotate(a infer.Annotator) {
-	a.Describe(r, `Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.`)
+	a.Describe(
+		r,
+		`Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.`,
+	)
 }
 
-func (*Transpose) Call(_ p.Context, args TransposeArgs) (TransposeResult, error) {
+func (*Transpose) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TransposeArgs],
+) (infer.FunctionResponse[TransposeResult], error) {
 	res := make(map[string][]string)
-	for k, l := range args.Input {
+	for k, l := range input.Input.Input {
 		for _, v := range l {
 			if _, ok := res[v]; ok {
 				res[v] = append(res[v], k)
@@ -49,5 +55,5 @@ func (*Transpose) Call(_ p.Context, args TransposeArgs) (TransposeResult, error)
 	for _, v := range res {
 		sort.Strings(v)
 	}
-	return TransposeResult{res}, nil
+	return infer.FunctionResponse[TransposeResult]{Output: TransposeResult{res}}, nil
 }

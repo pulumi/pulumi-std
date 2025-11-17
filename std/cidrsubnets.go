@@ -15,11 +15,11 @@
 package std
 
 import (
+	"context"
 	"fmt"
 	"net"
 
 	"github.com/apparentlymart/go-cidr/cidr"
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -72,33 +72,41 @@ func cidrsubnets(ipaddress string, newbitsList ...int) ([]string, error) {
 	return subnets, nil
 }
 
-func (*Cidrsubnets) Call(_ p.Context, args CidrsubnetsArgs) (CidrsubnetsResult, error) {
-	_, network, err := net.ParseCIDR(args.Input)
+func (*Cidrsubnets) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[CidrsubnetsArgs],
+) (infer.FunctionResponse[CidrsubnetsResult], error) {
+	_, network, err := net.ParseCIDR(input.Input.Input)
 	if err != nil {
-		return CidrsubnetsResult{}, fmt.Errorf("invalid CIDR expression: %w", err)
+		return infer.FunctionResponse[CidrsubnetsResult]{
+				Output: CidrsubnetsResult{},
+			}, fmt.Errorf(
+				"invalid CIDR expression: %w",
+				err,
+			)
 	}
 
 	startPrefixLen, _ := network.Mask.Size()
 
-	if len(args.Newbits) == 0 {
-		return CidrsubnetsResult{[]string{}}, nil
+	if len(input.Input.Newbits) == 0 {
+		return infer.FunctionResponse[CidrsubnetsResult]{Output: CidrsubnetsResult{[]string{}}}, nil
 	}
 
-	results := make([]string, len(args.Newbits))
+	results := make([]string, len(input.Input.Newbits))
 
-	firstLength := args.Newbits[0] + startPrefixLen
+	firstLength := input.Input.Newbits[0] + startPrefixLen
 
 	current, _ := cidr.PreviousSubnet(network, firstLength)
-	for i, length := range args.Newbits {
+	for i, length := range input.Input.Newbits {
 		if length < 1 {
-			return CidrsubnetsResult{}, fmt.Errorf(
+			return infer.FunctionResponse[CidrsubnetsResult]{Output: CidrsubnetsResult{}}, fmt.Errorf(
 				"argument %d (%d) must extend prefix by at least one bit",
 				i+1, length,
 			)
 		}
 
 		if length > 32 {
-			return CidrsubnetsResult{}, fmt.Errorf(
+			return infer.FunctionResponse[CidrsubnetsResult]{Output: CidrsubnetsResult{}}, fmt.Errorf(
 				"argument %d (%d) may not extend prefix by more than 32 bits",
 				i+1, length,
 			)
@@ -114,7 +122,7 @@ func (*Cidrsubnets) Call(_ p.Context, args CidrsubnetsArgs) (CidrsubnetsResult, 
 				protocol = "IPv6"
 			}
 
-			return CidrsubnetsResult{}, fmt.Errorf(
+			return infer.FunctionResponse[CidrsubnetsResult]{Output: CidrsubnetsResult{}}, fmt.Errorf(
 				"argument %d would extend prefix to %d bits, which is too long for an %s address",
 				i+1, length, protocol,
 			)
@@ -122,7 +130,7 @@ func (*Cidrsubnets) Call(_ p.Context, args CidrsubnetsArgs) (CidrsubnetsResult, 
 
 		next, overflowed := cidr.NextSubnet(current, length)
 		if overflowed || !network.Contains(next.IP) {
-			return CidrsubnetsResult{}, fmt.Errorf(
+			return infer.FunctionResponse[CidrsubnetsResult]{Output: CidrsubnetsResult{}}, fmt.Errorf(
 				"not enough remaining address space for a subnet with a prefix of %d bits after %s",
 				length, current.String(),
 			)
@@ -132,5 +140,5 @@ func (*Cidrsubnets) Call(_ p.Context, args CidrsubnetsArgs) (CidrsubnetsResult, 
 		results[i] = current.String()
 	}
 
-	return CidrsubnetsResult{results}, nil
+	return infer.FunctionResponse[CidrsubnetsResult]{Output: CidrsubnetsResult{results}}, nil
 }

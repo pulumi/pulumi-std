@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,11 @@ func (r *Startswith) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines if the input string starts with the suffix.")
 }
 
-func (*Startswith) Call(_ p.Context, args StartswithArgs) (StartswithResult, error) {
-	return StartswithResult{strings.HasPrefix(args.Input, args.Prefix)}, nil
+func (*Startswith) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[StartswithArgs],
+) (infer.FunctionResponse[StartswithResult], error) {
+	return infer.FunctionResponse[StartswithResult]{
+		Output: StartswithResult{strings.HasPrefix(input.Input.Input, input.Input.Prefix)},
+	}, nil
 }

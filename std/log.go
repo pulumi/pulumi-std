@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"math"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,8 @@ func (r *Log) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns the greatest integer value less than or equal to the argument.")
 }
 
-func (*Log) Call(_ p.Context, args LogArgs) (LogResult, error) {
-	return LogResult{math.Log(args.Input) / math.Log(args.Base)}, nil
+func (*Log) Invoke(_ context.Context, input infer.FunctionRequest[LogArgs]) (infer.FunctionResponse[LogResult], error) {
+	return infer.FunctionResponse[LogResult]{
+		Output: LogResult{math.Log(input.Input.Input) / math.Log(input.Input.Base)},
+	}, nil
 }

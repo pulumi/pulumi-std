@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -33,18 +34,21 @@ func (r *Anytrue) Annotate(a infer.Annotator) {
 It also returns false if the collection is empty.`)
 }
 
-func (*Anytrue) Call(_ p.Context, args AnytrueArgs) (AnytrueResult, error) {
-	for _, v := range args.Input {
+func (*Anytrue) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[AnytrueArgs],
+) (infer.FunctionResponse[AnytrueResult], error) {
+	for _, v := range input.Input.Input {
 		value, isBool := v.(bool)
 		if isBool && value {
-			return AnytrueResult{true}, nil
+			return infer.FunctionResponse[AnytrueResult]{Output: AnytrueResult{true}}, nil
 		}
 
 		text, isText := v.(string)
 		if isText && text == "true" {
-			return AnytrueResult{true}, nil
+			return infer.FunctionResponse[AnytrueResult]{Output: AnytrueResult{true}}, nil
 		}
 	}
 
-	return AnytrueResult{false}, nil
+	return infer.FunctionResponse[AnytrueResult]{Output: AnytrueResult{false}}, nil
 }

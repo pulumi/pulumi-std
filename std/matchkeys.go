@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"errors"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -37,19 +37,26 @@ func (r *Matchkeys) Annotate(a infer.Annotator) {
 returns all elements from values where the corresponding element from keys exists in the searchset list.`)
 }
 
-func (*Matchkeys) Call(_ p.Context, args MatchkeysArgs) (MatchkeysResult, error) {
-	if len(args.Values) != len(args.keys) {
-		return MatchkeysResult{}, errors.New("values and keys must be of equal length")
+func (*Matchkeys) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[MatchkeysArgs],
+) (infer.FunctionResponse[MatchkeysResult], error) {
+	if len(input.Input.Values) != len(input.Input.keys) {
+		return infer.FunctionResponse[MatchkeysResult]{
+				Output: MatchkeysResult{},
+			}, errors.New(
+				"values and keys must be of equal length",
+			)
 	}
 
 	var output []string
-	for i, key := range args.keys {
-		for _, search := range args.SearchList {
+	for i, key := range input.Input.keys {
+		for _, search := range input.Input.SearchList {
 			if key == search {
-				output = append(output, args.Values[i])
+				output = append(output, input.Input.Values[i])
 			}
 		}
 	}
 
-	return MatchkeysResult{output}, nil
+	return infer.FunctionResponse[MatchkeysResult]{Output: MatchkeysResult{output}}, nil
 }

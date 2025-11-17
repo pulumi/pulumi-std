@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,11 @@ func (r *Endswith) Annotate(a infer.Annotator) {
 	a.Describe(r, "Determines if the input string ends with the suffix.")
 }
 
-func (*Endswith) Call(_ p.Context, args EndswithArgs) (EndswithResult, error) {
-	return EndswithResult{strings.HasSuffix(args.Input, args.Suffix)}, nil
+func (*Endswith) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[EndswithArgs],
+) (infer.FunctionResponse[EndswithResult], error) {
+	return infer.FunctionResponse[EndswithResult]{
+		Output: EndswithResult{strings.HasSuffix(input.Input.Input, input.Input.Suffix)},
+	}, nil
 }

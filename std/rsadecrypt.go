@@ -15,6 +15,7 @@
 package std
 
 import (
+	"context"
 	"crypto/rsa"
 	"encoding/asn1"
 	"encoding/base64"
@@ -22,7 +23,6 @@ import (
 	"fmt"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"golang.org/x/crypto/ssh"
 )
@@ -53,30 +53,47 @@ func formatError(err error) string {
 	}
 }
 
-func (*Rsadecrypt) Call(_ p.Context, args RsadecryptArgs) (RsadecryptResult, error) {
+func (*Rsadecrypt) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[RsadecryptArgs],
+) (infer.FunctionResponse[RsadecryptResult], error) {
 
-	cipherTextBytes, err := base64.StdEncoding.DecodeString(args.CipherText)
+	cipherTextBytes, err := base64.StdEncoding.DecodeString(input.Input.CipherText)
 	if err != nil {
-		return RsadecryptResult{}, errors.New("failed to decode input cipher text. It must be base64-encoded")
+		return infer.FunctionResponse[RsadecryptResult]{
+				Output: RsadecryptResult{},
+			}, errors.New(
+				"failed to decode input cipher text. It must be base64-encoded",
+			)
 	}
 
 	// Parse the private key.
-	key, err := ssh.ParseRawPrivateKey([]byte(args.Key))
+	key, err := ssh.ParseRawPrivateKey([]byte(input.Input.Key))
 	if err != nil {
 		errorText := formatError(err)
-		return RsadecryptResult{}, errors.New(errorText)
+		return infer.FunctionResponse[RsadecryptResult]{Output: RsadecryptResult{}}, errors.New(errorText)
 	}
 
 	privateKey, ok := key.(*rsa.PrivateKey)
 	if !ok {
-		return RsadecryptResult{}, fmt.Errorf("invalid private key type %t", key)
+		return infer.FunctionResponse[RsadecryptResult]{
+				Output: RsadecryptResult{},
+			}, fmt.Errorf(
+				"invalid private key type %t",
+				key,
+			)
 	}
 
 	// Decrypt the ciphertext.
 	decrypted, err := rsa.DecryptPKCS1v15(nil, privateKey, cipherTextBytes)
 	if err != nil {
-		return RsadecryptResult{}, fmt.Errorf("failed to decrypt: %s", err.Error())
+		return infer.FunctionResponse[RsadecryptResult]{
+				Output: RsadecryptResult{},
+			}, fmt.Errorf(
+				"failed to decrypt: %s",
+				err.Error(),
+			)
 	}
 
-	return RsadecryptResult{string(decrypted)}, nil
+	return infer.FunctionResponse[RsadecryptResult]{Output: RsadecryptResult{string(decrypted)}}, nil
 }

@@ -15,7 +15,8 @@
 package std
 
 import (
-	p "github.com/pulumi/pulumi-go-provider"
+	"context"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -33,11 +34,14 @@ func (r *Contains) Annotate(a infer.Annotator) {
 	a.Describe(r, "Returns true if a list contains the given element and returns false otherwise.")
 }
 
-func (*Contains) Call(_ p.Context, args ContainsArgs) (ContainsResult, error) {
-	for _, element := range args.Input {
-		if jsonDeepEquals(element, args.Element) {
-			return ContainsResult{true}, nil
+func (*Contains) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[ContainsArgs],
+) (infer.FunctionResponse[ContainsResult], error) {
+	for _, element := range input.Input.Input {
+		if jsonDeepEquals(element, input.Input.Element) {
+			return infer.FunctionResponse[ContainsResult]{Output: ContainsResult{true}}, nil
 		}
 	}
-	return ContainsResult{false}, nil
+	return infer.FunctionResponse[ContainsResult]{Output: ContainsResult{false}}, nil
 }

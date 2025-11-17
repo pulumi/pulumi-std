@@ -15,9 +15,9 @@
 package std
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -35,6 +35,11 @@ func (r *Trimsuffix) Annotate(a infer.Annotator) {
 	a.Describe(r, `Removes the specified suffix from the end of the given string, if present.`)
 }
 
-func (*Trimsuffix) Call(_ p.Context, args TrimsuffixArgs) (TrimsuffixResult, error) {
-	return TrimsuffixResult{strings.TrimSuffix(args.Input, args.Suffix)}, nil
+func (*Trimsuffix) Invoke(
+	_ context.Context,
+	input infer.FunctionRequest[TrimsuffixArgs],
+) (infer.FunctionResponse[TrimsuffixResult], error) {
+	return infer.FunctionResponse[TrimsuffixResult]{
+		Output: TrimsuffixResult{strings.TrimSuffix(input.Input.Input, input.Input.Suffix)},
+	}, nil
 }
