@@ -37,7 +37,7 @@ func (r *Chunklist) Annotate(a infer.Annotator) {
 
 func (*Chunklist) Invoke(_ context.Context, input infer.FunctionRequest[ChunklistArgs]) (infer.FunctionResponse[ChunklistResult], error) {
 	if input.Input.Size < 0 {
-		return infer.FunctionResponse[ChunklistResult]{Output: ChunklistResult{}}, errors.New("size must be greater than or equal to 0")
+		return infer.FunctionResponse[ChunklistResult]{}, errors.New("size must be greater than or equal to 0")
 	}
 
 	output := make([]interface{}, 0)
