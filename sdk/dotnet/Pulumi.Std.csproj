@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Pulumi</Authors>
-    <Company>Pulumi</Company>
+    <Authors>Pulumi Corp.</Authors>
+    <Company>Pulumi Corp.</Company>
     <Description>Standard library functions</Description>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/pulumi/pulumi-std</PackageProjectUrl>
@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pulumi" Version="3.*" />
+    <PackageReference Include="Pulumi" Version="[3.76.1.0,4)" />
   </ItemGroup>
 
   <ItemGroup>

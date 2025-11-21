@@ -43,13 +43,12 @@ func assignableType(args []interface{}) (reflect.Type, error) {
 			continue
 		}
 
-		switch arg.(type) {
+		switch n := arg.(type) {
 		case bool:
 			sawBool = true
 			continue
 		case int:
-			argInt := arg.(int)
-			if argInt >= math.MinInt32 && argInt <= math.MaxInt32 {
+			if n >= math.MinInt32 && n <= math.MaxInt32 {
 				sawInt32 = true
 			} else {
 				sawInt64 = true

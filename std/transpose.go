@@ -44,11 +44,7 @@ func (*Transpose) Invoke(
 	res := make(map[string][]string)
 	for k, l := range input.Input.Input {
 		for _, v := range l {
-			if _, ok := res[v]; ok {
-				res[v] = append(res[v], k)
-			} else {
-				res[v] = []string{k}
-			}
+			res[v] = append(res[v], k)
 		}
 	}
 	// sort result to produce an expected ordering

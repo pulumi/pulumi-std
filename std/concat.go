@@ -39,9 +39,7 @@ func (*Concat) Invoke(
 ) (infer.FunctionResponse[ConcatResult], error) {
 	output := make([]interface{}, 0)
 	for _, list := range input.Input.Input {
-		for _, value := range list {
-			output = append(output, value)
-		}
+		output = append(output, list...)
 	}
 
 	return infer.FunctionResponse[ConcatResult]{Output: ConcatResult{output}}, nil

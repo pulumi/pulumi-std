@@ -16,7 +16,9 @@ package std
 
 import (
 	"context"
-	"strings"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
@@ -38,5 +40,7 @@ func (*Title) Invoke(
 	_ context.Context,
 	input infer.FunctionRequest[TitleArgs],
 ) (infer.FunctionResponse[TitleResult], error) {
-	return infer.FunctionResponse[TitleResult]{Output: TitleResult{strings.Title(input.Input.Input)}}, nil
+	return infer.FunctionResponse[TitleResult]{
+		Output: TitleResult{cases.Title(language.English).String(input.Input.Input)},
+	}, nil
 }
