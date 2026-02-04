@@ -4,7 +4,7 @@ build:
 	mkdir -p bin
 	cd provider && go build \
 		-o ../bin \
-		-ldflags "-X github.com/pulumi/pulumi-std/std/version.Version=${VERSION}" ./...
+		-ldflags "-X github.com/pulumi/pulumi-std/provider/version.Version=${VERSION}" ./...
 
 tidy:
 	cd provider && go mod tidy

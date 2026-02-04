@@ -21,8 +21,8 @@ import (
 
 	p "github.com/pulumi/pulumi-go-provider"
 
-	"github.com/pulumi/pulumi-std/std"
-	"github.com/pulumi/pulumi-std/std/version"
+	std "github.com/pulumi/pulumi-std/provider"
+	"github.com/pulumi/pulumi-std/provider/version"
 )
 
 func main() {
