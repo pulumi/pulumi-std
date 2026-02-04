@@ -20,6 +20,7 @@ import (
 	"net"
 
 	"github.com/apparentlymart/go-cidr/cidr"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -41,35 +42,6 @@ func (r *Cidrsubnets) Annotate(a infer.Annotator) {
 			"consecutive IP address ranges within that CIDR prefix. "+
 			"See https://opentofu.org/docs/language/functions/cidrsubnets/ for additional information",
 	)
-}
-
-func cidrsubnets(ipaddress string, newbitsList ...int) ([]string, error) {
-	_, network, err := net.ParseCIDR(ipaddress)
-	if err != nil {
-		return []string{}, fmt.Errorf("invalid CIDR expression: %s", err.Error())
-	}
-
-	if len(newbitsList) == 0 {
-		return []string{}, nil
-	}
-
-	subnets := make([]string, len(newbitsList))
-	for i, newbits := range newbitsList {
-		subnet, exceeds := cidr.NextSubnet(network, newbits)
-		if exceeds {
-			prevSubnet := network.String()
-			if i > 0 {
-				prevSubnet = subnets[i-1]
-			}
-			return []string{}, fmt.Errorf(
-				"not enough remaining address space for a subnet of %d bits after address %s",
-				newbits, prevSubnet,
-			)
-		}
-		subnets[i] = subnet.String()
-	}
-
-	return subnets, nil
 }
 
 func (*Cidrsubnets) Invoke(

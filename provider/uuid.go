@@ -18,6 +18,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 

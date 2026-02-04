@@ -18,8 +18,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/pulumi/pulumi-go-provider/infer"
 	"golang.org/x/crypto/bcrypt"
+
+	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
 type Bcrypt struct{}
