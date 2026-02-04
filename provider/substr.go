@@ -18,6 +18,7 @@ import (
 	"context"
 
 	"github.com/apparentlymart/go-textseg/textseg"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 

@@ -23,8 +23,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/pulumi/pulumi-go-provider/infer"
 	"golang.org/x/crypto/ssh"
+
+	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
 type Rsadecrypt struct{}

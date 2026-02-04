@@ -18,6 +18,7 @@ import (
 	"context"
 
 	homedir "github.com/mitchellh/go-homedir"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 

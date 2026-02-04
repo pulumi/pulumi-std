@@ -20,9 +20,8 @@ import (
 	"os"
 
 	p "github.com/pulumi/pulumi-go-provider"
-
 	std "github.com/pulumi/pulumi-std/provider"
-	"github.com/pulumi/pulumi-std/provider/version"
+	"github.com/pulumi/pulumi-std/provider/pkg/version"
 )
 
 func main() {

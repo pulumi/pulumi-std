@@ -21,6 +21,7 @@ import (
 	"net"
 
 	"github.com/apparentlymart/go-cidr/cidr"
+
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 

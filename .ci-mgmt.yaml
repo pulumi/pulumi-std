@@ -1,10 +1,8 @@
 template: native
 provider: std
-major-version: 2
-providerVersion: github.com/pulumi/pulumi-docker-build/std/version.Version
-modulePath: ./std/
+major-version: 1 # We're actually on v2 but we're preserving v1 SDK locations for back-compat.
 parallel: 3
 noSchema: true # Schema checks are disabled since schema.json isn't in a standard location.
 esc:
-    enabled: true
-    environment: imports/github-secrets
+  enabled: true
+  environment: imports/github-secrets
