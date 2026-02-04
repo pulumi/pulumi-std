@@ -92,8 +92,8 @@ publishing {
             artifact javadocJar
 
             pom {
-                inceptionYear = ""
-                name = ""
+                inceptionYear = "2022"
+                name = "pulumi-std"
                 packaging = "jar"
                 description = "Standard library functions"
 
@@ -114,9 +114,9 @@ publishing {
 
                 developers {
                     developer {
-                        id = ""
-                        name = ""
-                        email = ""
+                        id = "pulumi"
+                        name = "Pulumi"
+                        email = "support@pulumi.com"
                     }
                 }
             }

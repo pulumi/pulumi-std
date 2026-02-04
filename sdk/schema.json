@@ -6,9 +6,6 @@
   "homepage": "https://github.com/pulumi/pulumi-std",
   "repository": "https://github.com/pulumi/pulumi-std",
   "publisher": "Pulumi",
-  "meta": {
-    "moduleFormat": "(.*)"
-  },
   "language": {
     "csharp": {
       "packageReferences": {
@@ -24,9 +21,7 @@
     }
   },
   "config": {},
-  "provider": {
-    "type": "object"
-  },
+  "provider": {},
   "functions": {
     "std:index:abs": {
       "description": "Returns the absolute value of a given float.\nExample: abs(1) returns 1, and abs(-1) would also return 1, whereas abs(-3.14) would return 3.14.",
@@ -410,8 +405,8 @@
         },
         "type": "object",
         "required": [
-          "host",
-          "input"
+          "input",
+          "host"
         ]
       },
       "outputs": {
@@ -468,8 +463,8 @@
         "type": "object",
         "required": [
           "input",
-          "netnum",
-          "newbits"
+          "newbits",
+          "netnum"
         ]
       },
       "outputs": {
@@ -662,8 +657,8 @@
         },
         "type": "object",
         "required": [
-          "element",
-          "input"
+          "input",
+          "element"
         ]
       },
       "outputs": {
@@ -781,8 +776,8 @@
         },
         "type": "object",
         "required": [
-          "index",
-          "input"
+          "input",
+          "index"
         ]
       },
       "outputs": {
@@ -1123,8 +1118,8 @@
         },
         "type": "object",
         "required": [
-          "args",
-          "input"
+          "input",
+          "args"
         ]
       },
       "outputs": {
@@ -1155,8 +1150,8 @@
         },
         "type": "object",
         "required": [
-          "args",
-          "input"
+          "input",
+          "args"
         ]
       },
       "outputs": {
@@ -1219,8 +1214,8 @@
         },
         "type": "object",
         "required": [
-          "element",
-          "input"
+          "input",
+          "element"
         ]
       },
       "outputs": {
@@ -1386,8 +1381,8 @@
         },
         "type": "object",
         "required": [
-          "base",
-          "input"
+          "input",
+          "base"
         ]
       },
       "outputs": {
@@ -1421,8 +1416,8 @@
         },
         "type": "object",
         "required": [
-          "key",
-          "map"
+          "map",
+          "key"
         ]
       },
       "outputs": {
@@ -1512,8 +1507,8 @@
         },
         "type": "object",
         "required": [
-          "searchList",
-          "values"
+          "values",
+          "searchList"
         ]
       },
       "outputs": {
@@ -1839,9 +1834,9 @@
         },
         "type": "object",
         "required": [
-          "replace",
+          "text",
           "search",
-          "text"
+          "replace"
         ]
       },
       "outputs": {
@@ -2221,8 +2216,8 @@
         "type": "object",
         "required": [
           "input",
-          "length",
-          "offset"
+          "offset",
+          "length"
         ]
       },
       "outputs": {
@@ -2278,8 +2273,8 @@
         },
         "type": "object",
         "required": [
-          "duration",
-          "timestamp"
+          "timestamp",
+          "duration"
         ]
       },
       "outputs": {
@@ -2543,8 +2538,8 @@
         },
         "type": "object",
         "required": [
-          "cutset",
-          "input"
+          "input",
+          "cutset"
         ]
       },
       "outputs": {

@@ -2,12 +2,12 @@ VERSION := 2.2.0
 
 build:
 	mkdir -p bin
-	go build -C std \
+	cd provider && go build \
 		-o ../bin \
-		-ldflags "-X github.com/pulumi/pulumi-std/std/version.Version=${VERSION}" ./...
+		-ldflags "-X github.com/pulumi/pulumi-std/provider/version.Version=${VERSION}" ./...
 
 tidy:
-	cd std && go mod tidy
+	cd provider && go mod tidy
 	cd sdk && go mod tidy
 
 sdk_prep: build
@@ -55,12 +55,12 @@ build_java_sdk: gen_java_sdk
 		gradle --console=plain build
 
 test: build
-	cd std && go test ./...
+	cd provider && go test ./...
 	cd tests && go run main.go
 
 lint: lint-golang lint-copyright
 lint-golang:
-	cd std && golangci-lint run -c ../.golangci.yml --timeout 5m
+	cd provider && golangci-lint run -c ../.golangci.yml --timeout 5m
 lint-copyright:
 	pulumictl copyright -x 'examples/**' -x 'sdk/**'
 
