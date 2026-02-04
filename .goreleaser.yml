@@ -23,6 +23,6 @@ builds:
     ldflags:
       - -s
       - -w
-      - -X github.com/pulumi/pulumi-std/std/version.Version={{.Tag}}
+      - -X github.com/pulumi/pulumi-std/provider/version.Version={{.Tag}}
     main: ./cmd/pulumi-resource-std/
     dir: std
