@@ -118,6 +118,12 @@ install_dotnet_sdk: # Required by CI
 bin/pulumi-gen-${PACK}: # Required by CI
 	touch bin/pulumi-gen-${PACK}
 
+AZURE_SIGNING_CLIENT_ID ?=
+AZURE_SIGNING_CLIENT_SECRET ?=
+AZURE_SIGNING_TENANT_ID ?=
+AZURE_SIGNING_KEY_VAULT_URI ?=
+SKIP_SIGNING ?=
+
 bin/jsign-6.0.jar:
 	wget https://github.com/ebourg/jsign/releases/download/6.0/jsign-6.0.jar --output-document=bin/jsign-6.0.jar
 
