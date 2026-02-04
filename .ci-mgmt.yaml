@@ -6,3 +6,5 @@ noSchema: true # Schema checks are disabled since schema.json isn't in a standar
 esc:
   enabled: true
   environment: imports/github-secrets
+envOverride:
+  FOO: BAR # Ugh, native providers inject a bunch of duplicated env vars without this...
