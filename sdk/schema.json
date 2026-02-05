@@ -1,7 +1,6 @@
 {
   "name": "std",
   "displayName": "StandardLibrary",
-  "version": "2.3.0-alpha.0+dev",
   "description": "Standard library functions",
   "homepage": "https://github.com/pulumi/pulumi-std",
   "repository": "https://github.com/pulumi/pulumi-std",
