@@ -31,6 +31,7 @@ func Provider() p.Provider {
 			Repository:  "https://github.com/pulumi/pulumi-std",
 			LanguageMap: map[string]any{
 				"go": map[string]any{
+					"respectSchemaVersion": true,
 					"importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std",
 				},
 				"java": map[string]any{
@@ -38,9 +39,16 @@ func Provider() p.Provider {
 					"gradleNexusPublishPluginVersion": "2.0.0",
 				},
 				"csharp": map[string]any{
+					"respectSchemaVersion": true,
 					"packageReferences": map[string]string{
 						"Pulumi": "3.*",
 					},
+				},
+				"nodejs": map[string]any{
+					"respectSchemaVersion": true,
+				},
+				"python": map[string]any{
+					"respectSchemaVersion": true,
 				},
 			},
 		},

@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/std",
-    "version": "${VERSION}",
+    "version": "2.3.0-alpha.0+dev",
     "homepage": "https://github.com/pulumi/pulumi-std",
     "repository": "https://github.com/pulumi/pulumi-std",
     "scripts": {
@@ -15,6 +15,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "std"
+        "name": "std",
+        "version": "2.3.0-alpha.0+dev"
     }
 }
