@@ -1,11 +1,11 @@
-VERSION := 2.3.0-alpha.0+dev
-PROVIDER_VERSION = $(shell pulumictl convert-version --language generic --version "$(VERSION)")
+PROVIDER_VERSION ?= 2.3.0-alpha.0+dev
+VERSION_GENERIC = $(shell pulumictl convert-version --language generic --version "$(PROVIDER_VERSION)")
 
 build:
 	mkdir -p bin
 	cd provider && go build \
 		-o ../bin \
-		-ldflags "-X github.com/pulumi/pulumi-std/provider/v2/pkg/version.Version=${PROVIDER_VERSION}" ./...
+		-ldflags "-X github.com/pulumi/pulumi-std/provider/v2/pkg/version.Version=${VERSION_GENERIC}" ./...
 
 tidy:
 	cd provider && go mod tidy
@@ -21,13 +21,13 @@ gen_schema: sdk_prep
 
 gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
-	pulumi package gen-sdk sdk/schema.json --language "$*" --version "${PROVIDER_VERSION}"
+	pulumi package gen-sdk sdk/schema.json --language "$*" --version "${VERSION_GENERIC}"
 
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 
 build_dotnet_sdk: gen_dotnet_sdk
 	cd sdk/dotnet/ && \
-		echo "${PROVIDER_VERSION}" >version.txt && \
+		echo "${VERSION_GENERIC}" >version.txt && \
 		dotnet build
 
 build_nodejs_sdk: gen_nodejs_sdk
@@ -49,7 +49,7 @@ build_python_sdk: gen_python_sdk
 build_go_sdk: gen_go_sdk
 	# No-op
 
-build_java_sdk: PACKAGE_VERSION := ${PROVIDER_VERSION}
+build_java_sdk: PACKAGE_VERSION := ${VERSION_GENERIC}
 build_java_sdk: gen_java_sdk
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
