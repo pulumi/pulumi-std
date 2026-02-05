@@ -28,7 +28,7 @@ build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 build_dotnet_sdk: gen_dotnet_sdk
 	cd sdk/dotnet/ && \
 		echo "${PROVIDER_VERSION}" >version.txt && \
-		dotnet build /p:Version=${PROVIDER_VERSION}
+		dotnet build
 
 build_nodejs_sdk: gen_nodejs_sdk
 	cd sdk/nodejs/ && \
@@ -36,20 +36,17 @@ build_nodejs_sdk: gen_nodejs_sdk
 		yarn run tsc --version && \
 		yarn run tsc
 	cp README.md LICENSE sdk/nodejs/package.json sdk/nodejs/yarn.lock sdk/nodejs/bin/
-	sed -i.bak 's/$${VERSION}/$(VERSION)/g' sdk/nodejs/bin/package.json
-	rm sdk/nodejs/bin/package.json.bak
 
 build_python_sdk: gen_python_sdk
 	cd sdk/python/ && \
 		python3 setup.py clean --all 2>/dev/null && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-		sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PROVIDER_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(PROVIDER_VERSION)"/g' ./bin/setup.py && \
-		rm ./bin/setup.py.bak && \
 		cd ./bin && python3 setup.py build sdist
 
 build_go_sdk: gen_go_sdk
 	# No-op
 
+build_java_sdk: PACKAGE_VERSION := ${PROVIDER_VERSION}
 build_java_sdk: gen_java_sdk
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
