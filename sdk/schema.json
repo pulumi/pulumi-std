@@ -24,6 +24,9 @@
       "respectSchemaVersion": true
     },
     "python": {
+      "pyproject": {
+        "enabled": true
+      },
       "respectSchemaVersion": true
     }
   },
