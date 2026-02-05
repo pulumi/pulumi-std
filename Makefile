@@ -21,7 +21,7 @@ gen_schema: sdk_prep
 
 gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
-	pulumi package gen-sdk ./bin/pulumi-resource-std --language "$*" --out sdk
+	pulumi package gen-sdk sdk/schema.json --language "$*" --version "${PROVIDER_VERSION}"
 
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 
@@ -38,10 +38,13 @@ build_nodejs_sdk: gen_nodejs_sdk
 	cp README.md LICENSE sdk/nodejs/package.json sdk/nodejs/yarn.lock sdk/nodejs/bin/
 
 build_python_sdk: gen_python_sdk
+	cp README.md sdk/python/
 	cd sdk/python/ && \
-		python3 setup.py clean --all 2>/dev/null && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-		cd ./bin && python3 setup.py build sdist
+		python3 -m venv venv && \
+		./venv/bin/python -m pip install build && \
+		cd ./bin && \
+		../venv/bin/python -m build .
 
 build_go_sdk: gen_go_sdk
 	# No-op

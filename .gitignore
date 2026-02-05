@@ -30,6 +30,9 @@ sdk/dotnet/obj/**
 sdk/java/build
 sdk/java/.gradle
 
+# Python
+sdk/python/venv
+
 .pulumi
 terraform.tfstate
 .terraform.tfstate.lock.info

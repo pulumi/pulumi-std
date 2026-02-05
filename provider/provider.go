@@ -48,6 +48,9 @@ func Provider() p.Provider {
 					"respectSchemaVersion": true,
 				},
 				"python": map[string]any{
+					"pyproject": map[string]any{
+						"enabled": true,
+					},
 					"respectSchemaVersion": true,
 				},
 			},
