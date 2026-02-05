@@ -118,6 +118,7 @@ install_dotnet_sdk: # Required by CI
 bin/pulumi-gen-${PACK}: # Required by CI
 	touch bin/pulumi-gen-${PACK}
 
+# Set these variables to enable signing of the windows binary
 AZURE_SIGNING_CLIENT_ID ?=
 AZURE_SIGNING_CLIENT_SECRET ?=
 AZURE_SIGNING_TENANT_ID ?=
@@ -125,6 +126,7 @@ AZURE_SIGNING_KEY_VAULT_URI ?=
 SKIP_SIGNING ?=
 
 bin/jsign-6.0.jar:
+	mkdir -p bin
 	wget https://github.com/ebourg/jsign/releases/download/6.0/jsign-6.0.jar --output-document=bin/jsign-6.0.jar
 
 sign-goreleaser-exe-amd64: GORELEASER_ARCH := amd64_v1
@@ -143,7 +145,7 @@ sign-goreleaser-exe-%: bin/jsign-6.0.jar
 			echo "To rebuild with signing delete the unsigned windows exe file and rebuild with the fixed configuration"; \
 			if [[ "${CI}" == "true" ]]; then exit 1; fi; \
 		else \
-			file=dist/build-provider-sign-windows_windows_${GORELEASER_ARCH}/pulumi-resource-docker-build.exe; \
+			file=dist/build-provider-sign-windows_windows_${GORELEASER_ARCH}/pulumi-resource-std.exe; \
 			mv $${file} $${file}.unsigned; \
 			az login --service-principal \
 				--username "${AZURE_SIGNING_CLIENT_ID}" \
