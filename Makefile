@@ -21,7 +21,7 @@ gen_schema: sdk_prep
 
 gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
-	pulumi package gen-sdk sdk/schema.json --language "$*" --out sdk
+	pulumi package gen-sdk ./bin/pulumi-resource-std --language "$*" --out sdk
 
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 
