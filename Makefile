@@ -1,10 +1,11 @@
-VERSION := 2.2.0
+VERSION := 2.3.0-alpha.0+dev
+PROVIDER_VERSION = $(shell pulumictl convert-version --language generic --version "$(VERSION)")
 
 build:
 	mkdir -p bin
 	cd provider && go build \
 		-o ../bin \
-		-ldflags "-X github.com/pulumi/pulumi-std/provider/pkg/version.Version=${VERSION}" ./...
+		-ldflags "-X github.com/pulumi/pulumi-std/provider/v2/pkg/version.Version=${PROVIDER_VERSION}" ./...
 
 tidy:
 	cd provider && go mod tidy
@@ -16,7 +17,7 @@ sdk_prep: build
 gen_sdks: gen_dotnet_sdk gen_java_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk gen_schema
 
 gen_schema: sdk_prep
-	pulumi package get-schema ./bin/pulumi-resource-std > sdk/schema.json
+	pulumi package get-schema ./bin/pulumi-resource-std | jq 'del(.version)' > sdk/schema.json
 
 gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
@@ -26,8 +27,8 @@ build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 
 build_dotnet_sdk: gen_dotnet_sdk
 	cd sdk/dotnet/ && \
-		echo "${VERSION}" >version.txt && \
-		dotnet build /p:Version=${VERSION}
+		echo "${PROVIDER_VERSION}" >version.txt && \
+		dotnet build /p:Version=${PROVIDER_VERSION}
 
 build_nodejs_sdk: gen_nodejs_sdk
 	cd sdk/nodejs/ && \
@@ -42,7 +43,7 @@ build_python_sdk: gen_python_sdk
 	cd sdk/python/ && \
 		python3 setup.py clean --all 2>/dev/null && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-		sed -i.bak -e 's/^VERSION = .*/VERSION = "$(VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
+		sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PROVIDER_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(PROVIDER_VERSION)"/g' ./bin/setup.py && \
 		rm ./bin/setup.py.bak && \
 		cd ./bin && python3 setup.py build sdist
 
@@ -118,6 +119,7 @@ install_dotnet_sdk: # Required by CI
 bin/pulumi-gen-${PACK}: # Required by CI
 	touch bin/pulumi-gen-${PACK}
 
+# Set these variables to enable signing of the windows binary
 AZURE_SIGNING_CLIENT_ID ?=
 AZURE_SIGNING_CLIENT_SECRET ?=
 AZURE_SIGNING_TENANT_ID ?=
@@ -125,6 +127,7 @@ AZURE_SIGNING_KEY_VAULT_URI ?=
 SKIP_SIGNING ?=
 
 bin/jsign-6.0.jar:
+	mkdir -p bin
 	wget https://github.com/ebourg/jsign/releases/download/6.0/jsign-6.0.jar --output-document=bin/jsign-6.0.jar
 
 sign-goreleaser-exe-amd64: GORELEASER_ARCH := amd64_v1
@@ -143,7 +146,7 @@ sign-goreleaser-exe-%: bin/jsign-6.0.jar
 			echo "To rebuild with signing delete the unsigned windows exe file and rebuild with the fixed configuration"; \
 			if [[ "${CI}" == "true" ]]; then exit 1; fi; \
 		else \
-			file=dist/build-provider-sign-windows_windows_${GORELEASER_ARCH}/pulumi-resource-docker-build.exe; \
+			file=dist/build-provider-sign-windows_windows_${GORELEASER_ARCH}/pulumi-resource-std.exe; \
 			mv $${file} $${file}.unsigned; \
 			az login --service-principal \
 				--username "${AZURE_SIGNING_CLIENT_ID}" \

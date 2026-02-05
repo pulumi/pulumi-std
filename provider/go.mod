@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-std/provider
+module github.com/pulumi/pulumi-std/provider/v2
 
 go 1.24.7
 

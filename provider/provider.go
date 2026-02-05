@@ -31,16 +31,24 @@ func Provider() p.Provider {
 			Repository:  "https://github.com/pulumi/pulumi-std",
 			LanguageMap: map[string]any{
 				"go": map[string]any{
-					"importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std",
+					"respectSchemaVersion": true,
+					"importBasePath":       "github.com/pulumi/pulumi-std/sdk/v2/go/std",
 				},
 				"java": map[string]any{
 					"buildFiles":                      "gradle",
 					"gradleNexusPublishPluginVersion": "2.0.0",
 				},
 				"csharp": map[string]any{
+					"respectSchemaVersion": true,
 					"packageReferences": map[string]string{
 						"Pulumi": "3.*",
 					},
+				},
+				"nodejs": map[string]any{
+					"respectSchemaVersion": true,
+				},
+				"python": map[string]any{
+					"respectSchemaVersion": true,
 				},
 			},
 		},
@@ -144,7 +152,7 @@ func Provider() p.Provider {
 			infer.Function(&Zipmap{}),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
-			"provider": "index",
+			"v2": "index",
 		},
 	})
 }

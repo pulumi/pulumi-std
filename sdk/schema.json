@@ -1,7 +1,6 @@
 {
   "name": "std",
   "displayName": "StandardLibrary",
-  "version": "2.2.0",
   "description": "Standard library functions",
   "homepage": "https://github.com/pulumi/pulumi-std",
   "repository": "https://github.com/pulumi/pulumi-std",
@@ -10,14 +9,22 @@
     "csharp": {
       "packageReferences": {
         "Pulumi": "3.*"
-      }
+      },
+      "respectSchemaVersion": true
     },
     "go": {
-      "importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std"
+      "importBasePath": "github.com/pulumi/pulumi-std/sdk/v2/go/std",
+      "respectSchemaVersion": true
     },
     "java": {
       "buildFiles": "gradle",
       "gradleNexusPublishPluginVersion": "2.0.0"
+    },
+    "nodejs": {
+      "respectSchemaVersion": true
+    },
+    "python": {
+      "respectSchemaVersion": true
     }
   },
   "config": {},
