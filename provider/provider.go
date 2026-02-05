@@ -144,7 +144,7 @@ func Provider() p.Provider {
 			infer.Function(&Zipmap{}),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
-			"provider": "index",
+			"v2": "index",
 		},
 	})
 }
