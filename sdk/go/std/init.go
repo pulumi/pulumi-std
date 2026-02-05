@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-std/sdk/go/std/internal"
+	"github.com/pulumi/pulumi-std/sdk/v2/go/std/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

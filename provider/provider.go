@@ -32,7 +32,7 @@ func Provider() p.Provider {
 			LanguageMap: map[string]any{
 				"go": map[string]any{
 					"respectSchemaVersion": true,
-					"importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std",
+					"importBasePath":       "github.com/pulumi/pulumi-std/sdk/v2/go/std",
 				},
 				"java": map[string]any{
 					"buildFiles":                      "gradle",

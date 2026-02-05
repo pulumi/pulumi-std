@@ -14,7 +14,7 @@
       "respectSchemaVersion": true
     },
     "go": {
-      "importBasePath": "github.com/pulumi/pulumi-std/sdk/go/std",
+      "importBasePath": "github.com/pulumi/pulumi-std/sdk/v2/go/std",
       "respectSchemaVersion": true
     },
     "java": {
