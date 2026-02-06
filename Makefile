@@ -17,11 +17,11 @@ sdk_prep: build
 gen_sdks: gen_dotnet_sdk gen_java_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk gen_schema
 
 gen_schema: sdk_prep
-	pulumi package get-schema ./bin/pulumi-resource-std | jq 'del(.version)' > sdk/schema.json
+	pulumi package get-schema ./bin/pulumi-resource-std | jq 'del(.version)' > provider/cmd/pulumi-resource-std/schema.json
 
 gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
-	pulumi package gen-sdk sdk/schema.json --language "$*" --version "${VERSION_GENERIC}"
+	pulumi package gen-sdk provider/cmd/pulumi-resource-std/schema.json --language "$*" --version "${VERSION_GENERIC}"
 
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 

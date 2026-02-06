@@ -2,7 +2,6 @@ template: native
 provider: std
 major-version: 2
 parallel: 3
-noSchema: true # Schema checks are disabled since schema.json isn't in a standard location.
 esc:
   enabled: true
   environment: imports/github-secrets
