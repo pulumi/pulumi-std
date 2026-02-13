@@ -5,5 +5,3 @@ parallel: 3
 esc:
   enabled: true
   environment: imports/github-secrets
-envOverride:
-  FOO: BAR # Ugh, native providers inject a bunch of duplicated env vars without this...
