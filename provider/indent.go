@@ -41,6 +41,6 @@ func (*Indent) Invoke(
 ) (infer.FunctionResponse[IndentResult], error) {
 	pad := strings.Repeat(" ", input.Input.Spaces)
 	return infer.FunctionResponse[IndentResult]{
-		Output: IndentResult{strings.Replace(input.Input.Input, "\n", "\n"+pad, -1)},
+		Output: IndentResult{strings.ReplaceAll(input.Input.Input, "\n", "\n"+pad)},
 	}, nil
 }

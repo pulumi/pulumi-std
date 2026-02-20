@@ -59,6 +59,6 @@ func (*Replace) Invoke(
 	}
 
 	return infer.FunctionResponse[ReplaceResult]{
-		Output: ReplaceResult{strings.Replace(input.Input.Text, input.Input.Search, input.Input.Replace, -1)},
+		Output: ReplaceResult{strings.ReplaceAll(input.Input.Text, input.Input.Search, input.Input.Replace)},
 	}, nil
 }
