@@ -62,7 +62,7 @@ func (*Csvdecode) Invoke(
 		if len(row) != numColumns {
 			return infer.FunctionResponse[CsvdecodeResult]{
 					Output: CsvdecodeResult{res},
-				}, errors.New(
+				}, errors.New( //nolint:staticcheck
 					"Invalid input: each line must contain the same number of fields",
 				)
 		}
