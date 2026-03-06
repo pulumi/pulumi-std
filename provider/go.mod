@@ -6,7 +6,7 @@ require (
 	github.com/apparentlymart/go-textseg v1.0.0
 	github.com/google/uuid v1.6.0
 	github.com/pulumi/pulumi-go-provider v1.3.0
-	github.com/pulumi/pulumi/sdk/v3 v3.225.0
+	github.com/pulumi/pulumi/sdk/v3 v3.225.1
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/crypto v0.48.0
 )
@@ -105,7 +105,7 @@ require (
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.225.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.225.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
