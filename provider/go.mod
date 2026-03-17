@@ -5,7 +5,7 @@ go 1.25.6
 require (
 	github.com/apparentlymart/go-textseg v1.0.0
 	github.com/google/uuid v1.6.0
-	github.com/pulumi/pulumi-go-provider v1.3.0
+	github.com/pulumi/pulumi-go-provider v1.3.1
 	github.com/pulumi/pulumi/sdk/v3 v3.226.0
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/crypto v0.49.0
