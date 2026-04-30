@@ -55,7 +55,7 @@ def floor(input: Optional[_builtins.float] = None,
 
     return AwaitableFloorResult(
         result=pulumi.get(__ret__, 'result'))
-def floor_output(input: Optional[pulumi.Input[_builtins.float]] = None,
+def floor_output(input: pulumi.Input[Optional[_builtins.float]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[FloorResult]:
     """
     Returns the greatest integer value less than or equal to the argument.

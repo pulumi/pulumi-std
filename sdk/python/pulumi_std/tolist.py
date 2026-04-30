@@ -55,7 +55,7 @@ def tolist(input: Optional[Sequence[Any]] = None,
 
     return AwaitableTolistResult(
         result=pulumi.get(__ret__, 'result'))
-def tolist_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+def tolist_output(input: pulumi.Input[Optional[Sequence[Any]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TolistResult]:
     """
     Converts its argument to a list value.

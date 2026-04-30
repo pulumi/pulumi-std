@@ -55,7 +55,7 @@ def ceil(input: Optional[_builtins.float] = None,
 
     return AwaitableCeilResult(
         result=pulumi.get(__ret__, 'result'))
-def ceil_output(input: Optional[pulumi.Input[_builtins.float]] = None,
+def ceil_output(input: pulumi.Input[Optional[_builtins.float]] = None,
                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CeilResult]:
     """
     Returns the least integer value greater than or equal to the argument.

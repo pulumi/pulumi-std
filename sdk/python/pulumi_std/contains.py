@@ -58,7 +58,7 @@ def contains(element: Optional[Any] = None,
     return AwaitableContainsResult(
         result=pulumi.get(__ret__, 'result'))
 def contains_output(element: Optional[Any] = None,
-                    input: Optional[pulumi.Input[Sequence[Any]]] = None,
+                    input: pulumi.Input[Optional[Sequence[Any]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ContainsResult]:
     """
     Returns true if a list contains the given element and returns false otherwise.

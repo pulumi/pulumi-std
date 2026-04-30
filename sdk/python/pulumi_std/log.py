@@ -57,8 +57,8 @@ def log(base: Optional[_builtins.float] = None,
 
     return AwaitableLogResult(
         result=pulumi.get(__ret__, 'result'))
-def log_output(base: Optional[pulumi.Input[_builtins.float]] = None,
-               input: Optional[pulumi.Input[_builtins.float]] = None,
+def log_output(base: pulumi.Input[Optional[_builtins.float]] = None,
+               input: pulumi.Input[Optional[_builtins.float]] = None,
                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[LogResult]:
     """
     Returns the greatest integer value less than or equal to the argument.

@@ -55,7 +55,7 @@ def sum(input: Optional[Sequence[_builtins.float]] = None,
 
     return AwaitableSumResult(
         result=pulumi.get(__ret__, 'result'))
-def sum_output(input: Optional[pulumi.Input[Sequence[_builtins.float]]] = None,
+def sum_output(input: pulumi.Input[Optional[Sequence[_builtins.float]]] = None,
                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SumResult]:
     """
     Returns the total sum of the elements of the input list.

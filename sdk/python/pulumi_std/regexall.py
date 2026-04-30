@@ -57,8 +57,8 @@ def regexall(pattern: Optional[_builtins.str] = None,
 
     return AwaitableRegexallResult(
         result=pulumi.get(__ret__, 'result'))
-def regexall_output(pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                    string: Optional[pulumi.Input[_builtins.str]] = None,
+def regexall_output(pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                    string: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[RegexallResult]:
     """
     Returns a list of all matches of a regular expression in a string (including named or indexed groups).

@@ -55,7 +55,7 @@ def coalesce(input: Optional[Sequence[Any]] = None,
 
     return AwaitableCoalesceResult(
         result=pulumi.get(__ret__, 'result'))
-def coalesce_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+def coalesce_output(input: pulumi.Input[Optional[Sequence[Any]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CoalesceResult]:
     """
     Returns the first non-nil or non-empty value from the given arguments. All arguments must be of the same type, or convertible to a common type.

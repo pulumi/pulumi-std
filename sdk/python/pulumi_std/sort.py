@@ -55,7 +55,7 @@ def sort(input: Optional[Sequence[_builtins.str]] = None,
 
     return AwaitableSortResult(
         result=pulumi.get(__ret__, 'result'))
-def sort_output(input: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
+def sort_output(input: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SortResult]:
     """
     Returns a list of strings sorted lexicographically.

@@ -61,9 +61,9 @@ def range(limit: Optional[_builtins.float] = None,
 
     return AwaitableRangeResult(
         result=pulumi.get(__ret__, 'result'))
-def range_output(limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 start: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
-                 step: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
+def range_output(limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 start: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
+                 step: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[RangeResult]:
     """
     Generates a list of numbers using a start value, a limit value, and a step value.

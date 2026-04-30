@@ -58,7 +58,7 @@ def index(element: Optional[Any] = None,
     return AwaitableIndexResult(
         result=pulumi.get(__ret__, 'result'))
 def index_output(element: Optional[Any] = None,
-                 input: Optional[pulumi.Input[Sequence[Any]]] = None,
+                 input: pulumi.Input[Optional[Sequence[Any]]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[IndexResult]:
     """
     Finds the index of a given element in a list.

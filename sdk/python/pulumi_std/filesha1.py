@@ -55,7 +55,7 @@ def filesha1(input: Optional[_builtins.str] = None,
 
     return AwaitableFilesha1Result(
         result=pulumi.get(__ret__, 'result'))
-def filesha1_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def filesha1_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Filesha1Result]:
     """
     Reads the contents of a file into a string and returns the SHA1 hash of it.

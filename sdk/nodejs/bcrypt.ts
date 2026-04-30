@@ -37,6 +37,6 @@ export function bcryptOutput(args: BcryptOutputArgs, opts?: pulumi.InvokeOutputO
 }
 
 export interface BcryptOutputArgs {
-    cost?: pulumi.Input<number>;
+    cost?: pulumi.Input<number | undefined>;
     input: pulumi.Input<string>;
 }

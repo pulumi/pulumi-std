@@ -57,8 +57,8 @@ def element(index: Optional[_builtins.int] = None,
 
     return AwaitableElementResult(
         result=pulumi.get(__ret__, 'result'))
-def element_output(index: Optional[pulumi.Input[_builtins.int]] = None,
-                   input: Optional[pulumi.Input[Sequence[Any]]] = None,
+def element_output(index: pulumi.Input[Optional[_builtins.int]] = None,
+                   input: pulumi.Input[Optional[Sequence[Any]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ElementResult]:
     """
     Returns the element at the specified index.

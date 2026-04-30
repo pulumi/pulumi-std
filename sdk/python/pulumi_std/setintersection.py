@@ -55,7 +55,7 @@ def setintersection(input: Optional[Sequence[Sequence[Any]]] = None,
 
     return AwaitableSetintersectionResult(
         result=pulumi.get(__ret__, 'result'))
-def setintersection_output(input: Optional[pulumi.Input[Sequence[Sequence[Any]]]] = None,
+def setintersection_output(input: pulumi.Input[Optional[Sequence[Sequence[Any]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SetintersectionResult]:
     """
     Returns the set of elements that all the input sets have in common.

@@ -59,9 +59,9 @@ def lookup(default: Optional[Any] = None,
 
     return AwaitableLookupResult(
         result=pulumi.get(__ret__, 'result'))
-def lookup_output(default: Optional[pulumi.Input[Optional[Any]]] = None,
-                  key: Optional[pulumi.Input[_builtins.str]] = None,
-                  map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+def lookup_output(default: pulumi.Input[Optional[Optional[Any]]] = None,
+                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                  map: pulumi.Input[Optional[Mapping[str, Any]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[LookupResult]:
     """
     Performs a dynamic lookup into a map variable.

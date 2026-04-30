@@ -55,7 +55,7 @@ def filebase64sha512(input: Optional[_builtins.str] = None,
 
     return AwaitableFilebase64sha512Result(
         result=pulumi.get(__ret__, 'result'))
-def filebase64sha512_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def filebase64sha512_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Filebase64sha512Result]:
     """
     Reads the contents of a file into a string and returns the base64-encoded SHA512 hash of it.

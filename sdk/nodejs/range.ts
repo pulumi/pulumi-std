@@ -43,6 +43,6 @@ export function rangeOutput(args: RangeOutputArgs, opts?: pulumi.InvokeOutputOpt
 
 export interface RangeOutputArgs {
     limit: pulumi.Input<number>;
-    start?: pulumi.Input<number>;
-    step?: pulumi.Input<number>;
+    start?: pulumi.Input<number | undefined>;
+    step?: pulumi.Input<number | undefined>;
 }

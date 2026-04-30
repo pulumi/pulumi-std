@@ -55,7 +55,7 @@ def base64gzip(input: Optional[_builtins.str] = None,
 
     return AwaitableBase64gzipResult(
         result=pulumi.get(__ret__, 'result'))
-def base64gzip_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def base64gzip_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Base64gzipResult]:
     """
     Compresses the given string with gzip and then encodes the result to base64.

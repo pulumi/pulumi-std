@@ -57,8 +57,8 @@ def trim(cutset: Optional[_builtins.str] = None,
 
     return AwaitableTrimResult(
         result=pulumi.get(__ret__, 'result'))
-def trim_output(cutset: Optional[pulumi.Input[_builtins.str]] = None,
-                input: Optional[pulumi.Input[_builtins.str]] = None,
+def trim_output(cutset: pulumi.Input[Optional[_builtins.str]] = None,
+                input: pulumi.Input[Optional[_builtins.str]] = None,
                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TrimResult]:
     """
     Removes the specified set of characters from the start and end of the given string.

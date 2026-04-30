@@ -55,7 +55,7 @@ def urlencode(input: Optional[_builtins.str] = None,
 
     return AwaitableUrlencodeResult(
         result=pulumi.get(__ret__, 'result'))
-def urlencode_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def urlencode_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[UrlencodeResult]:
     """
     Applies URL encoding to a given string.

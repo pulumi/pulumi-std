@@ -57,8 +57,8 @@ def trimprefix(input: Optional[_builtins.str] = None,
 
     return AwaitableTrimprefixResult(
         result=pulumi.get(__ret__, 'result'))
-def trimprefix_output(input: Optional[pulumi.Input[_builtins.str]] = None,
-                      prefix: Optional[pulumi.Input[_builtins.str]] = None,
+def trimprefix_output(input: pulumi.Input[Optional[_builtins.str]] = None,
+                      prefix: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TrimprefixResult]:
     """
     Removes the specified prefix from the start of the given string, if present.

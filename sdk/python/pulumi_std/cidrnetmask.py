@@ -58,7 +58,7 @@ def cidrnetmask(input: Optional[_builtins.str] = None,
 
     return AwaitableCidrnetmaskResult(
         result=pulumi.get(__ret__, 'result'))
-def cidrnetmask_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def cidrnetmask_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CidrnetmaskResult]:
     """
     Takes an IP address range in CIDR notation and returns the address-formatted subnet mask format

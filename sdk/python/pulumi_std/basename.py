@@ -55,7 +55,7 @@ def basename(input: Optional[_builtins.str] = None,
 
     return AwaitableBasenameResult(
         result=pulumi.get(__ret__, 'result'))
-def basename_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def basename_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[BasenameResult]:
     """
     Returns the last element of the input path.

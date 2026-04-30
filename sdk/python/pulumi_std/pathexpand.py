@@ -55,7 +55,7 @@ def pathexpand(input: Optional[_builtins.str] = None,
 
     return AwaitablePathexpandResult(
         result=pulumi.get(__ret__, 'result'))
-def pathexpand_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def pathexpand_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[PathexpandResult]:
     """
     Returns a filepath string with ~ expanded to the home directory.

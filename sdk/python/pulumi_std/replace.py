@@ -64,9 +64,9 @@ def replace(replace: Optional[_builtins.str] = None,
 
     return AwaitableReplaceResult(
         result=pulumi.get(__ret__, 'result'))
-def replace_output(replace: Optional[pulumi.Input[_builtins.str]] = None,
-                   search: Optional[pulumi.Input[_builtins.str]] = None,
-                   text: Optional[pulumi.Input[_builtins.str]] = None,
+def replace_output(replace: pulumi.Input[Optional[_builtins.str]] = None,
+                   search: pulumi.Input[Optional[_builtins.str]] = None,
+                   text: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ReplaceResult]:
     """
     Does a search and replace on the given string.

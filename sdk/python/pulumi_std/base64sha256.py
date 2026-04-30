@@ -56,7 +56,7 @@ def base64sha256(input: Optional[_builtins.str] = None,
 
     return AwaitableBase64sha256Result(
         result=pulumi.get(__ret__, 'result'))
-def base64sha256_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def base64sha256_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Base64sha256Result]:
     """
     Returns a base64-encoded representation of raw SHA-256 sum of the given string.

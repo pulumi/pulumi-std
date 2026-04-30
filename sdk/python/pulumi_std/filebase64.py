@@ -55,7 +55,7 @@ def filebase64(input: Optional[_builtins.str] = None,
 
     return AwaitableFilebase64Result(
         result=pulumi.get(__ret__, 'result'))
-def filebase64_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def filebase64_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Filebase64Result]:
     """
     Reads the contents of a file and returns them as a base64-encoded string.

@@ -57,8 +57,8 @@ def split(separator: Optional[_builtins.str] = None,
 
     return AwaitableSplitResult(
         result=pulumi.get(__ret__, 'result'))
-def split_output(separator: Optional[pulumi.Input[_builtins.str]] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
+def split_output(separator: pulumi.Input[Optional[_builtins.str]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SplitResult]:
     """
     Produces a list by dividing a given string at all occurrences of a given separator

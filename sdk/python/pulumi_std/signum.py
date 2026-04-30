@@ -55,7 +55,7 @@ def signum(input: Optional[_builtins.float] = None,
 
     return AwaitableSignumResult(
         result=pulumi.get(__ret__, 'result'))
-def signum_output(input: Optional[pulumi.Input[_builtins.float]] = None,
+def signum_output(input: pulumi.Input[Optional[_builtins.float]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SignumResult]:
     """
     Returns the greatest integer value less than or equal to the argument.

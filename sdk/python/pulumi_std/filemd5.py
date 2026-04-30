@@ -55,7 +55,7 @@ def filemd5(input: Optional[_builtins.str] = None,
 
     return AwaitableFilemd5Result(
         result=pulumi.get(__ret__, 'result'))
-def filemd5_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def filemd5_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Filemd5Result]:
     """
     Reads the contents of a file into a string and returns the MD5 hash of it.

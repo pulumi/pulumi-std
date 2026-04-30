@@ -58,8 +58,8 @@ def matchkeys(search_list: Optional[Sequence[_builtins.str]] = None,
 
     return AwaitableMatchkeysResult(
         result=pulumi.get(__ret__, 'result'))
-def matchkeys_output(search_list: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                     values: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
+def matchkeys_output(search_list: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                     values: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[MatchkeysResult]:
     """
     For two lists values and keys of equal length,

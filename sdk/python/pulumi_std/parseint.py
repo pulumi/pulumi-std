@@ -59,8 +59,8 @@ def parseint(base: Optional[_builtins.int] = None,
 
     return AwaitableParseintResult(
         result=pulumi.get(__ret__, 'result'))
-def parseint_output(base: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                    input: Optional[pulumi.Input[_builtins.str]] = None,
+def parseint_output(base: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                    input: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ParseintResult]:
     """
     Parses the given string as a representation of an integer in the specified base

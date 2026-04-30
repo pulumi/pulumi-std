@@ -56,7 +56,7 @@ def abs(input: Optional[_builtins.float] = None,
 
     return AwaitableAbsResult(
         result=pulumi.get(__ret__, 'result'))
-def abs_output(input: Optional[pulumi.Input[_builtins.float]] = None,
+def abs_output(input: pulumi.Input[Optional[_builtins.float]] = None,
                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[AbsResult]:
     """
     Returns the absolute value of a given float.

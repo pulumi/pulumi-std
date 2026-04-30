@@ -55,7 +55,7 @@ def transpose(input: Optional[Mapping[str, Sequence[_builtins.str]]] = None,
 
     return AwaitableTransposeResult(
         result=pulumi.get(__ret__, 'result'))
-def transpose_output(input: Optional[pulumi.Input[Mapping[str, Sequence[_builtins.str]]]] = None,
+def transpose_output(input: pulumi.Input[Optional[Mapping[str, Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TransposeResult]:
     """
     Takes a map of lists of strings and swaps the keys and values to return a new map of lists of strings.

@@ -57,8 +57,8 @@ def format(args: Optional[Sequence[Any]] = None,
 
     return AwaitableFormatResult(
         result=pulumi.get(__ret__, 'result'))
-def format_output(args: Optional[pulumi.Input[Sequence[Any]]] = None,
-                  input: Optional[pulumi.Input[_builtins.str]] = None,
+def format_output(args: pulumi.Input[Optional[Sequence[Any]]] = None,
+                  input: pulumi.Input[Optional[_builtins.str]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[FormatResult]:
     """
     Formats a string according to the given format. The syntax for the format is standard sprintf syntax.

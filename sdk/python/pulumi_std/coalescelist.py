@@ -55,7 +55,7 @@ def coalescelist(input: Optional[Sequence[Sequence[Any]]] = None,
 
     return AwaitableCoalescelistResult(
         result=pulumi.get(__ret__, 'result'))
-def coalescelist_output(input: Optional[pulumi.Input[Sequence[Sequence[Any]]]] = None,
+def coalescelist_output(input: pulumi.Input[Optional[Sequence[Sequence[Any]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CoalescelistResult]:
     """
     Returns the first non-empty list from the given list of lists.

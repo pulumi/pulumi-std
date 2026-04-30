@@ -55,7 +55,7 @@ def lower(input: Optional[_builtins.str] = None,
 
     return AwaitableLowerResult(
         result=pulumi.get(__ret__, 'result'))
-def lower_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def lower_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[LowerResult]:
     """
     Returns a copy of the string with all Unicode letters mapped to their lower case.

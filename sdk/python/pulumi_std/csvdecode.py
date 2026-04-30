@@ -62,7 +62,7 @@ def csvdecode(input: Optional[_builtins.str] = None,
 
     return AwaitableCsvdecodeResult(
         result=pulumi.get(__ret__, 'result'))
-def csvdecode_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def csvdecode_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CsvdecodeResult]:
     """
     Decodes a string containing CSV-formatted data and produces a list of maps representing that data.
