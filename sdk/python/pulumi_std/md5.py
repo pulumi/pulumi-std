@@ -55,7 +55,7 @@ def md5(input: Optional[_builtins.str] = None,
 
     return AwaitableMd5Result(
         result=pulumi.get(__ret__, 'result'))
-def md5_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def md5_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Md5Result]:
     """
     Returns a (conventional) hexadecimal representation of the MD5 hash of the given string.

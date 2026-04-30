@@ -55,7 +55,7 @@ def map(args: Optional[Sequence[Any]] = None,
 
     return AwaitableMapResult(
         result=pulumi.get(__ret__, 'result'))
-def map_output(args: Optional[pulumi.Input[Sequence[Any]]] = None,
+def map_output(args: pulumi.Input[Optional[Sequence[Any]]] = None,
                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[MapResult]:
     """
     Returns a map consisting of the key/value pairs specified as arguments.

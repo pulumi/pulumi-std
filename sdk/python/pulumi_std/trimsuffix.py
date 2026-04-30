@@ -57,8 +57,8 @@ def trimsuffix(input: Optional[_builtins.str] = None,
 
     return AwaitableTrimsuffixResult(
         result=pulumi.get(__ret__, 'result'))
-def trimsuffix_output(input: Optional[pulumi.Input[_builtins.str]] = None,
-                      suffix: Optional[pulumi.Input[_builtins.str]] = None,
+def trimsuffix_output(input: pulumi.Input[Optional[_builtins.str]] = None,
+                      suffix: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TrimsuffixResult]:
     """
     Removes the specified suffix from the end of the given string, if present.

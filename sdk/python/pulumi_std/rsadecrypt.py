@@ -58,8 +58,8 @@ def rsadecrypt(cipher_text: Optional[_builtins.str] = None,
 
     return AwaitableRsadecryptResult(
         result=pulumi.get(__ret__, 'result'))
-def rsadecrypt_output(cipher_text: Optional[pulumi.Input[_builtins.str]] = None,
-                      key: Optional[pulumi.Input[_builtins.str]] = None,
+def rsadecrypt_output(cipher_text: pulumi.Input[Optional[_builtins.str]] = None,
+                      key: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[RsadecryptResult]:
     """
     Decrypts an RSA-encrypted ciphertext.

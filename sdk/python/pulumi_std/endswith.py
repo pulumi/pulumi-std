@@ -57,8 +57,8 @@ def endswith(input: Optional[_builtins.str] = None,
 
     return AwaitableEndswithResult(
         result=pulumi.get(__ret__, 'result'))
-def endswith_output(input: Optional[pulumi.Input[_builtins.str]] = None,
-                    suffix: Optional[pulumi.Input[_builtins.str]] = None,
+def endswith_output(input: pulumi.Input[Optional[_builtins.str]] = None,
+                    suffix: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[EndswithResult]:
     """
     Determines if the input string ends with the suffix.

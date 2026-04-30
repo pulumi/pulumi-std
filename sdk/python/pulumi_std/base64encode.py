@@ -55,7 +55,7 @@ def base64encode(input: Optional[_builtins.str] = None,
 
     return AwaitableBase64encodeResult(
         result=pulumi.get(__ret__, 'result'))
-def base64encode_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def base64encode_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Base64encodeResult]:
     """
     Returns a base64-encoded representation of the given string.

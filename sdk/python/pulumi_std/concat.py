@@ -55,7 +55,7 @@ def concat(input: Optional[Sequence[Sequence[Any]]] = None,
 
     return AwaitableConcatResult(
         result=pulumi.get(__ret__, 'result'))
-def concat_output(input: Optional[pulumi.Input[Sequence[Sequence[Any]]]] = None,
+def concat_output(input: pulumi.Input[Optional[Sequence[Sequence[Any]]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ConcatResult]:
     """
     Combines two or more lists into a single list.

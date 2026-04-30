@@ -56,7 +56,7 @@ def flatten(input: Optional[Sequence[Any]] = None,
 
     return AwaitableFlattenResult(
         result=pulumi.get(__ret__, 'result'))
-def flatten_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+def flatten_output(input: pulumi.Input[Optional[Sequence[Any]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[FlattenResult]:
     """
     Flattens lists of lists down to a flat list of primitive values,

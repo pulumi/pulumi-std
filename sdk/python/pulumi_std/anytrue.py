@@ -56,7 +56,7 @@ def anytrue(input: Optional[Sequence[Any]] = None,
 
     return AwaitableAnytrueResult(
         result=pulumi.get(__ret__, 'result'))
-def anytrue_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+def anytrue_output(input: pulumi.Input[Optional[Sequence[Any]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[AnytrueResult]:
     """
     Returns true if any of the elements in a given collection are true or \\"true\\".

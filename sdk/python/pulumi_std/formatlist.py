@@ -57,8 +57,8 @@ def formatlist(args: Optional[Sequence[Any]] = None,
 
     return AwaitableFormatlistResult(
         result=pulumi.get(__ret__, 'result'))
-def formatlist_output(args: Optional[pulumi.Input[Sequence[Any]]] = None,
-                      input: Optional[pulumi.Input[_builtins.str]] = None,
+def formatlist_output(args: pulumi.Input[Optional[Sequence[Any]]] = None,
+                      input: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[FormatlistResult]:
     """
     Formats a list of strings according to the given format. Argument values which are lists are "zipped" together to produce a list of results.

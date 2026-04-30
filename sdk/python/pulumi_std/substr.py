@@ -59,9 +59,9 @@ def substr(input: Optional[_builtins.str] = None,
 
     return AwaitableSubstrResult(
         result=pulumi.get(__ret__, 'result'))
-def substr_output(input: Optional[pulumi.Input[_builtins.str]] = None,
-                  length: Optional[pulumi.Input[_builtins.int]] = None,
-                  offset: Optional[pulumi.Input[_builtins.int]] = None,
+def substr_output(input: pulumi.Input[Optional[_builtins.str]] = None,
+                  length: pulumi.Input[Optional[_builtins.int]] = None,
+                  offset: pulumi.Input[Optional[_builtins.int]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SubstrResult]:
     """
     Extracts a substring from the given string.

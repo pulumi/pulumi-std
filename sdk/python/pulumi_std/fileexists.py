@@ -55,7 +55,7 @@ def fileexists(input: Optional[_builtins.str] = None,
 
     return AwaitableFileexistsResult(
         result=pulumi.get(__ret__, 'result'))
-def fileexists_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def fileexists_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[FileexistsResult]:
     """
     Determines whether a file exists at a given path.

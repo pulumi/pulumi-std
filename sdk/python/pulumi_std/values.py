@@ -55,7 +55,7 @@ def values(input: Optional[Mapping[str, Any]] = None,
 
     return AwaitableValuesResult(
         result=pulumi.get(__ret__, 'result'))
-def values_output(input: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+def values_output(input: pulumi.Input[Optional[Mapping[str, Any]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ValuesResult]:
     """
     Returns a list of the values of the map.

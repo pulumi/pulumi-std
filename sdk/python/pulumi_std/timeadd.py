@@ -63,8 +63,8 @@ def timeadd(duration: Optional[_builtins.str] = None,
 
     return AwaitableTimeaddResult(
         result=pulumi.get(__ret__, 'result'))
-def timeadd_output(duration: Optional[pulumi.Input[_builtins.str]] = None,
-                   timestamp: Optional[pulumi.Input[_builtins.str]] = None,
+def timeadd_output(duration: pulumi.Input[Optional[_builtins.str]] = None,
+                   timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TimeaddResult]:
     """
     Adds a duration to a timestamp, returning a new timestamp.

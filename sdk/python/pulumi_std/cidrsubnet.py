@@ -62,9 +62,9 @@ def cidrsubnet(input: Optional[_builtins.str] = None,
 
     return AwaitableCidrsubnetResult(
         result=pulumi.get(__ret__, 'result'))
-def cidrsubnet_output(input: Optional[pulumi.Input[_builtins.str]] = None,
-                      netnum: Optional[pulumi.Input[_builtins.int]] = None,
-                      newbits: Optional[pulumi.Input[_builtins.int]] = None,
+def cidrsubnet_output(input: pulumi.Input[Optional[_builtins.str]] = None,
+                      netnum: pulumi.Input[Optional[_builtins.int]] = None,
+                      newbits: pulumi.Input[Optional[_builtins.int]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CidrsubnetResult]:
     """
     Takes an IP address range in CIDR notation (like 10.0.0.0/8) and extends its prefix

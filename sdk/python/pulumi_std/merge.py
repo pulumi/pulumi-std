@@ -56,7 +56,7 @@ def merge(input: Optional[Sequence[Mapping[str, Any]]] = None,
 
     return AwaitableMergeResult(
         result=pulumi.get(__ret__, 'result'))
-def merge_output(input: Optional[pulumi.Input[Sequence[Mapping[str, Any]]]] = None,
+def merge_output(input: pulumi.Input[Optional[Sequence[Mapping[str, Any]]]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[MergeResult]:
     """
     Returns the union of 2 or more maps. The maps are consumed in the order provided,

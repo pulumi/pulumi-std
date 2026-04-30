@@ -57,8 +57,8 @@ def zipmap(keys: Optional[Sequence[_builtins.str]] = None,
 
     return AwaitableZipmapResult(
         result=pulumi.get(__ret__, 'result'))
-def zipmap_output(keys: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                  values: Optional[pulumi.Input[Sequence[Any]]] = None,
+def zipmap_output(keys: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                  values: pulumi.Input[Optional[Sequence[Any]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ZipmapResult]:
     """
     Constructs a map from a list of keys and a corresponding list of values.

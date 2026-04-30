@@ -57,8 +57,8 @@ def startswith(input: Optional[_builtins.str] = None,
 
     return AwaitableStartswithResult(
         result=pulumi.get(__ret__, 'result'))
-def startswith_output(input: Optional[pulumi.Input[_builtins.str]] = None,
-                      prefix: Optional[pulumi.Input[_builtins.str]] = None,
+def startswith_output(input: pulumi.Input[Optional[_builtins.str]] = None,
+                      prefix: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[StartswithResult]:
     """
     Determines if the input string starts with the suffix.

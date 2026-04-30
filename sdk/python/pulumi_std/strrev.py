@@ -55,7 +55,7 @@ def strrev(input: Optional[_builtins.str] = None,
 
     return AwaitableStrrevResult(
         result=pulumi.get(__ret__, 'result'))
-def strrev_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def strrev_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[StrrevResult]:
     """
     Returns the given string with all of its Unicode characters in reverse order.

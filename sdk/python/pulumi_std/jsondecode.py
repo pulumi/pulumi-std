@@ -57,7 +57,7 @@ def jsondecode(input: Optional[_builtins.str] = None,
 
     return AwaitableJsondecodeResult(
         result=pulumi.get(__ret__, 'result'))
-def jsondecode_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def jsondecode_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[JsondecodeResult]:
     """
     Interprets a given string as JSON and returns a represetation

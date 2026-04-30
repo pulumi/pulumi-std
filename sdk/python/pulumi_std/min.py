@@ -55,7 +55,7 @@ def min(input: Optional[Sequence[_builtins.float]] = None,
 
     return AwaitableMinResult(
         result=pulumi.get(__ret__, 'result'))
-def min_output(input: Optional[pulumi.Input[Sequence[_builtins.float]]] = None,
+def min_output(input: pulumi.Input[Optional[Sequence[_builtins.float]]] = None,
                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[MinResult]:
     """
     Returns the smallest of the floats.

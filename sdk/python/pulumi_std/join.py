@@ -57,8 +57,8 @@ def join(input: Optional[Sequence[_builtins.str]] = None,
 
     return AwaitableJoinResult(
         result=pulumi.get(__ret__, 'result'))
-def join_output(input: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                separator: Optional[pulumi.Input[_builtins.str]] = None,
+def join_output(input: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                separator: pulumi.Input[Optional[_builtins.str]] = None,
                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[JoinResult]:
     """
     Joins the list with the delimiter for a resultant string.

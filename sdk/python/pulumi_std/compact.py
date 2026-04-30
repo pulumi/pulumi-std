@@ -55,7 +55,7 @@ def compact(input: Optional[Sequence[Any]] = None,
 
     return AwaitableCompactResult(
         result=pulumi.get(__ret__, 'result'))
-def compact_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+def compact_output(input: pulumi.Input[Optional[Sequence[Any]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CompactResult]:
     """
     Removes empty and nil string elements from a list.

@@ -55,7 +55,7 @@ def file(input: Optional[_builtins.str] = None,
 
     return AwaitableFileResult(
         result=pulumi.get(__ret__, 'result'))
-def file_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def file_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[FileResult]:
     """
     Reads the contents of a file into the string.

@@ -57,8 +57,8 @@ def pow(base: Optional[_builtins.float] = None,
 
     return AwaitablePowResult(
         result=pulumi.get(__ret__, 'result'))
-def pow_output(base: Optional[pulumi.Input[_builtins.float]] = None,
-               exponent: Optional[pulumi.Input[_builtins.float]] = None,
+def pow_output(base: pulumi.Input[Optional[_builtins.float]] = None,
+               exponent: pulumi.Input[Optional[_builtins.float]] = None,
                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[PowResult]:
     """
     Returns the base input raised to the power of the exponent.

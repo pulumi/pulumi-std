@@ -55,7 +55,7 @@ def base64decode(input: Optional[_builtins.str] = None,
 
     return AwaitableBase64decodeResult(
         result=pulumi.get(__ret__, 'result'))
-def base64decode_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def base64decode_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Base64decodeResult]:
     """
     Given a base64-encoded string, decodes it and returns the original string.

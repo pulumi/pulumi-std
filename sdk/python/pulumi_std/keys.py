@@ -55,7 +55,7 @@ def keys(input: Optional[Mapping[str, Any]] = None,
 
     return AwaitableKeysResult(
         result=pulumi.get(__ret__, 'result'))
-def keys_output(input: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+def keys_output(input: pulumi.Input[Optional[Mapping[str, Any]]] = None,
                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[KeysResult]:
     """
     Returns a lexically sorted list of the map keys.

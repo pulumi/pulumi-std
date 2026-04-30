@@ -56,7 +56,7 @@ def abspath(input: Optional[_builtins.str] = None,
 
     return AwaitableAbspathResult(
         result=pulumi.get(__ret__, 'result'))
-def abspath_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def abspath_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[AbspathResult]:
     """
     Returns an absolute representation of the specified path.

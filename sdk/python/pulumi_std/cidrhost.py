@@ -60,8 +60,8 @@ def cidrhost(host: Optional[_builtins.int] = None,
 
     return AwaitableCidrhostResult(
         result=pulumi.get(__ret__, 'result'))
-def cidrhost_output(host: Optional[pulumi.Input[_builtins.int]] = None,
-                    input: Optional[pulumi.Input[_builtins.str]] = None,
+def cidrhost_output(host: pulumi.Input[Optional[_builtins.int]] = None,
+                    input: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[CidrhostResult]:
     """
     Takes an IP address range in CIDR notation as input

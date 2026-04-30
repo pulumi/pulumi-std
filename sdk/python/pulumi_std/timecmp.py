@@ -63,8 +63,8 @@ def timecmp(timestampa: Optional[_builtins.str] = None,
 
     return AwaitableTimecmpResult(
         result=pulumi.get(__ret__, 'result'))
-def timecmp_output(timestampa: Optional[pulumi.Input[_builtins.str]] = None,
-                   timestampb: Optional[pulumi.Input[_builtins.str]] = None,
+def timecmp_output(timestampa: pulumi.Input[Optional[_builtins.str]] = None,
+                   timestampb: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TimecmpResult]:
     """
     Compares two timestamps and returns a number that represents the ordering

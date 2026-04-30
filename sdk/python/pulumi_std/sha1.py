@@ -55,7 +55,7 @@ def sha1(input: Optional[_builtins.str] = None,
 
     return AwaitableSha1Result(
         result=pulumi.get(__ret__, 'result'))
-def sha1_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def sha1_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Sha1Result]:
     """
     Returns a hexadecimal representation of the SHA-1 hash of the given string.

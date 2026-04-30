@@ -57,8 +57,8 @@ def chunklist(input: Optional[Sequence[Any]] = None,
 
     return AwaitableChunklistResult(
         result=pulumi.get(__ret__, 'result'))
-def chunklist_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
-                     size: Optional[pulumi.Input[_builtins.int]] = None,
+def chunklist_output(input: pulumi.Input[Optional[Sequence[Any]]] = None,
+                     size: pulumi.Input[Optional[_builtins.int]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ChunklistResult]:
     """
     Splits a single list into multiple lists where each has at most the given number of elements.

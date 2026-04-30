@@ -55,7 +55,7 @@ def title(input: Optional[_builtins.str] = None,
 
     return AwaitableTitleResult(
         result=pulumi.get(__ret__, 'result'))
-def title_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def title_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[TitleResult]:
     """
     Converts the first letter of each word in the given string to uppercase.

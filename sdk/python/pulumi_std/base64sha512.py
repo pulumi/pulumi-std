@@ -56,7 +56,7 @@ def base64sha512(input: Optional[_builtins.str] = None,
 
     return AwaitableBase64sha512Result(
         result=pulumi.get(__ret__, 'result'))
-def base64sha512_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def base64sha512_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[Base64sha512Result]:
     """
     Returns a base64-encoded representation of raw SHA-512 sum of the given string.

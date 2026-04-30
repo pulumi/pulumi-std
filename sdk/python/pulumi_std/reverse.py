@@ -55,7 +55,7 @@ def reverse(input: Optional[Sequence[Any]] = None,
 
     return AwaitableReverseResult(
         result=pulumi.get(__ret__, 'result'))
-def reverse_output(input: Optional[pulumi.Input[Sequence[Any]]] = None,
+def reverse_output(input: pulumi.Input[Optional[Sequence[Any]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ReverseResult]:
     """
     Returns a sequence with the same elements but in reverse order.

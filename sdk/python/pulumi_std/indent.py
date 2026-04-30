@@ -57,8 +57,8 @@ def indent(input: Optional[_builtins.str] = None,
 
     return AwaitableIndentResult(
         result=pulumi.get(__ret__, 'result'))
-def indent_output(input: Optional[pulumi.Input[_builtins.str]] = None,
-                  spaces: Optional[pulumi.Input[_builtins.int]] = None,
+def indent_output(input: pulumi.Input[Optional[_builtins.str]] = None,
+                  spaces: pulumi.Input[Optional[_builtins.int]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[IndentResult]:
     """
     Adds a given number of spaces after each newline character in the given string.

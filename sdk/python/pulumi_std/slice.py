@@ -59,9 +59,9 @@ def slice(from_: Optional[_builtins.int] = None,
 
     return AwaitableSliceResult(
         result=pulumi.get(__ret__, 'result'))
-def slice_output(from_: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                 list: Optional[pulumi.Input[Sequence[Any]]] = None,
-                 to: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def slice_output(from_: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                 list: pulumi.Input[Optional[Sequence[Any]]] = None,
+                 to: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[SliceResult]:
     """
     Returns the portion of list between from (inclusive) and to (exclusive).

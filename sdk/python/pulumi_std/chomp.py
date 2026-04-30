@@ -55,7 +55,7 @@ def chomp(input: Optional[_builtins.str] = None,
 
     return AwaitableChompResult(
         result=pulumi.get(__ret__, 'result'))
-def chomp_output(input: Optional[pulumi.Input[_builtins.str]] = None,
+def chomp_output(input: pulumi.Input[Optional[_builtins.str]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[ChompResult]:
     """
     Removes one or more newline characters from the end of the given string.
