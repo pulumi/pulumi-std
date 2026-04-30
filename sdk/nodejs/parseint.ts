@@ -39,6 +39,6 @@ export function parseintOutput(args: ParseintOutputArgs, opts?: pulumi.InvokeOut
 }
 
 export interface ParseintOutputArgs {
-    base?: pulumi.Input<number>;
+    base?: pulumi.Input<number | undefined>;
     input: pulumi.Input<string>;
 }

@@ -38,7 +38,7 @@ export function sliceOutput(args: SliceOutputArgs, opts?: pulumi.InvokeOutputOpt
 }
 
 export interface SliceOutputArgs {
-    from?: pulumi.Input<number>;
+    from?: pulumi.Input<number | undefined>;
     list: pulumi.Input<any[]>;
-    to?: pulumi.Input<number>;
+    to?: pulumi.Input<number | undefined>;
 }

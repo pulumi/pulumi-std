@@ -38,7 +38,7 @@ export function lookupOutput(args: LookupOutputArgs, opts?: pulumi.InvokeOutputO
 }
 
 export interface LookupOutputArgs {
-    default?: any;
+    default?: any | undefined;
     key: pulumi.Input<string>;
     map: pulumi.Input<{[key: string]: any}>;
 }
