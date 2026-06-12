@@ -23,6 +23,16 @@ gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
 	pulumi package gen-sdk provider/cmd/pulumi-resource-std/schema.json --language "$*" --version "${VERSION_GENERIC}"
 
+gen_python_sdk: sdk_prep
+	if [ -d sdk/python ]; then rm -rf sdk/python; fi
+	pulumi package gen-sdk provider/cmd/pulumi-resource-std/schema.json --language python --version "${VERSION_GENERIC}"
+	cp README.md sdk/python/
+
+gen_java_sdk: sdk_prep
+	if [ -d sdk/java ]; then rm -rf sdk/java; fi
+	pulumi package gen-sdk provider/cmd/pulumi-resource-std/schema.json --language java --version "${VERSION_GENERIC}"
+	printf 'module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n' > sdk/java/go.mod
+
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 
 build_dotnet_sdk: gen_dotnet_sdk
@@ -38,7 +48,6 @@ build_nodejs_sdk: gen_nodejs_sdk
 	cp README.md LICENSE sdk/nodejs/package.json sdk/nodejs/yarn.lock sdk/nodejs/bin/
 
 build_python_sdk: gen_python_sdk
-	cp README.md sdk/python/
 	cd sdk/python/ && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
 		python3 -m venv venv && \
@@ -52,7 +61,6 @@ build_go_sdk: gen_go_sdk
 build_java_sdk: PACKAGE_VERSION := ${VERSION_GENERIC}
 build_java_sdk: gen_java_sdk
 	cd sdk/java/ && \
-		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build
 
 test: build
