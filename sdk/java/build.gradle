@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-std"
                 packaging = "jar"
-                description = "Standard library functions"
+                description = $/Standard library functions/$
 
                 url = "https://github.com/pulumi/pulumi-std"
 
