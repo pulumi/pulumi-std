@@ -71,7 +71,7 @@ lint: lint-golang lint-copyright
 lint-golang:
 	cd provider && golangci-lint run -c ../.golangci.yml --timeout 5m
 lint-copyright:
-	pulumictl copyright -x 'examples/**' -x 'sdk/**'
+	pulumictl copyright -x 'examples/**,sdk/**,.openinspect/**'
 
 # To make an immediately observable change to .ci-mgmt.yaml:
 #
