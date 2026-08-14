@@ -32,12 +32,8 @@ type RegexResult struct {
 }
 
 func RegexOutput(ctx *pulumi.Context, args RegexOutputArgs, opts ...pulumi.InvokeOption) RegexResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (RegexResultOutput, error) {
-			args := v.(RegexArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:regex", args, RegexResultOutput{}, options).(RegexResultOutput), nil
-		}).(RegexResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:regex", args, RegexResultOutput{}, options).(RegexResultOutput)
 }
 
 type RegexOutputArgs struct {

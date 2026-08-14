@@ -31,12 +31,8 @@ type CoalesceResult struct {
 }
 
 func CoalesceOutput(ctx *pulumi.Context, args CoalesceOutputArgs, opts ...pulumi.InvokeOption) CoalesceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (CoalesceResultOutput, error) {
-			args := v.(CoalesceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:coalesce", args, CoalesceResultOutput{}, options).(CoalesceResultOutput), nil
-		}).(CoalesceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:coalesce", args, CoalesceResultOutput{}, options).(CoalesceResultOutput)
 }
 
 type CoalesceOutputArgs struct {

@@ -30,12 +30,8 @@ type TimestampResult struct {
 }
 
 func TimestampOutput(ctx *pulumi.Context, args TimestampOutputArgs, opts ...pulumi.InvokeOption) TimestampResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (TimestampResultOutput, error) {
-			args := v.(TimestampArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:timestamp", args, TimestampResultOutput{}, options).(TimestampResultOutput), nil
-		}).(TimestampResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:timestamp", args, TimestampResultOutput{}, options).(TimestampResultOutput)
 }
 
 type TimestampOutputArgs struct {

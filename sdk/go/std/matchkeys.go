@@ -33,12 +33,8 @@ type MatchkeysResult struct {
 }
 
 func MatchkeysOutput(ctx *pulumi.Context, args MatchkeysOutputArgs, opts ...pulumi.InvokeOption) MatchkeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (MatchkeysResultOutput, error) {
-			args := v.(MatchkeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:matchkeys", args, MatchkeysResultOutput{}, options).(MatchkeysResultOutput), nil
-		}).(MatchkeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:matchkeys", args, MatchkeysResultOutput{}, options).(MatchkeysResultOutput)
 }
 
 type MatchkeysOutputArgs struct {

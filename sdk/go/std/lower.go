@@ -31,12 +31,8 @@ type LowerResult struct {
 }
 
 func LowerOutput(ctx *pulumi.Context, args LowerOutputArgs, opts ...pulumi.InvokeOption) LowerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LowerResultOutput, error) {
-			args := v.(LowerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:lower", args, LowerResultOutput{}, options).(LowerResultOutput), nil
-		}).(LowerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:lower", args, LowerResultOutput{}, options).(LowerResultOutput)
 }
 
 type LowerOutputArgs struct {

@@ -32,12 +32,8 @@ type ElementResult struct {
 }
 
 func ElementOutput(ctx *pulumi.Context, args ElementOutputArgs, opts ...pulumi.InvokeOption) ElementResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ElementResultOutput, error) {
-			args := v.(ElementArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:element", args, ElementResultOutput{}, options).(ElementResultOutput), nil
-		}).(ElementResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:element", args, ElementResultOutput{}, options).(ElementResultOutput)
 }
 
 type ElementOutputArgs struct {

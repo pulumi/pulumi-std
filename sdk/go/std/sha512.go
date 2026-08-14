@@ -31,12 +31,8 @@ type Sha512Result struct {
 }
 
 func Sha512Output(ctx *pulumi.Context, args Sha512OutputArgs, opts ...pulumi.InvokeOption) Sha512ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (Sha512ResultOutput, error) {
-			args := v.(Sha512Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:sha512", args, Sha512ResultOutput{}, options).(Sha512ResultOutput), nil
-		}).(Sha512ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:sha512", args, Sha512ResultOutput{}, options).(Sha512ResultOutput)
 }
 
 type Sha512OutputArgs struct {

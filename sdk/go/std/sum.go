@@ -31,12 +31,8 @@ type SumResult struct {
 }
 
 func SumOutput(ctx *pulumi.Context, args SumOutputArgs, opts ...pulumi.InvokeOption) SumResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (SumResultOutput, error) {
-			args := v.(SumArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:sum", args, SumResultOutput{}, options).(SumResultOutput), nil
-		}).(SumResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:sum", args, SumResultOutput{}, options).(SumResultOutput)
 }
 
 type SumOutputArgs struct {

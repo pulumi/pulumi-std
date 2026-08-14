@@ -31,12 +31,8 @@ type PathexpandResult struct {
 }
 
 func PathexpandOutput(ctx *pulumi.Context, args PathexpandOutputArgs, opts ...pulumi.InvokeOption) PathexpandResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (PathexpandResultOutput, error) {
-			args := v.(PathexpandArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:pathexpand", args, PathexpandResultOutput{}, options).(PathexpandResultOutput), nil
-		}).(PathexpandResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:pathexpand", args, PathexpandResultOutput{}, options).(PathexpandResultOutput)
 }
 
 type PathexpandOutputArgs struct {

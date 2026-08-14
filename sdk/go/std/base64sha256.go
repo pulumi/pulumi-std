@@ -32,12 +32,8 @@ type Base64sha256Result struct {
 }
 
 func Base64sha256Output(ctx *pulumi.Context, args Base64sha256OutputArgs, opts ...pulumi.InvokeOption) Base64sha256ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (Base64sha256ResultOutput, error) {
-			args := v.(Base64sha256Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:base64sha256", args, Base64sha256ResultOutput{}, options).(Base64sha256ResultOutput), nil
-		}).(Base64sha256ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:base64sha256", args, Base64sha256ResultOutput{}, options).(Base64sha256ResultOutput)
 }
 
 type Base64sha256OutputArgs struct {

@@ -31,12 +31,8 @@ type Base64decodeResult struct {
 }
 
 func Base64decodeOutput(ctx *pulumi.Context, args Base64decodeOutputArgs, opts ...pulumi.InvokeOption) Base64decodeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (Base64decodeResultOutput, error) {
-			args := v.(Base64decodeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:base64decode", args, Base64decodeResultOutput{}, options).(Base64decodeResultOutput), nil
-		}).(Base64decodeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:base64decode", args, Base64decodeResultOutput{}, options).(Base64decodeResultOutput)
 }
 
 type Base64decodeOutputArgs struct {

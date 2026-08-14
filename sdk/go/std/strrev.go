@@ -31,12 +31,8 @@ type StrrevResult struct {
 }
 
 func StrrevOutput(ctx *pulumi.Context, args StrrevOutputArgs, opts ...pulumi.InvokeOption) StrrevResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (StrrevResultOutput, error) {
-			args := v.(StrrevArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:strrev", args, StrrevResultOutput{}, options).(StrrevResultOutput), nil
-		}).(StrrevResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:strrev", args, StrrevResultOutput{}, options).(StrrevResultOutput)
 }
 
 type StrrevOutputArgs struct {

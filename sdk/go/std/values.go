@@ -31,12 +31,8 @@ type ValuesResult struct {
 }
 
 func ValuesOutput(ctx *pulumi.Context, args ValuesOutputArgs, opts ...pulumi.InvokeOption) ValuesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ValuesResultOutput, error) {
-			args := v.(ValuesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:values", args, ValuesResultOutput{}, options).(ValuesResultOutput), nil
-		}).(ValuesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:values", args, ValuesResultOutput{}, options).(ValuesResultOutput)
 }
 
 type ValuesOutputArgs struct {

@@ -31,12 +31,8 @@ type ReverseResult struct {
 }
 
 func ReverseOutput(ctx *pulumi.Context, args ReverseOutputArgs, opts ...pulumi.InvokeOption) ReverseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ReverseResultOutput, error) {
-			args := v.(ReverseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:reverse", args, ReverseResultOutput{}, options).(ReverseResultOutput), nil
-		}).(ReverseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:reverse", args, ReverseResultOutput{}, options).(ReverseResultOutput)
 }
 
 type ReverseOutputArgs struct {

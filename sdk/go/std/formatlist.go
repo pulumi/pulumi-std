@@ -32,12 +32,8 @@ type FormatlistResult struct {
 }
 
 func FormatlistOutput(ctx *pulumi.Context, args FormatlistOutputArgs, opts ...pulumi.InvokeOption) FormatlistResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (FormatlistResultOutput, error) {
-			args := v.(FormatlistArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:formatlist", args, FormatlistResultOutput{}, options).(FormatlistResultOutput), nil
-		}).(FormatlistResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:formatlist", args, FormatlistResultOutput{}, options).(FormatlistResultOutput)
 }
 
 type FormatlistOutputArgs struct {

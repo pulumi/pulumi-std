@@ -31,12 +31,8 @@ type ConcatResult struct {
 }
 
 func ConcatOutput(ctx *pulumi.Context, args ConcatOutputArgs, opts ...pulumi.InvokeOption) ConcatResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ConcatResultOutput, error) {
-			args := v.(ConcatArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:concat", args, ConcatResultOutput{}, options).(ConcatResultOutput), nil
-		}).(ConcatResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:concat", args, ConcatResultOutput{}, options).(ConcatResultOutput)
 }
 
 type ConcatOutputArgs struct {

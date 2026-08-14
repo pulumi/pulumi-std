@@ -33,12 +33,8 @@ type BcryptResult struct {
 }
 
 func BcryptOutput(ctx *pulumi.Context, args BcryptOutputArgs, opts ...pulumi.InvokeOption) BcryptResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (BcryptResultOutput, error) {
-			args := v.(BcryptArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:bcrypt", args, BcryptResultOutput{}, options).(BcryptResultOutput), nil
-		}).(BcryptResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:bcrypt", args, BcryptResultOutput{}, options).(BcryptResultOutput)
 }
 
 type BcryptOutputArgs struct {

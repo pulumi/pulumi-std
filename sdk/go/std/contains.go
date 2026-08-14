@@ -32,12 +32,8 @@ type ContainsResult struct {
 }
 
 func ContainsOutput(ctx *pulumi.Context, args ContainsOutputArgs, opts ...pulumi.InvokeOption) ContainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ContainsResultOutput, error) {
-			args := v.(ContainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:contains", args, ContainsResultOutput{}, options).(ContainsResultOutput), nil
-		}).(ContainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:contains", args, ContainsResultOutput{}, options).(ContainsResultOutput)
 }
 
 type ContainsOutputArgs struct {

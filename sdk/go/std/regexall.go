@@ -32,12 +32,8 @@ type RegexallResult struct {
 }
 
 func RegexallOutput(ctx *pulumi.Context, args RegexallOutputArgs, opts ...pulumi.InvokeOption) RegexallResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (RegexallResultOutput, error) {
-			args := v.(RegexallArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:regexall", args, RegexallResultOutput{}, options).(RegexallResultOutput), nil
-		}).(RegexallResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:regexall", args, RegexallResultOutput{}, options).(RegexallResultOutput)
 }
 
 type RegexallOutputArgs struct {

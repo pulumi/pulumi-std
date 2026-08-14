@@ -31,12 +31,8 @@ type Sha256Result struct {
 }
 
 func Sha256Output(ctx *pulumi.Context, args Sha256OutputArgs, opts ...pulumi.InvokeOption) Sha256ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (Sha256ResultOutput, error) {
-			args := v.(Sha256Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:sha256", args, Sha256ResultOutput{}, options).(Sha256ResultOutput), nil
-		}).(Sha256ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:sha256", args, Sha256ResultOutput{}, options).(Sha256ResultOutput)
 }
 
 type Sha256OutputArgs struct {

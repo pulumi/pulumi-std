@@ -33,12 +33,8 @@ type TrimspaceResult struct {
 }
 
 func TrimspaceOutput(ctx *pulumi.Context, args TrimspaceOutputArgs, opts ...pulumi.InvokeOption) TrimspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (TrimspaceResultOutput, error) {
-			args := v.(TrimspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:trimspace", args, TrimspaceResultOutput{}, options).(TrimspaceResultOutput), nil
-		}).(TrimspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:trimspace", args, TrimspaceResultOutput{}, options).(TrimspaceResultOutput)
 }
 
 type TrimspaceOutputArgs struct {

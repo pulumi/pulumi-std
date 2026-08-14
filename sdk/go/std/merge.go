@@ -32,12 +32,8 @@ type MergeResult struct {
 }
 
 func MergeOutput(ctx *pulumi.Context, args MergeOutputArgs, opts ...pulumi.InvokeOption) MergeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (MergeResultOutput, error) {
-			args := v.(MergeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:merge", args, MergeResultOutput{}, options).(MergeResultOutput), nil
-		}).(MergeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:merge", args, MergeResultOutput{}, options).(MergeResultOutput)
 }
 
 type MergeOutputArgs struct {

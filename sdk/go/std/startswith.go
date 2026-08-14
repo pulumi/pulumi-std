@@ -32,12 +32,8 @@ type StartswithResult struct {
 }
 
 func StartswithOutput(ctx *pulumi.Context, args StartswithOutputArgs, opts ...pulumi.InvokeOption) StartswithResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (StartswithResultOutput, error) {
-			args := v.(StartswithArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:startswith", args, StartswithResultOutput{}, options).(StartswithResultOutput), nil
-		}).(StartswithResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:startswith", args, StartswithResultOutput{}, options).(StartswithResultOutput)
 }
 
 type StartswithOutputArgs struct {

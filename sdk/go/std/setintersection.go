@@ -31,12 +31,8 @@ type SetintersectionResult struct {
 }
 
 func SetintersectionOutput(ctx *pulumi.Context, args SetintersectionOutputArgs, opts ...pulumi.InvokeOption) SetintersectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (SetintersectionResultOutput, error) {
-			args := v.(SetintersectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:setintersection", args, SetintersectionResultOutput{}, options).(SetintersectionResultOutput), nil
-		}).(SetintersectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:setintersection", args, SetintersectionResultOutput{}, options).(SetintersectionResultOutput)
 }
 
 type SetintersectionOutputArgs struct {
