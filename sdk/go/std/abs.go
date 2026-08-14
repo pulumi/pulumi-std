@@ -32,12 +32,8 @@ type AbsResult struct {
 }
 
 func AbsOutput(ctx *pulumi.Context, args AbsOutputArgs, opts ...pulumi.InvokeOption) AbsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (AbsResultOutput, error) {
-			args := v.(AbsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:abs", args, AbsResultOutput{}, options).(AbsResultOutput), nil
-		}).(AbsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:abs", args, AbsResultOutput{}, options).(AbsResultOutput)
 }
 
 type AbsOutputArgs struct {

@@ -31,12 +31,8 @@ type MapResult struct {
 }
 
 func MapOutput(ctx *pulumi.Context, args MapOutputArgs, opts ...pulumi.InvokeOption) MapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (MapResultOutput, error) {
-			args := v.(MapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:map", args, MapResultOutput{}, options).(MapResultOutput), nil
-		}).(MapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:map", args, MapResultOutput{}, options).(MapResultOutput)
 }
 
 type MapOutputArgs struct {

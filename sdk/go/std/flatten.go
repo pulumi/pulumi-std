@@ -32,12 +32,8 @@ type FlattenResult struct {
 }
 
 func FlattenOutput(ctx *pulumi.Context, args FlattenOutputArgs, opts ...pulumi.InvokeOption) FlattenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (FlattenResultOutput, error) {
-			args := v.(FlattenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:flatten", args, FlattenResultOutput{}, options).(FlattenResultOutput), nil
-		}).(FlattenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:flatten", args, FlattenResultOutput{}, options).(FlattenResultOutput)
 }
 
 type FlattenOutputArgs struct {

@@ -33,12 +33,8 @@ type ToboolResult struct {
 }
 
 func ToboolOutput(ctx *pulumi.Context, args ToboolOutputArgs, opts ...pulumi.InvokeOption) ToboolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ToboolResultOutput, error) {
-			args := v.(ToboolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:tobool", args, ToboolResultOutput{}, options).(ToboolResultOutput), nil
-		}).(ToboolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:tobool", args, ToboolResultOutput{}, options).(ToboolResultOutput)
 }
 
 type ToboolOutputArgs struct {

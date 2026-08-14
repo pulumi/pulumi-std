@@ -30,12 +30,8 @@ type UuidResult struct {
 }
 
 func UuidOutput(ctx *pulumi.Context, args UuidOutputArgs, opts ...pulumi.InvokeOption) UuidResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (UuidResultOutput, error) {
-			args := v.(UuidArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:uuid", args, UuidResultOutput{}, options).(UuidResultOutput), nil
-		}).(UuidResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:uuid", args, UuidResultOutput{}, options).(UuidResultOutput)
 }
 
 type UuidOutputArgs struct {

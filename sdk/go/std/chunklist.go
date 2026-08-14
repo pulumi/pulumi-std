@@ -32,12 +32,8 @@ type ChunklistResult struct {
 }
 
 func ChunklistOutput(ctx *pulumi.Context, args ChunklistOutputArgs, opts ...pulumi.InvokeOption) ChunklistResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ChunklistResultOutput, error) {
-			args := v.(ChunklistArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:chunklist", args, ChunklistResultOutput{}, options).(ChunklistResultOutput), nil
-		}).(ChunklistResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:chunklist", args, ChunklistResultOutput{}, options).(ChunklistResultOutput)
 }
 
 type ChunklistOutputArgs struct {

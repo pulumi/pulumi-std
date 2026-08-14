@@ -31,12 +31,8 @@ type UrlencodeResult struct {
 }
 
 func UrlencodeOutput(ctx *pulumi.Context, args UrlencodeOutputArgs, opts ...pulumi.InvokeOption) UrlencodeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (UrlencodeResultOutput, error) {
-			args := v.(UrlencodeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:urlencode", args, UrlencodeResultOutput{}, options).(UrlencodeResultOutput), nil
-		}).(UrlencodeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:urlencode", args, UrlencodeResultOutput{}, options).(UrlencodeResultOutput)
 }
 
 type UrlencodeOutputArgs struct {

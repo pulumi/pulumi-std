@@ -31,12 +31,8 @@ type ChompResult struct {
 }
 
 func ChompOutput(ctx *pulumi.Context, args ChompOutputArgs, opts ...pulumi.InvokeOption) ChompResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ChompResultOutput, error) {
-			args := v.(ChompArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:chomp", args, ChompResultOutput{}, options).(ChompResultOutput), nil
-		}).(ChompResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:chomp", args, ChompResultOutput{}, options).(ChompResultOutput)
 }
 
 type ChompOutputArgs struct {

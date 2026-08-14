@@ -35,12 +35,8 @@ type CidrhostResult struct {
 }
 
 func CidrhostOutput(ctx *pulumi.Context, args CidrhostOutputArgs, opts ...pulumi.InvokeOption) CidrhostResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (CidrhostResultOutput, error) {
-			args := v.(CidrhostArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:cidrhost", args, CidrhostResultOutput{}, options).(CidrhostResultOutput), nil
-		}).(CidrhostResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:cidrhost", args, CidrhostResultOutput{}, options).(CidrhostResultOutput)
 }
 
 type CidrhostOutputArgs struct {

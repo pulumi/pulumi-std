@@ -32,12 +32,8 @@ type SplitResult struct {
 }
 
 func SplitOutput(ctx *pulumi.Context, args SplitOutputArgs, opts ...pulumi.InvokeOption) SplitResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (SplitResultOutput, error) {
-			args := v.(SplitArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:split", args, SplitResultOutput{}, options).(SplitResultOutput), nil
-		}).(SplitResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:split", args, SplitResultOutput{}, options).(SplitResultOutput)
 }
 
 type SplitOutputArgs struct {

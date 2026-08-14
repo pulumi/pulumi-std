@@ -33,12 +33,8 @@ type JsonencodeResult struct {
 }
 
 func JsonencodeOutput(ctx *pulumi.Context, args JsonencodeOutputArgs, opts ...pulumi.InvokeOption) JsonencodeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (JsonencodeResultOutput, error) {
-			args := v.(JsonencodeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:jsonencode", args, JsonencodeResultOutput{}, options).(JsonencodeResultOutput), nil
-		}).(JsonencodeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:jsonencode", args, JsonencodeResultOutput{}, options).(JsonencodeResultOutput)
 }
 
 type JsonencodeOutputArgs struct {

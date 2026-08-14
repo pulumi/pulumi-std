@@ -32,12 +32,8 @@ type TrimprefixResult struct {
 }
 
 func TrimprefixOutput(ctx *pulumi.Context, args TrimprefixOutputArgs, opts ...pulumi.InvokeOption) TrimprefixResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (TrimprefixResultOutput, error) {
-			args := v.(TrimprefixArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:trimprefix", args, TrimprefixResultOutput{}, options).(TrimprefixResultOutput), nil
-		}).(TrimprefixResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:trimprefix", args, TrimprefixResultOutput{}, options).(TrimprefixResultOutput)
 }
 
 type TrimprefixOutputArgs struct {

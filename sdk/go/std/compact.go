@@ -31,12 +31,8 @@ type CompactResult struct {
 }
 
 func CompactOutput(ctx *pulumi.Context, args CompactOutputArgs, opts ...pulumi.InvokeOption) CompactResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (CompactResultOutput, error) {
-			args := v.(CompactArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:compact", args, CompactResultOutput{}, options).(CompactResultOutput), nil
-		}).(CompactResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:compact", args, CompactResultOutput{}, options).(CompactResultOutput)
 }
 
 type CompactOutputArgs struct {

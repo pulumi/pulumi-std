@@ -34,12 +34,8 @@ type CidrnetmaskResult struct {
 }
 
 func CidrnetmaskOutput(ctx *pulumi.Context, args CidrnetmaskOutputArgs, opts ...pulumi.InvokeOption) CidrnetmaskResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (CidrnetmaskResultOutput, error) {
-			args := v.(CidrnetmaskArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:cidrnetmask", args, CidrnetmaskResultOutput{}, options).(CidrnetmaskResultOutput), nil
-		}).(CidrnetmaskResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:cidrnetmask", args, CidrnetmaskResultOutput{}, options).(CidrnetmaskResultOutput)
 }
 
 type CidrnetmaskOutputArgs struct {

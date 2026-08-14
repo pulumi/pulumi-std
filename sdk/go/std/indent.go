@@ -32,12 +32,8 @@ type IndentResult struct {
 }
 
 func IndentOutput(ctx *pulumi.Context, args IndentOutputArgs, opts ...pulumi.InvokeOption) IndentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (IndentResultOutput, error) {
-			args := v.(IndentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("std:index:indent", args, IndentResultOutput{}, options).(IndentResultOutput), nil
-		}).(IndentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("std:index:indent", args, IndentResultOutput{}, options).(IndentResultOutput)
 }
 
 type IndentOutputArgs struct {
