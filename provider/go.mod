@@ -6,9 +6,9 @@ require (
 	github.com/apparentlymart/go-textseg v1.0.0
 	github.com/google/uuid v1.6.0
 	github.com/pulumi/pulumi-go-provider v1.6.0
-	github.com/pulumi/pulumi/sdk/v3 v3.261.0
+	github.com/pulumi/pulumi/sdk/v3 v3.262.0
 	github.com/stretchr/testify v1.12.1
-	golang.org/x/crypto v0.55.0
+	golang.org/x/crypto v0.57.0
 )
 
 require (
@@ -75,9 +75,9 @@ require (
 	go.opentelemetry.io/proto/otlp v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
-	golang.org/x/sync v0.22.0 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20260831171406-18b4a7587f8a // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260831171406-18b4a7587f8a // indirect
+	golang.org/x/sync v0.23.0 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20260908043556-f8649ddbbfe6 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260908043556-f8649ddbbfe6 // indirect
 )
 
 require (
@@ -98,7 +98,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.24.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/kevinburke/ssh_config v1.6.0 // indirect
-	github.com/mattn/go-runewidth v0.0.29 // indirect
+	github.com/mattn/go-runewidth v0.0.30 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
@@ -108,7 +108,7 @@ require (
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.261.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.262.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
@@ -123,11 +123,11 @@ require (
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/zclconf/go-cty v1.16.3 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
-	golang.org/x/mod v0.40.0 // indirect
-	golang.org/x/net v0.58.0 // indirect
-	golang.org/x/sys v0.47.0 // indirect
-	golang.org/x/term v0.45.0 // indirect
-	golang.org/x/text v0.41.0
+	golang.org/x/mod v0.41.0 // indirect
+	golang.org/x/net v0.59.0 // indirect
+	golang.org/x/sys v0.48.0 // indirect
+	golang.org/x/term v0.46.0 // indirect
+	golang.org/x/text v0.42.0
 	golang.org/x/tools v0.49.0 // indirect
 	google.golang.org/grpc v1.83.2 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
