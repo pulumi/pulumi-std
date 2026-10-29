@@ -384,7 +384,7 @@ public final class StdFunctions {
         return Deployment.getInstance().invokeAsync("std:index:abspath", TypeShape.of(AbspathResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns true if all elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if all elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns true if the collection is empty.
      * 
      */
@@ -392,7 +392,7 @@ public final class StdFunctions {
         return alltrue(args, InvokeOptions.Empty);
     }
     /**
-     * Returns true if all elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if all elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns true if the collection is empty.
      * 
      */
@@ -400,7 +400,7 @@ public final class StdFunctions {
         return alltruePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Returns true if all elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if all elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns true if the collection is empty.
      * 
      */
@@ -408,7 +408,7 @@ public final class StdFunctions {
         return Deployment.getInstance().invoke("std:index:alltrue", TypeShape.of(AlltrueResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns true if all elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if all elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns true if the collection is empty.
      * 
      */
@@ -416,7 +416,7 @@ public final class StdFunctions {
         return Deployment.getInstance().invoke("std:index:alltrue", TypeShape.of(AlltrueResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns true if all elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if all elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns true if the collection is empty.
      * 
      */
@@ -424,7 +424,7 @@ public final class StdFunctions {
         return Deployment.getInstance().invokeAsync("std:index:alltrue", TypeShape.of(AlltrueResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns true if any of the elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if any of the elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns false if the collection is empty.
      * 
      */
@@ -432,7 +432,7 @@ public final class StdFunctions {
         return anytrue(args, InvokeOptions.Empty);
     }
     /**
-     * Returns true if any of the elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if any of the elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns false if the collection is empty.
      * 
      */
@@ -440,7 +440,7 @@ public final class StdFunctions {
         return anytruePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Returns true if any of the elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if any of the elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns false if the collection is empty.
      * 
      */
@@ -448,7 +448,7 @@ public final class StdFunctions {
         return Deployment.getInstance().invoke("std:index:anytrue", TypeShape.of(AnytrueResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns true if any of the elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if any of the elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns false if the collection is empty.
      * 
      */
@@ -456,7 +456,7 @@ public final class StdFunctions {
         return Deployment.getInstance().invoke("std:index:anytrue", TypeShape.of(AnytrueResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Returns true if any of the elements in a given collection are true or \&#34;true\&#34;.
+     * Returns true if any of the elements in a given collection are true or &#92;&#34;true&#92;&#34;.
      * It also returns false if the collection is empty.
      * 
      */
@@ -3744,7 +3744,7 @@ public final class StdFunctions {
     }
     /**
      * Removes any space characters from the start and end of the given string,
-     * 	following the Unicode definition of \&#34;space\&#34; (i.e. spaces, tabs, newline, etc.).
+     * 	following the Unicode definition of &#92;&#34;space&#92;&#34; (i.e. spaces, tabs, newline, etc.).
      * 
      */
     public static Output<TrimspaceResult> trimspace(TrimspaceArgs args) {
@@ -3752,7 +3752,7 @@ public final class StdFunctions {
     }
     /**
      * Removes any space characters from the start and end of the given string,
-     * 	following the Unicode definition of \&#34;space\&#34; (i.e. spaces, tabs, newline, etc.).
+     * 	following the Unicode definition of &#92;&#34;space&#92;&#34; (i.e. spaces, tabs, newline, etc.).
      * 
      */
     public static CompletableFuture<TrimspaceResult> trimspacePlain(TrimspacePlainArgs args) {
@@ -3760,7 +3760,7 @@ public final class StdFunctions {
     }
     /**
      * Removes any space characters from the start and end of the given string,
-     * 	following the Unicode definition of \&#34;space\&#34; (i.e. spaces, tabs, newline, etc.).
+     * 	following the Unicode definition of &#92;&#34;space&#92;&#34; (i.e. spaces, tabs, newline, etc.).
      * 
      */
     public static Output<TrimspaceResult> trimspace(TrimspaceArgs args, InvokeOptions options) {
@@ -3768,7 +3768,7 @@ public final class StdFunctions {
     }
     /**
      * Removes any space characters from the start and end of the given string,
-     * 	following the Unicode definition of \&#34;space\&#34; (i.e. spaces, tabs, newline, etc.).
+     * 	following the Unicode definition of &#92;&#34;space&#92;&#34; (i.e. spaces, tabs, newline, etc.).
      * 
      */
     public static Output<TrimspaceResult> trimspace(TrimspaceArgs args, InvokeOutputOptions options) {
@@ -3776,7 +3776,7 @@ public final class StdFunctions {
     }
     /**
      * Removes any space characters from the start and end of the given string,
-     * 	following the Unicode definition of \&#34;space\&#34; (i.e. spaces, tabs, newline, etc.).
+     * 	following the Unicode definition of &#92;&#34;space&#92;&#34; (i.e. spaces, tabs, newline, etc.).
      * 
      */
     public static CompletableFuture<TrimspaceResult> trimspacePlain(TrimspacePlainArgs args, InvokeOptions options) {
