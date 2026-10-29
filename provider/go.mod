@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-std/provider/v2
 
-go 1.26.6
+go 1.26.10
 
 require (
 	github.com/apparentlymart/go-textseg v1.0.0
