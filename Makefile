@@ -1,4 +1,4 @@
-PROVIDER_VERSION ?= 2.3.0-alpha.0+dev
+PROVIDER_VERSION ?= 2.3.3
 VERSION_GENERIC = $(shell pulumictl convert-version --language generic --version "$(PROVIDER_VERSION)")
 
 build:
