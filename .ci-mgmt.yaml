@@ -1,7 +1,0 @@
-template: native
-provider: std
-major-version: 2
-parallel: 3
-esc:
-  enabled: true
-  environment: imports/github-secrets
