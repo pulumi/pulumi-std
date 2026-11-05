@@ -1,13 +1,13 @@
 {
     "name": "@pulumi/std",
-    "version": "2.3.0-alpha.0+dev",
+    "version": "2.3.3",
     "homepage": "https://github.com/pulumi/pulumi-std",
     "repository": "https://github.com/pulumi/pulumi-std",
     "scripts": {
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^3.142.0"
+        "@pulumi/pulumi": "^3.269.0"
     },
     "devDependencies": {
         "@types/node": "^20",
@@ -16,6 +16,6 @@
     "pulumi": {
         "resource": true,
         "name": "std",
-        "version": "2.3.0-alpha.0+dev"
+        "version": "2.3.3"
     }
 }
