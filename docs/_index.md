@@ -14,7 +14,7 @@ The expected use case is in Pulumi YAML programs, or Pulumi programs generated b
 
 ### Replace within a string
 
-{{< chooser language "typescript,python,go,csharp,yaml" / >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" / >}}
 
 {{% choosable language typescript %}}
 
@@ -144,6 +144,41 @@ class MyStack : Stack
 
 {{% /choosable %}}
 
+{{% choosable language java %}}
+
+```java
+package myproject;
+
+import com.pulumi.Pulumi;
+import com.pulumi.std.StdFunctions;
+import com.pulumi.std.inputs.ReplaceArgs;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(ctx -> {
+            // Simple string replacement
+            var simpleReplace = StdFunctions.replace(ReplaceArgs.builder()
+                .text("fizz-bar")
+                .search("bar")
+                .replace("buzz")
+                .build());
+
+            // Regular expression replacement
+            var regexpReplace = StdFunctions.replace(ReplaceArgs.builder()
+                .text("fizz-foo-bar")
+                .search("/-.*/")
+                .replace("-buzz")
+                .build());
+
+            ctx.export("simple", simpleReplace.applyValue(r -> r.result())); // fizz-buzz
+            ctx.export("regexp", regexpReplace.applyValue(r -> r.result())); // fizz-buzz
+        });
+    }
+}
+```
+
+{{% /choosable %}}
+
 {{% choosable language yaml %}}
 
 ```yaml
@@ -165,6 +200,42 @@ outputs:
     ${simple-replace.result}
   regexp-replace: # fizz-buzz
     ${regexp-replace.result}
+```
+
+{{% /choosable %}}
+
+{{% choosable language hcl %}}
+
+```hcl
+terraform {
+  required_providers {
+    std = {
+      source = "pulumi/std"
+    }
+  }
+}
+
+# Simple string replacement
+data "std_replace" "simple_replace" {
+  text    = "fizz-bar"
+  search  = "bar"
+  replace = "buzz"
+}
+
+# Regular expression replacement
+data "std_replace" "regexp_replace" {
+  text    = "fizz-foo-bar"
+  search  = "/-.*/"
+  replace = "-buzz"
+}
+
+output "simple" {
+  value = data.std_replace.simple_replace.result # fizz-buzz
+}
+
+output "regexp" {
+  value = data.std_replace.regexp_replace.result # fizz-buzz
+}
 ```
 
 {{% /choosable %}}
